@@ -1,7 +1,7 @@
 <template>
     <div class="user">
         <div class="tools">
-            <span v-if="$store.state.settings.mode == 'pc'" class="item item-pro" @click="pro">
+            <span class="item item-pro" @click="pro">
                 <svg-icon name="pro" />
                 <span class="title">查看专业版</span>
             </span>
@@ -84,6 +84,9 @@ function userCommand(command) {
             })
             break
     }
+}
+function pro() {
+    window.open(`https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/fantastic-admin-discovery/pro`, 'top')
 }
 </script>
 
