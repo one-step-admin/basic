@@ -18,10 +18,6 @@ const mutations = {
     toggleSidebarCollapse(state) {
         state.sidebarCollapse = !state.sidebarCollapse
     },
-    // 设置默认语言
-    setDefaultLang(state, lang) {
-        state.defaultLang = lang
-    },
     // 更新主题配置
     updateThemeSetting(state, data) {
         Object.assign(state, data)

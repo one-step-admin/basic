@@ -42,8 +42,6 @@ let globalSettings = {
     copyrightWebsite: 'https://hooray.github.io/fantastic-admin-discovery',
     // 是否开启导航搜索
     enableNavSearch: true,
-    // 默认语言，留空则跟随系统
-    defaultLang: '',
     // 是否开启全屏
     enableFullscreen: false,
     // 是否开启后端返回导航数据
