@@ -1,0 +1,29 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-recommended-scss",
+        "stylelint-config-recommended-vue"
+    ],
+    "overrides": [
+        {
+            "files": ["**/*.scss"],
+            "customSyntax": "postcss-scss"
+        }
+    ],
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "rules": {
+        "indentation": 4,
+        "rule-empty-line-before": "never",
+        "at-rule-empty-line-before": "never",
+        "no-descending-specificity": null,
+        "selector-pseudo-class-no-unknown": null,
+        "property-no-unknown": null,
+        "font-family-no-missing-generic-family-keyword": null,
+        "selector-id-pattern": null,
+        "selector-class-pattern": null,
+        "scss/no-global-function-names": null,
+        "max-line-length": null
+    }
+}
