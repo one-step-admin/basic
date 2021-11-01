@@ -48,8 +48,7 @@ export default ({ mode, command }) => {
         plugins: createVitePlugins(env, command === 'build'),
         resolve: {
             alias: {
-                '@': path.resolve(__dirname, 'src'),
-                'vue-i18n': 'vue-i18n/index'
+                '@': path.resolve(__dirname, 'src')
             }
         },
         css: {
