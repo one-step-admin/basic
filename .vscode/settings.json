@@ -1,0 +1,11 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.stylelint": true
+    },
+    "stylelint.validate": ["css", "scss", "vue"],
+    "todo-tree.filtering.excludeGlobs": [
+        "**/node_modules",
+        "public/"
+	]
+}

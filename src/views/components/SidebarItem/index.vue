@@ -1,0 +1,76 @@
+<template>
+    <div class="sidebar-item">
+        <el-menu-item v-if="!item.children" :title="item.title" :index="JSON.stringify(item)" @click="handleOpen(item.windowName)">
+            <svg-icon v-if="item.icon" :name="item.icon" class="icon" />
+            <span class="title">{{ item.title }}</span>
+        </el-menu-item>
+        <el-sub-menu v-else :title="item.title" :index="JSON.stringify(item)">
+            <template #title>
+                <svg-icon v-if="item.icon" :name="item.icon" class="icon" />
+                <span class="title">{{ item.title }}</span>
+            </template>
+            <SidebarItem v-for="route in item.children" :key="route.path" :item="route" />
+        </el-sub-menu>
+    </div>
+</template>
+
+<script setup name="SidebarItem">
+import SidebarItem from './index.vue'
+
+const { proxy } = getCurrentInstance()
+
+defineProps({
+    item: {
+        type: Object,
+        required: true
+    }
+})
+
+function handleOpen(windowName) {
+    if (/^(https?:|mailto:|tel:)/.test(windowName)) {
+        window.open(windowName)
+    } else {
+        proxy.$window.add(windowName)
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+:deep(.el-menu-item),
+:deep(.el-menu-item span.title),
+:deep(.el-sub-menu__title),
+:deep(.el-sub-menu__title span.title) {
+    flex: 1;
+    vertical-align: inherit;
+    @include text-overflow;
+}
+:deep(.el-menu-item),
+:deep(.el-sub-menu__title) {
+    display: flex;
+    align-items: center;
+}
+:deep(.el-sub-menu),
+:deep(.el-menu-item) {
+    .icon {
+        width: 20px;
+        font-size: 20px;
+        margin-right: 10px;
+        vertical-align: -0.25em;
+        transition: transform 0.3s;
+        color: unset;
+        &[class^="el-icon-"],
+        &[class*=" el-icon-"] {
+            vertical-align: middle;
+        }
+    }
+    &:hover > .icon,
+    .el-sub-menu__title:hover > .icon {
+        transform: scale(1.2);
+    }
+}
+a {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+</style>
