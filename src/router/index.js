@@ -79,13 +79,4 @@ router.beforeEach((to, from, next) => {
     }
 })
 
-router.afterEach(to => {
-    // 百度统计代码
-    if (import.meta.env.MODE == 'example') {
-        if (window._hmt) {
-            window._hmt.push(['_trackPageview', location.pathname + '#' + to.fullPath])
-        }
-    }
-})
-
 export default router
