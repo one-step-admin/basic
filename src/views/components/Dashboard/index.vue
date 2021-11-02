@@ -62,7 +62,7 @@ watch(() => store.state.settings.previewAllWindows, val => {
 
 onMounted(() => {
     proxy.$hotkeys('alt+w', e => {
-        if (store.state.window.list.length > 0) {
+        if (store.state.window.list.length > 1) {
             e.preventDefault()
             if (store.state.settings.previewAllWindows) {
                 exitPreviewAllWindows()
