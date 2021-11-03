@@ -30,8 +30,8 @@ let globalSettings = {
     enableSidebarCollapse: false,
     // 侧边栏是否收起
     sidebarCollapse: false,
-    // 切换侧边栏同时跳转页面
-    switchSidebarAndPageJump: false,
+    // 切换侧边栏同时打开窗口
+    switchSidebarAndOpenWindow: false,
     // 侧边栏只保持一个子菜单的展开
     sidebarUniqueOpened: true,
     // 是否显示底部版权信息
