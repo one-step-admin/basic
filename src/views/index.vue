@@ -12,7 +12,7 @@
                     <div class="main">
                         <Dashboard />
                     </div>
-                    <Copyright v-if="showCopyright" />
+                    <Copyright v-if="$store.state.settings.showCopyright" />
                 </div>
             </div>
             <el-backtop :right="20" :bottom="20" title="回到顶部" />
@@ -33,19 +33,21 @@ import Search from './components/Search/index.vue'
 import ThemeSetting from './components/ThemeSetting/index.vue'
 import BuyIt from './components/BuyIt/index.vue'
 
+const { proxy } = getCurrentInstance()
 const store = useStore()
-const route = useRoute(), router = useRouter()
 
-const showCopyright = computed(() => {
-    return typeof route.meta.copyright !== 'undefined' ? route.meta.copyright : store.state.settings.showCopyright
-})
+import { useWatermark } from '@/util/useWatermark'
+useWatermark(store)
 
 provide('switchMenu', switchMenu)
 function switchMenu(index) {
     store.commit('menu/switchHeaderActived', index)
-    if (store.state.settings.switchSidebarAndPageJump) {
-        router.push(store.getters['menu/sidebarMenus'][0].path)
+    if (store.state.settings.switchSidebarAndOpenWindow) {
+        proxy.$window.add(getDeepestWindowName(store.getters['menu/sidebarMenus'][0]))
     }
+}
+function getDeepestWindowName(menus) {
+    return menus.children ? getDeepestWindowName(menus.children[0]) : menus.windowName
 }
 </script>
 

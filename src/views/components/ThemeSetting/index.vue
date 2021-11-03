@@ -36,7 +36,7 @@
                         <svg-icon name="el-icon-question" />
                     </el-tooltip>
                 </div>
-                <el-switch v-model="switchSidebarAndPageJump" :disabled="$store.state.settings.menuMode === 'single'" />
+                <el-switch v-model="switchSidebarAndOpenWindow" :disabled="$store.state.settings.menuMode === 'single'" />
             </div>
             <div class="setting-item">
                 <div class="label">
@@ -137,13 +137,13 @@ const sidebarCollapse = computed({
         })
     }
 })
-const switchSidebarAndPageJump = computed({
+const switchSidebarAndOpenWindow = computed({
     get: function() {
-        return store.state.settings.switchSidebarAndPageJump
+        return store.state.settings.switchSidebarAndOpenWindow
     },
     set: function(newValue) {
         store.commit('settings/updateThemeSetting', {
-            'switchSidebarAndPageJump': newValue
+            'switchSidebarAndOpenWindow': newValue
         })
     }
 })
