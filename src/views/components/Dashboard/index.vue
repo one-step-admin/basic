@@ -1,7 +1,8 @@
 <template>
-    <div ref="windows" class="dashboard" :class="{
-        'preview-all': $store.state.settings.previewAllWindows
-    }" @click="exitPreviewAllWindows"
+    <div
+        ref="windows" class="dashboard" :class="{
+            'preview-all': $store.state.settings.previewAllWindows
+        }" @click="exitPreviewAllWindows"
     >
         <div class="preview-all-mode">
             <div class="title">预览</div>
@@ -11,9 +12,10 @@
         </div>
         <transition-group v-if="$store.state.window.list.length > 0" name="window" tag="div" class="dashboard-container">
             <div v-for="element in $store.state.window.list" :key="element.name" :ref="`window-${element.name}`" class="window" @click.stop>
-                <div class="window-container" :class="{
-                    'preview': $store.state.settings.previewAllWindows
-                }"
+                <div
+                    class="window-container" :class="{
+                        'preview': $store.state.settings.previewAllWindows
+                    }"
                 >
                     <div class="header" @dblclick="scrollToWindow(element.name)">
                         <div class="titles">
@@ -26,7 +28,7 @@
                         <div class="btns" @dblclick.stop>
                             <div class="btn" @click="$window.remove(element.name)">
                                 <el-icon>
-                                    <el-close-bold />
+                                    <el-icon-close-bold />
                                 </el-icon>
                             </div>
                         </div>
