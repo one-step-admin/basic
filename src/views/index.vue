@@ -34,9 +34,6 @@ import ThemeSetting from './components/ThemeSetting/index.vue'
 const { proxy } = getCurrentInstance()
 const store = useStore()
 
-import { useWatermark } from '@/util/useWatermark'
-useWatermark(store)
-
 provide('switchMenu', switchMenu)
 function switchMenu(index) {
     store.commit('menu/switchHeaderActived', index)
