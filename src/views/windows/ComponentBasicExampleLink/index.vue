@@ -23,7 +23,7 @@
         </page-main>
         <page-main title="图标" class="demo">
             <el-link icon="el-icon-edit">编辑</el-link>
-            <el-link>查看<i class="el-icon-view el-icon--right" /> </el-link>
+            <el-link>查看<el-icon class="el-icon-view el-icon--right"><el-icon-view /></el-icon></el-link>
         </page-main>
     </div>
 </template>
