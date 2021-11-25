@@ -33,7 +33,7 @@
             class="images-upload"
         >
             <div class="image-slot" :style="`width:${width}px;height:${height}px;`">
-                <i class="el-icon-plus" />
+                <svg-icon name="el-icon-plus" />
             </div>
             <div v-show="uploadData.progress.percent" class="progress" :style="`width:${width}px;height:${height}px;`">
                 <el-image :src="uploadData.progress.preview" :style="`width:${width}px;height:${height}px;`" fit="fill" />
@@ -181,7 +181,7 @@ function onSuccess(res) {
         display: block;
     }
     .mask {
-        opacity: 0%;
+        opacity: 0;
         position: absolute;
         top: 0;
         width: 100%;
@@ -216,7 +216,7 @@ function onSuccess(res) {
         }
     }
     &:hover .mask {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 .images-upload {
@@ -236,8 +236,10 @@ function onSuccess(res) {
             width: 100%;
             height: 100%;
             color: #909399;
-            font-size: 30px;
             background-color: transparent;
+            i {
+                font-size: 30px;
+            }
         }
         .progress {
             position: absolute;

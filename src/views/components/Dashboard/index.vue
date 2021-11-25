@@ -224,7 +224,7 @@ function maskClick(windowName) {
                     display: flex;
                     .btn {
                         transition: 0.3s;
-                        opacity: 50%;
+                        opacity: 0.5;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -238,7 +238,7 @@ function maskClick(windowName) {
                             cursor: not-allowed;
                         }
                         &:not(.disabled):hover {
-                            opacity: 100%;
+                            opacity: 1;
                             background-color: #eee;
                         }
                     }
@@ -275,7 +275,7 @@ function maskClick(windowName) {
     }
 }
 .window-enter-from {
-    opacity: 0%;
+    opacity: 0;
     transform: translateY(100px);
 }
 .window-enter-active {

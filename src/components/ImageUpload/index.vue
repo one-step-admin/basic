@@ -14,7 +14,7 @@
             <el-image v-if="url === ''" :src="url === '' ? placeholder : url" :style="`width:${width}px;height:${height}px;`" fit="fill">
                 <template #error>
                     <div class="image-slot">
-                        <i class="el-icon-plus" />
+                        <svg-icon name="el-icon-plus" />
                     </div>
                 </template>
             </el-image>
@@ -150,7 +150,7 @@ function onSuccess(res) {
 .image {
     position: relative;
     .mask {
-        opacity: 0%;
+        opacity: 0;
         position: absolute;
         top: 0;
         width: 100%;
@@ -185,7 +185,7 @@ function onSuccess(res) {
         }
     }
     &:hover .mask {
-        opacity: 100%;
+        opacity: 1;
     }
 }
 :deep(.el-upload) {
@@ -204,8 +204,10 @@ function onSuccess(res) {
                 width: 100%;
                 height: 100%;
                 color: #909399;
-                font-size: 30px;
                 background-color: transparent;
+                i {
+                    font-size: 30px;
+                }
             }
         }
         .progress {

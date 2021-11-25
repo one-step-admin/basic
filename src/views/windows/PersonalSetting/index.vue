@@ -24,7 +24,7 @@
                         </el-form>
                     </el-col>
                     <el-col :span="8">
-                        <image-upload v-model:url="form.headimg" action="http://scrm.1daas.com/api/upload/upload" name="image" :data="{'token':'TKD628431923530324'}" notip class="headimg-upload" @onSuccess="handleSuccess" />
+                        <image-upload v-model:url="form.headimg" action="http://scrm.1daas.com/api/upload/upload" name="image" :data="{'token':'TKD628431923530324'}" notip class="headimg-upload" @on-success="handleSuccess" />
                     </el-col>
                 </el-row>
             </el-tab-pane>
@@ -64,35 +64,26 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'PersonalSetting',
-    props: {},
-    data() {
-        return {
-            form: {
-                headimg: '',
-                mobile: '',
-                name: '',
-                qq: '',
-                wechat: ''
-            }
-        }
-    },
-    created() {},
-    mounted() {},
-    methods: {
-        handleSuccess(res) {
-            if (res.error == '') {
-                this.form.headimg = res.data.path
-            } else {
-                this.$message.warning(res.error)
-            }
-        },
-        editPassword() {
-            this.$window.add('PersonalEditPassword')
-        }
+<script setup name="PersonalSetting">
+const { proxy } = getCurrentInstance()
+
+const form = ref({
+    headimg: '',
+    mobile: '',
+    name: '',
+    qq: '',
+    wechat: ''
+})
+
+function handleSuccess(res) {
+    if (res.error == '') {
+        form.value.headimg = res.data.path
+    } else {
+        proxy.$message.warning(res.error)
     }
+}
+function editPassword() {
+    proxy.$window.add('PersonalEditPassword')
 }
 </script>
 

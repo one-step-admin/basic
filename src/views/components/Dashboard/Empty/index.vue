@@ -1,6 +1,6 @@
 <template>
     <div class="empty-container">
-        <page-header title="Fantastic-admin-discovery（探索版）" class="header">
+        <page-header title="欢迎使用 One-step-admin（基础版）" class="header">
             <template #content>
                 <div>
                     <div style="margin-bottom: 5px;">这是一款具备<b class="text-emphasis">全新交互方式</b>的中后台框架，为了<b>提高使用人员的操作效率</b>与<b>减轻开发人员的开发成本</b>而生。</div>
