@@ -35,7 +35,7 @@
                         <div class="breadcrumb">
                             <span v-for="(bc, bcIndex) in item.breadcrumbNeste" :key="bcIndex">
                                 {{ bc.title }}
-                                <i class="el-icon-arrow-right" />
+                                <svg-icon name="el-icon-arrow-right" />
                             </span>
                         </div>
                     </div>
@@ -165,10 +165,10 @@ function handleOpen(windowName) {
     backdrop-filter: blur(10px);
     transition: all 0.2s;
     transform: translateZ(0);
-    opacity: 0%;
+    opacity: 0;
     visibility: hidden;
     &.searching {
-        opacity: 100%;
+        opacity: 1;
         visibility: visible;
         .container {
             transform: initial;

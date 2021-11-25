@@ -9,7 +9,7 @@
             #app {
                 height: 100%;
             }
-            .fantastic-admin-home {
+            .one-step-admin-home {
                 position: absolute;
                 z-index: 10000;
                 top: 0;
@@ -24,7 +24,7 @@
                 color: #736477;
                 background-color: snow;
             }
-            .fantastic-admin-home .loading {
+            .one-step-admin-home .loading {
                 height: 40px;
                 width: 40px;
                 display: flex;
@@ -32,33 +32,33 @@
                 justify-content: center;
                 flex-wrap: wrap;
             }
-            .fantastic-admin-home .square {
+            .one-step-admin-home .square {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 height: 20px;
                 width: 20px;
             }
-            .fantastic-admin-home .square::before {
+            .one-step-admin-home .square::before {
                 content: '';
                 width: 10px;
                 height: 10px;
                 border-radius: 15%;
                 border: 3px solid #8c858f;
             }
-            .fantastic-admin-home .loading.animate .square::before {
+            .one-step-admin-home .loading.animate .square::before {
                 animation: square-to-dot-animation 1.2s linear;
             }
-            .fantastic-admin-home .loading.animate .square:nth-child(1)::before {
+            .one-step-admin-home .loading.animate .square:nth-child(1)::before {
                 animation-delay: calc(100ms * 1);
             }
-            .fantastic-admin-home .loading.animate .square:nth-child(2)::before {
+            .one-step-admin-home .loading.animate .square:nth-child(2)::before {
                 animation-delay: calc(100ms * 2);
             }
-            .fantastic-admin-home .loading.animate .square:nth-child(3)::before {
+            .one-step-admin-home .loading.animate .square:nth-child(3)::before {
                 animation-delay: calc(100ms * 3);
             }
-            .fantastic-admin-home .loading.animate .square:nth-child(4)::before {
+            .one-step-admin-home .loading.animate .square:nth-child(4)::before {
                 animation-delay: calc(100ms * 4);
             }
             @keyframes square-to-dot-animation {
@@ -78,7 +78,7 @@
                     border-width: 3px;
                 }
             }
-            .fantastic-admin-home .text {
+            .one-step-admin-home .text {
                 font-size: 24px;
                 margin-top: 20px;
             }
@@ -107,7 +107,7 @@
     </head>
     <body>
         <div id="app">
-            <div class="fantastic-admin-home">
+            <div class="one-step-admin-home">
                 <div class="loading">
                     <div class="square"></div>
                     <div class="square"></div>

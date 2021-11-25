@@ -23,32 +23,17 @@ function hasPermission(permissions, route) {
 function filterMenus(menus, permissions) {
     const res = []
     menus.forEach(menu => {
-        const tmp = { ...menu }
-        if (hasPermission(permissions, tmp)) {
-            if (tmp.children) {
-                tmp.children = filterMenus(tmp.children, permissions)
-                tmp.children.length && res.push(tmp)
+        let tmpMenu = deepClone(menu)
+        if (hasPermission(permissions, tmpMenu)) {
+            if (tmpMenu.children) {
+                tmpMenu.children = filterMenus(tmpMenu.children, permissions)
+                tmpMenu.children.length && res.push(tmpMenu)
             } else {
-                res.push(tmp)
+                res.push(tmpMenu)
             }
         }
     })
     return res
-}
-
-function formatBackMenus(menus, views = import.meta.glob('../../views/**/*.vue')) {
-    return menus.map(route => {
-        switch (route.component) {
-            default:
-                if (route.component) {
-                    route.component = views[`../../views/${route.component}`]
-                }
-        }
-        if (route.children) {
-            route.children = formatBackMenus(route.children, views)
-        }
-        return route
-    })
 }
 
 function flatMenu(menus, breadcrumb = [], icon = '') {
@@ -124,7 +109,7 @@ const actions = {
                 const permissions = await dispatch('user/getPermissions', null, { root: true })
                 accessedMenus = filterMenus(menu, permissions)
             } else {
-                accessedMenus = menu
+                accessedMenus = deepClone(menu)
             }
             commit('setMenus', accessedMenus)
             let menus = []
@@ -140,14 +125,14 @@ const actions = {
             api.get('menu/list', {
                 baseURL: '/mock/'
             }).then(async res => {
-                let asyncMenus = formatBackMenus(res.data)
+                let asyncMenus = res.data
                 let accessedMenus
                 // 如果权限功能开启，则需要对路由数据进行筛选过滤
                 if (rootState.settings.enablePermission) {
                     const permissions = await dispatch('user/getPermissions', null, { root: true })
                     accessedMenus = filterMenus(asyncMenus, permissions)
                 } else {
-                    accessedMenus = asyncMenus
+                    accessedMenus = deepClone(asyncMenus)
                 }
                 commit('setMenus', accessedMenus)
                 let menus = []

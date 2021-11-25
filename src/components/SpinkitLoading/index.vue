@@ -1,6 +1,6 @@
 <template>
     <transition name="spinkit-transition">
-        <div v-if="show" class="spinkit-container">
+        <div class="spinkit-container">
             <div class="spinkit" :style="{'--sk-size': `${size}px`, '--sk-color': color}">
                 <div v-if="type == 'plane'" class="sk-plane" />
                 <div v-if="type == 'chase'" class="sk-chase">
@@ -87,20 +87,23 @@
     </transition>
 </template>
 
-<script>
+<script setup>
 import 'spinkit/spinkit.min.css'
 
-export default {
-    name: 'SpinkitLoading',
-    data() {
-        return {
-            show: false,
-            type: 'plane',
-            size: 50,
-            color: '#fff'
-        }
+defineProps({
+    type: {
+        type: String,
+        default: 'plane'
+    },
+    size: {
+        type: Number,
+        default: 50
+    },
+    color: {
+        type: String,
+        default: '#fff'
     }
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -122,6 +125,6 @@ export default {
 }
 .spinkit-transition-enter,
 .spinkit-transition-leave-to {
-    opacity: 0%;
+    opacity: 0;
 }
 </style>

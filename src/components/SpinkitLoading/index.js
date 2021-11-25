@@ -1,29 +1,22 @@
-import Vue from 'vue'
-
-const component = require('./main.vue').default
-const constructor = Vue.extend(component)
+import { createApp } from 'vue'
+import SpinkitLoadingComp from './index.vue'
 
 let instance
+let mountNode
 
-const spinkitLoading = options => {
-    options = options || {}
-    instance = new constructor({
-        data: options
-    })
-    instance.vm = instance.$mount()
-    instance.dom = instance.vm.$el
-    document.body.appendChild(instance.dom)
-    instance.show = true
-    return instance.vm
+function SpinkitLoading(options) {
+    instance = createApp(SpinkitLoadingComp, options)
+    mountNode = document.createElement('div')
+    document.body.appendChild(mountNode)
+    instance.mount(mountNode)
 }
 
-const SpinkitLoadingClose = () => {
-    instance.show = false
+function SpinkitLoadingClose() {
+    instance.unmount(mountNode)
+    document.body.removeChild(mountNode)
 }
 
-export default {
-    install: Vue => {
-        Vue.prototype[`$${component.name}`] = spinkitLoading
-        Vue.prototype[`$${component.name}`].close = SpinkitLoadingClose
-    }
+export {
+    SpinkitLoading,
+    SpinkitLoadingClose
 }

@@ -37,8 +37,8 @@ let globalSettings = {
     // 是否显示底部版权信息
     showCopyright: true,
     // 版权信息配置，格式为：Copyright © [dates] <company>, All Rights Reserved
-    copyrightDates: '2020-2021',
-    copyrightCompany: 'Fantastic-admin-discovery',
+    copyrightDates: '2021',
+    copyrightCompany: 'One-step-admin',
     copyrightWebsite: 'https://hooray.github.io/fantastic-admin-discovery',
     // 是否开启导航搜索
     enableNavSearch: true,

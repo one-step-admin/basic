@@ -17,6 +17,7 @@
         "indentation": 4,
         "rule-empty-line-before": "never",
         "at-rule-empty-line-before": "never",
+        "at-rule-no-unknown": null,
         "no-descending-specificity": null,
         "selector-pseudo-class-no-unknown": null,
         "property-no-unknown": null,
@@ -24,6 +25,7 @@
         "selector-id-pattern": null,
         "selector-class-pattern": null,
         "scss/no-global-function-names": null,
+        "scss/at-import-partial-extension": null,
         "max-line-length": null
     }
 }
