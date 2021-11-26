@@ -5,10 +5,11 @@
             <!-- 侧边栏模式（含主导航） -->
             <div class="nav">
                 <template v-for="(item, index) in $store.getters['menu/menus']">
-                    <div v-if="item.children && item.children.length !== 0" :key="index" :class="{
-                        'item': true,
-                        'active': index === $store.state.menu.headerActived
-                    }" :title="item.title" @click="switchMenu(index)"
+                    <div
+                        v-if="item.children && item.children.length !== 0" :key="index" :class="{
+                            'item': true,
+                            'active': index === $store.state.menu.headerActived
+                        }" :title="item.title" @click="switchMenu(index)"
                     >
                         <svg-icon v-if="item.icon" :name="item.icon" class="icon" />
                         <span>{{ item.title }}</span>

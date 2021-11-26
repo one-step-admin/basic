@@ -1,15 +1,17 @@
 <template>
     <div v-if="['side', 'head', 'single'].includes($store.state.settings.menuMode)" class="sub-sidebar-container" :class="{'is-collapse': $store.state.settings.sidebarCollapse}" @scroll="onSidebarScroll">
-        <Logo :show-logo="$store.state.settings.menuMode === 'single'" :class="{
-            'sidebar-logo': true,
-            'sidebar-logo-bg': $store.state.settings.menuMode === 'single',
-            'shadow': sidebarScrollTop
-        }"
+        <Logo
+            :show-logo="$store.state.settings.menuMode === 'single'" :class="{
+                'sidebar-logo': true,
+                'sidebar-logo-bg': $store.state.settings.menuMode === 'single',
+                'shadow': sidebarScrollTop
+            }"
         />
         <!-- 侧边栏模式（无主导航）或侧边栏精简模式 -->
-        <el-menu :unique-opened="$store.state.settings.sidebarUniqueOpened" :collapse="$store.state.settings.sidebarCollapse" :collapse-transition="false" :class="{
-            'is-collapse-without-logo': $store.state.settings.menuMode !== 'single' && $store.state.settings.sidebarCollapse
-        }"
+        <el-menu
+            :unique-opened="$store.state.settings.sidebarUniqueOpened" :collapse="$store.state.settings.sidebarCollapse" :collapse-transition="false" :class="{
+                'is-collapse-without-logo': $store.state.settings.menuMode !== 'single' && $store.state.settings.sidebarCollapse
+            }"
         >
             <transition-group name="sub-sidebar">
                 <template v-for="route in $store.getters['menu/sidebarMenus']" :key="JSON.stringify(route)">
@@ -38,7 +40,7 @@ function onSidebarScroll(e) {
 }
 .sub-sidebar-enter-from,
 .sub-sidebar-leave-active {
-    opacity: 0%;
+    opacity: 0;
     transform: translateY(30px) skewY(10deg);
 }
 .sub-sidebar-leave-active {

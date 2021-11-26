@@ -165,11 +165,11 @@ header + .wrapper {
     transition: 0.15s;
 }
 .main-enter-from {
-    opacity: 0%;
+    opacity: 0;
     margin-left: -20px;
 }
 .main-leave-to {
-    opacity: 0%;
+    opacity: 0;
     margin-left: 20px;
 }
 </style>
