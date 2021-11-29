@@ -2,7 +2,7 @@
     <img src="./src/assets/images/logo.png" width="200" height="200" />
 </p>
 
-<h1 align="center">Fantastic-admin-discovery</h1>
+<h1 align="center">One-step-admin</h1>
 
 <p align="center">一款具备<b>全新交互方式</b>的 Vue 中后台管理系统框架</p>
 
@@ -16,17 +16,17 @@
 
 ## 演示
 
-[基础版](https://hooray.gitee.io/fantastic-admin-discovery/basic) ([备份地址](https://hooray.github.io/fantastic-admin-discovery/basic))
+[基础版](https://hooray.gitee.io/one-step-admin/basic) ([备份地址](https://hooray.github.io/one-step-admin/basic))
 
-[专业版](https://hooray.gitee.io/fantastic-admin-discovery/pro) ([备份地址](https://hooray.github.io/fantastic-admin-discovery/pro))
+[专业版](https://hooray.gitee.io/one-step-admin/pro) ([备份地址](https://hooray.github.io/one-step-admin/pro))
 
 ## 下载 & 购买
 
 - 基础版（免费，可商用）
-  - 去 [Gitee](https://gitee.com/hooray/fantastic-admin-discovery) 下载
-  - 去 [Github](https://github.com/hooray/fantastic-admin-discovery) 下载
+  - 去 [Gitee](https://gitee.com/hooray/one-step-admin) 下载
+  - 去 [Github](https://github.com/hooray/one-step-admin) 下载
 - 专业版（付费，可商用）
-  - [去购买](https://hooray.gitee.io/fantastic-admin-discovery/buy.html) ([备份地址](https://hooray.github.io/fantastic-admin-discovery/buy.html))
+  - [去购买](https://hooray.gitee.io/one-step-admin/buy.html) ([备份地址](https://hooray.github.io/one-step-admin/buy.html))
 
 ## 分支说明
 
@@ -37,7 +37,7 @@
 
 ## 技术支持
 
-[开发文档](https://hooray.gitee.io/fantastic-admin-discovery) ([备份地址](https://hooray.github.io/fantastic-admin-discovery))
+[开发文档](https://hooray.gitee.io/one-step-admin) ([备份地址](https://hooray.github.io/one-step-admin))
 
 技术交流QQ群：1001394973
 
@@ -47,24 +47,24 @@
 
 <table>
     <tr>
-        <td><img src="https://hooray.gitee.io/fantastic-admin-discovery/preview1.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin-discovery/preview2.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin-discovery/preview3.png" /></td>
+        <td><img src="https://hooray.gitee.io/one-step-admin/preview1.png" /></td>
+        <td><img src="https://hooray.gitee.io/one-step-admin/preview2.png" /></td>
+        <td><img src="https://hooray.gitee.io/one-step-admin/preview3.png" /></td>
     </tr>
     <tr>
-        <td><img src="https://hooray.gitee.io/fantastic-admin-discovery/preview4.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin-discovery/preview5.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin-discovery/preview6.png" /></td>
+        <td><img src="https://hooray.gitee.io/one-step-admin/preview4.png" /></td>
+        <td><img src="https://hooray.gitee.io/one-step-admin/preview5.png" /></td>
+        <td><img src="https://hooray.gitee.io/one-step-admin/preview6.png" /></td>
     </tr>
 </table>
 
 ## 支持
 
-如果觉得 Fantastic-admin-discovery 这个框架不错，或者已经在使用了，希望你可以去 **Github** 或者 **Gitee(码云)** 帮我点个 ⭐ ，这将对我是极大的鼓励。
+如果觉得 One-step-admin 这个框架不错，或者已经在使用了，希望你可以去 **Github** 或者 **Gitee(码云)** 帮我点个 ⭐ ，这将对我是极大的鼓励。
 
-[![star](https://img.shields.io/github/stars/hooray/fantastic-admin-discovery?style=social)](https://github.com/hooray/fantastic-admin-discovery/stargazers)
+[![star](https://img.shields.io/github/stars/hooray/one-step-admin?style=social)](https://github.com/hooray/one-step-admin/stargazers)
 
-[![star](https://gitee.com/hooray/fantastic-admin-discovery/badge/star.svg?theme=dark)](https://gitee.com/hooray/fantastic-admin-discovery/stargazers)
+[![star](https://gitee.com/hooray/one-step-admin/badge/star.svg?theme=dark)](https://gitee.com/hooray/one-step-admin/stargazers)
 
 ## 生态
 

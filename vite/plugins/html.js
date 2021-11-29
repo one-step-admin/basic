@@ -14,8 +14,8 @@ export default function createHtml(env, isBuild) {
                 appMode: VITE_APP_MODE,
                 copyrightScript: `
 <script>
-console.info('%c由%cFantastic-admin-discovery%c提供技术支持', '${copyright_sub_style}', '${copyright_main_style}', '${copyright_sub_style}', '\\nhttps://hooray.gitee.io/fantastic-admin-discovery/');
-console.info('%cPowered by%cFantastic-admin-discovery', '${copyright_sub_style}', '${copyright_main_style}', '\\nhttps://hooray.github.io/fantastic-admin-discovery/');
+console.info('%c由%cOne-step-admin%c提供技术支持', '${copyright_sub_style}', '${copyright_main_style}', '${copyright_sub_style}', '\\nhttps://hooray.gitee.io/one-step-admin/');
+console.info('%cPowered by%cOne-step-admin', '${copyright_sub_style}', '${copyright_main_style}', '\\nhttps://hooray.github.io/one-step-admin/');
 </script>
                 `
             }

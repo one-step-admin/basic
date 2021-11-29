@@ -86,7 +86,7 @@ function userCommand(command) {
     }
 }
 function pro() {
-    window.open(`https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/fantastic-admin-discovery/pro`, 'top')
+    window.open(`https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/pro`, 'top')
 }
 </script>
 

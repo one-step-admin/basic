@@ -8,15 +8,15 @@
             <svg-icon name="fixed-right-chat" />
             <span class="title">加入<br>QQ群</span>
         </div>
-        <div class="item buy" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/fantastic-admin-discovery/buy.html`)">
+        <div class="item buy" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/buy.html`)">
             <svg-icon name="fixed-right-buy" />
             <span class="title">购买<br>专业版</span>
         </div>
-        <div class="item doc" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/fantastic-admin-discovery/`)">
+        <div class="item doc" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/`)">
             <svg-icon name="fixed-right-doc" />
             <span class="title">开发<br>文档</span>
         </div>
-        <div class="item code" @click="open(`https://${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.com/hooray/fantastic-admin-discovery/`)">
+        <div class="item code" @click="open(`https://${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.com/hooray/one-step-admin/`)">
             <svg-icon name="fixed-right-code" />
             <span class="title">下载<br>基础版</span>
         </div>
@@ -40,7 +40,7 @@ onMounted(() => {
         dangerouslyUseHTMLString: true,
         message: `
                 <p>当前访问的是<b>基础版</b></p>
-                <p>你可以点<a href="https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/fantastic-admin-discovery/pro/" target="_blank"><b>这里</b></a>访问专业版</p>
+                <p>你可以点<a href="https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/pro/" target="_blank"><b>这里</b></a>访问专业版</p>
             `,
         position: 'bottom-right',
         duration: 5000
@@ -51,7 +51,7 @@ onMounted(() => {
             title: '专业版限时优惠 200 元',
             dangerouslyUseHTMLString: true,
             message: `
-                <p>给项目仓库点⭐，原价 696 元的专业版只需 <b style="color: rgb(255, 68, 0); font-size: 18px;">496</b> 元，点<a href="https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/fantastic-admin-discovery/buy" target="_blank"><b>这里</b></a>了解一下。</p>
+                <p>给项目仓库点⭐，原价 696 元的专业版只需 <b style="color: rgb(255, 68, 0); font-size: 18px;">496</b> 元，点<a href="https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/buy" target="_blank"><b>这里</b></a>了解一下。</p>
                 <p>活动截止至 2021 年 12 月 31 日</p>
             `,
             position: 'bottom-right',
