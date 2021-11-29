@@ -1,5 +1,5 @@
 {
-    "name": "fantastic-admin",
+    "name": "one-step-admin",
     "version": "0.1.0",
     "scripts": {
         "dev": "vite",

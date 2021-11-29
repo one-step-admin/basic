@@ -39,7 +39,7 @@ let globalSettings = {
     // 版权信息配置，格式为：Copyright © [dates] <company>, All Rights Reserved
     copyrightDates: '2021',
     copyrightCompany: 'One-step-admin',
-    copyrightWebsite: 'https://hooray.github.io/fantastic-admin-discovery',
+    copyrightWebsite: 'https://hooray.github.io/one-step-admin',
     // 是否开启导航搜索
     enableNavSearch: true,
     // 是否开启全屏
