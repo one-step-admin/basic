@@ -4,7 +4,7 @@
 
 <h1 align="center">One-step-admin</h1>
 
-<p align="center">一款具备<b>全新交互方式</b>的 Vue 中后台管理系统框架</p>
+<p align="center">一款<b>干啥都快人一步</b>的 Vue 中后台管理系统框架</p>
 
 ## 特点
 
