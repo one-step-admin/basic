@@ -22,7 +22,7 @@ specifiers:
   postcss-html: ^1.3.0
   postcss-scss: ^4.0.2
   qs: ^6.10.1
-  sass: ^1.43.5
+  sass: ^1.44.0
   screenfull: ^6.0.0
   stylelint: ^14.1.0
   stylelint-config-html: ^1.0.0
@@ -78,7 +78,7 @@ devDependencies:
   plop: 2.7.6
   postcss-html: 1.3.0
   postcss-scss: 4.0.2
-  sass: 1.43.5
+  sass: 1.44.0
   stylelint: 14.1.0
   stylelint-config-html: 1.0.0_c1fe332c2f0bd1acbb28be685cc2d480
   stylelint-config-recommended: 6.0.0_stylelint@14.1.0
@@ -89,7 +89,7 @@ devDependencies:
   svgo: 2.8.0
   unplugin-auto-import: 0.5.1_vite@2.6.14
   unplugin-vue-components: 0.17.2_vite@2.6.14+vue@3.2.23
-  vite: 2.6.14_sass@1.43.5
+  vite: 2.6.14_sass@1.44.0
   vite-plugin-banner: 0.1.3
   vite-plugin-compression: 0.3.6_vite@2.6.14
   vite-plugin-html: 2.1.1_vite@2.6.14
@@ -342,7 +342,7 @@ packages:
     peerDependencies:
       vite: ^2.5.10
     dependencies:
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     dev: true
 
   /@vue/compiler-core/3.2.23:
@@ -2411,6 +2411,10 @@ packages:
     hasBin: true
     dev: true
 
+  /immutable/4.0.0:
+    resolution: {integrity: sha1-uG943mre82CDle+yaakUYnl+LCM=, tarball: immutable/download/immutable-4.0.0.tgz}
+    dev: true
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha1-NxYsJfy566oublPVtNiM4X2eDCs=, tarball: import-fresh/download/import-fresh-3.3.0.tgz}
     engines: {node: '>=6'}
@@ -4130,12 +4134,13 @@ packages:
       ret: 0.1.15
     dev: true
 
-  /sass/1.43.5:
-    resolution: {integrity: sha512-WuNm+eAryMgQluL7Mbq9M4EruyGGMyal7Lu58FfnRMVWxgUzIvI7aSn60iNt3kn5yZBMR7G84fAGDcwqOF5JOg==, tarball: sass/download/sass-1.43.5.tgz}
+  /sass/1.44.0:
+    resolution: {integrity: sha512-0hLREbHFXGQqls/K8X+koeP+ogFRPF4ZqetVB19b7Cst9Er8cOR0rc6RU7MaI4W1JmUShd1BPgPoeqmmgMMYFw==, tarball: sass/download/sass-1.44.0.tgz}
     engines: {node: '>=8.9.0'}
     hasBin: true
     dependencies:
       chokidar: 3.5.2
+      immutable: 4.0.0
     dev: true
 
   /save-pixels/2.3.6:
@@ -5000,7 +5005,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
       webpack-virtual-modules: 0.4.3
     dev: true
 
@@ -5018,7 +5023,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
       webpack-virtual-modules: 0.4.3
     dev: true
 
@@ -5140,7 +5145,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.2
       fs-extra: 10.0.0
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5156,7 +5161,7 @@ packages:
       ejs: 3.1.6
       fs-extra: 10.0.0
       html-minifier-terser: 5.1.1
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     dev: true
 
   /vite-plugin-mock/2.9.6_mockjs@1.1.0+vite@2.6.14:
@@ -5176,7 +5181,7 @@ packages:
       fast-glob: 3.2.7
       mockjs: 1.1.0
       path-to-regexp: 6.2.0
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -5189,7 +5194,7 @@ packages:
     dependencies:
       chalk: 4.1.2
       micromatch: 4.0.4
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     dev: true
 
   /vite-plugin-spritesmith/0.1.1:
@@ -5215,7 +5220,7 @@ packages:
       fs-extra: 10.0.0
       svg-baker: 1.7.0
       svgo: 2.8.0
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5227,10 +5232,10 @@ packages:
     dependencies:
       '@vue/compiler-sfc': 3.2.23
       magic-string: 0.25.7
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
     dev: true
 
-  /vite/2.6.14_sass@1.43.5:
+  /vite/2.6.14_sass@1.44.0:
     resolution: {integrity: sha512-2HA9xGyi+EhY2MXo0+A2dRsqsAG3eFNEVIo12olkWhOmc8LfiM+eMdrXf+Ruje9gdXgvSqjLI9freec1RUM5EA==, tarball: vite/download/vite-2.6.14.tgz}
     engines: {node: '>=12.2.0'}
     hasBin: true
@@ -5250,7 +5255,7 @@ packages:
       postcss: 8.3.9
       resolve: 1.20.0
       rollup: 2.58.0
-      sass: 1.43.5
+      sass: 1.44.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true

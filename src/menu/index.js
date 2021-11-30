@@ -4,6 +4,7 @@ import ComponentExtendExample from './modules/component.extend.example'
 import PermissionExample from './modules/permission.example'
 import MockExample from './modules/mock.example'
 import ExternalLinkExample from './modules/external.link.example'
+import EcologyExample from './modules/ecology.example'
 
 const menu = [
     {
@@ -16,6 +17,13 @@ const menu = [
             PermissionExample,
             MockExample,
             ExternalLinkExample
+        ]
+    },
+    {
+        title: '生态',
+        icon: 'sidebar-ecology',
+        children: [
+            ...EcologyExample
         ]
     }
 ]
