@@ -40,7 +40,12 @@ provide('switchMenu', switchMenu)
 function switchMenu(index) {
     store.commit('menu/switchHeaderActived', index)
     if (store.state.settings.switchSidebarAndOpenWindow) {
-        proxy.$window.add(getDeepestWindowName(store.getters['menu/sidebarMenus'][0]))
+        const windowName = getDeepestWindowName(store.getters['menu/sidebarMenus'][0])
+        if (/^(https?:|mailto:|tel:)/.test(windowName)) {
+            window.open(windowName)
+        } else {
+            proxy.$window.add(windowName)
+        }
     }
 }
 function getDeepestWindowName(menus) {
