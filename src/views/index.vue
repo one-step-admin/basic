@@ -54,44 +54,6 @@ function getDeepestWindowName(menus) {
 </script>
 
 <style lang="scss" scoped>
-// 侧边栏未折叠
-[data-sidebar-no-collapse] {
-    .sidebar-container {
-        width: calc(#{$g-main-sidebar-width} + #{$g-sub-sidebar-width});
-    }
-    .main-container {
-        margin-left: calc(#{$g-main-sidebar-width} + #{$g-sub-sidebar-width});
-    }
-    // 没有主侧边栏
-    &[data-menu-mode="head"],
-    &[data-menu-mode="single"] {
-        .sidebar-container {
-            width: $g-sub-sidebar-width;
-        }
-        .main-container {
-            margin-left: $g-sub-sidebar-width;
-        }
-    }
-}
-// 侧边栏折叠
-[data-sidebar-collapse] {
-    .sidebar-container {
-        width: calc(#{$g-main-sidebar-width} + 64px);
-    }
-    .main-container {
-        margin-left: calc(#{$g-main-sidebar-width} + 64px);
-    }
-    // 没有主侧边栏
-    &[data-menu-mode="head"],
-    &[data-menu-mode="single"] {
-        .sidebar-container {
-            width: 64px;
-        }
-        .main-container {
-            margin-left: 64px;
-        }
-    }
-}
 .layout {
     height: 100%;
 }
@@ -112,9 +74,10 @@ function getDeepestWindowName(menus) {
         bottom: 0;
         display: flex;
         transition: transform 0.3s;
+        width: calc(var(--g-main-sidebar-actual-width) + var(--g-sub-sidebar-actual-width));
     }
     .main-sidebar-container + .sub-sidebar-container {
-        left: $g-main-sidebar-width;
+        left: var(--g-main-sidebar-width);
     }
     .main-container {
         display: flex;
@@ -123,6 +86,7 @@ function getDeepestWindowName(menus) {
         transition: margin-left 0.3s;
         background-color: $g-main-bg;
         box-shadow: -1px 0 0 0 darken($g-main-bg, 10), 1px 0 0 0 darken($g-main-bg, 10);
+        margin-left: calc(var(--g-main-sidebar-actual-width) + var(--g-sub-sidebar-actual-width));
         .topbar-container {
             top: 0;
             z-index: 998;
