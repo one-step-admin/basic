@@ -41,45 +41,8 @@ body {
     position: fixed;
     left: 50%;
     right: 0;
-    width: calc(100% - #{$g-main-sidebar-width} - #{$g-sub-sidebar-width});
-}
-[data-sidebar-no-collapse] {
-    [data-fixed-calc-width] {
-        transform: translateX(-50%) translateX(division($g-main-sidebar-width, 2)) translateX(division($g-sub-sidebar-width, 2));
-    }
-    &[data-menu-mode="head"],
-    &[data-menu-mode="single"] {
-        [data-fixed-calc-width] {
-            width: calc(100% - #{$g-sub-sidebar-width});
-            transform: translateX(-50%) translateX(division($g-sub-sidebar-width, 2));
-        }
-    }
-}
-[data-sidebar-collapse] {
-    [data-fixed-calc-width] {
-        width: calc(100% - #{$g-main-sidebar-width} - 64px);
-        transform: translateX(-50%) translateX(division($g-main-sidebar-width, 2)) translateX(32px);
-    }
-    &[data-menu-mode="head"],
-    &[data-menu-mode="single"] {
-        [data-fixed-calc-width] {
-            width: calc(100% - 64px);
-            transform: translateX(-50%) translateX(32px);
-        }
-    }
-}
-// remix icon
-[class^="ri-"],
-[class*=" ri-"] {
-    display: inline-block;
-    vertical-align: bottom;
-    font-weight: 400;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-}
-.el-button [class*="ri-"] + span {
-    margin-left: 5px;
+    width: calc(100% - var(--g-main-sidebar-actual-width) - var(--g-sub-sidebar-actual-width));
+    transform: translateX(-50%) translateX(calc(var(--g-main-sidebar-actual-width) / 2)) translateX(calc(var(--g-sub-sidebar-actual-width) / 2));
 }
 // textarea 字体跟随系统
 textarea {
