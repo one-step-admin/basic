@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { Search } from '@element-plus/icons'
+import { Search } from '@element-plus/icons-vue'
 </script>
 
 <style lang="scss" scoped>

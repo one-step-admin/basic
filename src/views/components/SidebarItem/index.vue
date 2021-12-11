@@ -1,12 +1,12 @@
 <template>
     <div class="sidebar-item">
         <el-menu-item v-if="!item.children" :title="item.title" :index="JSON.stringify(item)" @click="handleOpen(item.windowName)">
-            <svg-icon v-if="item.icon" :name="item.icon" class="icon" />
+            <svg-icon v-if="item.icon" :name="item.icon" />
             <span class="title">{{ item.title }}</span>
         </el-menu-item>
         <el-sub-menu v-else :title="item.title" :index="JSON.stringify(item)">
             <template #title>
-                <svg-icon v-if="item.icon" :name="item.icon" class="icon" />
+                <svg-icon v-if="item.icon" :name="item.icon" />
                 <span class="title">{{ item.title }}</span>
             </template>
             <SidebarItem v-for="route in item.children" :key="route.path" :item="route" />
@@ -51,10 +51,9 @@ function handleOpen(windowName) {
 }
 :deep(.el-sub-menu),
 :deep(.el-menu-item) {
-    .icon {
+    .svg-icon {
         width: 20px;
         font-size: 20px;
-        margin-right: 10px;
         vertical-align: -0.25em;
         transition: transform 0.3s;
         color: unset;
@@ -63,8 +62,11 @@ function handleOpen(windowName) {
             vertical-align: middle;
         }
     }
-    &:hover > .icon,
-    .el-sub-menu__title:hover > .icon {
+    .svg-icon + .title {
+        margin-left: 10px;
+    }
+    &:hover > .svg-icon,
+    .el-sub-menu__title:hover > .svg-icon {
         transform: scale(1.2);
     }
 }
