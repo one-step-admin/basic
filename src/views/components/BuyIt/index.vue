@@ -45,19 +45,6 @@ onMounted(() => {
         position: 'bottom-right',
         duration: 5000
     })
-    setTimeout(() => {
-        proxy.$notify({
-            type: 'warning',
-            title: '专业版限时优惠 200 元',
-            dangerouslyUseHTMLString: true,
-            message: `
-                <p>给项目仓库点⭐，原价 696 元的专业版只需 <b style="color: rgb(255, 68, 0); font-size: 18px;">496</b> 元，点<a href="https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/buy" target="_blank"><b>这里</b></a>了解一下。</p>
-                <p>活动截止至 2021 年 12 月 31 日</p>
-            `,
-            position: 'bottom-right',
-            duration: 0
-        })
-    }, 0)
 })
 
 function open(url) {
