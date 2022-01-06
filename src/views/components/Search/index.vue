@@ -47,7 +47,11 @@
 
 <script setup name="Search">
 const { proxy } = getCurrentInstance()
-const store = useStore()
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useMenuStore } from '@/store/modules/menu'
+const menuStore = useMenuStore()
 
 const isShow = ref(false)
 const searchInput = ref('')
@@ -55,7 +59,7 @@ const actived = ref(-1)
 
 const resultList = computed(() => {
     let result = []
-    result = Object.values(store.getters['menu/flatMenu']).filter(item => {
+    result = Object.values(menuStore.flatMenu).filter(item => {
         let flag = false
         if (item.title.indexOf(searchInput.value) >= 0) {
             flag = true
@@ -100,7 +104,7 @@ onMounted(() => {
         isShow.value = !isShow.value
     })
     proxy.$hotkeys('alt+s', e => {
-        if (store.state.settings.enableNavSearch) {
+        if (settingsStore.enableNavSearch) {
             e.preventDefault()
             isShow.value = true
         }

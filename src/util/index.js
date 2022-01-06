@@ -1,4 +1,5 @@
-import store from '@/store'
+import { useSettingsOutsideStore } from '@/store/modules/settings'
+import { useUserOutsideStore } from '@/store/modules/user'
 
 // 深拷贝
 export function deepClone(target) {
@@ -35,8 +36,10 @@ export function deepClone(target) {
 }
 
 function hasPermission(permission) {
-    if (store.state.settings.enablePermission) {
-        return store.state.user.permissions.some(v => {
+    const settingsOutsideStore = useSettingsOutsideStore()
+    const userOutsideStore = useUserOutsideStore()
+    if (settingsOutsideStore.enablePermission) {
+        return userOutsideStore.permissions.some(v => {
             return v === permission
         })
     } else {

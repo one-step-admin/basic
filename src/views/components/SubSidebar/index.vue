@@ -1,20 +1,20 @@
 <template>
-    <div v-if="['side', 'head', 'single'].includes($store.state.settings.menuMode)" class="sub-sidebar-container" :class="{'is-collapse': $store.state.settings.sidebarCollapse}" @scroll="onSidebarScroll">
+    <div v-if="['side', 'head', 'single'].includes(settingsStore.menuMode)" class="sub-sidebar-container" :class="{'is-collapse': settingsStore.sidebarCollapse}" @scroll="onSidebarScroll">
         <Logo
-            :show-logo="$store.state.settings.menuMode === 'single'" :class="{
+            :show-logo="settingsStore.menuMode === 'single'" :class="{
                 'sidebar-logo': true,
-                'sidebar-logo-bg': $store.state.settings.menuMode === 'single',
+                'sidebar-logo-bg': settingsStore.menuMode === 'single',
                 'shadow': sidebarScrollTop
             }"
         />
         <!-- 侧边栏模式（无主导航）或侧边栏精简模式 -->
         <el-menu
-            :unique-opened="$store.state.settings.sidebarUniqueOpened" :collapse="$store.state.settings.sidebarCollapse" :collapse-transition="false" :class="{
-                'is-collapse-without-logo': $store.state.settings.menuMode !== 'single' && $store.state.settings.sidebarCollapse
+            :unique-opened="settingsStore.sidebarUniqueOpened" :collapse="settingsStore.sidebarCollapse" :collapse-transition="false" :class="{
+                'is-collapse-without-logo': settingsStore.menuMode !== 'single' && settingsStore.sidebarCollapse
             }"
         >
             <transition-group name="sub-sidebar">
-                <template v-for="route in $store.getters['menu/sidebarMenus']" :key="JSON.stringify(route)">
+                <template v-for="route in menuStore.sidebarMenus" :key="JSON.stringify(route)">
                     <SidebarItem :item="route" />
                 </template>
             </transition-group>
@@ -25,6 +25,11 @@
 <script setup name="SubSidebar">
 import Logo from '../Logo/index.vue'
 import SidebarItem from '../SidebarItem/index.vue'
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useMenuStore } from '@/store/modules/menu'
+const menuStore = useMenuStore()
 
 const sidebarScrollTop = ref(0)
 

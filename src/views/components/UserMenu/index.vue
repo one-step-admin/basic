@@ -1,26 +1,26 @@
 <template>
     <div class="user">
         <div class="tools">
-            <span v-if="$store.state.window.list.length > 1" class="item">
+            <span v-if="windowStore.list.length > 1" class="item">
                 <svg-icon name="toolbar-preview-windows" @click="previewAllWindows" />
             </span>
-            <span v-if="$store.state.settings.enableNavSearch" class="item" @click="$eventBus.emit('global-search-toggle')">
+            <span v-if="settingsStore.enableNavSearch" class="item" @click="$eventBus.emit('global-search-toggle')">
                 <svg-icon name="search" />
             </span>
-            <span v-if="isFullscreenEnable && $store.state.settings.enableFullscreen" class="item" @click="fullscreen">
+            <span v-if="isFullscreenEnable && settingsStore.enableFullscreen" class="item" @click="fullscreen">
                 <svg-icon :name="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" />
             </span>
-            <span v-if="$store.state.settings.enableThemeSetting" class="item" @click="$eventBus.emit('global-theme-toggle')">
+            <span v-if="settingsStore.enableThemeSetting" class="item" @click="$eventBus.emit('global-theme-toggle')">
                 <svg-icon name="toolbar-theme" />
             </span>
         </div>
         <el-dropdown class="user-container" @command="userCommand">
             <div class="user-wrapper">
                 <el-avatar size="medium">
-                    <i class="el-icon-user-solid" />
+                    <el-icon><el-icon-user-filled /></el-icon>
                 </el-avatar>
-                {{ $store.state.user.account }}
-                <i class="el-icon-caret-bottom" />
+                {{ userStore.account }}
+                <el-icon><el-icon-caret-bottom /></el-icon>
             </div>
             <template #dropdown>
                 <el-dropdown-menu class="user-dropdown">
@@ -36,8 +36,14 @@
 import screenfull from 'screenfull'
 
 const { proxy } = getCurrentInstance()
-const store = useStore()
 const router = useRouter()
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useUserStore } from '@/store/modules/user'
+const userStore = useUserStore()
+import { useWindowStore } from '@/store/modules/window'
+const windowStore = useWindowStore()
 
 const isFullscreenEnable = computed(() => screenfull.isEnabled)
 const isFullscreen = ref(false)
@@ -54,7 +60,7 @@ onBeforeUnmount(() => {
 })
 
 function previewAllWindows() {
-    store.commit('settings/updateThemeSetting', {
+    settingsStore.updateThemeSetting({
         previewAllWindows: true
     })
 }
@@ -73,7 +79,7 @@ function userCommand(command) {
             })
             break
         case 'logout':
-            store.dispatch('user/logout').then(() => {
+            userStore.logout().then(() => {
                 router.push({
                     name: 'login'
                 })

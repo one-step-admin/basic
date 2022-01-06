@@ -1,20 +1,20 @@
 <template>
     <div
         ref="windows" class="dashboard" :class="{
-            'preview-all': $store.state.settings.previewAllWindows
+            'preview-all': settingsStore.previewAllWindows
         }" @click="exitPreviewAllWindows"
     >
         <div class="preview-all-mode">
             <div class="title">预览</div>
             <el-tooltip content="可以通过快捷键 Alt + W 快速进入窗口预览界面" placement="left" :append-to-body="false">
-                <svg-icon name="el-icon-question" class="help" />
+                <svg-icon name="el-icon-question-filled" class="help" />
             </el-tooltip>
         </div>
-        <transition-group v-if="$store.state.window.list.length > 0" name="window" tag="div" class="dashboard-container">
-            <div v-for="element in $store.state.window.list" :key="element.name" :ref="`window-${element.name}`" class="window" @click.stop>
+        <transition-group v-if="windowStore.list.length > 0" name="window" tag="div" class="dashboard-container">
+            <div v-for="element in windowStore.list" :key="element.name" :ref="`window-${element.name}`" class="window" @click.stop>
                 <div
                     class="window-container" :class="{
-                        'preview': $store.state.settings.previewAllWindows
+                        'preview': settingsStore.previewAllWindows
                     }"
                 >
                     <div class="header" @dblclick="scrollToWindow(element.name)">
@@ -50,13 +50,17 @@
 import Empty from './Empty/index.vue'
 
 const { proxy } = getCurrentInstance()
-const store = useStore()
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useWindowStore } from '@/store/modules/window'
+const windowStore = useWindowStore()
 
 proxy.$eventBus.on('scrollToWindow', windowName => scrollToWindow(windowName))
 
 // 记录进入窗口预览界面前 scrollLeft 的值，退出的时候可以进行复原
 const originalScrollLeft = ref(0)
-watch(() => store.state.settings.previewAllWindows, val => {
+watch(() => settingsStore.previewAllWindows, val => {
     if (val) {
         originalScrollLeft.value = proxy.$refs['windows'].scrollLeft
     }
@@ -64,12 +68,12 @@ watch(() => store.state.settings.previewAllWindows, val => {
 
 onMounted(() => {
     proxy.$hotkeys('alt+w', e => {
-        if (store.state.window.list.length > 1) {
+        if (windowStore.list.length > 1) {
             e.preventDefault()
-            if (store.state.settings.previewAllWindows) {
+            if (settingsStore.previewAllWindows) {
                 exitPreviewAllWindows()
             } else {
-                store.commit('settings/updateThemeSetting', {
+                settingsStore.updateThemeSetting({
                     previewAllWindows: true
                 })
             }
@@ -84,7 +88,7 @@ function scrollToOriginal(scrollLeft) {
 }
 function scrollToWindow(windowName) {
     nextTick(() => {
-        const offsetLeft = proxy.$refs[`window-${windowName}`].offsetLeft
+        const offsetLeft = proxy.$refs[`window-${windowName}`][0].offsetLeft
         proxy.$refs['windows'].scrollTo({
             left: offsetLeft,
             behavior: 'smooth'
@@ -93,8 +97,8 @@ function scrollToWindow(windowName) {
 }
 
 function exitPreviewAllWindows() {
-    if (store.state.settings.previewAllWindows) {
-        store.commit('settings/updateThemeSetting', {
+    if (settingsStore.previewAllWindows) {
+        settingsStore.updateThemeSetting({
             previewAllWindows: false
         })
         scrollToOriginal(originalScrollLeft.value)
@@ -108,19 +112,6 @@ function maskClick(windowName) {
 }
 </script>
 
-<style lang="scss">
-.contextmenu-custom {
-    .mx-context-menu-items .mx-context-menu-item {
-        .text {
-            display: flex;
-            align-items: center;
-        }
-        &.disabled .text .icon {
-            color: #9f9f9f;
-        }
-    }
-}
-</style>
 <style lang="scss" scoped>
 .dashboard {
     position: absolute;

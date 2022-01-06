@@ -36,7 +36,7 @@
                         <svg-icon name="el-icon-question" />
                     </el-tooltip>
                 </div>
-                <el-switch v-model="switchSidebarAndOpenWindow" :disabled="$store.state.settings.menuMode === 'single'" />
+                <el-switch v-model="switchSidebarAndOpenWindow" :disabled="settingsStore.menuMode === 'single'" />
             </div>
             <div class="setting-item">
                 <div class="label">
@@ -91,98 +91,102 @@
 
 <script setup name="ThemeSetting">
 const { proxy } = getCurrentInstance()
-const store = useStore()
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useMenuStore } from '@/store/modules/menu'
+const menuStore = useMenuStore()
 
 const isShow = ref(false)
 
 const menuMode = computed({
     get: function() {
-        return store.state.settings.menuMode
+        return settingsStore.menuMode
     },
     set: function(newValue) {
-        store.commit('menu/switchHeaderActived', 0)
-        store.commit('settings/updateThemeSetting', {
+        menuStore.switchHeaderActived(0)
+        settingsStore.updateThemeSetting({
             'menuMode': newValue
         })
     }
 })
 const elementSize = computed({
     get: function() {
-        return store.state.settings.elementSize
+        return settingsStore.elementSize
     },
     set: function(newValue) {
         proxy.$ELEMENT.size = newValue
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'elementSize': newValue
         })
     }
 })
 const enableSidebarCollapse = computed({
     get: function() {
-        return store.state.settings.enableSidebarCollapse
+        return settingsStore.enableSidebarCollapse
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'enableSidebarCollapse': newValue
         })
     }
 })
 const sidebarCollapse = computed({
     get: function() {
-        return store.state.settings.sidebarCollapse
+        return settingsStore.sidebarCollapse
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'sidebarCollapse': newValue
         })
     }
 })
 const switchSidebarAndOpenWindow = computed({
     get: function() {
-        return store.state.settings.switchSidebarAndOpenWindow
+        return settingsStore.switchSidebarAndOpenWindow
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'switchSidebarAndOpenWindow': newValue
         })
     }
 })
 const sidebarUniqueOpened = computed({
     get: function() {
-        return store.state.settings.sidebarUniqueOpened
+        return settingsStore.sidebarUniqueOpened
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'sidebarUniqueOpened': newValue
         })
     }
 })
 const showCopyright = computed({
     get: function() {
-        return store.state.settings.showCopyright
+        return settingsStore.showCopyright
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'showCopyright': newValue
         })
     }
 })
 const enableNavSearch = computed({
     get: function() {
-        return store.state.settings.enableNavSearch
+        return settingsStore.enableNavSearch
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'enableNavSearch': newValue
         })
     }
 })
 const enableFullscreen = computed({
     get: function() {
-        return store.state.settings.enableFullscreen
+        return settingsStore.enableFullscreen
     },
     set: function(newValue) {
-        store.commit('settings/updateThemeSetting', {
+        settingsStore.updateThemeSetting({
             'enableFullscreen': newValue
         })
     }
