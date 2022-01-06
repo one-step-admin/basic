@@ -1,6 +1,11 @@
+import { defineStore } from 'pinia'
+import { piniaStore } from '@/store'
 import { deepClone } from '@/util'
 import api from '@/api'
 import menu from '@/menu'
+
+import { useSettingsStore } from './settings'
+import { useUserStore } from './user'
 
 function hasPermission(permissions, route) {
     let isAuth = false
@@ -44,8 +49,7 @@ function flatMenu(menus, breadcrumb = [], icon = '') {
         let tmpBreadcrumb = deepClone(breadcrumb)
         if (tmpMenu.breadcrumb !== false) {
             tmpBreadcrumb.push({
-                title: tmpMenu.title,
-                i18n: tmpMenu.i18n
+                title: tmpMenu.title
             })
         }
         if (!tmpMenu.icon) {
@@ -62,111 +66,114 @@ function flatMenu(menus, breadcrumb = [], icon = '') {
     return res
 }
 
-const state = () => ({
-    isGenerate: false,
-    menus: [],
-    headerActived: 0
-})
-
-const getters = {
-    // FIXME: 由于 getter 的结果不会被缓存，导致导航栏切换时有明显的延迟，该问题会在 Vue 3.2 版本中修复，详看 https://github.com/vuejs/vuex/pull/1883
-    menus: (state, getters, rootState) => {
-        let menus
-        if (rootState.settings.menuMode === 'single') {
-            menus = [{ children: [] }]
-            state.menus.map(item => {
-                menus[0].children.push(...item.children)
-            })
-        } else {
-            menus = state.menus
-        }
-        return menus
-    },
-    sidebarMenus: (state, getters) => {
-        return getters.menus.length > 0 ? getters.menus[state.headerActived].children : []
-    },
-    flatMenu: state => {
-        let arr = []
-        state.menus.map(item => {
-            arr.push(...flatMenu(item.children))
-        })
-        let map = {}
-        arr.map(item => {
-            map[item.windowName] = item
-        })
-        return map
-    }
-}
-
-const actions = {
-    // 生成菜单（前端生成）
-    generateMenusAtFront({ rootState, dispatch, commit }) {
-        // eslint-disable-next-line no-async-promise-executor
-        return new Promise(async resolve => {
-            let accessedMenus
-            // 如果权限功能开启，则需要对路由数据进行筛选过滤
-            if (rootState.settings.enablePermission) {
-                const permissions = await dispatch('user/getPermissions', null, { root: true })
-                accessedMenus = filterMenus(menu, permissions)
-            } else {
-                accessedMenus = deepClone(menu)
-            }
-            commit('setMenus', accessedMenus)
-            let menus = []
-            accessedMenus.map(item => {
-                menus.push(...item.children)
-            })
-            resolve(menus)
-        })
-    },
-    // 生成菜单（后端获取）
-    generateMenusAtBack({ rootState, dispatch, commit }) {
-        return new Promise(resolve => {
-            api.get('menu/list', {
-                baseURL: '/mock/'
-            }).then(async res => {
-                let asyncMenus = res.data
-                let accessedMenus
-                // 如果权限功能开启，则需要对路由数据进行筛选过滤
-                if (rootState.settings.enablePermission) {
-                    const permissions = await dispatch('user/getPermissions', null, { root: true })
-                    accessedMenus = filterMenus(asyncMenus, permissions)
+export const useMenuStore = defineStore(
+    // 唯一ID
+    'menu',
+    {
+        state: () => ({
+            isGenerate: false,
+            menus: [],
+            headerActived: 0
+        }),
+        getters: {
+            transformMenus: state => {
+                let menus
+                const settingsStore = useSettingsStore()
+                if (settingsStore.menuMode === 'single') {
+                    menus = [{ children: [] }]
+                    state.menus.map(item => {
+                        menus[0].children.push(...item.children)
+                    })
                 } else {
-                    accessedMenus = deepClone(asyncMenus)
+                    menus = state.menus
                 }
-                commit('setMenus', accessedMenus)
-                let menus = []
-                accessedMenus.map(item => {
-                    menus.push(...item.children)
+                return menus
+            },
+            sidebarMenus() {
+                return this.transformMenus.length > 0 ? this.transformMenus[this.headerActived].children : []
+            },
+            flatMenu() {
+                let arr = []
+                this.menus.map(item => {
+                    arr.push(...flatMenu(item.children))
                 })
-                resolve(menus)
-            })
-        })
+                let map = {}
+                arr.map(item => {
+                    map[item.windowName] = item
+                })
+                return map
+            }
+        },
+        actions: {
+            // 根据权限动态生成菜单（前端生成）
+            generateMenusAtFront() {
+                // eslint-disable-next-line no-async-promise-executor
+                return new Promise(async resolve => {
+                    const settingsStore = useSettingsStore()
+                    const userStore = useUserStore()
+                    let accessedMenus
+                    // 如果权限功能开启，则需要对路由数据进行筛选过滤
+                    if (settingsStore.enablePermission) {
+                        const permissions = await userStore.getPermissions()
+                        accessedMenus = filterMenus(menu, permissions)
+                    } else {
+                        accessedMenus = deepClone(menu)
+                    }
+                    // 设置 menus 数据
+                    this.isGenerate = true
+                    let newMenus = deepClone(accessedMenus)
+                    this.menus = newMenus.filter(item => {
+                        return item.children.length != 0
+                    })
+                    let menus = []
+                    accessedMenus.map(item => {
+                        menus.push(...item.children)
+                    })
+                    resolve(menus)
+                })
+            },
+            // 根据权限动态生成菜单（后端获取）
+            generateMenusAtBack() {
+                return new Promise(resolve => {
+                    api.get('menu/list', {
+                        baseURL: '/mock/'
+                    }).then(async res => {
+                        const settingsStore = useSettingsStore()
+                        const userStore = useUserStore()
+                        let accessedMenus
+                        // 如果权限功能开启，则需要对路由数据进行筛选过滤
+                        if (settingsStore.enablePermission) {
+                            const permissions = await userStore.getPermissions()
+                            accessedMenus = filterMenus(res.data, permissions)
+                        } else {
+                            accessedMenus = deepClone(res.data)
+                        }
+                        // 设置 menus 数据
+                        this.isGenerate = true
+                        let newMenus = deepClone(accessedMenus)
+                        this.menus = newMenus.filter(item => {
+                            return item.children.length != 0
+                        })
+                        let menus = []
+                        accessedMenus.map(item => {
+                            menus.push(...item.children)
+                        })
+                        resolve(menus)
+                    })
+                })
+            },
+            // 切换头部导航
+            switchHeaderActived(index) {
+                this.headerActived = index
+            },
+            removeMenus() {
+                this.isGenerate = false
+                this.menus = []
+            }
+        }
     }
-}
+)
 
-const mutations = {
-    setMenus(state, menus) {
-        state.isGenerate = true
-        let newMenus = deepClone(menus)
-        state.menus = newMenus.filter(item => {
-            return item.children.length != 0
-        })
-    },
-    // 切换头部导航
-    switchHeaderActived(state, index) {
-        state.headerActived = index
-    },
-    removeMenus(state) {
-        state.isGenerate = false
-        state.menus = []
-    }
-}
-
-export default {
-    namespaced: true,
-    state,
-    actions,
-    getters,
-    mutations
+export function useMenuOutsideStore() {
+    return useMenuStore(piniaStore)
 }

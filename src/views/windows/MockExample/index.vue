@@ -9,21 +9,23 @@
     </div>
 </template>
 
-<script>
-export default {
-    methods: {
-        getPermission() {
-            this.$store.dispatch('user/getPermissions').then(res => {
-                this.$notify({
-                    title: '当前用户权限',
-                    dangerouslyUseHTMLString: true,
-                    message: res.map(p => `<p>${p}</p>`).join('')
-                })
-            })
-        },
-        open(url) {
-            window.open(url, 'top')
-        }
-    }
+<script setup>
+const { proxy } = getCurrentInstance()
+
+import { useUserStore } from '@/store/modules/user'
+const userStore = useUserStore()
+
+function getPermission() {
+    userStore.getPermissions().then(res => {
+        proxy.$notify({
+            title: '当前用户权限',
+            dangerouslyUseHTMLString: true,
+            message: res.map(p => `<p>${p}</p>`).join('')
+        })
+    })
+}
+
+function open(url) {
+    window.open(url, 'top')
 }
 </script>

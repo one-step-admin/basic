@@ -8,9 +8,9 @@
             这里放页面内容
         </page-main>
         <page-main title="带展开功能" collaspe height="200px">
-            <h1>Fantastic-admin</h1>
+            <h1>One-step-admin</h1>
             <img src="../../../assets/images/logo.png">
-            <p>这是一款开箱即用的中后台框架，同时它也经历过数十个真实项目的技术沉淀，确保框架在开发中可落地、可使用、可维护</p>
+            <p>这是一款干啥都快人一步的中后台框架，它拥有全新的交互方式，只为提升操作效率而生。</p>
         </page-main>
     </div>
 </template>

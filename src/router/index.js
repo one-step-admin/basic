@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import store from '@/store'
+import { useSettingsOutsideStore } from '@/store/modules/settings'
+import { useUserOutsideStore } from '@/store/modules/user'
+import { useMenuOutsideStore } from '@/store/modules/menu'
 
 // 路由数据
 const routes = [
@@ -8,8 +10,7 @@ const routes = [
         name: 'login',
         component: () => import('@/views/login.vue'),
         meta: {
-            title: '登录',
-            i18n: 'route.login'
+            title: '登录'
         }
     },
     {
@@ -37,12 +38,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    if (store.getters['user/isLogin']) {
-        if (!store.state.menu.isGenerate) {
-            if (!store.state.settings.enableBackendReturnMenu) {
-                store.dispatch('menu/generateMenusAtFront')
+    const settingsOutsideStore = useSettingsOutsideStore()
+    const userOutsideStore = useUserOutsideStore()
+    const menuOutsideStore = useMenuOutsideStore()
+    if (userOutsideStore.isLogin) {
+        if (!menuOutsideStore.isGenerate) {
+            if (!settingsOutsideStore.enableBackendReturnMenu) {
+                menuOutsideStore.generateMenusAtFront()
             } else {
-                store.dispatch('menu/generateMenusAtBack')
+                menuOutsideStore.generateMenusAtBack()
             }
         }
         if (to.name) {

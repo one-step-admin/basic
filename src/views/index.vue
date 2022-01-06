@@ -8,11 +8,11 @@
                     <SubSidebar />
                 </div>
                 <div class="main-container" :style="{'padding-bottom': $route.meta.paddingBottom}">
-                    <Topbar v-if="!($store.state.settings.menuMode === 'head' && !$store.state.settings.enableSidebarCollapse)" />
+                    <Topbar v-if="!(settingsStore.menuMode === 'head' && !settingsStore.enableSidebarCollapse)" />
                     <div class="main">
                         <Dashboard />
                     </div>
-                    <Copyright v-if="$store.state.settings.showCopyright" />
+                    <Copyright v-if="settingsStore.showCopyright" />
                 </div>
             </div>
             <el-backtop :right="20" :bottom="20" title="回到顶部" />
@@ -34,13 +34,17 @@ import ThemeSetting from './components/ThemeSetting/index.vue'
 import BuyIt from './components/BuyIt/index.vue'
 
 const { proxy } = getCurrentInstance()
-const store = useStore()
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useMenuStore } from '@/store/modules/menu'
+const menuStore = useMenuStore()
 
 provide('switchMenu', switchMenu)
 function switchMenu(index) {
-    store.commit('menu/switchHeaderActived', index)
-    if (store.state.settings.switchSidebarAndOpenWindow) {
-        const windowName = getDeepestWindowName(store.getters['menu/sidebarMenus'][0])
+    menuStore.switchHeaderActived(index)
+    if (settingsStore.switchSidebarAndOpenWindow) {
+        const windowName = getDeepestWindowName(menuStore.sidebarMenus[0])
         if (/^(https?:|mailto:|tel:)/.test(windowName)) {
             window.open(windowName)
         } else {

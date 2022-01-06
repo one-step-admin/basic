@@ -1,60 +1,61 @@
-const state = () => ({
-    list: []
-})
+import { defineStore } from 'pinia'
+import { piniaStore } from '@/store'
 
-const getters = {}
+import { useMenuStore } from './menu'
 
-const actions = {
-    add({ rootGetters, commit }, data) {
-        if (typeof data === 'string') {
-            commit('add', {
-                name: data,
-                title: rootGetters['menu/flatMenu'][data]?.title ?? '',
-                params: rootGetters['menu/flatMenu'][data]?.params ?? null,
-                breadcrumbNeste: rootGetters['menu/flatMenu'][data]?.breadcrumbNeste ?? [],
-                reload: false
-            })
-        } else {
-            commit('add', {
-                name: data.name,
-                title: data.title,
-                params: data.params ?? null,
-                breadcrumbNeste: [],
-                reload: false
-            })
-        }
-    }
-}
-
-const mutations = {
-    add(state, data) {
-        // 无则添加，有则更新
-        let index = state.list.findIndex(item => item.name === data.name)
-        if (index < 0) {
-            state.list.push(data)
-        } else {
-            Object.assign(state.list[index], data)
-        }
-    },
-    remove(state, name) {
-        state.list = state.list.filter(item => item.name !== name)
-    },
-    removeAll(state) {
-        state.list = []
-    },
-    reload(state, name) {
-        state.list.map(item => {
-            if (item.name === name) {
-                item.reload = !item.reload
+export const useWindowStore = defineStore(
+    // 唯一ID
+    'windows',
+    {
+        state: () => ({
+            list: []
+        }),
+        actions: {
+            add(data) {
+                let preData
+                if (typeof data === 'string') {
+                    const menuStore = useMenuStore()
+                    preData = {
+                        name: data,
+                        title: menuStore.flatMenu[data]?.title ?? '',
+                        params: menuStore.flatMenu[data]?.params ?? null,
+                        breadcrumbNeste: menuStore.flatMenu[data]?.breadcrumbNeste ?? [],
+                        reload: false
+                    }
+                } else {
+                    preData = {
+                        name: data.name,
+                        title: data.title,
+                        params: data.params ?? null,
+                        breadcrumbNeste: [],
+                        reload: false
+                    }
+                }
+                // 无则添加，有则更新
+                let index = this.list.findIndex(item => item.name === preData.name)
+                if (index < 0) {
+                    this.list.push(preData)
+                } else {
+                    Object.assign(this.list[index], preData)
+                }
+            },
+            remove(name) {
+                this.list = this.list.filter(item => item.name !== name)
+            },
+            removeAll() {
+                this.list = []
+            },
+            reload(name) {
+                this.list.map(item => {
+                    if (item.name === name) {
+                        item.reload = !item.reload
+                    }
+                })
             }
-        })
+        }
     }
-}
+)
 
-export default {
-    namespaced: true,
-    state,
-    actions,
-    getters,
-    mutations
+export function useWindowOutsideStore() {
+    return useWindowStore(piniaStore)
 }

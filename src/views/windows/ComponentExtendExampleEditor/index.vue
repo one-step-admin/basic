@@ -15,8 +15,8 @@
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
-const content1 = ref('<h1>Fantastic-admin</h1>')
-const content2 = ref('# Fantastic-admin')
+const content1 = ref('<h1>One-step-admin</h1>')
+const content2 = ref('# One-step-admin')
 
 const mdContent2 = computed(() => {
     const mdit = mavonEditor.getMarkdownIt()

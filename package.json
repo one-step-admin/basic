@@ -26,12 +26,12 @@
         "mavon-editor": "^3.0.0-beta",
         "mitt": "^3.0.0",
         "mockjs": "^1.1.0",
+        "pinia": "^2.0.9",
         "qs": "^6.10.2",
         "screenfull": "^6.0.0",
         "tinymce": "^5.10.2",
         "vue": "^3.2.26",
-        "vue-router": "^4.0.12",
-        "vuex": "^4.0.2"
+        "vue-router": "^4.0.12"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^2.0.1",

@@ -1,14 +1,14 @@
 <template>
     <transition name="main-sidebar">
-        <div v-if="$store.state.settings.menuMode === 'side'" class="main-sidebar-container">
+        <div v-if="settingsStore.menuMode === 'side'" class="main-sidebar-container">
             <Logo :show-title="false" class="sidebar-logo" />
             <!-- 侧边栏模式（含主导航） -->
             <div class="nav">
-                <template v-for="(item, index) in $store.getters['menu/menus']">
+                <template v-for="(item, index) in menuStore.transformMenus">
                     <div
                         v-if="item.children && item.children.length !== 0" :key="index" :class="{
                             'item': true,
-                            'active': index === $store.state.menu.headerActived
+                            'active': index === menuStore.headerActived
                         }" :title="item.title" @click="switchMenu(index)"
                     >
                         <svg-icon v-if="item.icon" :name="item.icon" />
@@ -22,6 +22,11 @@
 
 <script setup name="MainSidebar">
 import Logo from '../Logo/index.vue'
+
+import { useSettingsStore } from '@/store/modules/settings'
+const settingsStore = useSettingsStore()
+import { useMenuStore } from '@/store/modules/menu'
+const menuStore = useMenuStore()
 
 const switchMenu = inject('switchMenu')
 </script>
