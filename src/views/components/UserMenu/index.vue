@@ -1,6 +1,10 @@
 <template>
     <div class="user">
         <div class="tools">
+            <span class="item item-pro" @click="pro">
+                <svg-icon name="pro" />
+                <span class="title">查看专业版</span>
+            </span>
             <span v-if="windowStore.list.length > 1" class="item">
                 <svg-icon name="toolbar-preview-windows" @click="previewAllWindows" />
             </span>
@@ -14,9 +18,9 @@
                 <svg-icon name="toolbar-theme" />
             </span>
         </div>
-        <el-dropdown class="user-container" @command="userCommand">
+        <el-dropdown class="user-container" size="default" @command="userCommand">
             <div class="user-wrapper">
-                <el-avatar size="medium">
+                <el-avatar size="small">
                     <el-icon><el-icon-user-filled /></el-icon>
                 </el-avatar>
                 {{ userStore.account }}
@@ -87,6 +91,9 @@ function userCommand(command) {
             break
     }
 }
+function pro() {
+    window.open(`https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/pro`, 'top')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -113,14 +120,41 @@ function userCommand(command) {
             vertical-align: initial;
         }
     }
+    .item-pro {
+        display: inline-block;
+        transform-origin: right center;
+        animation: pro-text 3s ease-out infinite;
+        @keyframes pro-text {
+            0%,
+            20% {
+                transform: scale(1);
+            }
+            50%,
+            70% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .title {
+            padding-left: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            background-image: linear-gradient(to right, #ffa237, #fc455d);
+            /* stylelint-disable-next-line property-no-vendor-prefix */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
 }
 :deep(.language-container) {
     font-size: 16px;
 }
 :deep(.user-container) {
     display: inline-block;
-    height: 50px;
-    line-height: 50px;
+    height: 24px;
+    line-height: 24px;
     cursor: pointer;
     .user-wrapper {
         .el-avatar {

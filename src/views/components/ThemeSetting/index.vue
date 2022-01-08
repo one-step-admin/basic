@@ -33,7 +33,7 @@
                 <div class="label">
                     切换跳转
                     <el-tooltip content="开启该功能后，切换侧边栏时，页面自动跳转至该侧边栏导航下第一个路由地址" placement="top" :append-to-body="false">
-                        <svg-icon name="el-icon-question" />
+                        <svg-icon name="el-icon-question-filled" />
                     </el-tooltip>
                 </div>
                 <el-switch v-model="switchSidebarAndOpenWindow" :disabled="settingsStore.menuMode === 'single'" />
@@ -42,7 +42,7 @@
                 <div class="label">
                     保持展开一个
                     <el-tooltip content="开启该功能后，侧边栏只保持一个子菜单的展开" placement="top" :append-to-body="false">
-                        <svg-icon name="el-icon-question" />
+                        <svg-icon name="el-icon-question-filled" />
                     </el-tooltip>
                 </div>
                 <el-switch v-model="sidebarUniqueOpened" />
@@ -52,7 +52,7 @@
                 <div class="label">
                     导航栏搜索
                     <el-tooltip content="对导航栏进行快捷搜索" placement="top" :append-to-body="false">
-                        <svg-icon name="el-icon-question" />
+                        <svg-icon name="el-icon-question-filled" />
                     </el-tooltip>
                 </div>
                 <el-switch v-model="enableNavSearch" />
@@ -61,7 +61,7 @@
                 <div class="label">
                     全屏
                     <el-tooltip content="该功能使用场景极少，用户习惯于通过窗口“最大化”功能来扩大显示区域，以显示更多内容，并且使用 F11 键也可以进入全屏效果" placement="top" :append-to-body="false">
-                        <svg-icon name="el-icon-question" />
+                        <svg-icon name="el-icon-question-filled" />
                     </el-tooltip>
                 </div>
                 <el-switch v-model="enableFullscreen" />
@@ -71,15 +71,14 @@
                 <div class="label">
                     组件尺寸
                     <el-tooltip content="全局设置 Element Plus 组件的默认尺寸大小" placement="top" :append-to-body="false">
-                        <svg-icon name="el-icon-question" />
+                        <svg-icon name="el-icon-question-filled" />
                     </el-tooltip>
                 </div>
-                <el-select v-model="elementSize" size="small">
-                    <el-option label="默认 (large)" value="large" />
-                    <el-option label="中等 (medium)" value="medium" />
-                    <el-option label="小 (small)" value="small" />
-                    <el-option label="极小 (mini)" value="mini" />
-                </el-select>
+                <el-radio-group v-model="elementSize" size="small">
+                    <el-radio-button label="large">较大</el-radio-button>
+                    <el-radio-button label="default">默认</el-radio-button>
+                    <el-radio-button label="small">稍小</el-radio-button>
+                </el-radio-group>
             </div>
             <div class="setting-item">
                 <div class="label">底部版权</div>
@@ -115,7 +114,6 @@ const elementSize = computed({
         return settingsStore.elementSize
     },
     set: function(newValue) {
-        proxy.$ELEMENT.size = newValue
         settingsStore.updateThemeSetting({
             'elementSize': newValue
         })
