@@ -130,8 +130,8 @@
                 </el-row>
             </page-main>
             <template #action>
-                <el-button type="primary">立即创建</el-button>
-                <el-button>取消</el-button>
+                <el-button type="primary" size="large">立即创建</el-button>
+                <el-button size="large">取消</el-button>
             </template>
         </action-container>
     </div>

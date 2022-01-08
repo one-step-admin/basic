@@ -18,9 +18,9 @@
                 <svg-icon name="toolbar-theme" />
             </span>
         </div>
-        <el-dropdown class="user-container" @command="userCommand">
+        <el-dropdown class="user-container" size="default" @command="userCommand">
             <div class="user-wrapper">
-                <el-avatar size="medium">
+                <el-avatar size="small">
                     <el-icon><el-icon-user-filled /></el-icon>
                 </el-avatar>
                 {{ userStore.account }}
@@ -153,8 +153,8 @@ function pro() {
 }
 :deep(.user-container) {
     display: inline-block;
-    height: 50px;
-    line-height: 50px;
+    height: 24px;
+    line-height: 24px;
     cursor: pointer;
     .user-wrapper {
         .el-avatar {

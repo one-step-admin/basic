@@ -18,7 +18,7 @@
                 </el-col>
             </el-row>
             <template #action>
-                <el-button type="primary" size="small" @click="onSubmit">提交</el-button>
+                <el-button type="primary" size="large" @click="onSubmit">提交</el-button>
             </template>
         </action-container>
     </div>
