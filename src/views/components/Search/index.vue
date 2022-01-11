@@ -117,7 +117,7 @@ function keyUp() {
         if (actived.value < 0) {
             actived.value = resultList.value.length - 1
         }
-        scrollTo(proxy.$refs[`search-item-${actived.value}`].offsetTop)
+        scrollTo(proxy.$refs[`search-item-${actived.value}`][0].offsetTop)
     }
 }
 function keyDown() {
@@ -126,19 +126,19 @@ function keyDown() {
         if (actived.value > resultList.value.length - 1) {
             actived.value = 0
         }
-        scrollTo(proxy.$refs[`search-item-${actived.value}`].offsetTop)
+        scrollTo(proxy.$refs[`search-item-${actived.value}`][0].offsetTop)
     }
 }
 function keyEnter() {
     if (actived.value !== -1) {
-        proxy.$refs[`search-item-${actived.value}`].click()
+        proxy.$refs[`search-item-${actived.value}`][0].click()
     }
 }
 function scrollTo(offsetTop) {
     if (actived.value !== -1) {
         if (
-            offsetTop + proxy.$refs[`search-item-${actived.value}`].clientHeight > proxy.$refs['search'].scrollTop + proxy.$refs['search'].clientHeight ||
-            offsetTop + proxy.$refs[`search-item-${actived.value}`].clientHeight <= proxy.$refs['search'].scrollTop
+            offsetTop + proxy.$refs[`search-item-${actived.value}`][0].clientHeight > proxy.$refs['search'].scrollTop + proxy.$refs['search'].clientHeight ||
+            offsetTop + proxy.$refs[`search-item-${actived.value}`][0].clientHeight <= proxy.$refs['search'].scrollTop
         ) {
             proxy.$refs['search'].scrollTo({
                 top: offsetTop,

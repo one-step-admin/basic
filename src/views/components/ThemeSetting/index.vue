@@ -316,5 +316,8 @@ onMounted(() => {
             cursor: help;
         }
     }
+    .el-switch {
+        height: auto;
+    }
 }
 </style>
