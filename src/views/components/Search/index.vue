@@ -104,7 +104,7 @@ onMounted(() => {
         isShow.value = !isShow.value
     })
     proxy.$hotkeys('alt+s', e => {
-        if (settingsStore.enableNavSearch) {
+        if (settingsStore.topbar.enableNavSearch) {
             e.preventDefault()
             isShow.value = true
         }

@@ -1,16 +1,16 @@
 <template>
-    <div v-if="['side', 'head', 'single'].includes(settingsStore.menuMode)" class="sub-sidebar-container" :class="{'is-collapse': settingsStore.sidebarCollapse}" @scroll="onSidebarScroll">
+    <div v-if="['side', 'head', 'single'].includes(settingsStore.menu.menuMode)" class="sub-sidebar-container" :class="{'is-collapse': settingsStore.menu.sidebarCollapse}" @scroll="onSidebarScroll">
         <Logo
-            :show-logo="settingsStore.menuMode === 'single'" :class="{
+            :show-logo="settingsStore.menu.menuMode === 'single'" :class="{
                 'sidebar-logo': true,
-                'sidebar-logo-bg': settingsStore.menuMode === 'single',
+                'sidebar-logo-bg': settingsStore.menu.menuMode === 'single',
                 'shadow': sidebarScrollTop
             }"
         />
         <!-- 侧边栏模式（无主导航）或侧边栏精简模式 -->
         <el-menu
-            :unique-opened="settingsStore.sidebarUniqueOpened" :collapse="settingsStore.sidebarCollapse" :collapse-transition="false" :class="{
-                'is-collapse-without-logo': settingsStore.menuMode !== 'single' && settingsStore.sidebarCollapse
+            :unique-opened="settingsStore.menu.subMenuUniqueOpened" :collapse="settingsStore.menu.sidebarCollapse" :collapse-transition="false" :class="{
+                'is-collapse-without-logo': settingsStore.menu.menuMode !== 'single' && settingsStore.menu.sidebarCollapse
             }"
         >
             <transition-group name="sub-sidebar">

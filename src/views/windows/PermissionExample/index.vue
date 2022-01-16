@@ -1,7 +1,7 @@
 <template>
     <div>
         <page-main>
-            <div v-if="!settingsStore.enablePermission">请到 seeting.js 里打开权限功能，再进入该页面查看演示</div>
+            <div v-if="!settingsStore.app.enablePermission">请到 seeting.js 里打开权限功能，再进入该页面查看演示</div>
             <div v-else>
                 <h3>切换帐号</h3>
                 <el-radio-group v-model="userStore.account" @change="accountChange">

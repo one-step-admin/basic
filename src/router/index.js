@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
     const menuOutsideStore = useMenuOutsideStore()
     if (userOutsideStore.isLogin) {
         if (!menuOutsideStore.isGenerate) {
-            if (!settingsOutsideStore.enableBackendReturnMenu) {
+            if (!settingsOutsideStore.app.enableBackendReturnMenu) {
                 menuOutsideStore.generateMenusAtFront()
             } else {
                 menuOutsideStore.generateMenusAtBack()
