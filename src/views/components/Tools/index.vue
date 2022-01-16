@@ -8,13 +8,13 @@
             <span v-if="windowStore.list.length > 1" class="item">
                 <svg-icon name="toolbar-preview-windows" @click="previewAllWindows" />
             </span>
-            <span v-if="settingsStore.enableNavSearch" class="item" @click="$eventBus.emit('global-search-toggle')">
+            <span v-if="settingsStore.topbar.enableNavSearch" class="item" @click="$eventBus.emit('global-search-toggle')">
                 <svg-icon name="search" />
             </span>
-            <span v-if="isFullscreenEnable && settingsStore.enableFullscreen" class="item" @click="fullscreen">
+            <span v-if="settingsStore.topbar.enableFullscreen" class="item" @click="toggle">
                 <svg-icon :name="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" />
             </span>
-            <span v-if="settingsStore.enableThemeSetting" class="item" @click="$eventBus.emit('global-theme-toggle')">
+            <span v-if="settingsStore.topbar.enableAppSetting" class="item" @click="$eventBus.emit('global-theme-toggle')">
                 <svg-icon name="toolbar-theme" />
             </span>
         </div>
@@ -37,8 +37,6 @@
 </template>
 
 <script setup name="UserMenu">
-import screenfull from 'screenfull'
-
 const { proxy } = getCurrentInstance()
 const router = useRouter()
 
@@ -49,31 +47,15 @@ const userStore = useUserStore()
 import { useWindowStore } from '@/store/modules/window'
 const windowStore = useWindowStore()
 
-const isFullscreenEnable = computed(() => screenfull.isEnabled)
-const isFullscreen = ref(false)
-
-onMounted(() => {
-    if (isFullscreenEnable.value) {
-        screenfull.on('change', fullscreenChange)
-    }
-})
-onBeforeUnmount(() => {
-    if (isFullscreenEnable.value) {
-        screenfull.off('change', fullscreenChange)
-    }
-})
+import { useFullscreen } from '@vueuse/core'
+const { isFullscreen, toggle } = useFullscreen()
 
 function previewAllWindows() {
     settingsStore.updateThemeSetting({
         previewAllWindows: true
     })
 }
-function fullscreen() {
-    screenfull.toggle()
-}
-function fullscreenChange() {
-    isFullscreen.value = screenfull.isFullscreen
-}
+
 function userCommand(command) {
     switch (command) {
         case 'setting':

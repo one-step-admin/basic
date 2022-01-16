@@ -8,17 +8,17 @@
                     <SubSidebar />
                 </div>
                 <div class="main-container" :style="{'padding-bottom': $route.meta.paddingBottom}">
-                    <Topbar v-if="!(settingsStore.menuMode === 'head' && !settingsStore.enableSidebarCollapse)" />
+                    <Topbar v-if="!(settingsStore.menu.menuMode === 'head' && !settingsStore.topbar.enableSidebarCollapse)" />
                     <div class="main">
                         <Dashboard />
                     </div>
-                    <Copyright v-if="settingsStore.showCopyright" />
+                    <Copyright v-if="settingsStore.copyright.enable" />
                 </div>
             </div>
             <el-backtop :right="20" :bottom="20" title="回到顶部" />
         </div>
         <Search />
-        <ThemeSetting />
+        <AppSetting />
     </div>
 </template>
 
@@ -29,7 +29,7 @@ import SubSidebar from './components/SubSidebar/index.vue'
 import Topbar from './components/Topbar/index.vue'
 import Dashboard from './components/Dashboard/index.vue'
 import Search from './components/Search/index.vue'
-import ThemeSetting from './components/ThemeSetting/index.vue'
+import AppSetting from './components/AppSetting/index.vue'
 
 const { proxy } = getCurrentInstance()
 
@@ -41,7 +41,7 @@ const menuStore = useMenuStore()
 provide('switchMenu', switchMenu)
 function switchMenu(index) {
     menuStore.switchHeaderActived(index)
-    if (settingsStore.switchSidebarAndOpenWindow) {
+    if (settingsStore.menu.switchMainMenuAndOpenWindow) {
         const windowName = getDeepestWindowName(menuStore.sidebarMenus[0])
         if (/^(https?:|mailto:|tel:)/.test(windowName)) {
             window.open(windowName)

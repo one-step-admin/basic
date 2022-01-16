@@ -1,16 +1,16 @@
 <template>
     <div class="topbar-container" data-fixed-calc-width>
         <div class="left-box">
-            <div v-if="(['side', 'head', 'single'].includes(settingsStore.menuMode) && settingsStore.enableSidebarCollapse)" class="sidebar-collapse" :class="{'is-collapse': settingsStore.sidebarCollapse}" @click="settingsStore.toggleSidebarCollapse()">
+            <div v-if="(['side', 'head', 'single'].includes(settingsStore.menu.menuMode) && settingsStore.topbar.enableSidebarCollapse)" class="sidebar-collapse" :class="{'is-collapse': settingsStore.menu.sidebarCollapse}" @click="settingsStore.toggleSidebarCollapse()">
                 <svg-icon name="toolbar-collapse" />
             </div>
         </div>
-        <UserMenu />
+        <Tools />
     </div>
 </template>
 
 <script setup name="Topbar">
-import UserMenu from '../UserMenu/index.vue'
+import Tools from '../Tools/index.vue'
 
 import { useSettingsStore } from '@/store/modules/settings'
 const settingsStore = useSettingsStore()

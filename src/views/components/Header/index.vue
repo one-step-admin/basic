@@ -1,6 +1,6 @@
 <template>
     <transition name="header">
-        <header v-if="settingsStore.menuMode === 'head'">
+        <header v-if="settingsStore.menu.menuMode === 'head'">
             <div class="header-container">
                 <div class="main">
                     <Logo />
@@ -14,7 +14,7 @@
                         </template>
                     </div>
                 </div>
-                <UserMenu />
+                <Tools />
             </div>
         </header>
     </transition>
@@ -22,7 +22,7 @@
 
 <script setup name="Header">
 import Logo from '../Logo/index.vue'
-import UserMenu from '../UserMenu/index.vue'
+import Tools from '../Tools/index.vue'
 
 import { useSettingsStore } from '@/store/modules/settings'
 const settingsStore = useSettingsStore()

@@ -79,7 +79,7 @@ export const useMenuStore = defineStore(
             transformMenus: state => {
                 let menus
                 const settingsStore = useSettingsStore()
-                if (settingsStore.menuMode === 'single') {
+                if (settingsStore.menu.menuMode === 'single') {
                     menus = [{ children: [] }]
                     state.menus.map(item => {
                         menus[0].children.push(...item.children)
@@ -113,7 +113,7 @@ export const useMenuStore = defineStore(
                     const userStore = useUserStore()
                     let accessedMenus
                     // 如果权限功能开启，则需要对路由数据进行筛选过滤
-                    if (settingsStore.enablePermission) {
+                    if (settingsStore.app.enablePermission) {
                         const permissions = await userStore.getPermissions()
                         accessedMenus = filterMenus(menu, permissions)
                     } else {
@@ -142,7 +142,7 @@ export const useMenuStore = defineStore(
                         const userStore = useUserStore()
                         let accessedMenus
                         // 如果权限功能开启，则需要对路由数据进行筛选过滤
-                        if (settingsStore.enablePermission) {
+                        if (settingsStore.app.enablePermission) {
                             const permissions = await userStore.getPermissions()
                             accessedMenus = filterMenus(res.data, permissions)
                         } else {

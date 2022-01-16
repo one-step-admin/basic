@@ -16,7 +16,7 @@ export const useSettingsStore = defineStore(
         actions: {
             // 切换侧边栏导航展开/收起
             toggleSidebarCollapse() {
-                this.sidebarCollapse = !this.sidebarCollapse
+                this.menu.sidebarCollapse = !this.menu.sidebarCollapse
             },
             // 更新主题配置
             updateThemeSetting(data) {

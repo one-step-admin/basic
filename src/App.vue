@@ -1,5 +1,5 @@
 <template>
-    <el-config-provider :size="settingsStore.elementSize">
+    <el-config-provider :size="settingsStore.app.elementSize">
         <RouterView
             :style="{
                 '--g-main-sidebar-actual-width': mainSidebarActualWidth,
@@ -17,7 +17,7 @@ const settingsStore = useSettingsStore()
 const mainSidebarActualWidth = computed(() => {
     let actualWidth = getComputedStyle(document.documentElement).getPropertyValue('--g-main-sidebar-width')
     actualWidth = parseInt(actualWidth)
-    if (['head', 'single'].includes(settingsStore.menuMode)) {
+    if (['head', 'single'].includes(settingsStore.menu.menuMode)) {
         actualWidth = 0
     }
     return `${actualWidth}px`
@@ -27,20 +27,14 @@ const mainSidebarActualWidth = computed(() => {
 const subSidebarActualWidth = computed(() => {
     let actualWidth = getComputedStyle(document.documentElement).getPropertyValue('--g-sub-sidebar-width')
     actualWidth = parseInt(actualWidth)
-    if (settingsStore.sidebarCollapse) {
+    if (settingsStore.menu.sidebarCollapse) {
         actualWidth = 64
     }
     return `${actualWidth}px`
 })
 
-watch(() => settingsStore.theme, () => {
-    document.body.setAttribute('data-theme', settingsStore.theme)
-}, {
-    immediate: true
-})
-
-watch(() => settingsStore.menuMode, () => {
-    document.body.setAttribute('data-menu-mode', settingsStore.menuMode)
+watch(() => settingsStore.menu.menuMode, () => {
+    document.body.setAttribute('data-menu-mode', settingsStore.menu.menuMode)
 }, {
     immediate: true
 })
