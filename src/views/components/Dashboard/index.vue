@@ -56,6 +56,41 @@ const settingsStore = useSettingsStore()
 import { useWindowStore } from '@/store/modules/window'
 const windowStore = useWindowStore()
 
+watch(() => windowStore.list, val => {
+    nextTick(() => {
+        if (val.length > 0) {
+            windowScrollTip()
+        }
+    })
+}, {
+    deep: true
+})
+
+function windowScrollTip() {
+    if (proxy.$refs['windows'].scrollWidth > proxy.$refs['windows'].clientWidth && !localStorage.getItem('windowScrollTip')) {
+        proxy.$confirm(`
+            <div style="text-align: left;">
+                当前窗口数量已超过浏览器展示区域，你可以通过拖动窗口下方的滚动条进行定位，除此之外，我们推荐使用以下两种更高效的方式进行窗口定位：
+                <ol>
+                    <li>在窗口展示区域内，按住 Shift 键，滑动鼠标滚轮</li>
+                    <li>使用 Alt + W 快捷键进入预览界面</li>
+                </ol>
+            </div>
+        `, '温馨提示', {
+            dangerouslyUseHTMLString: true,
+            confirmButtonText: '知道了',
+            showCancelButton: false,
+            showClose: false,
+            closeOnClickModal: false,
+            closeOnPressEscape: false,
+            type: 'info',
+            center: true
+        }).then(() => {
+            localStorage.setItem('windowScrollTip', true)
+        })
+    }
+}
+
 proxy.$eventBus.on('scrollToWindow', windowName => scrollToWindow(windowName))
 
 // 记录进入窗口预览界面前 scrollLeft 的值，退出的时候可以进行复原
