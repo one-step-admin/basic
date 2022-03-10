@@ -176,10 +176,10 @@ function maskClick(windowName) {
             height: max-content;
             align-items: center;
             .window {
-                width: 800;
-                height: 800px;
-                margin-right: calc(800px * ($g-window-perview-scale - 1));
-                margin-bottom: calc(800px * ($g-window-perview-scale - 1));
+                width: $g-window-width;
+                height: $g-window-height;
+                margin-right: calc($g-window-width * ($g-window-perview-scale - 1));
+                margin-bottom: calc($g-window-height * ($g-window-perview-scale - 1));
                 transform-origin: top left;
                 transform: scale($g-window-perview-scale);
                 user-select: none;
@@ -209,7 +209,7 @@ function maskClick(windowName) {
     .window {
         flex: none;
         display: flex;
-        width: 800px;
+        width: $g-window-width;
         margin-right: -16px;
         .window-container {
             flex: 1;
