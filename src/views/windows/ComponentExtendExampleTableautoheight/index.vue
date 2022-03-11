@@ -1,13 +1,12 @@
 <template>
-    <AbsoluteContainer>
+    <div class="absolute-container">
         <page-header title="表格自适应">
             <template #content>
-                <p>AbsoluteContainer</p>
-                <p style="margin-bottom: 0;">该组件是一个 absolute 固定容器，表格自适应需要自行实现，可参考演示源码，缩小浏览器窗口高度可查看最终效果</p>
+                <p style="margin-bottom: 0;">该特性早期通过二次封装组件实现，现在则通过设置 el-table 组件的 height 为 100% 即可</p>
             </template>
         </page-header>
         <page-main>
-            <el-table :data="dataList" border stripe highlight-current-row>
+            <el-table :data="dataList" border stripe highlight-current-row height="100%">
                 <el-table-column type="index" width="50" />
                 <el-table-column prop="date" label="日期" width="180" />
                 <el-table-column prop="name" label="姓名" width="180" />
@@ -15,12 +14,12 @@
             </el-table>
             <el-button type="primary">新增</el-button>
         </page-main>
-    </AbsoluteContainer>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'ComponentExampleAbsoluteContainer',
+    name: 'ComponentExampleTableHeightAdaption',
     props: {},
     data() {
         return {
@@ -125,34 +124,27 @@ export default {
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1516 弄'
                 }
-            ],
-            selectionDataList: []
+            ]
         }
-    },
-    created() {},
-    mounted() {
-        this.$nextTick(() => {
-            // 获取表头高度，然后设置 .el-table__body-wrapper 的 height
-            let height = document.getElementsByClassName('el-table__header-wrapper')[0].offsetHeight
-            document.getElementsByClassName('el-table__body-wrapper')[0].style.height = `calc(100% - ${height}px)`
-        })
-    },
-    methods: {}
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-.page-main {
+.absolute-container {
+    position: absolute;
+    width: calc(100% - $g-window-container-padding * 2);
+    height: calc(100% - $g-window-container-padding * 2);
     display: flex;
     flex-direction: column;
-
-    // 减去的 130px 为 page-header 的高度，如果没有设置，可以去掉
-
-    height: calc(100% - 130px - 20px);
-    :deep(.el-table) {
-        height: 100%;
-        .el-table__body-wrapper {
-            overflow-y: auto;
+    .page-main {
+        flex: 1;
+        overflow: auto;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        .el-button {
+            margin-top: 20px;
         }
     }
 }
