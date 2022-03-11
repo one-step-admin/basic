@@ -274,8 +274,10 @@ function maskClick(windowName) {
                 flex: 1;
                 overflow: auto;
                 overscroll-behavior: contain;
-                :deep(.el-scrollbar__wrap) {
-                    padding: $g-window-container-padding;
+                > .el-scrollbar {
+                    > :deep(.el-scrollbar__wrap) {
+                        padding: $g-window-container-padding;
+                    }
                 }
             }
             .mask {
