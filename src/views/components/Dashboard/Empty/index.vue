@@ -22,8 +22,7 @@ const locationOrigin = ref(location.href)
     .header {
         margin: 0;
         .text-emphasis {
-            /* stylelint-disable-next-line property-no-vendor-prefix */
-            -webkit-text-emphasis-style: "❤";
+            text-emphasis-style: "❤";
         }
         a {
             color: inherit;
