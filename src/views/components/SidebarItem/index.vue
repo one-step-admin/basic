@@ -48,6 +48,7 @@ function handleOpen(windowName) {
 :deep(.el-sub-menu__title) {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 :deep(.el-sub-menu),
 :deep(.el-menu-item) {
