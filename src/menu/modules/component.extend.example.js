@@ -15,10 +15,6 @@ export default {
             windowName: 'ComponentExtendExamplePagemain'
         },
         {
-            title: '处理结果',
-            windowName: 'ComponentExtendExampleResult'
-        },
-        {
             title: '固定底部操作栏',
             windowName: 'ComponentExtendExampleActionContainer'
         },
