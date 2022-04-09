@@ -6,6 +6,10 @@
 
 <p align="center">一款<b>干啥都快人一步</b>的 Vue 中后台管理系统框架</p>
 
+## 官网
+
+[访问](https://hooray.gitee.io/one-step-admin) ([备份地址](https://hooray.github.io/one-step-admin))
+
 ## 特点
 
 - 高效的交互方式，让使用人员可以跨模块的多线操作
@@ -34,12 +38,6 @@
 
 - `master` 演示分支，同演示站
 - `template` 模版分支，移除演示代码，可直接用于实际开发
-
-## 技术支持
-
-[开发文档](https://hooray.gitee.io/one-step-admin) ([备份地址](https://hooray.github.io/one-step-admin))
-
-技术交流QQ群：1001394973
 
 ## 预览
 
