@@ -3,7 +3,6 @@ import App from './App.vue'
 const app = createApp(App)
 
 import { piniaStore } from './store'
-import { useSettingsOutsideStore } from './store/modules/settings'
 app.use(piniaStore)
 
 import router from './router'
@@ -11,16 +10,16 @@ app.use(router)
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import * as ElementIcons from '@element-plus/icons-vue'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+app.use(ElementPlus, {
+    locale: zhCn
+})
+
 // 将 element-plus 的图标库注册到全局
+import * as ElementIcons from '@element-plus/icons-vue'
 for (var key in ElementIcons) {
     app.component(`ElIcon${ElementIcons[key].name}`, ElementIcons[key])
 }
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
-app.use(ElementPlus, {
-    locale: zhCn,
-    size: useSettingsOutsideStore().app.elementSize
-})
 
 import registerWindowComponent from '@/views/windows/registerWindowComponent'
 registerWindowComponent(app)
