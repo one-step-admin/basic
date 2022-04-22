@@ -81,8 +81,8 @@ watch(() => isShow.value, val => {
         proxy.$hotkeys('down', keyDown)
         proxy.$hotkeys('enter', keyEnter)
         setTimeout(() => {
-            proxy.$refs.input.$el.children[0].focus()
-        }, 100)
+            proxy.$refs.input.focus()
+        }, 500)
     } else {
         document.querySelector('body').classList.remove('hidden')
         proxy.$hotkeys.unbind('up', keyUp)
@@ -96,7 +96,7 @@ watch(() => isShow.value, val => {
 })
 watch(() => resultList.value, () => {
     actived.value = -1
-    scrollTo(0)
+    handleScroll()
 })
 
 onMounted(() => {
@@ -109,6 +109,12 @@ onMounted(() => {
             isShow.value = true
         }
     })
+    proxy.$hotkeys('esc', e => {
+        if (settingsStore.topbar.enableNavSearch) {
+            e.preventDefault()
+            proxy.$eventBus.emit('global-search-toggle')
+        }
+    })
 })
 
 function keyUp() {
@@ -117,7 +123,7 @@ function keyUp() {
         if (actived.value < 0) {
             actived.value = resultList.value.length - 1
         }
-        scrollTo(proxy.$refs[`search-item-${actived.value}`][0].offsetTop)
+        handleScroll()
     }
 }
 function keyDown() {
@@ -126,7 +132,7 @@ function keyDown() {
         if (actived.value > resultList.value.length - 1) {
             actived.value = 0
         }
-        scrollTo(proxy.$refs[`search-item-${actived.value}`][0].offsetTop)
+        handleScroll()
     }
 }
 function keyEnter() {
@@ -134,18 +140,23 @@ function keyEnter() {
         proxy.$refs[`search-item-${actived.value}`][0].click()
     }
 }
-function scrollTo(offsetTop) {
+function handleScroll() {
+    let scrollTo = 0
     if (actived.value !== -1) {
-        if (
-            offsetTop + proxy.$refs[`search-item-${actived.value}`][0].clientHeight > proxy.$refs['search'].scrollTop + proxy.$refs['search'].clientHeight ||
-            offsetTop + proxy.$refs[`search-item-${actived.value}`][0].clientHeight <= proxy.$refs['search'].scrollTop
-        ) {
-            proxy.$refs['search'].scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            })
+        scrollTo = proxy.$refs['search'].scrollTop
+        const activedOffsetTop = proxy.$refs[`search-item-${actived.value}`][0].offsetTop
+        const activedClientHeight = proxy.$refs[`search-item-${actived.value}`][0].clientHeight
+        const searchScrollTop = proxy.$refs['search'].scrollTop
+        const searchClientHeight = proxy.$refs['search'].clientHeight
+        if (activedOffsetTop + activedClientHeight > searchScrollTop + searchClientHeight) {
+            scrollTo = activedOffsetTop + activedClientHeight - searchClientHeight
+        } else if (activedOffsetTop <= searchScrollTop) {
+            scrollTo = activedOffsetTop
         }
     }
+    proxy.$refs['search'].scrollTo({
+        top: scrollTo
+    })
 }
 
 function handleOpen(windowName) {
@@ -232,7 +243,7 @@ function handleOpen(windowName) {
                 align-items: center;
                 text-decoration: none;
                 cursor: pointer;
-                transition: all 0.3s;
+                transition: all 0.1s;
                 &.actived {
                     background-color: #dbe7f8;
                     .icon {
@@ -261,7 +272,7 @@ function handleOpen(windowName) {
                     .svg-icon {
                         color: #999;
                         font-size: 20px;
-                        transition: all 0.3s;
+                        transition: all 0.1s;
                     }
                 }
                 .info {
@@ -272,7 +283,7 @@ function handleOpen(windowName) {
                     justify-content: space-around;
                     border-left: 1px solid #ebeef5;
                     padding: 5px 10px 7px;
-                    transition: all 0.3s;
+                    transition: all 0.1s;
                     @include text-overflow(1, true);
                     .title {
                         font-size: 18px;
@@ -286,7 +297,7 @@ function handleOpen(windowName) {
                     .breadcrumb {
                         font-size: 12px;
                         color: #c0c4cc;
-                        transition: all 0.3s;
+                        transition: all 0.1s;
                         @include text-overflow(1, true);
                         span:last-child i {
                             display: none;
