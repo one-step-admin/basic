@@ -2,19 +2,37 @@
     <div id="search" :class="{'searching': isShow}" @click="isShow && $eventBus.emit('global-search-toggle')">
         <div class="container">
             <div class="search-box" @click.stop>
-                <el-input ref="input" v-model="searchInput" prefix-icon="el-icon-search" placeholder="搜索页面，支持标题、URL模糊查询" clearable @keydown.esc="$eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter" />
+                <el-input ref="input" v-model="searchInput" placeholder="搜索页面，支持标题、URL模糊查询" clearable @keydown.esc="$eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
+                    <template #prefix>
+                        <el-icon>
+                            <svg-icon name="ep:search" />
+                        </el-icon>
+                    </template>
+                </el-input>
                 <div class="tips">
                     <div class="tip">
                         <span>Alt</span>+<span>S</span>
                         唤醒搜索面板
                     </div>
                     <div class="tip">
-                        <span><svg-icon name="search-up" /></span>
-                        <span><svg-icon name="search-down" /></span>
+                        <span>
+                            <el-icon>
+                                <svg-icon name="search-up" />
+                            </el-icon>
+                        </span>
+                        <span>
+                            <el-icon>
+                                <svg-icon name="search-down" />
+                            </el-icon>
+                        </span>
                         切换搜索结果
                     </div>
                     <div class="tip">
-                        <span><svg-icon name="search-enter" /></span>
+                        <span>
+                            <el-icon>
+                                <svg-icon name="search-enter" />
+                            </el-icon>
+                        </span>
                         访问页面
                     </div>
                     <div class="tip">
@@ -26,7 +44,9 @@
             <div ref="search" class="result">
                 <div v-for="(item, index) in resultList" :key="item.path" :ref="`search-item-${index}`" class="item" :class="{'actived': index === actived}" @click="handleOpen(item.windowName)" @mouseover="actived = index">
                     <div class="icon">
-                        <svg-icon v-if="item.icon" :name="item.icon" />
+                        <el-icon v-if="item.icon">
+                            <svg-icon :name="item.icon" />
+                        </el-icon>
                     </div>
                     <div class="info">
                         <div class="title">
@@ -35,7 +55,9 @@
                         <div class="breadcrumb">
                             <span v-for="(bc, bcIndex) in item.breadcrumbNeste" :key="bcIndex">
                                 {{ bc.title }}
-                                <svg-icon name="el-icon-arrow-right" />
+                                <el-icon>
+                                    <svg-icon name="ep:arrow-right" />
+                                </el-icon>
                             </span>
                         </div>
                     </div>
@@ -247,9 +269,7 @@ function handleOpen(windowName) {
                 &.actived {
                     background-color: #dbe7f8;
                     .icon {
-                        [class^="el-icon-"],
-                        [class^="ri-"],
-                        .svg-icon {
+                        .el-icon {
                             color: #409eff;
                             transform: scale(1.2);
                         }
@@ -267,9 +287,7 @@ function handleOpen(windowName) {
                 .icon {
                     flex: 0 0 66px;
                     text-align: center;
-                    [class^="el-icon-"],
-                    [class^="ri-"],
-                    .svg-icon {
+                    .el-icon {
                         color: #999;
                         font-size: 20px;
                         transition: all 0.1s;
@@ -290,7 +308,7 @@ function handleOpen(windowName) {
                         font-weight: bold;
                         color: #666;
                         @include text-overflow(1, true);
-                        .svg-icon {
+                        .el-icon {
                             font-size: 14px;
                         }
                     }

@@ -7,17 +7,23 @@
                 <div class="menu-mode">
                     <el-tooltip content="侧边栏模式（含主导航）" placement="top" :show-after="500" :append-to-body="false">
                         <div class="mode mode-side" :class="{'active': settings.menu.menuMode === 'side'}" @click="settings.menu.menuMode = 'side'">
-                            <svg-icon name="ri-checkbox-circle-fill" />
+                            <el-icon>
+                                <svg-icon name="ep:check" />
+                            </el-icon>
                         </div>
                     </el-tooltip>
                     <el-tooltip content="顶部模式" placement="top" :show-after="500" :append-to-body="false">
                         <div class="mode mode-head" :class="{'active': settings.menu.menuMode === 'head'}" @click="settings.menu.menuMode = 'head'">
-                            <svg-icon name="ri-checkbox-circle-fill" />
+                            <el-icon>
+                                <svg-icon name="ep:check" />
+                            </el-icon>
                         </div>
                     </el-tooltip>
                     <el-tooltip content="侧边栏模式（不含主导航）" placement="top" :show-after="500" :append-to-body="false">
                         <div class="mode mode-single" :class="{'active': settings.menu.menuMode === 'single'}" @click="settings.menu.menuMode = 'single'">
-                            <svg-icon name="ri-checkbox-circle-fill" />
+                            <el-icon>
+                                <svg-icon name="ep:check" />
+                            </el-icon>
                         </div>
                     </el-tooltip>
                 </div>
@@ -30,7 +36,9 @@
                     <div class="label">
                         切换打开窗口
                         <el-tooltip content="开启该功能后，切换侧边栏时，将自动打开该侧边栏导航下第一个导航窗口" placement="top" :append-to-body="false">
-                            <svg-icon name="el-icon-question-filled" />
+                            <el-icon>
+                                <svg-icon name="ep:question-filled" />
+                            </el-icon>
                         </el-tooltip>
                     </div>
                     <el-switch v-model="settings.menu.switchMainMenuAndOpenWindow" :disabled="settings.menu.menuMode === 'single'" />
@@ -39,7 +47,9 @@
                     <div class="label">
                         保持展开一个
                         <el-tooltip content="开启该功能后，侧边栏只保持一个子菜单的展开" placement="top" :append-to-body="false">
-                            <svg-icon name="el-icon-question-filled" />
+                            <el-icon>
+                                <svg-icon name="ep:question-filled" />
+                            </el-icon>
                         </el-tooltip>
                     </div>
                     <el-switch v-model="settings.menu.subMenuUniqueOpened" />
@@ -53,7 +63,9 @@
                     <div class="label">
                         导航栏搜索
                         <el-tooltip content="对导航栏进行快捷搜索" placement="top" :append-to-body="false">
-                            <svg-icon name="el-icon-question-filled" />
+                            <el-icon>
+                                <svg-icon name="ep:question-filled" />
+                            </el-icon>
                         </el-tooltip>
                     </div>
                     <el-switch v-model="settings.topbar.enableNavSearch" />
@@ -62,7 +74,9 @@
                     <div class="label">
                         全屏
                         <el-tooltip content="该功能使用场景极少，用户习惯于通过窗口“最大化”功能来扩大显示区域，以显示更多内容，并且使用 F11 键也可以进入全屏效果" placement="top" :append-to-body="false">
-                            <svg-icon name="el-icon-question-filled" />
+                            <el-icon>
+                                <svg-icon name="ep:question-filled" />
+                            </el-icon>
                         </el-tooltip>
                     </div>
                     <el-switch v-model="settings.topbar.enableFullscreen" />
@@ -89,7 +103,9 @@
                     <div class="label">
                         组件尺寸
                         <el-tooltip content="全局设置 Element Plus 组件的默认尺寸大小" placement="top" :append-to-body="false">
-                            <svg-icon name="el-icon-question-filled" />
+                            <el-icon>
+                                <svg-icon name="ep:question-filled" />
+                            </el-icon>
                         </el-tooltip>
                     </div>
                     <el-radio-group v-model="settings.app.elementSize" size="small">
@@ -108,7 +124,14 @@
                 </div>
             </div>
             <div v-if="isSupported" class="action-buttons">
-                <el-button icon="el-icon-document-copy" type="primary" @click="handleCopy">复制配置</el-button>
+                <el-button type="primary" @click="handleCopy">
+                    <template #icon>
+                        <el-icon>
+                            <svg-icon name="ep:document-copy" />
+                        </el-icon>
+                    </template>
+                    复制配置
+                </el-button>
             </div>
         </el-drawer>
     </div>
@@ -145,7 +168,7 @@ const { copy, copied, isSupported } = useClipboard()
 
 watch(copied, val => {
     if (val) {
-        proxy.$message.success('复制成功，请粘贴到 src/settings.custom.json 文件中！')
+        ElMessage.success('复制成功，请粘贴到 src/settings.custom.json 文件中！')
     }
 })
 

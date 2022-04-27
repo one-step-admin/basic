@@ -1,6 +1,6 @@
 <template>
     <div class="notfound">
-        <svg-icon name="404" />
+        <svg-icon name="404" class="icon" />
         <div class="content">
             <h1>404</h1>
             <div class="desc">抱歉，你访问的页面不存在</div>
@@ -45,7 +45,7 @@ export default {
     justify-content: space-between;
     width: 700px;
     @include position-center(xy);
-    .svg-icon {
+    .icon {
         width: 400px;
         height: 400px;
     }

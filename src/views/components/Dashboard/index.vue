@@ -7,7 +7,9 @@
         <div class="preview-all-mode">
             <div class="title">预览</div>
             <el-tooltip content="可以通过快捷键 Alt + W 快速进入窗口预览界面" placement="left" :append-to-body="false">
-                <svg-icon name="el-icon-question-filled" class="help" />
+                <el-icon class="help">
+                    <svg-icon name="ep:question-filled" />
+                </el-icon>
             </el-tooltip>
         </div>
         <transition-group v-if="windowStore.list.length > 0" name="window" tag="div" class="dashboard-container">
@@ -28,7 +30,7 @@
                         <div class="btns" @dblclick.stop>
                             <div class="btn" @click="$window.remove(element.name)">
                                 <el-icon>
-                                    <el-icon-close-bold />
+                                    <svg-icon name="ep:close-bold" />
                                 </el-icon>
                             </div>
                         </div>

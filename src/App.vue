@@ -1,5 +1,5 @@
 <template>
-    <el-config-provider :size="settingsStore.app.elementSize">
+    <el-config-provider :locale="zhCn" :size="settingsStore.app.elementSize">
         <RouterView
             :style="{
                 '--g-main-sidebar-actual-width': mainSidebarActualWidth,
@@ -10,6 +10,8 @@
 </template>
 
 <script setup>
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
 import { useSettingsStore } from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 

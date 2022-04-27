@@ -2,7 +2,9 @@
     <div class="topbar-container" data-fixed-calc-width>
         <div class="left-box">
             <div v-if="(['side', 'head', 'single'].includes(settingsStore.menu.menuMode) && settingsStore.topbar.enableSidebarCollapse)" class="sidebar-collapse" :class="{'is-collapse': settingsStore.menu.sidebarCollapse}" @click="settingsStore.toggleSidebarCollapse()">
-                <svg-icon name="toolbar-collapse" />
+                <el-icon>
+                    <svg-icon name="toolbar-collapse" />
+                </el-icon>
             </div>
         </div>
         <Tools />
@@ -40,13 +42,13 @@ const settingsStore = useSettingsStore()
             height: 50px;
             cursor: pointer;
             transition: 0.3s;
-            .svg-icon {
+            .el-icon {
                 transition: 0.3s;
             }
-            &:hover .svg-icon {
+            &:hover .el-icon {
                 color: #5482ee;
             }
-            &.is-collapse .svg-icon {
+            &.is-collapse .el-icon {
                 transform: rotateZ(-180deg);
             }
         }
