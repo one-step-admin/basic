@@ -1,27 +1,33 @@
 <template>
     <div class="buy-it" :class="{'actived': isActived}">
         <div class="item" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/buy.html`)">
-            <svg-icon name="fixed-right-buy" />
+            <el-icon>
+                <svg-icon name="fixed-right-buy" />
+            </el-icon>
             <span class="title">购买<br>专业版</span>
         </div>
         <div class="item" @click="open(`https://${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.com/hooray/one-step-admin/`)">
-            <svg-icon name="fixed-right-code" />
+            <el-icon>
+                <svg-icon name="fixed-right-code" />
+            </el-icon>
             <span class="title">下载<br>基础版</span>
         </div>
         <div class="item" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/`)">
-            <svg-icon name="fixed-right-doc" />
+            <el-icon>
+                <svg-icon name="fixed-right-doc" />
+            </el-icon>
             <span class="title">开发<br>文档</span>
         </div>
         <div class="item" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/support.html`)">
-            <svg-icon name="fixed-right-chat" />
+            <el-icon>
+                <svg-icon name="fixed-right-chat" />
+            </el-icon>
             <span class="title">技术<br>支持</span>
         </div>
     </div>
 </template>
 
 <script setup name="BuyIt">
-const { proxy } = getCurrentInstance()
-
 const locationOrigin = ref(location.href)
 
 const isActived = ref(true)
@@ -30,7 +36,7 @@ setTimeout(() => {
 }, 5000)
 
 onMounted(() => {
-    proxy.$notify({
+    ElNotification({
         type: 'success',
         title: '温馨提示',
         dangerouslyUseHTMLString: true,
@@ -96,7 +102,7 @@ function open(url) {
         &:nth-child(4) {
             background-color: #343b42;
         }
-        .svg-icon {
+        .el-icon {
             display: block;
             margin: 0 auto;
             font-size: 20px;

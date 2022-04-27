@@ -79,7 +79,7 @@ function handleSuccess(res) {
     if (res.error == '') {
         form.value.headimg = res.data.path
     } else {
-        proxy.$message.warning(res.error)
+        ElMessage.warning(res.error)
     }
 }
 function editPassword() {

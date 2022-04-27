@@ -1,7 +1,7 @@
 <template>
     <div>
         <action-container>
-            <page-header title="固定底部操作栏" content="避免因页面过长导致操作按钮需要滚动到页面底部才能操作，例如表单页">
+            <page-header title="固定底部操作栏" content="避免因页面过长导致操作按钮需要滚动到页面底部才能操作，例如表单页" style="margin: 0 0 20px;">
                 <template #content>
                     <p>FixedActionBar</p>
                     <p style="margin-bottom: 0;">避免因页面过长导致操作按钮需要滚动到页面底部才能操作，例如表单页</p>

@@ -2,19 +2,26 @@
     <div>
         <ComponentBasicExampleAlert />
         <page-main class="demo">
-            <el-icon><el-icon-edit /></el-icon>
-            <el-icon><el-icon-share /></el-icon>
-            <el-icon><el-icon-delete /></el-icon>
-            <el-button type="primary" :icon="Search">
+            <el-icon>
+                <svg-icon name="ep:edit" />
+            </el-icon>
+            <el-icon>
+                <svg-icon name="ep:share" />
+            </el-icon>
+            <el-icon>
+                <svg-icon name="ep:delete" />
+            </el-icon>
+            <el-button type="primary">
+                <template #icon>
+                    <el-icon>
+                        <svg-icon name="ep:search" />
+                    </el-icon>
+                </template>
                 搜索
             </el-button>
         </page-main>
     </div>
 </template>
-
-<script setup>
-import { Search } from '@element-plus/icons-vue'
-</script>
 
 <style lang="scss" scoped>
 .demo {
