@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./src/assets/images/logo.png" width="200" height="200" />
+    <img src="https://one-step-admin.netlify.app/logo.png" width="200" height="200" />
 </p>
 
 <h1 align="center">One-step-admin</h1>
@@ -8,7 +8,7 @@
 
 ## 官网
 
-[访问](https://hooray.gitee.io/one-step-admin) ([备份地址](https://hooray.github.io/one-step-admin))
+[访问](https://one-step-admin.netlify.app)
 
 ## 特点
 
@@ -20,9 +20,9 @@
 
 ## 演示
 
-[基础版](https://hooray.gitee.io/one-step-admin/basic) ([备份地址](https://hooray.github.io/one-step-admin/basic))
+[基础版](https://one-step-admin.netlify.app/basic)
 
-[专业版](https://hooray.gitee.io/one-step-admin/pro) ([备份地址](https://hooray.github.io/one-step-admin/pro))
+[专业版](https://one-step-admin.netlify.app/pro)
 
 ## 下载 & 购买
 
@@ -30,7 +30,7 @@
   - 去 [Gitee](https://gitee.com/hooray/one-step-admin) 下载
   - 去 [Github](https://github.com/hooray/one-step-admin) 下载
 - 专业版（付费，可商用）
-  - [去购买](https://hooray.gitee.io/one-step-admin/buy.html) ([备份地址](https://hooray.github.io/one-step-admin/buy.html))
+  - [去购买](https://one-step-admin.netlify.app/buy.html)
 
 ## 分支说明
 
@@ -45,14 +45,14 @@
 
 <table>
     <tr>
-        <td><img src="https://hooray.gitee.io/one-step-admin/preview1.png" /></td>
-        <td><img src="https://hooray.gitee.io/one-step-admin/preview2.png" /></td>
-        <td><img src="https://hooray.gitee.io/one-step-admin/preview3.png" /></td>
+        <td><img src="https://one-step-admin.netlify.app/preview1.png" /></td>
+        <td><img src="https://one-step-admin.netlify.app/preview2.png" /></td>
+        <td><img src="https://one-step-admin.netlify.app/preview3.png" /></td>
     </tr>
     <tr>
-        <td><img src="https://hooray.gitee.io/one-step-admin/preview4.png" /></td>
-        <td><img src="https://hooray.gitee.io/one-step-admin/preview5.png" /></td>
-        <td><img src="https://hooray.gitee.io/one-step-admin/preview6.png" /></td>
+        <td><img src="https://one-step-admin.netlify.app/preview4.png" /></td>
+        <td><img src="https://one-step-admin.netlify.app/preview5.png" /></td>
+        <td><img src="https://one-step-admin.netlify.app/preview6.png" /></td>
     </tr>
 </table>
 
@@ -91,13 +91,13 @@
         </th>
     </tr>
     <tr>
-        <td><img src="https://hooray.gitee.io/fantastic-admin/preview1.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin/preview2.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin/preview3.png" /></td>
+        <td><img src="https://fantastic-admin.netlify.app/preview1.png" /></td>
+        <td><img src="https://fantastic-admin.netlify.app/preview2.png" /></td>
+        <td><img src="https://fantastic-admin.netlify.app/preview3.png" /></td>
     </tr>
     <tr>
-        <td><img src="https://hooray.gitee.io/fantastic-admin/preview4.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin/preview5.png" /></td>
-        <td><img src="https://hooray.gitee.io/fantastic-admin/preview6.png" /></td>
+        <td><img src="https://fantastic-admin.netlify.app/preview4.png" /></td>
+        <td><img src="https://fantastic-admin.netlify.app/preview5.png" /></td>
+        <td><img src="https://fantastic-admin.netlify.app/preview6.png" /></td>
     </tr>
 </table>
