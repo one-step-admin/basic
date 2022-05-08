@@ -88,7 +88,7 @@ function userCommand(command) {
     }
 }
 function pro() {
-    window.open(`https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/pro`, 'top')
+    window.open('https://one-step-admin.netlify.app/pro', 'top')
 }
 </script>
 

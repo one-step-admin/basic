@@ -1,24 +1,24 @@
 <template>
     <div class="buy-it" :class="{'actived': isActived}">
-        <div class="item" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/buy.html`)">
+        <div class="item" @click="open(`https://one-step-admin.netlify.app/buy.html`)">
             <el-icon>
                 <svg-icon name="fixed-right-buy" />
             </el-icon>
             <span class="title">购买<br>专业版</span>
         </div>
-        <div class="item" @click="open(`https://${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.com/hooray/one-step-admin/`)">
+        <div class="item" @click="open(`https://gitee.com/hooray/one-step-admin`)">
             <el-icon>
                 <svg-icon name="fixed-right-code" />
             </el-icon>
             <span class="title">下载<br>基础版</span>
         </div>
-        <div class="item" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/`)">
+        <div class="item" @click="open(`https://one-step-admin.netlify.app`)">
             <el-icon>
                 <svg-icon name="fixed-right-doc" />
             </el-icon>
             <span class="title">开发<br>文档</span>
         </div>
-        <div class="item" @click="open(`https://hooray.${locationOrigin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/support.html`)">
+        <div class="item" @click="open(`https://one-step-admin.netlify.app/support.html`)">
             <el-icon>
                 <svg-icon name="fixed-right-chat" />
             </el-icon>
@@ -28,8 +28,6 @@
 </template>
 
 <script setup name="BuyIt">
-const locationOrigin = ref(location.href)
-
 const isActived = ref(true)
 setTimeout(() => {
     isActived.value = false
@@ -42,7 +40,7 @@ onMounted(() => {
         dangerouslyUseHTMLString: true,
         message: `
             <p>当前访问的是<b>基础版</b></p>
-            <p>你可以点<a href="https://hooray.${location.origin.includes('gitee') ? 'gitee' : 'github'}.io/one-step-admin/pro/" target="_blank"><b>这里</b></a>访问专业版</p>
+            <p>你可以点<a href="https://one-step-admin.netlify.app/pro/" target="_blank"><b>这里</b></a>访问专业版</p>
         `,
         position: 'bottom-right',
         duration: 5000

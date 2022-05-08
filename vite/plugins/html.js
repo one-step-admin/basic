@@ -14,8 +14,11 @@ export default function createHtml(env, isBuild) {
                 appMode: VITE_APP_MODE,
                 copyrightScript: `
 <script>
-console.info('%c由%cOne-step-admin%c提供技术支持', '${copyright_sub_style}', '${copyright_main_style}', '${copyright_sub_style}', '\\nhttps://hooray.gitee.io/one-step-admin/');
-console.info('%cPowered by%cOne-step-admin', '${copyright_sub_style}', '${copyright_main_style}', '\\nhttps://hooray.github.io/one-step-admin/');
+if ((navigator.language || navigator.browserLanguage).toLowerCase() === 'zh-cn') {
+    console.info('%c由%cOne-step-admin%c提供技术支持', '${copyright_sub_style}', '${copyright_main_style}', '${copyright_sub_style}', '\\nhttps://gitee.com/hooray/one-step-admin');
+} else {
+    console.info('%cPowered by%cOne-step-admin', '${copyright_sub_style}', '${copyright_main_style}', '\\nhttps://github.com/hooray/one-step-admin');
+}
 </script>
                 `
             }
