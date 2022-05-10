@@ -8,6 +8,7 @@
 
 <p align="center">
     <a href="https://one-step-admin.netlify.app" target="_blank">官网</a>
+    ( <a href="https://gitee.com/hooray/one-step-admin/tree/docs" target="_blank">备用</a> )
     <span>&nbsp;|&nbsp;</span>
     演示
     ( <a href="https://one-step-admin.netlify.app/basic" target="_blank">基础版</a>
