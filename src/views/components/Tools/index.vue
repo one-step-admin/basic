@@ -8,7 +8,7 @@
             </span>
             <span v-if="settingsStore.topbar.enableNavSearch" class="item" @click="$eventBus.emit('global-search-toggle')">
                 <el-icon>
-                    <svg-icon name="search" />
+                    <svg-icon name="ep:search" />
                 </el-icon>
             </span>
             <span v-if="settingsStore.topbar.enableFullscreen" class="item" @click="toggle">
@@ -18,7 +18,7 @@
             </span>
             <span v-if="settingsStore.topbar.enableAppSetting" class="item" @click="$eventBus.emit('global-theme-toggle')">
                 <el-icon>
-                    <svg-icon name="toolbar-theme" />
+                    <svg-icon name="ep:setting" />
                 </el-icon>
             </span>
         </div>
