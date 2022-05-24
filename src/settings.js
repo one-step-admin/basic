@@ -1,6 +1,8 @@
 let globalSettings = {
     // 应用
     app: {
+        // 颜色方案，可选值为 light、dark
+        colorScheme: 'light',
         // Element 组件默认尺寸，支持：large、default、small
         elementSize: 'default',
         // 是否将 iconify 图标集中的 Element Plus 图标下载到本地，以便在离线环境下使用
@@ -39,6 +41,8 @@ let globalSettings = {
         enableNavSearch: true,
         // 是否开启全屏
         enableFullscreen: false,
+        // 是否开启颜色主题
+        enableColorScheme: false,
         // 是否开启主题配置（建议在生产环境关闭）
         enableAppSetting: true
     },
@@ -51,13 +55,6 @@ let globalSettings = {
         company: 'One-step-admin',
         website: 'https://one-step-admin.netlify.app'
     }
-}
-
-// 演示&开发环境开启全部功能（这部分代码可删除，仅方便作者打包演示环境）
-if (import.meta.env.VITE_APP_MODE === 'example' || import.meta.env.MODE === 'development') {
-    globalSettings.app.enablePermission = true
-    globalSettings.topbar.enableSidebarCollapse = true
-    globalSettings.topbar.enableFullscreen = true
 }
 
 export default globalSettings

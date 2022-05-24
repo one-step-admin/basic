@@ -56,7 +56,7 @@ export const useUserStore = defineStore(
                     this.token = ''
                     this.failure_time = ''
                     menuStore.switchHeaderActived(0)
-                    menuStore.removeRoutes()
+                    menuStore.removeMenus()
                     windowStore.removeAll()
                     resolve()
                 })

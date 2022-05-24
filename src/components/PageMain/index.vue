@@ -46,6 +46,8 @@ $padding: 10px;
     position: relative;
     padding: $padding;
     margin-bottom: 20px;
+    background-color: var(--g-app-bg);
+    transition: background-color 0.3s;
     &.is-collaspe {
         overflow: hidden;
         .collaspe {
@@ -56,11 +58,11 @@ $padding: 10px;
             padding: 40px 0 10px;
             text-align: center;
             font-size: 24px;
-            color: #ccc;
-            text-shadow: 0 0 1px #fff;
-            background: linear-gradient(to bottom, transparent, #fff);
+            color: var(--el-text-color-primary);
+            text-shadow: 0 0 1px var(--el-text-color-primary);
+            background: linear-gradient(to bottom, transparent, var(--g-app-bg));
+            transition: background 0.3s, var(--el-transition-color);
             cursor: pointer;
-            transition: 0.3s;
             &:hover {
                 color: #333;
             }
@@ -72,7 +74,8 @@ $padding: 10px;
         margin-left: calc(($padding + $g-window-container-padding) * -1);
         margin-top: calc(($padding + $g-window-container-padding) * -1);
         margin-bottom: 20px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--el-border-color-lighter);
+        transition: var(--el-transition-border);
     }
 }
 </style>

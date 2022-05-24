@@ -40,7 +40,7 @@
                             <Component :is="element.name" v-if="!element.reload" :params="element.params" />
                         </el-scrollbar>
                     </div>
-                    <div class="mask" @click="maskClick(element.name)" />
+                    <div class="mask" @click="maskClick(element.name)">点击进入该窗口</div>
                 </div>
             </div>
         </transition-group>
@@ -70,7 +70,7 @@ watch(() => windowStore.list, val => {
 
 function windowScrollTip() {
     if (proxy.$refs['windows'].scrollWidth > proxy.$refs['windows'].clientWidth && !localStorage.getItem('windowScrollTip')) {
-        proxy.$confirm(`
+        ElMessageBox.confirm(`
             <div style="text-align: left;">
                 当前窗口数量已超过浏览器展示区域，你可以通过拖动窗口下方的滚动条进行定位，除此之外，我们推荐使用以下两种更高效的方式进行窗口定位：
                 <ol>
@@ -219,15 +219,15 @@ function maskClick(windowName) {
             flex-direction: column;
             width: calc(100% - 32px);
             margin: 16px;
-            background-color: #fff;
-            box-shadow: 0 0 1px 0 #ccc;
-            transition: 0.3s;
+            background-color: var(--g-app-bg);
+            box-shadow: 0 0 1px 0 var(--g-box-shadow-color);
+            transition: background-color 0.3s, var(--el-transition-box-shadow);
             &:hover {
-                box-shadow: 0 0 5px 0 #ccc;
+                box-shadow: 0 0 5px 0 var(--g-box-shadow-color);
             }
             &.preview {
                 .mask {
-                    display: block;
+                    display: flex;
                 }
             }
             .header {
@@ -236,13 +236,16 @@ function maskClick(windowName) {
                 justify-content: space-between;
                 padding: 10px;
                 height: 40px;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid var(--el-border-color-lighter);
+                transition: var(--el-transition-border);
                 .titles {
                     display: flex;
                     align-items: center;
                     .title {
                         font-weight: bold;
                         font-size: 14px;
+                        color: var(--el-text-color-primary);
+                        transition: var(--el-transition-color);
                     }
                     .title + .btns {
                         margin-left: 10px;
@@ -251,23 +254,18 @@ function maskClick(windowName) {
                 .btns {
                     display: flex;
                     .btn {
-                        transition: 0.3s;
-                        opacity: 0.5;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         padding: 5px;
                         font-size: 16px;
                         border-radius: 3px;
-                        background-color: rgb(238 238 238 / 50%);
+                        color: var(--el-text-color-regular);
+                        background-color: var(--el-fill-color-light);
+                        transition: background-color 0.3s, var(--el-transition-color);
                         cursor: pointer;
-                        &.disabled {
-                            color: #ccc;
-                            cursor: not-allowed;
-                        }
-                        &:not(.disabled):hover {
-                            opacity: 1;
-                            background-color: #eee;
+                        &:hover {
+                            background-color: var(--el-fill-color);
                         }
                     }
                 }
@@ -284,6 +282,8 @@ function maskClick(windowName) {
             }
             .mask {
                 display: none;
+                align-items: center;
+                justify-content: center;
                 position: absolute;
                 z-index: 1000;
                 margin: 16px;
@@ -291,11 +291,15 @@ function maskClick(windowName) {
                 left: 0;
                 width: calc(100% - 32px);
                 height: calc(100% - 32px);
-                background-color: rgb(255 255 255 / 50%);
+                background-color: var(--el-mask-color-extra-light);
+                font-size: 48px;
+                color: rgb(0 0 0 / 0%);
+                text-shadow: 0 0 0 rgb(0 0 0 / 0%);
                 cursor: pointer;
-                transition: 0.3s;
+                transition: var(--el-transition-fade-linear), var(--el-transition-color), text-shadow 0.3s;
                 &:hover {
-                    background-color: rgb(64 158 255 / 30%);
+                    color: var(--el-color-primary);
+                    text-shadow: 0 0 5px rgb(0 0 0 / 50%);
                 }
             }
         }

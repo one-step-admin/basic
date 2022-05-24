@@ -1,5 +1,5 @@
 <template>
-    <el-config-provider :locale="zhCn" :size="settingsStore.app.elementSize">
+    <el-config-provider :locale="zhCn" :size="settingsStore.app.elementSize" :button="{autoInsertSpace: true}">
         <RouterView
             :style="{
                 '--g-main-sidebar-actual-width': mainSidebarActualWidth,
@@ -33,6 +33,16 @@ const subSidebarActualWidth = computed(() => {
         actualWidth = 64
     }
     return `${actualWidth}px`
+})
+
+watch(() => settingsStore.app.colorScheme, () => {
+    if (settingsStore.app.colorScheme === 'dark') {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+}, {
+    immediate: true
 })
 
 watch(() => settingsStore.menu.menuMode, () => {

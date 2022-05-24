@@ -69,26 +69,27 @@ function getDeepestWindowName(menus) {
     position: relative;
     width: 100%;
     height: 100%;
+    box-shadow: -1px 0 0 0 var(--g-box-shadow-color);
+    transition: padding-top 0.3s;
     .sidebar-container {
         position: fixed;
         z-index: 1010;
         top: 0;
         bottom: 0;
         display: flex;
-        transition: transform 0.3s;
+        transition: transform 0.3s, top 0.3s;
         width: calc(var(--g-main-sidebar-actual-width) + var(--g-sub-sidebar-actual-width));
     }
-    .main-sidebar-container + .sub-sidebar-container {
+    .main-sidebar-container:not(.main-sidebar-leave-active) + .sub-sidebar-container {
         left: var(--g-main-sidebar-width);
     }
     .main-container {
         display: flex;
         flex-direction: column;
         min-height: 100%;
-        transition: margin-left 0.3s;
-        background-color: $g-main-bg;
-        box-shadow: -1px 0 0 0 darken($g-main-bg, 10), 1px 0 0 0 darken($g-main-bg, 10);
         margin-left: calc(var(--g-main-sidebar-actual-width) + var(--g-sub-sidebar-actual-width));
+        background-color: var(--g-main-bg);
+        transition: margin-left 0.3s, background-color 0.3s;
         .topbar-container {
             top: 0;
             z-index: 998;
@@ -105,11 +106,12 @@ function getDeepestWindowName(menus) {
         }
     }
     .copyright {
-        background-color: #fff;
-        box-shadow: 0 0 1px 0 #ccc;
+        background-color: var(--g-app-bg);
+        box-shadow: 0 0 1px 0 var(--g-box-shadow-color);
+        transition: background-color 0.3s, var(--el-transition-box-shadow);
     }
 }
-header + .wrapper {
+header:not(.header-leave-active) + .wrapper {
     padding-top: $g-header-height;
     .sidebar-container {
         top: $g-header-height;
@@ -123,7 +125,7 @@ header + .wrapper {
     .main-container {
         .topbar-container {
             top: $g-header-height;
-            :deep(.user) {
+            :deep(.tools) {
                 display: none;
             }
         }

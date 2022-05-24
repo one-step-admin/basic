@@ -18,6 +18,10 @@ export const useSettingsStore = defineStore(
             toggleSidebarCollapse() {
                 this.menu.sidebarCollapse = !this.menu.sidebarCollapse
             },
+            // 设置主题颜色模式
+            setColorScheme(color) {
+                this.app.colorScheme = color
+            },
             // 更新主题配置
             updateThemeSetting(data) {
                 Object.assign(this, data)
