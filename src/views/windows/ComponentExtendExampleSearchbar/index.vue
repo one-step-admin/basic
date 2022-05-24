@@ -57,7 +57,7 @@
                             筛选
                         </el-button>
                         <el-button>导出</el-button>
-                        <el-button type="text">查看已导出记录</el-button>
+                        <el-button text>查看已导出记录</el-button>
                     </el-form-item>
                 </el-form>
             </search-bar>
@@ -118,7 +118,7 @@
                             筛选
                         </el-button>
                         <el-button>导出</el-button>
-                        <el-button type="text">查看已导出记录</el-button>
+                        <el-button text>查看已导出记录</el-button>
                     </el-form-item>
                 </el-form>
             </search-bar>

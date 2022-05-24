@@ -27,9 +27,9 @@ const settingsStore = useSettingsStore()
     align-items: center;
     justify-content: space-between;
     height: $g-topbar-height;
-    background-color: #fff;
+    background-color: var(--g-toolbar-bg);
     transition: 0.3s, box-shadow 0.2s;
-    box-shadow: 0 0 1px 0 #ccc;
+    box-shadow: 0 0 1px 0 var(--g-box-shadow-color);
     .left-box {
         display: flex;
         align-items: center;
@@ -41,12 +41,12 @@ const settingsStore = useSettingsStore()
             padding: 0 20px;
             height: 50px;
             cursor: pointer;
-            transition: 0.3s;
             .el-icon {
-                transition: 0.3s;
+                color: var(--el-text-color-primary);
+                transition: var(--el-transition-color), var(--el-transition-md-fade);
             }
             &:hover .el-icon {
-                color: #5482ee;
+                color: var(--el-color-primary);
             }
             &.is-collapse .el-icon {
                 transform: rotateZ(-180deg);

@@ -134,7 +134,7 @@ onMounted(() => {
     proxy.$hotkeys('esc', e => {
         if (settingsStore.topbar.enableNavSearch) {
             e.preventDefault()
-            proxy.$eventBus.emit('global-search-toggle')
+            isShow.value = false
         }
     })
 })
@@ -198,7 +198,7 @@ function handleOpen(windowName) {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0 0 0 / 50%);
+    background-color: var(--el-overlay-color-lighter);
     backdrop-filter: blur(10px);
     transition: all 0.2s;
     transform: translateZ(0);
@@ -247,9 +247,9 @@ function handleOpen(windowName) {
                     border-radius: 5px;
                     font-size: 12px;
                     font-weight: bold;
-                    color: #333;
-                    background-color: rgb(255 255 255 / 80%);
-                    box-shadow: inset 0 -2px #505e5f, inset 0 0 1px 1px #dec6c6, 0 1px 2px 1px #acb0c166;
+                    color: var(--el-text-color-primary);
+                    background-color: var(--el-fill-color);
+                    box-shadow: inset 0 -2px var(--el-fill-color-lighter), inset 0 0 1px 1px var(--el-fill-color-darker);
                 }
             }
         }
@@ -259,7 +259,8 @@ function handleOpen(windowName) {
             max-height: calc(100% - 250px);
             border-radius: 5px;
             overflow: auto;
-            background-color: #fff;
+            background-color: var(--el-bg-color);
+            box-shadow: 0 0 0 1px var(--el-border-color-darker);
             .item {
                 display: flex;
                 align-items: center;
@@ -267,31 +268,27 @@ function handleOpen(windowName) {
                 cursor: pointer;
                 transition: all 0.1s;
                 &.actived {
-                    background-color: #dbe7f8;
+                    background-color: var(--el-bg-color-page);
                     .icon {
-                        .el-icon {
-                            color: #409eff;
-                            transform: scale(1.2);
-                        }
+                        color: var(--el-color-primary);
+                        transform: scale(1.2);
                     }
                     .info {
-                        border-left-color: #b7cafc;
+                        border-left-color: var(--el-border-color);
                         .title {
-                            color: #333;
+                            color: var(--el-text-color-primary);
                         }
                         .breadcrumb {
-                            color: #606266;
+                            color: var(--el-text-color-regular);
                         }
                     }
                 }
                 .icon {
                     flex: 0 0 66px;
                     text-align: center;
-                    .el-icon {
-                        color: #999;
-                        font-size: 20px;
-                        transition: all 0.1s;
-                    }
+                    color: var(--el-color-info);
+                    font-size: 20px;
+                    transition: all 0.1s;
                 }
                 .info {
                     flex: 1;
@@ -299,14 +296,14 @@ function handleOpen(windowName) {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
-                    border-left: 1px solid #ebeef5;
+                    border-left: 1px solid var(--el-border-color-lighter);
                     padding: 5px 10px 7px;
                     transition: all 0.1s;
                     @include text-overflow(1, true);
                     .title {
                         font-size: 18px;
                         font-weight: bold;
-                        color: #666;
+                        color: var(--el-text-color-regular);
                         @include text-overflow(1, true);
                         .el-icon {
                             font-size: 14px;
@@ -314,7 +311,7 @@ function handleOpen(windowName) {
                     }
                     .breadcrumb {
                         font-size: 12px;
-                        color: #c0c4cc;
+                        color: var(--el-text-color-secondary);
                         transition: all 0.1s;
                         @include text-overflow(1, true);
                         span:last-child i {

@@ -1,22 +1,21 @@
+@use "./element.plus.override.scss" as *;
+
 // 全局样式
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(144 147 153 / 30%);
+    background-color: rgb(0 0 0 / 40%);
     background-clip: padding-box;
     border: 3px solid transparent;
-    border-radius: 7px;
+    border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(144 147 153 / 50%);
+    background-color: rgb(0 0 0 / 50%);
 }
 ::-webkit-scrollbar-track {
     background-color: transparent;
-}
-::-webkit-scrollbar-track:hover {
-    background-color: transparents;
 }
 html,
 body {
@@ -24,7 +23,6 @@ body {
 }
 body {
     margin: 0;
-    color: #333;
     box-sizing: border-box;
     font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
     -webkit-tap-highlight-color: transparent;
@@ -46,62 +44,4 @@ body {
 // textarea 字体跟随系统
 textarea {
     font-family: inherit;
-}
-// 列表页全局样式
-.el-table.list-table {
-    margin: 20px 0;
-    .el-button + .el-dropdown {
-        margin-left: 10px;
-    }
-}
-.el-menu {
-    background-color: $g-sub-sidebar-bg;
-    .el-menu--inline {
-        background-color: $g-sub-sidebar-menu-bg !important;
-        .el-menu-item,
-        .el-sub-menu > .el-sub-menu__title {
-            color: $g-sub-sidebar-menu-color;
-            background-color: $g-sub-sidebar-menu-bg !important;
-            &:hover {
-                color: $g-sub-sidebar-menu-hover-color !important;
-                background-color: $g-sub-sidebar-menu-hover-bg !important;
-            }
-        }
-    }
-}
-.el-menu-item,
-.el-sub-menu__title {
-    color: $g-sub-sidebar-menu-color !important;
-    background: transparent !important;
-    min-width: auto;
-    &:hover {
-        color: $g-sub-sidebar-menu-hover-color !important;
-        background-color: $g-sub-sidebar-menu-hover-bg !important;
-    }
-    i,
-    .icon,
-    .el-sub-menu__icon-arrow {
-        color: unset;
-    }
-}
-.el-menu-item.is-active,
-.el-menu--collapse .el-sub-menu.is-active > .el-sub-menu__title,
-.el-popper .el-sub-menu.is-active > .el-sub-menu__title,
-.el-sub-menu .el-menu--inline .el-menu-item.is-active {
-    color: $g-sub-sidebar-menu-active-color !important;
-    background-color: $g-sub-sidebar-menu-active-bg !important;
-    i,
-    .icon,
-    .el-sub-menu__icon-arrow {
-        color: unset;
-    }
-}
-.el-popper {
-    > .el-menu--vertical,
-    > .el-menu--horizontal {
-        max-width: 200px;
-        .el-menu--popup {
-            background-color: $g-sub-sidebar-bg !important;
-        }
-    }
 }

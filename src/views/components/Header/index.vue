@@ -35,13 +35,6 @@ const switchMenu = inject('switchMenu')
 </script>
 
 <style lang="scss" scoped>
-// 头部动画
-.header-enter-active {
-    transition: 0.2s;
-}
-.header-enter-from {
-    transform: translateY(-#{$g-header-height});
-}
 header {
     position: fixed;
     z-index: 1000;
@@ -52,8 +45,9 @@ header {
     align-items: center;
     padding: 0 20px;
     height: $g-header-height;
-    color: $g-header-color;
-    background-color: $g-header-bg;
+    color: var(--g-header-color);
+    background-color: var(--g-header-bg);
+    transition: background-color 0.3s, var(--el-transition-color);
     .header-container {
         width: 100%;
         height: 100%;
@@ -81,7 +75,7 @@ header {
         span {
             font-size: 24px;
             letter-spacing: 1px;
-            color: $g-header-color;
+            color: var(--g-header-color);
         }
     }
     .nav {
@@ -96,16 +90,16 @@ header {
             padding: 0 5px;
             width: 80px;
             cursor: pointer;
-            transition: all 0.3s;
-            color: $g-header-menu-color;
-            background-color: $g-header-bg;
+            color: var(--g-header-menu-color);
+            background-color: var(--g-header-bg);
+            transition: background-color 0.3s, var(--el-transition-color);
             &:hover {
-                color: $g-header-menu-hover-color;
-                background-color: $g-header-menu-hover-bg;
+                color: var(--g-header-menu-hover-color);
+                background-color: var(--g-header-menu-hover-bg);
             }
             &.active {
-                color: $g-header-menu-active-color;
-                background-color: $g-header-menu-active-bg;
+                color: var(--g-header-menu-active-color);
+                background-color: var(--g-header-menu-active-bg);
             }
             .el-icon {
                 font-size: 24px;
@@ -119,15 +113,24 @@ header {
             }
         }
     }
-    :deep(.user) {
+    :deep(.tools) {
         padding: 0;
-        .tools [class^="ri-"] {
-            color: $g-header-color;
+        .buttons .item .el-icon {
+            color: var(--g-header-color);
         }
         .user-container {
             font-size: 16px;
-            color: $g-header-color;
+            color: var(--g-header-color);
         }
     }
+}
+// 头部动画
+.header-enter-active,
+.header-leave-active {
+    transition: transform 0.3s;
+}
+.header-enter-from,
+.header-leave-to {
+    transform: translateY(-#{$g-header-height});
 }
 </style>

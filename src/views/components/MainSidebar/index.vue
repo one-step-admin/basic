@@ -34,13 +34,6 @@ const switchMenu = inject('switchMenu')
 </script>
 
 <style lang="scss" scoped>
-// 主侧边栏动画
-.main-sidebar-enter-active {
-    transition: 0.3s;
-}
-.main-sidebar-enter-from {
-    transform: translateX(calc(var(--g-main-sidebar-width) * -1));
-}
 .main-sidebar-container {
     overflow-x: hidden;
     overflow-y: auto;
@@ -55,11 +48,12 @@ const switchMenu = inject('switchMenu')
     position: relative;
     z-index: 1;
     width: var(--g-main-sidebar-width);
-    color: $g-main-sidebar-menu-color;
-    background-color: $g-main-sidebar-bg;
+    color: var(--g-main-sidebar-menu-color);
+    background-color: var(--g-main-sidebar-bg);
+    transition: background-color 0.3s, var(--el-transition-color);
     .sidebar-logo {
         transition: 0.3s;
-        background-color: $g-main-sidebar-bg;
+        background-color: var(--g-main-sidebar-bg);
     }
     .nav {
         width: inherit;
@@ -73,14 +67,16 @@ const switchMenu = inject('switchMenu')
             height: 60px;
             padding: 0 5px;
             cursor: pointer;
-            transition: all 0.3s;
+            color: var(--g-main-sidebar-menu-color);
+            background-color: var(--g-main-sidebar-bg);
+            transition: background-color 0.3s, var(--el-transition-color);
             &:hover {
-                color: $g-main-sidebar-menu-hover-color;
-                background-color: $g-main-sidebar-menu-hover-bg;
+                color: var(--g-main-sidebar-menu-hover-color);
+                background-color: var(--g-main-sidebar-menu-hover-bg);
             }
             &.active {
-                color: $g-main-sidebar-menu-active-color;
-                background-color: $g-main-sidebar-menu-active-bg;
+                color: var(--g-main-sidebar-menu-active-color);
+                background-color: var(--g-main-sidebar-menu-active-bg);
             }
             .el-icon {
                 margin: 0 auto;
@@ -93,5 +89,14 @@ const switchMenu = inject('switchMenu')
             }
         }
     }
+}
+// 主侧边栏动画
+.main-sidebar-enter-active,
+.main-sidebar-leave-active {
+    transition: transform 0.3s;
+}
+.main-sidebar-enter-from,
+.main-sidebar-leave-to {
+    transform: translateX(calc(var(--g-main-sidebar-width) * -1));
 }
 </style>

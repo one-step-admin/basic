@@ -1,6 +1,6 @@
 <template>
-    <div class="user">
-        <div class="tools">
+    <div class="tools">
+        <div class="buttons">
             <span class="item item-pro" @click="pro">
                 <el-icon>
                     <svg-icon name="pro" />
@@ -20,6 +20,12 @@
             <span v-if="settingsStore.topbar.enableFullscreen" class="item" @click="toggle">
                 <el-icon>
                     <svg-icon :name="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" />
+                </el-icon>
+            </span>
+            <span v-if="settingsStore.topbar.enableColorScheme" class="item" @click="settingsStore.setColorScheme(settingsStore.app.colorScheme === 'dark' ? 'light' : 'dark')">
+                <el-icon>
+                    <svg-icon v-show="settingsStore.app.colorScheme === 'light'" name="ep:sunny" />
+                    <svg-icon v-show="settingsStore.app.colorScheme === 'dark'" name="ep:moon" />
                 </el-icon>
             </span>
             <span v-if="settingsStore.topbar.enableAppSetting" class="item" @click="$eventBus.emit('global-theme-toggle')">
@@ -93,57 +99,57 @@ function pro() {
 </script>
 
 <style lang="scss" scoped>
-.user {
+.tools {
     display: flex;
     align-items: center;
     padding: 0 20px;
     white-space: nowrap;
-}
-.tools {
-    margin-right: 20px;
-    .item {
-        margin-left: 5px;
-        padding: 6px 8px;
-        border-radius: 5px;
-        outline: none;
-        cursor: pointer;
-        vertical-align: middle;
-        transition: all 0.3s;
-        [class^="ri-"] {
-            vertical-align: -0.15em;
-        }
-        .el-badge {
-            vertical-align: initial;
-        }
-    }
-    .item-pro {
-        display: inline-block;
-        transform-origin: right center;
-        animation: pro-text 3s ease-out infinite;
-        @keyframes pro-text {
-            0%,
-            20% {
-                transform: scale(1);
-            }
-            50%,
-            70% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        .el-icon {
+    .buttons {
+        margin-right: 20px;
+        .item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            width: 34px;
+            cursor: pointer;
             vertical-align: middle;
+            .el-icon {
+                color: var(--el-text-color-primary);
+                transition: var(--el-transition-color);
+            }
         }
-        .title {
-            padding-left: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            background-image: linear-gradient(to right, #ffa237, #fc455d);
-            /* stylelint-disable-next-line property-no-vendor-prefix */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .item-pro {
+            display: inline-block;
+            width: auto;
+            padding: 0 10px;
+            transform-origin: right center;
+            animation: pro-text 3s ease-out infinite;
+            @keyframes pro-text {
+                0%,
+                20% {
+                    transform: scale(1);
+                }
+                50%,
+                70% {
+                    transform: scale(1.2);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+            .el-icon {
+                vertical-align: middle;
+            }
+            .title {
+                padding-left: 5px;
+                font-weight: bold;
+                font-size: 14px;
+                background-image: linear-gradient(to right, #ffa237, #fc455d);
+                /* stylelint-disable-next-line property-no-vendor-prefix */
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     }
 }

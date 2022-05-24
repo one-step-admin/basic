@@ -11,6 +11,7 @@
 <style lang="scss" scoped>
 .alert {
     padding: 10px;
-    background-color: #fff;
+    background-color: var(--g-app-bg);
+    transition: background-color 0.3s;
 }
 </style>

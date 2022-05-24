@@ -17,13 +17,14 @@ footer {
     padding: 10px 0;
     line-height: 20px;
     text-align: center;
-    color: #808695;
+    color: var(--el-text-color-secondary);
     font-size: 14px;
     a {
         text-decoration: none;
-        color: #808695;
+        color: var(--el-text-color-secondary);
+        transition: var(--el-transition-color);
         &:hover {
-            color: #3d4047;
+            color: var(--el-text-color-primary);
         }
     }
 }

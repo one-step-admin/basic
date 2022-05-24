@@ -33,8 +33,9 @@
         align-items: center;
         justify-content: center;
         padding: 10px;
-        background-color: #f9f9f9;
-        border-top: 1px solid #eee;
+        background-color: var(--el-fill-color-lighter);
+        border-top: 1px solid var(--el-border-color-lighter);
+        transition: background-color 0.3s, var(--el-transition-border);
     }
 }
 </style>
