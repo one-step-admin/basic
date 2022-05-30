@@ -178,12 +178,12 @@ function maskClick(windowName) {
             height: max-content;
             align-items: center;
             .window {
-                width: $g-window-width;
-                height: $g-window-height;
-                margin-right: calc($g-window-width * ($g-window-perview-scale - 1));
-                margin-bottom: calc($g-window-height * ($g-window-perview-scale - 1));
+                width: var(--g-window-width);
+                height: var(--g-window-height);
+                margin-right: calc(var(--g-window-width) * (var(--g-window-perview-scale) - 1));
+                margin-bottom: calc(var(--g-window-height) * (var(--g-window-perview-scale) - 1));
                 transform-origin: top left;
-                transform: scale($g-window-perview-scale);
+                transform: scale(var(--g-window-perview-scale));
                 user-select: none;
             }
         }
@@ -211,7 +211,7 @@ function maskClick(windowName) {
     .window {
         flex: none;
         display: flex;
-        width: $g-window-width;
+        width: var(--g-window-width);
         margin-right: -16px;
         .window-container {
             flex: 1;
@@ -276,7 +276,7 @@ function maskClick(windowName) {
                 overscroll-behavior: contain;
                 > .el-scrollbar {
                     > :deep(.el-scrollbar__wrap) {
-                        padding: $g-window-container-padding;
+                        padding: var(--g-window-container-padding);
                     }
                 }
             }

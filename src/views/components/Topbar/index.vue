@@ -26,7 +26,7 @@ const settingsStore = useSettingsStore()
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: $g-topbar-height;
+    height: var(--g-topbar-height);
     background-color: var(--g-toolbar-bg);
     transition: 0.3s, box-shadow 0.2s;
     box-shadow: 0 0 1px 0 var(--g-box-shadow-color);

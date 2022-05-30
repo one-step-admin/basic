@@ -33,7 +33,7 @@ const logo = ref(imgLogo)
     display: flex;
     align-items: center;
     justify-content: center;
-    height: $g-sidebar-logo-height;
+    height: var(--g-sidebar-logo-height);
     text-align: center;
     overflow: hidden;
     text-decoration: none;

@@ -44,7 +44,7 @@ header {
     display: flex;
     align-items: center;
     padding: 0 20px;
-    height: $g-header-height;
+    height: var(--g-header-height);
     color: var(--g-header-color);
     background-color: var(--g-header-bg);
     transition: background-color 0.3s, var(--el-transition-color);
@@ -131,6 +131,6 @@ header {
 }
 .header-enter-from,
 .header-leave-to {
-    transform: translateY(-#{$g-header-height});
+    transform: translateY(calc(var(--g-header-height) * -1));
 }
 </style>

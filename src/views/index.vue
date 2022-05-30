@@ -102,7 +102,7 @@ function getDeepestWindowName(menus) {
             transition: 0.3s;
         }
         .topbar-container + .main {
-            margin-top: $g-topbar-height;
+            margin-top: var(--g-topbar-height);
         }
     }
     .copyright {
@@ -112,9 +112,9 @@ function getDeepestWindowName(menus) {
     }
 }
 header:not(.header-leave-active) + .wrapper {
-    padding-top: $g-header-height;
+    padding-top: var(--g-header-height);
     .sidebar-container {
-        top: $g-header-height;
+        top: var(--g-header-height);
         :deep(.sidebar-logo) {
             display: none;
         }
@@ -124,7 +124,7 @@ header:not(.header-leave-active) + .wrapper {
     }
     .main-container {
         .topbar-container {
-            top: $g-header-height;
+            top: var(--g-header-height);
             :deep(.tools) {
                 display: none;
             }
