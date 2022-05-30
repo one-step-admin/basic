@@ -133,8 +133,8 @@ export default {
 <style lang="scss" scoped>
 .absolute-container {
     position: absolute;
-    width: calc(100% - $g-window-container-padding * 2);
-    height: calc(100% - $g-window-container-padding * 2);
+    width: calc(100% - var(--g-window-container-padding) * 2);
+    height: calc(100% - var(--g-window-container-padding) * 2);
     display: flex;
     flex-direction: column;
     .page-main {

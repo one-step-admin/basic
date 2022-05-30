@@ -31,7 +31,7 @@ defineProps({
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    margin: calc($g-window-container-padding * -1) calc($g-window-container-padding * -1) 20px;
+    margin: calc(var(--g-window-container-padding) * -1) calc(var(--g-window-container-padding) * -1) 20px;
     border-bottom: 1px solid var(--el-border-color-lighter);
     background-color: var(--g-app-bg);
     transition: background-color 0.3s, var(--el-transition-border);
