@@ -9,6 +9,8 @@ app.use(piniaStore)
 import router from './router'
 app.use(router)
 
+/* importElementPlusPlaceholder */
+
 import registerWindowComponent from '@/views/windows/registerWindowComponent'
 registerWindowComponent(app)
 
