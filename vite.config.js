@@ -48,10 +48,12 @@ export default ({ mode, command }) => {
         },
         optimizeDeps: {
             include: [
+                'element-plus',
                 'element-plus/es',
                 'element-plus/es/components/message/style/css',
                 'element-plus/es/components/notification/style/css',
-                'element-plus/es/components/message-box/style/css'
+                'element-plus/es/components/message-box/style/css',
+                'element-plus/es/components/loading/style/css'
             ]
         },
         plugins: [

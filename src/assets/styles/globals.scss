@@ -1,6 +1,8 @@
 @use "./layout.scss" as *;
 @use "./themes.scss" as *;
 @use "./element.plus.override.scss" as *;
+@use "./element.plus.customized.scss" as *;
+@use "./element.plus.customized.dark.scss" as *;
 
 // 全局样式
 ::-webkit-scrollbar {
