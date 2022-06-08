@@ -14,7 +14,7 @@
 <script setup name="Topbar">
 import Tools from '../Tools/index.vue'
 
-import { useSettingsStore } from '@/store/modules/settings'
+import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 </script>
 

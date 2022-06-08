@@ -33,9 +33,9 @@ import AppSetting from './components/AppSetting/index.vue'
 
 const { proxy } = getCurrentInstance()
 
-import { useSettingsStore } from '@/store/modules/settings'
+import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
-import { useMenuStore } from '@/store/modules/menu'
+import useMenuStore from '@/store/modules/menu'
 const menuStore = useMenuStore()
 
 provide('switchMenu', switchMenu)

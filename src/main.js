@@ -2,9 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 const app = createApp(App)
 
-import { piniaStore } from './store'
-import { useSettingsOutsideStore } from './store/modules/settings'
-app.use(piniaStore)
+import pinia from './store'
+import useSettingsStore from './store/modules/settings'
+app.use(pinia)
 
 import router from './router'
 app.use(router)
@@ -26,7 +26,7 @@ import 'virtual:svg-icons-register'
 
 // 加载 iconify 图标（element plus）
 import { downloadAndInstall } from '@/iconify-ep'
-if (useSettingsOutsideStore().app.iconifyOfflineUse) {
+if (useSettingsStore().app.iconifyOfflineUse) {
     downloadAndInstall()
 }
 

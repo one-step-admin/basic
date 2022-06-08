@@ -60,11 +60,11 @@
 const { proxy } = getCurrentInstance()
 const router = useRouter()
 
-import { useSettingsStore } from '@/store/modules/settings'
+import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
-import { useUserStore } from '@/store/modules/user'
+import useUserStore from '@/store/modules/user'
 const userStore = useUserStore()
-import { useWindowStore } from '@/store/modules/window'
+import useWindowStore from '@/store/modules/window'
 const windowStore = useWindowStore()
 
 import { useFullscreen } from '@vueuse/core'
