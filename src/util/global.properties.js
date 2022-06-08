@@ -1,6 +1,6 @@
 import api from '@/api'
 import { auth, authAll } from '@/util'
-import { useWindowOutsideStore } from '@/store/modules/window'
+import useWindowStore from '@/store/modules/window'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import Cookies from 'js-cookie'
@@ -10,7 +10,7 @@ import mitt from 'mitt'
 const eventBus = mitt()
 
 export default function globalProperties(app) {
-    const windowOutsideStore = useWindowOutsideStore()
+    const windowStore = useWindowStore()
     // 请求
     app.config.globalProperties.$api = api
     // 鉴权
@@ -20,18 +20,18 @@ export default function globalProperties(app) {
     app.config.globalProperties.$window = {
         // 新增窗口
         add: windowName => {
-            windowOutsideStore.add(windowName)
+            windowStore.add(windowName)
             eventBus.emit('scrollToWindow', typeof windowName === 'string' ? windowName : windowName.name)
         },
         // 关闭窗口
         remove: windowName => {
-            windowOutsideStore.remove(windowName)
+            windowStore.remove(windowName)
         },
         // 窗口刷新
         reload: windowName => {
-            windowOutsideStore.reload(windowName)
+            windowStore.reload(windowName)
             setTimeout(() => {
-                windowOutsideStore.reload(windowName)
+                windowStore.reload(windowName)
             }, 0)
         }
     }

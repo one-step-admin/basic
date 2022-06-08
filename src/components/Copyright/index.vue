@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { useSettingsStore } from '@/store/modules/settings'
+import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
 </script>
 

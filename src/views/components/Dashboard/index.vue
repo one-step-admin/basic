@@ -53,9 +53,9 @@ import Empty from './Empty/index.vue'
 
 const { proxy } = getCurrentInstance()
 
-import { useSettingsStore } from '@/store/modules/settings'
+import useSettingsStore from '@/store/modules/settings'
 const settingsStore = useSettingsStore()
-import { useWindowStore } from '@/store/modules/window'
+import useWindowStore from '@/store/modules/window'
 const windowStore = useWindowStore()
 
 watch(() => windowStore.list, val => {

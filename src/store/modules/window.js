@@ -1,9 +1,6 @@
-import { defineStore } from 'pinia'
-import { piniaStore } from '@/store'
+import useMenuStore from './menu'
 
-import { useMenuStore } from './menu'
-
-export const useWindowStore = defineStore(
+const useWindowStore = defineStore(
     // 唯一ID
     'windows',
     {
@@ -56,6 +53,4 @@ export const useWindowStore = defineStore(
     }
 )
 
-export function useWindowOutsideStore() {
-    return useWindowStore(piniaStore)
-}
+export default useWindowStore
