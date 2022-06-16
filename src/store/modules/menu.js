@@ -1,11 +1,9 @@
-import { defineStore } from 'pinia'
-import { piniaStore } from '@/store'
 import { deepClone } from '@/util'
 import api from '@/api'
 import menu from '@/menu'
 
-import { useSettingsStore } from './settings'
-import { useUserStore } from './user'
+import useSettingsStore from './settings'
+import useUserStore from './user'
 
 function hasPermission(permissions, route) {
     let isAuth = false
@@ -66,7 +64,7 @@ function flatMenu(menus, breadcrumb = [], icon = '') {
     return res
 }
 
-export const useMenuStore = defineStore(
+const useMenuStore = defineStore(
     // 唯一ID
     'menu',
     {
@@ -174,6 +172,4 @@ export const useMenuStore = defineStore(
     }
 )
 
-export function useMenuOutsideStore() {
-    return useMenuStore(piniaStore)
-}
+export default useMenuStore

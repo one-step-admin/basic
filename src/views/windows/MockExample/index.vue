@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/store/modules/user'
+import useUserStore from '@/store/modules/user'
 const userStore = useUserStore()
 
 function getPermission() {

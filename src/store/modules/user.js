@@ -1,11 +1,9 @@
-import { defineStore } from 'pinia'
-import { piniaStore } from '@/store'
 import api from '@/api'
 
-import { useMenuStore } from './menu'
-import { useWindowStore } from './window'
+import useMenuStore from './menu'
+import useWindowStore from './window'
 
-export const useUserStore = defineStore(
+const useUserStore = defineStore(
     // 唯一ID
     'user',
     {
@@ -80,6 +78,4 @@ export const useUserStore = defineStore(
     }
 )
 
-export function useUserOutsideStore() {
-    return useUserStore(piniaStore)
-}
+export default useUserStore
