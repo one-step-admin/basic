@@ -79,7 +79,7 @@
 <table>
     <tr>
         <th colspan="3" align="center">
-            <a href="https://hooray.gitee.io/fantastic-admin" target="_blank">Fantastic-admin</a>
+            <a href="https://hooray.gitee.io/fantastic-admin/" target="_blank">Fantastic-admin</a>
         </th>
     </tr>
     <tr>
@@ -88,13 +88,13 @@
         </th>
     </tr>
     <tr>
-        <td><img src="https://fantastic-admin.netlify.app/preview1.png" /></td>
-        <td><img src="https://fantastic-admin.netlify.app/preview2.png" /></td>
-        <td><img src="https://fantastic-admin.netlify.app/preview3.png" /></td>
+        <td><img src="https://hooray.gitee.io/fantastic-admin/preview1.png" /></td>
+        <td><img src="https://hooray.gitee.io/fantastic-admin/preview2.png" /></td>
+        <td><img src="https://hooray.gitee.io/fantastic-admin/preview3.png" /></td>
     </tr>
     <tr>
-        <td><img src="https://fantastic-admin.netlify.app/preview4.png" /></td>
-        <td><img src="https://fantastic-admin.netlify.app/preview5.png" /></td>
-        <td><img src="https://fantastic-admin.netlify.app/preview6.png" /></td>
+        <td><img src="https://hooray.gitee.io/fantastic-admin/preview4.png" /></td>
+        <td><img src="https://hooray.gitee.io/fantastic-admin/preview5.png" /></td>
+        <td><img src="https://hooray.gitee.io/fantastic-admin/preview6.png" /></td>
     </tr>
 </table>

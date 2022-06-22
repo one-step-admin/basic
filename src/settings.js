@@ -53,7 +53,7 @@ let globalSettings = {
         // 版权信息配置，格式为：Copyright © [dates] <company>, All Rights Reserved
         dates: '2021-2022',
         company: 'One-step-admin',
-        website: 'https://one-step-admin.netlify.app'
+        website: 'https://hooray.gitee.io/one-step-admin/'
     }
 }
 
