@@ -3,12 +3,5 @@
         "source.fixAll.eslint": true,
         "source.fixAll.stylelint": true
     },
-    "stylelint.validate": [
-        "css",
-        "scss",
-        "vue"
-    ],
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///d%3A/project/one-step-admin/one-step-admin-example/.github/workflows/deploy.yml"
-    }
+    "stylelint.validate": ["css", "scss", "vue"]
 }
