@@ -1,4 +1,4 @@
-name: Deploy Example Site
+name: deploy-example-site
 
 on:
   push:

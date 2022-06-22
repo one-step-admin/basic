@@ -1,4 +1,4 @@
-name: Deploy Example Site To Gitee
+name: deploy-example-site-to-gitee
 
 on:
   # 每当 push 到 master 分支时触发部署
