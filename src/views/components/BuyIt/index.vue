@@ -1,6 +1,6 @@
 <template>
     <div class="buy-it" :class="{'actived': isActived}">
-        <div class="item" @click="open(`https://one-step-admin.netlify.app/buy.html`)">
+        <div class="item" @click="open(`https://hooray.gitee.io/one-step-admin/buy.html`)">
             <el-icon>
                 <svg-icon name="fixed-right-buy" />
             </el-icon>
@@ -12,13 +12,13 @@
             </el-icon>
             <span class="title">下载<br>基础版</span>
         </div>
-        <div class="item" @click="open(`https://one-step-admin.netlify.app`)">
+        <div class="item" @click="open(`https://hooray.gitee.io/one-step-admin/`)">
             <el-icon>
                 <svg-icon name="fixed-right-doc" />
             </el-icon>
             <span class="title">开发<br>文档</span>
         </div>
-        <div class="item" @click="open(`https://one-step-admin.netlify.app/support.html`)">
+        <div class="item" @click="open(`https://hooray.gitee.io/one-step-admin/support.html`)">
             <el-icon>
                 <svg-icon name="fixed-right-chat" />
             </el-icon>
@@ -33,9 +33,6 @@ setTimeout(() => {
     isActived.value = false
 }, 5000)
 
-import useSettingsStore from '@/store/modules/settings'
-const settingsStore = useSettingsStore()
-
 onMounted(() => {
     ElNotification({
         type: 'success',
@@ -43,20 +40,11 @@ onMounted(() => {
         dangerouslyUseHTMLString: true,
         message: `
             <p>当前访问的是<b>基础版</b></p>
-            <p>你可以点<a href="https://one-step-admin.netlify.app/pro/" target="_blank"><b>这里</b></a>访问专业版</p>
+            <p>你可以点<a href="https://hooray.gitee.io/one-step-admin-pro-example/" target="_blank"><b>这里</b></a>访问专业版</p>
         `,
         position: 'bottom-right',
         duration: 5000
     })
-    if (settingsStore.app.colorScheme !== 'dark') {
-        ElMessageBox.confirm('<p>One-step-admin 已正式推出<b>暗黑模式</b>，是否马上体验？</p>', '温馨提醒', {
-            dangerouslyUseHTMLString: true,
-            confirmButtonText: '切换到暗黑模式',
-            cancelButtonText: '先不用'
-        }).then(() => {
-            useSettingsStore().setColorScheme('dark')
-        })
-    }
 })
 
 function open(url) {

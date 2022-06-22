@@ -94,7 +94,7 @@ function userCommand(command) {
     }
 }
 function pro() {
-    window.open('https://one-step-admin.netlify.app/pro', 'top')
+    window.open('https://hooray.gitee.io/one-step-admin-pro-example/', 'top')
 }
 </script>
 

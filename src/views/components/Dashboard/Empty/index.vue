@@ -4,11 +4,11 @@
             <template #content>
                 <div>
                     <div style="margin-bottom: 5px;">这是一款<b class="text-emphasis">干啥都快人一步</b>的中后台框架，它拥有<b>全新的交互方式</b>，为<b>提升操作效率</b>而生。</div>
-                    <div>如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://fantastic-admin.netlify.app" target="_blank">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。</div>
+                    <div>如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://hooray.gitee.io/fantastic-admin/" target="_blank">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。</div>
                 </div>
             </template>
             <el-button-group style="margin-right: 10px;">
-                <el-button type="success" size="large" plain @click="open('https://one-step-admin.netlify.app')">开发文档</el-button>
+                <el-button type="success" size="large" plain @click="open('https://hooray.gitee.io/one-step-admin/')">开发文档</el-button>
                 <el-dropdown>
                     <el-button type="primary" size="large">
                         代码仓库
@@ -63,17 +63,27 @@
                 <page-main style="margin: 0;">
                     <div class="ecology fa">
                         <div class="main">
-                            <img src="https://fantastic-admin.netlify.app/logo.png" style="width: 30%;">
+                            <img src="https://hooray.gitee.io/fantastic-admin/logo.png" style="width: 30%;">
                             <h1>Fantastic-admin</h1>
                             <h2>一款开箱即用的 Vue 中后台管理系统框架</h2>
-                            <el-button plain @click="open('https://fantastic-admin.netlify.app')">
-                                <template #icon>
-                                    <el-icon>
-                                        <svg-icon name="ep:link" />
-                                    </el-icon>
-                                </template>
-                                访问官网
-                            </el-button>
+                            <div>
+                                <el-button type="primary" plain @click="open('https://hooray.gitee.io/fantastic-admin/')">
+                                    <template #icon>
+                                        <el-icon>
+                                            <svg-icon name="ep:link" />
+                                        </el-icon>
+                                    </template>
+                                    访问官网
+                                </el-button>
+                                <el-button plain @click="open('https://hooray.github.io/fantastic-admin/')">
+                                    <template #icon>
+                                        <el-icon>
+                                            <svg-icon name="ep:link" />
+                                        </el-icon>
+                                    </template>
+                                    备用地址
+                                </el-button>
+                            </div>
                         </div>
                         <el-divider border-style="dashed" />
                         <el-carousel trigger="click" indicator-position="none" :interval="5000" height="250px">
@@ -89,17 +99,27 @@
                 <page-main style="margin: 0;">
                     <div class="ecology osa">
                         <div class="main">
-                            <img src="https://one-step-admin.netlify.app/logo.png" style="width: 30%;">
+                            <img src="https://hooray.gitee.io/one-step-admin/logo.png" style="width: 30%;">
                             <h1>One-step-admin</h1>
                             <h2>一款干啥都快人一步的 Vue 中后台系统框架</h2>
-                            <el-button plain @click="open('https://one-step-admin.netlify.app')">
-                                <template #icon>
-                                    <el-icon>
-                                        <svg-icon name="ep:link" />
-                                    </el-icon>
-                                </template>
-                                访问官网
-                            </el-button>
+                            <div>
+                                <el-button type="primary" plain @click="open('https://hooray.gitee.io/one-step-admin/')">
+                                    <template #icon>
+                                        <el-icon>
+                                            <svg-icon name="ep:link" />
+                                        </el-icon>
+                                    </template>
+                                    访问官网
+                                </el-button>
+                                <el-button plain @click="open('https://hooray.github.io/one-step-admin/')">
+                                    <template #icon>
+                                        <el-icon>
+                                            <svg-icon name="ep:link" />
+                                        </el-icon>
+                                    </template>
+                                    备用地址
+                                </el-button>
+                            </div>
                         </div>
                         <el-divider border-style="dashed" />
                         <el-carousel trigger="click" indicator-position="none" :interval="5000" height="250px">
@@ -157,12 +177,12 @@ const fantasticAdminInfo = ref({
     imageVisible: false,
     index: 0,
     data: [
-        'https://fantastic-admin.netlify.app/preview1.png',
-        'https://fantastic-admin.netlify.app/preview2.png',
-        'https://fantastic-admin.netlify.app/preview3.png',
-        'https://fantastic-admin.netlify.app/preview4.png',
-        'https://fantastic-admin.netlify.app/preview5.png',
-        'https://fantastic-admin.netlify.app/preview6.png'
+        'https://hooray.gitee.io/fantastic-admin/preview1.png',
+        'https://hooray.gitee.io/fantastic-admin/preview2.png',
+        'https://hooray.gitee.io/fantastic-admin/preview3.png',
+        'https://hooray.gitee.io/fantastic-admin/preview4.png',
+        'https://hooray.gitee.io/fantastic-admin/preview5.png',
+        'https://hooray.gitee.io/fantastic-admin/preview6.png'
     ]
 })
 
@@ -170,12 +190,12 @@ const oneStepAdminInfo = ref({
     imageVisible: false,
     index: 0,
     data: [
-        'https://one-step-admin.netlify.app/preview1.png',
-        'https://one-step-admin.netlify.app/preview2.png',
-        'https://one-step-admin.netlify.app/preview3.png',
-        'https://one-step-admin.netlify.app/preview4.png',
-        'https://one-step-admin.netlify.app/preview5.png',
-        'https://one-step-admin.netlify.app/preview6.png'
+        'https://hooray.gitee.io/one-step-admin/preview1.png',
+        'https://hooray.gitee.io/one-step-admin/preview2.png',
+        'https://hooray.gitee.io/one-step-admin/preview3.png',
+        'https://hooray.gitee.io/one-step-admin/preview4.png',
+        'https://hooray.gitee.io/one-step-admin/preview5.png',
+        'https://hooray.gitee.io/one-step-admin/preview6.png'
     ]
 })
 </script>

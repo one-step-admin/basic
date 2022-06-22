@@ -3,7 +3,7 @@
         <page-header title="图片预览" content="ImagePreview" />
         <page-main>
             <div>
-                <image-preview src="https://one-step-admin.netlify.app/logo.png" :width="200" />
+                <image-preview src="https://hooray.gitee.io/one-step-admin/logo.png" :width="200" />
             </div>
         </page-main>
         <page-main title="图片加载失败时">
