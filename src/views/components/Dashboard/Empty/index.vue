@@ -30,7 +30,7 @@
                 <page-main style="margin: 0;">
                     <div class="ecology vue">
                         <div class="main">
-                            <img src="https://v3.cn.vuejs.org/logo.png" style="width: 30%;">
+                            <img src="https://cn.vuejs.org/logo.svg" style="width: 30%;">
                             <h1>Fantastic-startkit</h1>
                             <h2>一款开箱即用的 Vue 项目启动套件</h2>
                             <div>
