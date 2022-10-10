@@ -1,0 +1,10 @@
+@use "./override.system.scss";
+
+// 列表页全局样式
+.el-table.list-table {
+  margin: 20px 0;
+
+  .el-button + .el-dropdown {
+    margin-left: 10px;
+  }
+}

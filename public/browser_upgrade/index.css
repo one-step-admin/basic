@@ -32,7 +32,7 @@
     width: 20px;
 }
 .one-step-admin-home .square::before {
-    content: "";
+    content: '';
     width: 10px;
     height: 10px;
     border-radius: 15%;

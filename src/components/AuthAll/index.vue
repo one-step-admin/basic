@@ -1,21 +1,16 @@
-<template>
-    <div>
-        <slot v-if="check()" />
-        <slot v-else name="no-auth" />
-    </div>
-</template>
-
-<script setup>
-import { authAll } from '@/util'
-
-const props = defineProps({
-    value: {
-        type: Array,
-        default: () => []
-    }
-})
+<script lang="ts" setup name="AuthAll">
+const props = defineProps<{
+  value: string[]
+}>()
 
 function check() {
-    return authAll(props.value)
+  return useAuth().authAll(props.value)
 }
 </script>
+
+<template>
+  <div>
+    <slot v-if="check()" />
+    <slot v-else name="no-auth" />
+  </div>
+</template>

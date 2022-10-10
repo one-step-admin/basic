@@ -1,30 +1,31 @@
 {
-    "extends": [
-        "stylelint-config-standard",
-        "stylelint-config-recommended-vue/scss"
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-standard-vue/scss"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "no-descending-specificity": null,
+    "property-no-unknown": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "selector-class-pattern": null,
+    "max-line-length": null,
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": [
+          "v-bind",
+          "map-get",
+          "lighten",
+          "darken"
+        ]
+      }
     ],
-    "overrides": [
-        {
-            "files": ["**/*.scss"],
-            "customSyntax": "postcss-scss"
-        }
-    ],
-    "plugins": [
-        "stylelint-scss"
-    ],
-    "rules": {
-        "indentation": 4,
-        "rule-empty-line-before": "never",
-        "at-rule-empty-line-before": "never",
-        "at-rule-no-unknown": null,
-        "no-descending-specificity": null,
-        "selector-pseudo-class-no-unknown": null,
-        "property-no-unknown": null,
-        "font-family-no-missing-generic-family-keyword": null,
-        "selector-id-pattern": null,
-        "selector-class-pattern": null,
-        "scss/no-global-function-names": null,
-        "scss/at-import-partial-extension": null,
-        "max-line-length": null
-    }
+    "scss/double-slash-comment-empty-line-before": null,
+    "scss/no-global-function-names": null
+  }
 }
