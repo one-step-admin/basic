@@ -1,7 +1,19 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll.stylelint": true
-    },
-    "stylelint.validate": ["css", "scss", "vue"]
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "vue"
+  ],
+  "i18n-ally.localesPaths": [
+    "src/locales/lang"
+  ],
+  "i18n-ally.displayLanguage": "zh-cn",
+  "i18n-ally.editor.preferEditor": true,
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.keepFulfilled": true,
+  "i18n-ally.indent": 2
 }

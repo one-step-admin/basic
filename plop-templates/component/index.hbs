@@ -1,12 +1,12 @@
-<template>
-    <div>
-        <!-- 内容区 -->
-    </div>
-</template>
-
-<script setup name="{{ properCase name }}">
-// const { proxy } = getCurrentInstance()
+<script lang="ts" setup{{#if isGlobal}} name="{{ properCase name }}"{{/if}}>
+// const proxy = useCurrentInstance()
 </script>
+
+<template>
+  <div>
+    <!-- 内容区 -->
+  </div>
+</template>
 
 <style lang="scss" scoped>
 // scss
