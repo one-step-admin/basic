@@ -19,22 +19,22 @@ const api = axios.create({
 })
 
 api.interceptors.request.use(
-  (config) => {
+  (request) => {
     const userStore = useUserStore()
     /**
      * 全局拦截请求发送前提交的参数
      * 以下代码为示例，在请求头里带上 token 信息
      */
-    if (userStore.isLogin && config.headers) {
-      config.headers.Token = userStore.token
+    if (userStore.isLogin && request.headers) {
+      request.headers.Token = userStore.token
     }
     // 是否将 POST 请求参数进行字符串化处理
-    if (config.method === 'post') {
-      // config.data = qs.stringify(config.data, {
+    if (request.method === 'post') {
+      // request.data = qs.stringify(request.data, {
       //   arrayFormat: 'brackets',
       // })
     }
-    return config
+    return request
   },
 )
 
@@ -47,11 +47,7 @@ api.interceptors.response.use(
      * 请求出错时 error 会返回错误信息
      */
     if (response.data.status === 1) {
-      if (response.data.error === '') {
-        // 请求成功并且没有报错
-        return Promise.resolve(response.data)
-      }
-      else {
+      if (response.data.error !== '') {
         // 这里做错误提示，如果使用了 element plus 则可以使用 Message 进行提示
         // ElMessage.error(options)
         return Promise.reject(response.data)
@@ -60,6 +56,7 @@ api.interceptors.response.use(
     else {
       toLogin()
     }
+    return Promise.resolve(response.data)
   },
   (error) => {
     let message = error.message
