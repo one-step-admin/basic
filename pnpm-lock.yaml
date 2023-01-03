@@ -11,7 +11,7 @@ specifiers:
   '@vueuse/core': ^9.9.0
   '@vueuse/integrations': ^9.9.0
   autoprefixer: ^10.4.13
-  axios: ^1.2.2
+  axios: ^1.2.1
   dayjs: ^1.11.7
   element-plus: ^2.2.28
   eslint: ^8.31.0
@@ -56,8 +56,8 @@ specifiers:
 dependencies:
   '@tinymce/tinymce-vue': 5.0.0_vue@3.2.45
   '@vueuse/core': 9.9.0_vue@3.2.45
-  '@vueuse/integrations': 9.9.0_axios@1.2.2+vue@3.2.45
-  axios: 1.2.2
+  '@vueuse/integrations': 9.9.0_axios@1.2.1+vue@3.2.45
+  axios: 1.2.1
   dayjs: 1.11.7
   element-plus: 2.2.28_vue@3.2.45
   hotkeys-js: 3.10.1
@@ -1436,7 +1436,7 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/integrations/9.9.0_axios@1.2.2+vue@3.2.45:
+  /@vueuse/integrations/9.9.0_axios@1.2.1+vue@3.2.45:
     resolution: {integrity: sha512-/wr3jrMlzbPNd38dO85NOT4j7vga9+eQewEZFXHJAFEvKnRxBy/Ytp1pt4Sz8dVOLLYMBHfSaVAra91ftfIh0w==}
     peerDependencies:
       async-validator: '*'
@@ -1476,7 +1476,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.9.0_vue@3.2.45
       '@vueuse/shared': 9.9.0_vue@3.2.45
-      axios: 1.2.2
+      axios: 1.2.1
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -1727,8 +1727,8 @@ packages:
     resolution: {integrity: sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==}
     dev: true
 
-  /axios/1.2.2:
-    resolution: {integrity: sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==}
+  /axios/1.2.1:
+    resolution: {integrity: sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
