@@ -24,7 +24,6 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./components/SearchBar/index.vue')['default']
-    Sparkline: typeof import('./components/Sparkline/index.vue')['default']
     SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
     SystemInfo: typeof import('./components/SystemInfo/index.vue')['default']
     Trend: typeof import('./components/Trend/index.vue')['default']
