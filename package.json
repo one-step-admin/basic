@@ -20,7 +20,7 @@
     "@tinymce/tinymce-vue": "^5.0.0",
     "@vueuse/core": "^9.9.0",
     "@vueuse/integrations": "^9.9.0",
-    "axios": "^1.2.2",
+    "axios": "^1.2.1",
     "dayjs": "^1.11.7",
     "element-plus": "^2.2.28",
     "hotkeys-js": "^3.10.1",
