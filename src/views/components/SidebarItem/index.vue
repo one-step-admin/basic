@@ -74,8 +74,7 @@ function handleOpen(windowName: string) {
   @include text-overflow;
 }
 
-:deep(.el-menu-item),
-:deep(.el-sub-menu__title) {
+:deep(.el-menu-item) {
   display: flex;
   align-items: center;
   justify-content: center;
