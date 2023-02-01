@@ -4,20 +4,16 @@ import { ElMessage } from 'element-plus'
 import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
-import globalSettingsDefault from '@/settings.default'
 
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
 const isShow = ref(false)
 
-const settings = ref(globalSettingsDefault)
-
-watch(() => settings, () => {
-  settingsStore.updateSettings(settings.value)
-  menuStore.setActived(0)
-}, {
-  deep: true,
+watch(() => settingsStore.settings.menu.menuMode, (value) => {
+  if (value === 'single') {
+    menuStore.setActived(0)
+  }
 })
 
 onMounted(() => {
@@ -29,12 +25,12 @@ const { copy, copied, isSupported } = useClipboard()
 
 watch(copied, (val) => {
   if (val) {
-    ElMessage.success('复制成功，请粘贴到 src/settings.custom.json 文件中！')
+    ElMessage.success('复制成功，请粘贴到 src/settings.ts 文件中！')
   }
 })
 
 function handleCopy() {
-  copy(JSON.stringify(settings.value, null, 4))
+  copy(JSON.stringify(settingsStore.settings, null, 2))
 }
 </script>
 
@@ -45,16 +41,16 @@ function handleCopy() {
         <el-alert title="应用配置可实时预览效果，但仅是临时生效，要想真正作用于项目，可以点击下方的“复制配置”按钮，将配置粘贴到 src/settings.custom.json 中即可，或者也可在 src/settings.js 中直接修改默认配置。同时建议在生产环境隐藏应用配置功能。" type="error" :closable="false" />
         <el-divider>颜色主题</el-divider>
         <div class="color-scheme">
-          <div class="switch" :class="settings.app.colorScheme" @click="settings.app.colorScheme = settings.app.colorScheme === 'dark' ? 'light' : 'dark'">
+          <div class="switch" :class="settingsStore.settings.app.colorScheme" @click="settingsStore.settings.app.colorScheme = settingsStore.settings.app.colorScheme === 'dark' ? 'light' : 'dark'">
             <el-icon class="icon">
-              <svg-icon :name="settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
+              <svg-icon :name="settingsStore.settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
             </el-icon>
           </div>
         </div>
         <el-divider>导航栏模式</el-divider>
         <div class="menu-mode">
           <el-tooltip content="侧边栏模式（含主导航）" placement="top" :show-after="500">
-            <div class="mode mode-side" :class="{ active: settings.menu.menuMode === 'side' }" @click="settings.menu.menuMode = 'side'">
+            <div class="mode mode-side" :class="{ active: settingsStore.settings.menu.menuMode === 'side' }" @click="settingsStore.settings.menu.menuMode = 'side'">
               <div class="mode-container" />
               <el-icon>
                 <svg-icon name="ep:check" />
@@ -62,7 +58,7 @@ function handleCopy() {
             </div>
           </el-tooltip>
           <el-tooltip content="顶部模式" placement="top" :show-after="500">
-            <div class="mode mode-head" :class="{ active: settings.menu.menuMode === 'head' }" @click="settings.menu.menuMode = 'head'">
+            <div class="mode mode-head" :class="{ active: settingsStore.settings.menu.menuMode === 'head' }" @click="settingsStore.settings.menu.menuMode = 'head'">
               <div class="mode-container" />
               <el-icon>
                 <svg-icon name="ep:check" />
@@ -70,7 +66,7 @@ function handleCopy() {
             </div>
           </el-tooltip>
           <el-tooltip content="侧边栏模式（不含主导航）" placement="top" :show-after="500">
-            <div class="mode mode-single" :class="{ active: settings.menu.menuMode === 'single' }" @click="settings.menu.menuMode = 'single'">
+            <div class="mode mode-single" :class="{ active: settingsStore.settings.menu.menuMode === 'single' }" @click="settingsStore.settings.menu.menuMode = 'single'">
               <div class="mode-container" />
               <el-icon>
                 <svg-icon name="ep:check" />
@@ -88,7 +84,7 @@ function handleCopy() {
               </el-icon>
             </el-tooltip>
           </div>
-          <el-switch v-model="settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settings.menu.menuMode)" />
+          <el-switch v-model="settingsStore.settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
         </div>
         <div class="setting-item">
           <div class="label">
@@ -99,25 +95,25 @@ function handleCopy() {
               </el-icon>
             </el-tooltip>
           </div>
-          <el-switch v-model="settings.menu.subMenuUniqueOpened" />
+          <el-switch v-model="settingsStore.settings.menu.subMenuUniqueOpened" />
         </div>
         <div class="setting-item">
           <div class="label">
             次导航是否折叠
           </div>
-          <el-switch v-model="settings.menu.subMenuCollapse" />
+          <el-switch v-model="settingsStore.settings.menu.subMenuCollapse" />
         </div>
         <div class="setting-item">
           <div class="label">
             显示次导航折叠按钮
           </div>
-          <el-switch v-model="settings.menu.enableSubMenuCollapseButton" />
+          <el-switch v-model="settingsStore.settings.menu.enableSubMenuCollapseButton" />
         </div>
         <div class="setting-item">
           <div class="label">
             是否启用快捷键
           </div>
-          <el-switch v-model="settings.menu.enableHotkeys" :disabled="['single'].includes(settingsStore.menu.menuMode)" />
+          <el-switch v-model="settingsStore.settings.menu.enableHotkeys" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
         </div>
         <el-divider>工具栏</el-divider>
         <div class="setting-item">
@@ -129,7 +125,7 @@ function handleCopy() {
               </el-icon>
             </el-tooltip>
           </div>
-          <el-switch v-model="settings.toolbar.enableFullscreen" />
+          <el-switch v-model="settingsStore.settings.toolbar.enableFullscreen" />
         </div>
         <div class="setting-item">
           <div class="label">
@@ -140,14 +136,14 @@ function handleCopy() {
               </el-icon>
             </el-tooltip>
           </div>
-          <el-switch v-model="settings.toolbar.enableColorScheme" />
+          <el-switch v-model="settingsStore.settings.toolbar.enableColorScheme" />
         </div>
         <el-divider>窗口</el-divider>
         <div class="setting-item">
           <div class="label">
             是否启用快捷键
           </div>
-          <el-switch v-model="settings.window.enableHotkeys" />
+          <el-switch v-model="settingsStore.settings.window.enableHotkeys" />
         </div>
         <el-divider>导航搜索</el-divider>
         <div class="setting-item">
@@ -159,44 +155,44 @@ function handleCopy() {
               </el-icon>
             </el-tooltip>
           </div>
-          <el-switch v-model="settings.navSearch.enable" />
+          <el-switch v-model="settingsStore.settings.navSearch.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             是否启用快捷键
           </div>
-          <el-switch v-model="settings.navSearch.enableHotkeys" :disabled="!settings.navSearch.enable" />
+          <el-switch v-model="settingsStore.settings.navSearch.enableHotkeys" :disabled="!settingsStore.settings.navSearch.enable" />
         </div>
         <el-divider>底部版权</el-divider>
         <div class="setting-item">
           <div class="label">
             是否启用
           </div>
-          <el-switch v-model="settings.copyright.enable" />
+          <el-switch v-model="settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             日期
           </div>
-          <el-input v-model="settings.copyright.dates" size="small" :disabled="!settings.copyright.enable" />
+          <el-input v-model="settingsStore.settings.copyright.dates" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             公司
           </div>
-          <el-input v-model="settings.copyright.company" size="small" :disabled="!settings.copyright.enable" />
+          <el-input v-model="settingsStore.settings.copyright.company" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             网址
           </div>
-          <el-input v-model="settings.copyright.website" size="small" :disabled="!settings.copyright.enable" />
+          <el-input v-model="settingsStore.settings.copyright.website" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             备案
           </div>
-          <el-input v-model="settings.copyright.beian" size="small" :disabled="!settings.copyright.enable" />
+          <el-input v-model="settingsStore.settings.copyright.beian" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <el-divider>其它</el-divider>
         <div class="setting-item">
@@ -208,7 +204,7 @@ function handleCopy() {
               </el-icon>
             </el-tooltip>
           </div>
-          <el-radio-group v-model="settings.app.elementSize" size="small">
+          <el-radio-group v-model="settingsStore.settings.app.elementSize" size="small">
             <el-radio-button label="large">
               较大
             </el-radio-button>
@@ -224,7 +220,7 @@ function handleCopy() {
           <div class="label">
             是否启用权限
           </div>
-          <el-switch v-model="settings.app.enablePermission" />
+          <el-switch v-model="settingsStore.settings.app.enablePermission" />
         </div>
       </div>
       <div v-if="isSupported" class="action-buttons">

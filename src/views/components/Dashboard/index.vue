@@ -64,13 +64,13 @@ watch(() => settingsStore.previewAllWindows, (val) => {
 
 onMounted(() => {
   hotkeys('alt+w', (e) => {
-    if (settingsStore.window.enableHotkeys && windowStore.list.length > 1 && windowStore.list.every(item => !item.isMaximize)) {
+    if (settingsStore.settings.window.enableHotkeys && windowStore.list.length > 1 && windowStore.list.every(item => !item.isMaximize)) {
       e.preventDefault()
       if (settingsStore.previewAllWindows) {
         exitPreviewAllWindows()
       }
       else {
-        settingsStore.updateSettings({
+        settingsStore.$patch({
           previewAllWindows: true,
         })
       }
@@ -97,7 +97,7 @@ eventBus.on('scrollToWindow', scrollToWindow)
 
 function exitPreviewAllWindows() {
   if (settingsStore.previewAllWindows) {
-    settingsStore.updateSettings({
+    settingsStore.$patch({
       previewAllWindows: false,
     })
     scrollToOriginal(originalScrollLeft.value)
@@ -122,7 +122,7 @@ function maskClick(windowName: string) {
         预览
       </div>
       <el-tooltip content="可以通过快捷键 Alt + W 快速进入窗口预览界面" placement="left" :append-to-body="false">
-        <el-icon v-show="settingsStore.window.enableHotkeys" class="help">
+        <el-icon v-show="settingsStore.settings.window.enableHotkeys" class="help">
           <svg-icon name="ep:question-filled" />
         </el-icon>
       </el-tooltip>

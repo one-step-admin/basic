@@ -14,7 +14,7 @@ const { isFullscreen, toggle } = useFullscreen()
 const appWindow = useWindow()
 
 function previewAllWindows() {
-  settingsStore.updateSettings({
+  settingsStore.$patch({
     previewAllWindows: true,
   })
 }
@@ -59,22 +59,22 @@ function pro() {
           <svg-icon name="toolbar-preview-windows" />
         </el-icon>
       </span>
-      <span v-if="settingsStore.navSearch.enable" class="item" @click="eventBus.emit('global-search-toggle')">
+      <span v-if="settingsStore.settings.navSearch.enable" class="item" @click="eventBus.emit('global-search-toggle')">
         <el-icon>
           <svg-icon name="ep:search" />
         </el-icon>
       </span>
-      <span v-if="settingsStore.toolbar.enableFullscreen" class="item" @click="toggle">
+      <span v-if="settingsStore.settings.toolbar.enableFullscreen" class="item" @click="toggle">
         <el-icon>
           <svg-icon :name="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" />
         </el-icon>
       </span>
-      <span v-if="settingsStore.toolbar.enableColorScheme" class="item" @click="settingsStore.setColorScheme(settingsStore.app.colorScheme === 'dark' ? 'light' : 'dark')">
+      <span v-if="settingsStore.settings.toolbar.enableColorScheme" class="item" @click="settingsStore.setColorScheme(settingsStore.settings.app.colorScheme === 'dark' ? 'light' : 'dark')">
         <el-icon>
-          <svg-icon :name="settingsStore.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
+          <svg-icon :name="settingsStore.settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
         </el-icon>
       </span>
-      <span v-if="settingsStore.toolbar.enableAppSetting" class="item" @click="eventBus.emit('global-theme-toggle')">
+      <span v-if="settingsStore.settings.toolbar.enableAppSetting" class="item" @click="eventBus.emit('global-theme-toggle')">
         <el-icon>
           <svg-icon name="ep:setting" />
         </el-icon>

@@ -70,13 +70,13 @@ onMounted(() => {
     isShow.value = !isShow.value
   })
   hotkeys('alt+s', (e) => {
-    if (settingsStore.navSearch.enable && settingsStore.navSearch.enableHotkeys && windowStore.list.every(item => !item.isMaximize)) {
+    if (settingsStore.settings.navSearch.enable && settingsStore.settings.navSearch.enableHotkeys && windowStore.list.every(item => !item.isMaximize)) {
       e.preventDefault()
       isShow.value = true
     }
   })
   hotkeys('esc', (e) => {
-    if (settingsStore.navSearch.enable) {
+    if (settingsStore.settings.navSearch.enable) {
       e.preventDefault()
       eventBus.emit('global-search-toggle')
     }

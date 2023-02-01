@@ -43,7 +43,7 @@ function permissionCheck2(permissions: string[]) {
 <template>
   <div>
     <page-main>
-      <div v-if="!settingsStore.app.enablePermission">
+      <div v-if="!settingsStore.settings.app.enablePermission">
         请到 seeting.js 里打开权限功能，再进入该页面查看演示
       </div>
       <div v-else>
