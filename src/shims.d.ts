@@ -18,5 +18,4 @@ declare const __SYSTEM_INFO__: {
   lastBuildTime: string
 }
 
-declare module '@wcjiang/notify'
 declare module '@bytemd/plugin-gfm/lib/locales/zh_Hans.json'
