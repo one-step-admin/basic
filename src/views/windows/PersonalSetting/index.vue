@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { UploadProps } from 'element-plus'
+import { ElMessage } from 'element-plus'
 
 const appWindow = useWindow()
 

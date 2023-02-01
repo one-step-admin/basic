@@ -1,5 +1,6 @@
 <script lang="ts" setup name="ThemeSetting">
 import { useClipboard } from '@vueuse/core'
+import { ElMessage } from 'element-plus'
 import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
@@ -39,7 +40,7 @@ function handleCopy() {
 
 <template>
   <div>
-    <el-drawer v-model="isShow" title="应用配置" direction="rtl" :size="350" custom-class="flex-container">
+    <el-drawer v-model="isShow" title="应用配置" direction="rtl" :size="350" class="flex-container">
       <div class="container">
         <el-alert title="应用配置可实时预览效果，但仅是临时生效，要想真正作用于项目，可以点击下方的“复制配置”按钮，将配置粘贴到 src/settings.custom.json 中即可，或者也可在 src/settings.js 中直接修改默认配置。同时建议在生产环境隐藏应用配置功能。" type="error" :closable="false" />
         <el-divider>颜色主题</el-divider>

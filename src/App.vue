@@ -28,7 +28,7 @@ const subSidebarActualWidth = computed(() => {
 watch(() => settingsStore.app.colorScheme, (val) => {
   if (val === '') {
     settingsStore.$patch((state) => {
-      state.app.colorScheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      state.app.colorScheme = window.matchMedia && (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
     })
   }
   else {
