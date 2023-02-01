@@ -17,7 +17,7 @@ const menuStore = useMenuStore()
 
 onMounted(() => {
   hotkeys('alt+`', (e) => {
-    if (settingsStore.menu.enableHotkeys) {
+    if (settingsStore.settings.menu.enableHotkeys) {
       e.preventDefault()
       useMenu().switchTo(menuStore.actived + 1 < menuStore.allMenus.length ? menuStore.actived + 1 : 0)
     }
@@ -38,11 +38,11 @@ onUnmounted(() => {
           <SubSidebar />
         </div>
         <div class="main-container">
-          <Topbar v-if="!(settingsStore.menu.menuMode === 'head' && !settingsStore.menu.enableSubMenuCollapseButton)" />
+          <Topbar v-if="!(settingsStore.settings.menu.menuMode === 'head' && !settingsStore.settings.menu.enableSubMenuCollapseButton)" />
           <div class="main">
             <Dashboard />
           </div>
-          <Copyright v-if="settingsStore.copyright.enable" />
+          <Copyright v-if="settingsStore.settings.copyright.enable" />
         </div>
       </div>
       <el-backtop :right="20" :bottom="20" title="回到顶部" />

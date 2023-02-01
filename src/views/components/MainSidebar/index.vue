@@ -11,10 +11,10 @@ const menu = useMenu()
 
 <template>
   <transition name="main-sidebar">
-    <div v-if="['side'].includes(settingsStore.menu.menuMode)" class="main-sidebar-container">
+    <div v-if="['side'].includes(settingsStore.settings.menu.menuMode)" class="main-sidebar-container">
       <Logo :show-title="false" class="sidebar-logo" />
       <!-- 侧边栏模式（含主导航） -->
-      <div v-if="settingsStore.menu.menuMode === 'side'" class="nav">
+      <div v-if="settingsStore.settings.menu.menuMode === 'side'" class="nav">
         <template v-for="(item, index) in menuStore.allMenus" :key="index">
           <div v-if="item.children && item.children.length !== 0" class="item-container" :class="{ active: index === menuStore.actived }">
             <div class="item" :title="item.title" @click="menu.switchTo(index)">

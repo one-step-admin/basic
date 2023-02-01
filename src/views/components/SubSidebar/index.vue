@@ -15,17 +15,17 @@ function onSidebarScroll(e: Event) {
 </script>
 
 <template>
-  <div v-if="['side', 'head', 'single'].includes(settingsStore.menu.menuMode)" class="sub-sidebar-container" :class="{ 'is-collapse': settingsStore.menu.subMenuCollapse }" @scroll="onSidebarScroll">
+  <div v-if="['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode)" class="sub-sidebar-container" :class="{ 'is-collapse': settingsStore.settings.menu.subMenuCollapse }" @scroll="onSidebarScroll">
     <Logo
-      :show-logo="settingsStore.menu.menuMode === 'single'" class="sidebar-logo" :class="{
-        'sidebar-logo-bg': settingsStore.menu.menuMode === 'single',
+      :show-logo="settingsStore.settings.menu.menuMode === 'single'" class="sidebar-logo" :class="{
+        'sidebar-logo-bg': settingsStore.settings.menu.menuMode === 'single',
         'shadow': sidebarScrollTop,
       }"
     />
     <!-- 侧边栏模式（无主导航）或侧边栏精简模式 -->
     <el-menu
-      :unique-opened="settingsStore.menu.subMenuUniqueOpened" :collapse="settingsStore.menu.subMenuCollapse" :collapse-transition="false" :class="{
-        'is-collapse-without-logo': settingsStore.menu.menuMode !== 'single' && settingsStore.menu.subMenuCollapse,
+      :unique-opened="settingsStore.settings.menu.subMenuUniqueOpened" :collapse="settingsStore.settings.menu.subMenuCollapse" :collapse-transition="false" :class="{
+        'is-collapse-without-logo': settingsStore.settings.menu.menuMode !== 'single' && settingsStore.settings.menu.subMenuCollapse,
       }"
     >
       <transition-group name="sub-sidebar">

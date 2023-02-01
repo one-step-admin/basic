@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
   const menuStore = useMenuStore()
   if (userStore.isLogin) {
     if (!menuStore.isGenerate) {
-      if (settingsStore.menu.baseOn === 'frontend') {
+      if (settingsStore.settings.menu.baseOn === 'frontend') {
         menuStore.generateMenusAtFront()
       }
       else {

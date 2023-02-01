@@ -10,7 +10,7 @@ const settingsStore = useSettingsStore()
 // 侧边栏主导航当前实际宽度
 const mainSidebarActualWidth = computed(() => {
   let actualWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--g-main-sidebar-width'))
-  if (['head', 'single'].includes(settingsStore.menu.menuMode)) {
+  if (['head', 'single'].includes(settingsStore.settings.menu.menuMode)) {
     actualWidth = 0
   }
   return `${actualWidth}px`
@@ -19,34 +19,10 @@ const mainSidebarActualWidth = computed(() => {
 // 侧边栏次导航当前实际宽度
 const subSidebarActualWidth = computed(() => {
   let actualWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--g-sub-sidebar-width'))
-  if (settingsStore.menu.subMenuCollapse) {
+  if (settingsStore.settings.menu.subMenuCollapse) {
     actualWidth = 64
   }
   return `${actualWidth}px`
-})
-
-watch(() => settingsStore.app.colorScheme, (val) => {
-  if (val === '') {
-    settingsStore.$patch((state) => {
-      state.app.colorScheme = window.matchMedia && (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-    })
-  }
-  else {
-    if (settingsStore.app.colorScheme === 'dark') {
-      document.documentElement.classList.add('dark')
-    }
-    else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
-}, {
-  immediate: true,
-})
-
-watch(() => settingsStore.menu.menuMode, () => {
-  document.body.setAttribute('data-menu-mode', settingsStore.menu.menuMode)
-}, {
-  immediate: true,
 })
 
 watch(() => settingsStore.title, () => {
@@ -63,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn" :size="settingsStore.app.elementSize">
+  <el-config-provider :locale="zhCn" :size="settingsStore.settings.app.elementSize">
     <RouterView
       :style="{
         '--g-main-sidebar-actual-width': mainSidebarActualWidth,

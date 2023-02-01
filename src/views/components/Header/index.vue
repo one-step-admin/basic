@@ -12,12 +12,12 @@ const menu = useMenu()
 
 <template>
   <transition name="header">
-    <header v-if="['head'].includes(settingsStore.menu.menuMode)">
+    <header v-if="['head'].includes(settingsStore.settings.menu.menuMode)">
       <div class="header-container">
         <div class="main">
           <Logo />
           <!-- 顶部模式 -->
-          <div v-if="settingsStore.menu.menuMode === 'head'" class="nav">
+          <div v-if="settingsStore.settings.menu.menuMode === 'head'" class="nav">
             <template v-for="(item, index) in menuStore.allMenus" :key="index">
               <div v-if="item.children && item.children.length !== 0" class="item-container" :class="{ active: index === menuStore.actived }">
                 <div class="item" @click="menu.switchTo(index)">

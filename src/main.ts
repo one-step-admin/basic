@@ -13,7 +13,7 @@ import 'virtual:svg-icons-register'
 import '@/assets/styles/globals.scss'
 // 加载 iconify 图标（element plus）
 import { downloadAndInstall } from '@/iconify-ep'
-if (useSettingsStore(pinia).app.iconifyOfflineUse) {
+if (useSettingsStore(pinia).settings.app.iconifyOfflineUse) {
   downloadAndInstall()
 }
 
