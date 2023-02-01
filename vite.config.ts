@@ -51,16 +51,6 @@ export default ({ mode, command }) => {
         lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
       }),
     },
-    optimizeDeps: {
-      include: [
-        'element-plus',
-        'element-plus/es',
-        'element-plus/es/components/message/style/css',
-        'element-plus/es/components/notification/style/css',
-        'element-plus/es/components/message-box/style/css',
-        'element-plus/es/components/loading/style/css',
-      ],
-    },
     plugins: createVitePlugins(env, command === 'build'),
     resolve: {
       alias: {

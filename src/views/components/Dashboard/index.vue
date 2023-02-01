@@ -1,5 +1,6 @@
 <script lang="ts" setup name="Dashboard">
 import hotkeys from 'hotkeys-js'
+import { ElMessageBox } from 'element-plus'
 import Empty from './Empty/index.vue'
 import eventBus from '@/utils/eventBus'
 

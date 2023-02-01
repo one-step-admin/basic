@@ -1,6 +1,5 @@
 <script lang="ts" setup name="MainSidebar">
 import Logo from '../Logo/index.vue'
-import SidebarItem from '../SidebarItem/index.vue'
 
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'

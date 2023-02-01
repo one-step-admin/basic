@@ -1,11 +1,10 @@
 <script lang="ts" setup name="BuyIt">
-import useSettingsStore from '@/store/modules/settings'
+import { ElNotification } from 'element-plus'
 
 const isActived = ref(true)
 setTimeout(() => {
   isActived.value = false
 }, 5000)
-const settingsStore = useSettingsStore()
 
 onMounted(() => {
   ElNotification({
