@@ -15,9 +15,7 @@ import createBanner from './banner'
 
 export default function createVitePlugins(viteEnv, isBuild = false) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
-    vue({
-      reactivityTransform: true,
-    }),
+    vue(),
     vueJsx(),
   ]
   !isBuild && vitePlugins.push(createRestart())
