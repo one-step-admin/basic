@@ -1,4 +1,4 @@
-<script lang="ts" setup name="SearchBar">
+<script lang="ts" setup>
 const props = defineProps({
   showMore: {
     type: Boolean,
@@ -11,6 +11,10 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['toggle'])
+
+defineOptions({
+  name: 'SearchBar',
+})
 
 const isUnfold = ref(!props.unfold)
 

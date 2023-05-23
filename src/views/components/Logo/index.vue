@@ -1,4 +1,4 @@
-<script lang="ts" setup name="Logo">
+<script lang="ts" setup>
 import imgLogo from '@/assets/images/logo.png'
 
 defineProps({
@@ -10,6 +10,10 @@ defineProps({
     type: Boolean,
     default: true,
   },
+})
+
+defineOptions({
+  name: 'Logo',
 })
 
 const title = ref(import.meta.env.VITE_APP_TITLE)

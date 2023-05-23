@@ -1,11 +1,14 @@
-<script lang="ts" setup name="Dashboard">
+<script lang="ts" setup>
 import hotkeys from 'hotkeys-js'
 import { ElMessageBox } from 'element-plus'
 import Empty from './Empty/index.vue'
-import eventBus from '@/utils/eventBus'
-
 import useSettingsStore from '@/store/modules/settings'
 import useWindowStore from '@/store/modules/window'
+import eventBus from '@/utils/eventBus'
+
+defineOptions({
+  name: 'Dashboard',
+})
 
 const settingsStore = useSettingsStore()
 const windowStore = useWindowStore()

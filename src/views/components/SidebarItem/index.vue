@@ -1,4 +1,4 @@
-<script lang="ts" setup name="SidebarItem">
+<script lang="ts" setup>
 import SidebarItem from './index.vue'
 
 defineProps({
@@ -10,6 +10,10 @@ defineProps({
     type: Boolean,
     default: false,
   },
+})
+
+defineOptions({
+  name: 'SidebarItem',
 })
 
 const appWindow = useWindow()

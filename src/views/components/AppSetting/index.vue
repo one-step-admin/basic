@@ -1,9 +1,13 @@
-<script lang="ts" setup name="ThemeSetting">
+<script lang="ts" setup>
 import { useClipboard } from '@vueuse/core'
 import { ElMessage } from 'element-plus'
 import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
+
+defineOptions({
+  name: 'ThemeSetting',
+})
 
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
@@ -345,10 +349,7 @@ function handleCopy() {
       }
 
       .mode-container {
-        top: 5px;
-        left: 40px;
-        right: 5px;
-        bottom: 5px;
+        inset: 5px 5px 5px 40px;
         border: 1px dashed var(--g-sub-sidebar-menu-active-bg);
       }
     }
@@ -374,10 +375,7 @@ function handleCopy() {
       }
 
       .mode-container {
-        top: 20px;
-        left: 25px;
-        right: 5px;
-        bottom: 5px;
+        inset: 20px 5px 5px 25px;
         border: 1px dashed var(--g-sub-sidebar-menu-active-bg);
       }
     }
@@ -395,10 +393,7 @@ function handleCopy() {
       }
 
       .mode-container {
-        top: 5px;
-        left: 25px;
-        right: 5px;
-        bottom: 5px;
+        inset: 5px 5px 5px 25px;
         border: 1px dashed var(--g-sub-sidebar-menu-active-bg);
       }
     }

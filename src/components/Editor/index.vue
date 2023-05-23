@@ -1,4 +1,4 @@
-<script lang="ts" setup name="Editor">
+<script lang="ts" setup>
 import tinymce from 'tinymce/tinymce'
 import TinymceEditor from '@tinymce/tinymce-vue'
 import 'tinymce/themes/silver/theme'
@@ -17,7 +17,6 @@ import 'tinymce/plugins/table'
 import 'tinymce/plugins/wordcount'
 import 'tinymce/plugins/code'
 import 'tinymce/plugins/searchreplace'
-
 import useSettingsStore from '@/store/modules/settings'
 
 const props = defineProps({
@@ -36,6 +35,10 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+
+defineOptions({
+  name: 'Editor',
+})
 
 const settingsStore = useSettingsStore()
 
