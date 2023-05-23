@@ -35,7 +35,7 @@ function editPassword() {
         <h2>基本设置</h2>
         <el-row :gutter="20">
           <el-col :span="16">
-            <el-form ref="formRef" :model="form" label-width="120px" label-suffix="：">
+            <el-form :model="form" label-width="120px" label-suffix="：">
               <el-form-item label="名 称">
                 <el-input v-model="form.name" placeholder="请输入你的名称" />
               </el-form-item>
