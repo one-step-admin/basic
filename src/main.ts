@@ -1,3 +1,6 @@
+import './utils/baidu'
+
+import './utils/system.copyright'
 import ElementPlus from 'element-plus'
 import App from './App.vue'
 import pinia from './store'
