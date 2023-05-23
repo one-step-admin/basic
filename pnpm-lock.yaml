@@ -75,9 +75,6 @@ devDependencies:
   http-server:
     specifier: ^14.1.1
     version: 14.1.1
-  husky:
-    specifier: ^8.0.3
-    version: 8.0.3
   inquirer:
     specifier: ^9.2.6
     version: 9.2.6
@@ -96,6 +93,9 @@ devDependencies:
   sass:
     specifier: ^1.62.1
     version: 1.62.1
+  simple-git-hooks:
+    specifier: ^2.8.1
+    version: 2.8.1
   stylelint:
     specifier: ^15.6.2
     version: 15.6.2
@@ -4381,12 +4381,6 @@ packages:
     engines: {node: '>=14.18.0'}
     dev: true
 
-  /husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
-    hasBin: true
-    dev: true
-
   /iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -6805,6 +6799,12 @@ packages:
   /signal-exit@4.0.2:
     resolution: {integrity: sha512-MY2/qGx4enyjprQnFaZsHib3Yadh3IXyV2C321GY0pjGfVBu4un0uDJkwgdxqO+Rdx8JMT8IfJIRwbYVz3Ob3Q==}
     engines: {node: '>=14'}
+    dev: true
+
+  /simple-git-hooks@2.8.1:
+    resolution: {integrity: sha512-DYpcVR1AGtSfFUNzlBdHrQGPsOhuuEJ/FkmPOOlFysP60AHd3nsEpkGq/QEOdtUyT1Qhk7w9oLmFoMG+75BDog==}
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /slash@3.0.0:
