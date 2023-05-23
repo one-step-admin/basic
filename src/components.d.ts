@@ -14,7 +14,6 @@ declare module '@vue/runtime-core' {
     AuthAll: typeof import('./components/AuthAll/index.vue')['default']
     ComponentBasicExampleAlert: typeof import('./components/ComponentBasicExampleAlert/index.vue')['default']
     Copyright: typeof import('./components/Copyright/index.vue')['default']
-    Editor: typeof import('./components/Editor/index.vue')['default']
     FileUpload: typeof import('./components/FileUpload/index.vue')['default']
     ImagePreview: typeof import('./components/ImagePreview/index.vue')['default']
     ImagesUpload: typeof import('./components/ImagesUpload/index.vue')['default']
