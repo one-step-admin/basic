@@ -12,7 +12,6 @@ declare module '@vue/runtime-core' {
     ActionContainer: typeof import('./components/ActionContainer/index.vue')['default']
     Auth: typeof import('./components/Auth/index.vue')['default']
     AuthAll: typeof import('./components/AuthAll/index.vue')['default']
-    BatchActionBar: typeof import('./components/BatchActionBar/index.vue')['default']
     ComponentBasicExampleAlert: typeof import('./components/ComponentBasicExampleAlert/index.vue')['default']
     Copyright: typeof import('./components/Copyright/index.vue')['default']
     Editor: typeof import('./components/Editor/index.vue')['default']
