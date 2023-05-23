@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 function disabledDate(time: Date) {
   return time.getTime() > Date.now()
 }

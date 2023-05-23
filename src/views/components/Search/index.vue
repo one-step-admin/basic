@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import hotkeys from 'hotkeys-js'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'

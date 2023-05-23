@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import hotkeys from 'hotkeys-js'
 import Header from './components/Header/index.vue'
 import MainSidebar from './components/MainSidebar/index.vue'

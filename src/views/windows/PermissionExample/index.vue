@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ElLoading, ElMessage } from 'element-plus'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'

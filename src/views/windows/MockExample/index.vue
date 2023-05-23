@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ElNotification } from 'element-plus'
 import useUserStore from '@/store/modules/user'
 const userStore = useUserStore()

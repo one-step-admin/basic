@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const makeRange = (start: number, end: number) => {
   const result: number[] = []
   for (let i = start; i <= end; i++) {

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const content = ref('<h1>Fantastic-admin</h1>')
 </script>
 

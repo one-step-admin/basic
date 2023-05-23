@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const value1 = ref('')
 const value2 = ref<any>([
   new Date(2000, 10, 10, 10, 10),

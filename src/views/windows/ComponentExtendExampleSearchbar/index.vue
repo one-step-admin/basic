@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const search = ref({
   name: '',
   department_id: '',
