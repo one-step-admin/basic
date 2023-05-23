@@ -6,7 +6,6 @@ import createRestart from './restart'
 import createHtml from './html'
 import createAutoImport from './auto-import'
 import createComponents from './components'
-import createSetupExtend from './setup-extend'
 import createSvgIcon from './svg-icon'
 import createMock from './mock'
 import createCompression from './compression'
@@ -22,7 +21,6 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
   vitePlugins.push(createHtml(viteEnv, isBuild))
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
-  vitePlugins.push(createSetupExtend())
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createMock(viteEnv, isBuild))
   isBuild && vitePlugins.push(...createCompression(viteEnv))

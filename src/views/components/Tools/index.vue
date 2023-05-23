@@ -1,10 +1,13 @@
-<script lang="ts" setup name="UserMenu">
+<script lang="ts" setup>
 import { useFullscreen } from '@vueuse/core'
-import eventBus from '@/utils/eventBus'
-
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
 import useWindowStore from '@/store/modules/window'
+import eventBus from '@/utils/eventBus'
+
+defineOptions({
+  name: 'UserMenu',
+})
 
 const router = useRouter()
 const settingsStore = useSettingsStore()

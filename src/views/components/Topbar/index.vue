@@ -1,7 +1,11 @@
-<script lang="ts" setup name="Topbar">
+<script lang="ts" setup>
 import Tools from '../Tools/index.vue'
-
 import useSettingsStore from '@/store/modules/settings'
+
+defineOptions({
+  name: 'Topbar',
+})
+
 const settingsStore = useSettingsStore()
 </script>
 

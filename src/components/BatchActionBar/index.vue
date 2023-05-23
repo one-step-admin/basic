@@ -1,4 +1,4 @@
-<script lang="ts" setup name="BatchActionBar">
+<script lang="ts" setup>
 const props = defineProps({
   data: {
     type: Array,
@@ -11,6 +11,10 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['checkAll', 'checkNull'])
+
+defineOptions({
+  name: 'BatchActionBar',
+})
 
 const checkAll = computed({
   get() {

@@ -1,9 +1,13 @@
-<script lang="ts" setup name="Search">
+<script lang="ts" setup>
 import hotkeys from 'hotkeys-js'
-import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
 import useWindowStore from '@/store/modules/window'
+import eventBus from '@/utils/eventBus'
+
+defineOptions({
+  name: 'Search',
+})
 
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
