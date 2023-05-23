@@ -1,5 +1,6 @@
 import Mock from 'mockjs'
 import area from '@/components/PcasCascader/pcas-code.json'
+
 const Random = Mock.Random
 
 // 表单展示模式

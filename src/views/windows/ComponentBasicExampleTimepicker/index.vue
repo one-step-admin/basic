@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const makeRange = (start: number, end: number) => {
+function makeRange(start: number, end: number) {
   const result: number[] = []
   for (let i = start; i <= end; i++) {
     result.push(i)
@@ -13,10 +13,10 @@ const startTime = ref('')
 const endTime = ref('')
 
 // 如允许 17:30:00 - 18:30:00
-const disabledHours = () => {
+function disabledHours() {
   return makeRange(0, 16).concat(makeRange(19, 23))
 }
-const disabledMinutes = (hour: number) => {
+function disabledMinutes(hour: number) {
   if (hour === 17) {
     return makeRange(0, 29)
   }
@@ -27,7 +27,7 @@ const disabledMinutes = (hour: number) => {
     return makeRange(0, 59)
   }
 }
-const disabledSeconds = (hour: number, minute: number) => {
+function disabledSeconds(hour: number, minute: number) {
   if (hour === 18 && minute === 30) {
     return makeRange(1, 59)
   }
