@@ -24,10 +24,6 @@ const menus: Menu.recordRaw = {
       windowName: 'ComponentExtendExampleSearchbar',
     },
     {
-      title: '批量操作栏',
-      windowName: 'ComponentExtendExampleBatchactionbar',
-    },
-    {
       title: '表格自适应',
       windowName: 'ComponentExtendExampleTableautoheight',
     },
