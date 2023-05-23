@@ -120,6 +120,9 @@ devDependencies:
   stylelint-scss:
     specifier: ^5.0.0
     version: 5.0.0(stylelint@15.6.2)
+  stylelint-stylistic:
+    specifier: ^0.4.2
+    version: 0.4.2(stylelint@15.6.2)
   svgo:
     specifier: ^3.0.2
     version: 3.0.2
@@ -7350,6 +7353,18 @@ packages:
       postcss-resolve-nested-selector: 0.1.1
       postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
+      stylelint: 15.6.2
+    dev: true
+
+  /stylelint-stylistic@0.4.2(stylelint@15.6.2):
+    resolution: {integrity: sha512-WF/fLvotTklG8LZ+fO0nxhu5swVENHhSat2l5ckrmtXpij1P9ybYa56XivOg/E02CH+Ygui5pd2hQrlli3NCDQ==}
+    peerDependencies:
+      stylelint: ^15.0.0
+    dependencies:
+      postcss: 8.4.23
+      postcss-media-query-parser: 0.2.3
+      postcss-value-parser: 4.2.0
+      style-search: 0.1.0
       stylelint: 15.6.2
     dev: true
 
