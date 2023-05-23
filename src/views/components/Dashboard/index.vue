@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import hotkeys from 'hotkeys-js'
 import { ElMessageBox } from 'element-plus'
 import Empty from './Empty/index.vue'

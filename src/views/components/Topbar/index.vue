@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import Tools from '../Tools/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 
