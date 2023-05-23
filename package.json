@@ -12,7 +12,6 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "@tinymce/tinymce-vue": "^5.1.0",
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "axios": "^1.4.0",
@@ -24,7 +23,6 @@
     "mockjs": "^1.1.0",
     "pinia": "^2.1.3",
     "qs": "^6.11.2",
-    "tinymce": "^6.4.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.1"
   },

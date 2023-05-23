@@ -43,10 +43,6 @@ const menus: Menu.recordRaw = {
       title: '省市区街道联动',
       windowName: 'ComponentExtendExamplePcas',
     },
-    {
-      title: '编辑器',
-      windowName: 'ComponentExtendExampleEditor',
-    },
   ],
 }
 
