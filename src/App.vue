@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import eruda from 'eruda'
+import VConsole from 'vconsole'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import hotkeys from 'hotkeys-js'
 import eventBus from './utils/eventBus'
@@ -36,6 +38,9 @@ onMounted(() => {
     eventBus.emit('global-system-info-toggle')
   })
 })
+
+import.meta.env.VITE_APP_DEBUG_TOOL === 'eruda' && eruda.init()
+import.meta.env.VITE_APP_DEBUG_TOOL === 'vconsole' && new VConsole()
 </script>
 
 <template>
