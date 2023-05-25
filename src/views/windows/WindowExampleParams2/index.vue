@@ -1,9 +1,7 @@
 <script setup lang="ts">
-defineProps({
-  params: {
-    type: Object,
-  },
-})
+defineProps<{
+  params: {}
+}>()
 </script>
 
 <template>

@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import SidebarItem from './index.vue'
 
-defineProps({
-  item: {
-    type: Object,
-    required: true,
+withDefaults(
+  defineProps<{
+    item: Menu.recordRaw
+    isRoot?: boolean
+  }>(),
+  {
+    isRoot: false,
   },
-  isRoot: {
-    type: Boolean,
-    default: false,
-  },
-})
+)
 
 defineOptions({
   name: 'SidebarItem',
@@ -43,7 +42,7 @@ function handleOpen(windowName: string) {
         <SidebarItem :item="route" />
       </template>
     </el-sub-menu>
-    <el-menu-item v-else-if="!item.children" :title="item.title" :index="JSON.stringify(item)" @click="handleOpen(item.windowName)">
+    <el-menu-item v-else-if="!item.children" :title="item.title" :index="JSON.stringify(item)" @click="handleOpen(item.windowName!)">
       <el-icon v-if="item.icon" class="title-icon">
         <svg-icon :name="item.icon" />
       </el-icon>

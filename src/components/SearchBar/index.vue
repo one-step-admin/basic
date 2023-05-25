@@ -1,44 +1,54 @@
 <script setup lang="ts">
-const props = defineProps({
-  showMore: {
-    type: Boolean,
-    default: false,
+const props = withDefaults(
+  defineProps<{
+    fold?: boolean
+    showToggle?: boolean
+    background?: boolean
+  }>(),
+  {
+    fold: true,
+    showToggle: true,
+    background: false,
   },
-  unfold: {
-    type: Boolean,
-    default: false,
-  },
-})
+)
 
-const emit = defineEmits(['toggle'])
+const emits = defineEmits<{
+  'update:fold': [
+    value: boolean,
+  ]
+  'toggle': [
+    value: boolean,
+  ]
+}>()
 
 defineOptions({
   name: 'SearchBar',
 })
 
-const isUnfold = ref(!props.unfold)
+const isFold = ref(props.fold)
 
-watch(() => props.unfold, () => toggle(), {
-  immediate: true,
+watch(() => props.fold, (value) => {
+  isFold.value = value
+  emits('update:fold', value)
 })
 
 function toggle() {
-  isUnfold.value = !isUnfold.value
-  emit('toggle', isUnfold.value)
+  isFold.value = !isFold.value
+  emits('toggle', isFold.value)
 }
 </script>
 
 <template>
   <div class="search-container">
-    <slot />
-    <div v-if="showMore" class="more">
+    <slot :fold="isFold" />
+    <div v-if="showToggle" class="toggle">
       <el-button text size="small" @click="toggle">
         <template #icon>
           <el-icon>
-            <svg-icon :name="isUnfold ? 'ep:caret-top' : 'ep:caret-bottom'" />
+            <svg-icon :name="isFold ? 'ep:caret-bottom' : 'ep:caret-top' " />
           </el-icon>
         </template>
-        {{ isUnfold ? '收起' : '展开' }}
+        {{ isFold ? '展开' : '收起' }}
       </el-button>
     </div>
   </div>
@@ -47,17 +57,11 @@ function toggle() {
 <style lang="scss" scoped>
 .search-container {
   position: relative;
-  margin: 20px 0;
-  padding: 20px;
-  background-color: var(--el-fill-color-lighter);
-  transition: background-color 0.3s;
 
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
+  &.has-bg {
+    padding: 20px;
+    background-color: var(--el-fill-color-lighter);
+    transition: background-color 0.3s;
   }
 
   :deep(.el-form) {
@@ -72,7 +76,7 @@ function toggle() {
     }
   }
 
-  .more {
+  .toggle {
     position: relative;
     text-align: center;
     margin-bottom: -10px;
