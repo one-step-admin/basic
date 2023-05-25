@@ -6,7 +6,7 @@ import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
 
 defineOptions({
-  name: 'ThemeSetting',
+  name: 'AppSetting',
 })
 
 const settingsStore = useSettingsStore()
@@ -21,7 +21,7 @@ watch(() => settingsStore.settings.menu.menuMode, (value) => {
 })
 
 onMounted(() => {
-  eventBus.on('global-theme-toggle', () => {
+  eventBus.on('global-app-setting-toggle', () => {
     isShow.value = !isShow.value
   })
 })

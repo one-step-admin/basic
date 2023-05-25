@@ -77,11 +77,6 @@ function pro() {
           <svg-icon :name="settingsStore.settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
         </el-icon>
       </span>
-      <span v-if="settingsStore.settings.toolbar.enableAppSetting" class="item" @click="eventBus.emit('global-theme-toggle')">
-        <el-icon>
-          <svg-icon name="ep:setting" />
-        </el-icon>
-      </span>
     </div>
     <el-dropdown class="user-container" @command="userCommand">
       <div class="user-wrapper">
