@@ -2,58 +2,42 @@
 import type { UploadProps } from 'element-plus'
 import { ElMessage } from 'element-plus'
 
-const props = defineProps({
-  action: {
-    type: String,
-    required: true,
+const props = withDefaults(
+  defineProps<{
+    action: UploadProps['action']
+    headers?: UploadProps['headers']
+    data?: UploadProps['data']
+    name?: UploadProps['name']
+    url?: string[]
+    size?: number
+    max?: number
+    width?: number
+    height?: number
+    placeholder?: string
+    notip?: boolean
+    ext?: string[]
+  }>(),
+  {
+    name: 'file',
+    url: () => [],
+    size: 2,
+    max: 3,
+    width: 150,
+    height: 150,
+    placeholder: '',
+    notip: false,
+    ext: () => ['jpg', 'png', 'gif', 'bmp'],
   },
-  headers: {
-    type: Object,
-    default: () => {},
-  },
-  data: {
-    type: Object,
-    default: () => {},
-  },
-  name: {
-    type: String,
-    default: 'file',
-  },
-  url: {
-    type: Array,
-    default: () => [],
-  },
-  max: {
-    type: Number,
-    default: 3,
-  },
-  size: {
-    type: Number,
-    default: 2,
-  },
-  width: {
-    type: Number,
-    default: 150,
-  },
-  height: {
-    type: Number,
-    default: 150,
-  },
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  notip: {
-    type: Boolean,
-    default: false,
-  },
-  ext: {
-    type: Array,
-    default: () => ['jpg', 'png', 'gif', 'bmp'],
-  },
-})
+)
 
-const emit = defineEmits(['update:url', 'onSuccess'])
+const emits = defineEmits<{
+  'update:url': [
+    url: string[],
+  ]
+  'onSuccess': [
+    res: any,
+  ]
+}>()
 
 defineOptions({
   name: 'ImagesUpload',
@@ -81,7 +65,7 @@ function previewClose() {
 function remove(index: number) {
   const url = props.url
   url.splice(index, 1)
-  emit('update:url', url)
+  emits('update:url', url)
 }
 // 移动
 function move(index: number, type: 'left' | 'right') {
@@ -92,12 +76,12 @@ function move(index: number, type: 'left' | 'right') {
   if (type === 'right' && index !== url.length - 1) {
     url[index] = url.splice(index + 1, 1, url[index])[0]
   }
-  emit('update:url', url)
+  emits('update:url', url)
 }
 
 const beforeUpload: UploadProps['beforeUpload'] = (file) => {
   const fileName = file.name.split('.')
-  const fileExt = fileName.at(-1)
+  const fileExt = fileName.at(-1) ?? ''
   const isTypeOk = props.ext.includes(fileExt)
   const isSizeOk = file.size / 1024 / 1024 < props.size
   if (!isTypeOk) {
@@ -117,7 +101,7 @@ const onProgress: UploadProps['onProgress'] = (file) => {
 const onSuccess: UploadProps['onSuccess'] = (res) => {
   uploadData.value.progress.preview = ''
   uploadData.value.progress.percent = 0
-  emit('onSuccess', res)
+  emits('onSuccess', res)
 }
 </script>
 

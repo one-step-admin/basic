@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import imgLogo from '@/assets/images/logo.png'
 
-defineProps({
-  showLogo: {
-    type: Boolean,
-    default: true,
+withDefaults(
+  defineProps<{
+    showLogo?: boolean
+    showTitle?: boolean
+  }>(),
+  {
+    showLogo: true,
+    showTitle: true,
   },
-  showTitle: {
-    type: Boolean,
-    default: true,
-  },
-})
+)
 
 defineOptions({
   name: 'Logo',

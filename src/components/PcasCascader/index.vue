@@ -2,26 +2,31 @@
 // 行政区划数据来源于 https://github.com/modood/Administrative-divisions-of-China
 import pcasRaw from './pcas-code.json'
 
-const props = defineProps({
-  modelValue: {
-    type: Array,
-    default: () => [],
+const props = withDefaults(
+  defineProps<{
+    modelValue: string[] | {
+      code: string
+      name: string
+    }[]
+    disabled?: boolean
+    type?: 'pc' | 'pca' | 'pcas'
+    format?: 'code' | 'name' | 'both'
+  }>(),
+  {
+    disabled: false,
+    type: 'pca',
+    format: 'code',
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  type: {
-    type: String as () => 'pc' | 'pca' | 'pcas',
-    default: 'pca',
-  },
-  format: {
-    type: String as () => 'code' | 'name' | 'both',
-    default: 'code',
-  },
-})
+)
 
-const emit = defineEmits(['update:modelValue'])
+const emits = defineEmits<{
+  'update:modelValue': [
+    value: string[] | {
+      code: string
+      name: string
+    }[],
+  ]
+}>()
 
 defineOptions({
   name: 'PcasCascader',
@@ -87,7 +92,7 @@ const myValue = computed({
   },
   // 将 code 码转成出参数据
   set: (value) => {
-    emit('update:modelValue', value ? codeToAny(value) : [])
+    emits('update:modelValue', value ? codeToAny(value) : [])
   },
 })
 
