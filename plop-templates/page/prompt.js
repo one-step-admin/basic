@@ -1,5 +1,5 @@
-const path = require('path')
-const fs = require('fs')
+const path = require('node:path')
+const fs = require('node:fs')
 
 function getFolder(path) {
   const components = []
@@ -28,11 +28,12 @@ module.exports = {
       name: 'name',
       message: '请输入文件名',
       validate: (v) => {
-        if (!v || v.trim === '')
+        if (!v || v.trim === '') {
           return '文件名不能为空'
-
-        else
+        }
+        else {
           return true
+        }
       },
     },
   ],

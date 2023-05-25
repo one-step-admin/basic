@@ -1,6 +1,6 @@
 import useMenuStore from './menu'
 import useWindowStore from './window'
-import api from '@/api'
+import apiUser from '@/api/modules/user'
 
 export const useUserStore = defineStore(
   // 唯一ID
@@ -24,10 +24,7 @@ export const useUserStore = defineStore(
       account: string
       password: string
     }) {
-      // 通过 mock 进行登录
-      const res = await api.post('member/login', data, {
-        baseURL: '/mock/',
-      })
+      const res = await apiUser.login(data)
       localStorage.setItem('account', res.data.account)
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('failure_time', res.data.failure_time)
@@ -50,13 +47,7 @@ export const useUserStore = defineStore(
     }
     // 获取我的权限
     async function getPermissions() {
-      // 通过 mock 获取权限
-      const res = await api.get('member/permission', {
-        baseURL: '/mock/',
-        params: {
-          account: account.value,
-        },
-      })
+      const res = await apiUser.permission()
       permissions.value = res.data.permissions
       return permissions.value
     }
@@ -64,13 +55,7 @@ export const useUserStore = defineStore(
       password: string
       newpassword: string
     }) {
-      await api.post('member/edit/password', {
-        account: account.value,
-        password: data.password,
-        newpassword: data.newpassword,
-      }, {
-        baseURL: '/mock/',
-      })
+      await apiUser.passwordEdit(data)
     }
 
     return {

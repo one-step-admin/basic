@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es'
 import useSettingsStore from './settings'
 import useUserStore from './user'
-import api from '@/api'
+import apiApp from '@/api/modules/app'
 import menu from '@/menu'
 
 const useMenuStore = defineStore(
@@ -128,9 +128,7 @@ const useMenuStore = defineStore(
     }
     // 根据权限动态生成菜单（后端获取）
     async function generateMenusAtBack() {
-      await api.get('menu/list', {
-        baseURL: '/mock/',
-      }).then(async (res) => {
+      await apiApp.menuList().then(async (res) => {
         const settingsStore = useSettingsStore()
         const userStore = useUserStore()
         let accessedMenus: Menu.recordMainRaw[]
