@@ -5,6 +5,7 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
     elementSize: 'default',
     enablePermission: false,
     iconifyOfflineUse: false,
+    enableAppSetting: false,
   },
   menu: {
     baseOn: 'frontend',
@@ -18,7 +19,6 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
   toolbar: {
     enableFullscreen: false,
     enableColorScheme: false,
-    enableAppSetting: false,
   },
   navSearch: {
     enable: true,

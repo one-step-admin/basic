@@ -31,6 +31,11 @@ declare namespace Settings {
      * @默认值 `false`
      */
     iconifyOfflineUse?: boolean
+    /**
+     * 是否开启应用配置，强烈建议在生产环境中关闭
+     * @默认值 `false`
+     */
+    enableAppSetting?: boolean
   }
   interface menu {
     /**
@@ -83,11 +88,6 @@ declare namespace Settings {
      * @默认值 `false`
      */
     enableColorScheme?: boolean
-    /**
-     * 是否开启应用配置，强烈建议在生产环境中关闭
-     * @默认值 `false`
-     */
-    enableAppSetting?: boolean
   }
   interface navSearch {
     /**
