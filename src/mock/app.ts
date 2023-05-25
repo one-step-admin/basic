@@ -1,6 +1,6 @@
 export default [
   {
-    url: '/mock/menu/list',
+    url: '/mock/app/menu/list',
     method: 'get',
     response: () => {
       return {
@@ -13,7 +13,7 @@ export default [
             children: [
               {
                 title: '窗口功能',
-                icon: 'ri:window-2-line',
+                icon: 'sidebar-window',
                 children: [
                   {
                     title: '打开新窗口',
