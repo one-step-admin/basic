@@ -4,8 +4,7 @@ import { icons } from '@iconify-json/ep'
 
 <template>
   <div>
-    <ComponentBasicExampleAlert />
-    <page-main class="demo">
+    <div class="demo">
       <el-icon><svg-icon name="ep:edit" /></el-icon>
       <el-icon><svg-icon name="ep:share" /></el-icon>
       <el-icon><svg-icon name="ep:delete" /></el-icon>
@@ -17,16 +16,17 @@ import { icons } from '@iconify-json/ep'
         </template>
         搜索
       </el-button>
-    </page-main>
-    <page-main title="图标集合">
-      <div v-for="(item, index) in icons.icons" :key="index" class="list-icon">
-        <el-tooltip class="item" effect="dark" :content="`ep:${index}`" placement="top">
-          <el-icon>
-            <svg-icon :name="`ep:${index}`" />
-          </el-icon>
-        </el-tooltip>
-      </div>
-    </page-main>
+    </div>
+    <el-divider content-position="left">
+      图标集合
+    </el-divider>
+    <div v-for="(item, index) in icons.icons" :key="index" class="list-icon">
+      <el-tooltip class="item" effect="dark" :content="`ep:${index}`" placement="top">
+        <el-icon>
+          <svg-icon :name="`ep:${index}`" />
+        </el-icon>
+      </el-tooltip>
+    </div>
   </div>
 </template>
 
@@ -48,7 +48,7 @@ import { icons } from '@iconify-json/ep'
   display: inline-block;
   margin: 10px;
 
-  i {
+  .el-icon {
     font-size: 32px;
     color: #606266;
   }
