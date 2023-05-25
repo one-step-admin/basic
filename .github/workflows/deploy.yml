@@ -42,10 +42,12 @@ jobs:
         run: npm i -g @antfu/ni
 
       - name: Install dependencies
-        run: ni
+        run: ni --frozen
 
       # 运行构建脚本
       - name: Build
+        env:
+          NODE_OPTIONS: "--max-old-space-size=8192"
         run: nr build:example
 
       - name: Pushes to another repository
