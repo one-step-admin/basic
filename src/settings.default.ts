@@ -28,10 +28,10 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
     enableHotkeys: true,
   },
   copyright: {
-    enable: true,
-    dates: '2021-2022',
-    company: 'One-step-admin',
-    website: 'https://hooray.gitee.io/one-step-admin/',
+    enable: false,
+    dates: '',
+    company: '',
+    website: '',
     beian: '',
   },
 }

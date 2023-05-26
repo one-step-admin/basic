@@ -11,6 +11,12 @@ const globalSettings: Settings.all = {
     enableFullscreen: true,
     enableColorScheme: true,
   },
+  copyright: {
+    enable: true,
+    dates: '2021-2023',
+    company: 'One-step-admin',
+    website: 'https://hooray.gitee.io/one-step-admin/',
+  },
 }
 
 export default globalSettings
