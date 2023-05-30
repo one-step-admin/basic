@@ -5,8 +5,8 @@ export default function createBanner() {
 /**
  * 由 One-step-admin 提供技术支持
  * Powered by One-step-admin
- * Gitee  https://gitee.com/hooray/one-step-admin
- * Github https://github.com/hooray/one-step-admin
+ * Gitee  https://one-step-admin.gitee.io
+ * Github https://one-step-admin.github.io
  */
   `)
 }

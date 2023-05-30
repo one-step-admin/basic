@@ -4,11 +4,11 @@ const menus: Menu.recordRaw = {
   children: [
     {
       title: 'Gitee 仓库',
-      windowName: 'https://gitee.com/hooray/one-step-admin',
+      windowName: 'https://gitee.com/one-step-admin/basic',
     },
     {
       title: 'Github 仓库',
-      windowName: 'https://github.com/hooray/one-step-admin',
+      windowName: 'https://github.com/one-step-admin/basic',
     },
   ],
 }

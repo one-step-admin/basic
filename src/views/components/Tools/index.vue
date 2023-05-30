@@ -44,7 +44,7 @@ function userCommand(command: 'setting' | 'hotkeys' | 'logout') {
 }
 
 function pro() {
-  window.open('https://hooray.gitee.io/one-step-admin-pro-example/', 'top')
+  window.open('https://one-step-admin.gitee.io/pro-example', 'top')
 }
 </script>
 

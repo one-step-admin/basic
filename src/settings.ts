@@ -13,9 +13,9 @@ const globalSettings: Settings.all = {
   },
   copyright: {
     enable: true,
-    dates: '2021-2023',
+    dates: '2021-present',
     company: 'One-step-admin',
-    website: 'https://hooray.gitee.io/one-step-admin/',
+    website: 'https://one-step-admin.gitee.io',
   },
 }
 
