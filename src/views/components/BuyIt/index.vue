@@ -16,8 +16,8 @@ onMounted(() => {
     title: '温馨提示',
     dangerouslyUseHTMLString: true,
     message: `
-      <p>当前访问的是<b>专业版</b></p>
-      <p>你可以点<a href="https://one-step-admin.gitee.io/basic-example" target="_blank"><b>这里</b></a>访问基础版</p>
+      <p>当前访问的是<b>基础版</b></p>
+      <p>你可以点<a href="https://one-step-admin.gitee.io/pro-example" target="_blank"><b>这里</b></a>访问专业版</p>
     `,
     position: 'bottom-right',
     duration: 5000,
