@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
+defineOptions({
+  name: 'SvgIcon',
+})
+
 const props = withDefaults(
   defineProps<{
     name: string
@@ -12,10 +16,6 @@ const props = withDefaults(
     rotate: 0,
   },
 )
-
-defineOptions({
-  name: 'SvgIcon',
-})
 
 const transformStyle = computed(() => {
   const style = []

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import SidebarItem from './index.vue'
 
+defineOptions({
+  name: 'SidebarItem',
+})
+
 withDefaults(
   defineProps<{
     item: Menu.recordRaw
@@ -10,10 +14,6 @@ withDefaults(
     isRoot: false,
   },
 )
-
-defineOptions({
-  name: 'SidebarItem',
-})
 
 const appWindow = useWindow()
 

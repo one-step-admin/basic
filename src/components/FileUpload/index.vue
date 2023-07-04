@@ -2,6 +2,10 @@
 import { ElMessage } from 'element-plus'
 import type { UploadProps, UploadUserFile } from 'element-plus'
 
+defineOptions({
+  name: 'FileUpload',
+})
+
 const props = withDefaults(
   defineProps<{
     action: UploadProps['action']
@@ -31,10 +35,6 @@ const emits = defineEmits<{
     fileList: UploadUserFile[],
   ]
 }>()
-
-defineOptions({
-  name: 'FileUpload',
-})
 
 const beforeUpload: UploadProps['beforeUpload'] = (file) => {
   const fileName = file.name.split('.')

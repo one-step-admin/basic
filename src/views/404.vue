@@ -4,7 +4,7 @@ import { onBeforeRouteLeave } from 'vue-router'
 const router = useRouter()
 
 const data = ref({
-  inter: NaN,
+  inter: Number.NaN,
   countdown: 5,
 })
 
