@@ -15,13 +15,6 @@ declare namespace Settings {
      */
     colorScheme?: '' | 'light' | 'dark'
     /**
-     * Element Plus 组件默认尺寸
-     * @默认值 `'default'` 默认
-     * @可选值 `'large'` 大号
-     * @可选值 `'small'` 小号
-     */
-    elementSize?: 'default' | 'large' | 'small'
-    /**
      * 是否开启权限功能
      * @默认值 `false`
      */

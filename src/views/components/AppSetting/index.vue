@@ -201,27 +201,6 @@ function handleCopy() {
         <ElDivider>其它</ElDivider>
         <div class="setting-item">
           <div class="label">
-            组件尺寸
-            <ElTooltip content="全局设置 Element Plus 组件的默认尺寸大小" placement="top" :append-to-body="false">
-              <ElIcon>
-                <SvgIcon name="ep:question-filled" />
-              </ElIcon>
-            </ElTooltip>
-          </div>
-          <ElRadioGroup v-model="settingsStore.settings.app.elementSize" size="small">
-            <ElRadioButton label="large">
-              较大
-            </ElRadioButton>
-            <ElRadioButton label="default">
-              默认
-            </ElRadioButton>
-            <ElRadioButton label="small">
-              稍小
-            </ElRadioButton>
-          </ElRadioGroup>
-        </div>
-        <div class="setting-item">
-          <div class="label">
             是否启用权限
           </div>
           <ElSwitch v-model="settingsStore.settings.app.enablePermission" />

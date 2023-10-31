@@ -2,7 +2,6 @@
 const globalSettingsDefault: RecursiveRequired<Settings.all> = {
   app: {
     colorScheme: 'light',
-    elementSize: 'default',
     enablePermission: false,
     iconifyOfflineUse: false,
     enableAppSetting: false,
