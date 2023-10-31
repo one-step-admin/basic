@@ -3,13 +3,6 @@ declare interface Window {
   mozDevicePixelRatio: any
 }
 
-declare module '*.vue' {
-  import { type DefineComponent } from 'vue'
-
-  const component: DefineComponent<{}, {}, any>
-  export default component
-}
-
 declare const __SYSTEM_INFO__: {
   pkg: {
     version: string
@@ -18,6 +11,3 @@ declare const __SYSTEM_INFO__: {
   }
   lastBuildTime: string
 }
-
-declare module '@wcjiang/notify'
-declare module '@bytemd/plugin-gfm/lib/locales/zh_Hans.json'

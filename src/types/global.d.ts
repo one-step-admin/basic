@@ -160,7 +160,7 @@ declare namespace Menu {
     icon?: string
     auth?: string | string[]
     badge?: boolean | string | number | Function
-    params?: {}
+    params?: object
     windowName?: string
     breadcrumbNeste?: Menu.breadcrumb[]
     children?: recordRaw[]
@@ -184,7 +184,7 @@ interface window {
   title: string
   i18n?: string
   noTitle?: boolean
-  params?: {}
+  params?: object
   breadcrumbNeste?: any[]
   isMaximize?: boolean
   reload?: boolean

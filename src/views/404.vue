@@ -29,15 +29,15 @@ function goBack() {
 
 <template>
   <div class="notfound">
-    <svg-icon name="404" class="icon" />
+    <SvgIcon name="404" class="icon" />
     <div class="content">
       <h1>404</h1>
       <div class="desc">
         抱歉，你访问的页面不存在
       </div>
-      <el-button type="primary" @click="goBack">
+      <ElButton type="primary" @click="goBack">
         {{ data.countdown }}秒后，返回首页
-      </el-button>
+      </ElButton>
     </div>
   </div>
 </template>

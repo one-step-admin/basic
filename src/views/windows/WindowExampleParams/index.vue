@@ -6,9 +6,9 @@ const val = ref('123')
 
 <template>
   <div>
-    <el-input v-model="val" />
-    <el-button @click="appWindow.add({ title: '新窗口', name: 'WindowExampleParams2', params: { val } })">
+    <ElInput v-model="val" />
+    <ElButton @click="appWindow.add({ title: '新窗口', name: 'WindowExampleParams2', params: { val } })">
       打开并传入一个值到新窗口
-    </el-button>
+    </ElButton>
   </div>
 </template>

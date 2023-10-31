@@ -1,9 +1,9 @@
 <template>
   <div class="action-container">
     <div class="container">
-      <el-scrollbar>
+      <ElScrollbar>
         <slot />
-      </el-scrollbar>
+      </ElScrollbar>
     </div>
     <div v-if="$slots.action" class="action-bar">
       <slot name="action" />

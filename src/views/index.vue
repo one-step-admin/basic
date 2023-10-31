@@ -45,14 +45,14 @@ onUnmounted(() => {
           <Copyright v-if="settingsStore.settings.copyright.enable" />
         </div>
       </div>
-      <el-backtop :right="20" :bottom="20" title="回到顶部" />
+      <ElBacktop :right="20" :bottom="20" title="回到顶部" />
     </div>
     <Search />
     <HotkeysIntro />
     <div v-if="settingsStore.settings.app.enableAppSetting">
-      <el-icon class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
-        <svg-icon name="ep:setting" />
-      </el-icon>
+      <ElIcon class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
+        <SvgIcon name="ep:setting" />
+      </ElIcon>
       <AppSetting />
     </div>
   </div>

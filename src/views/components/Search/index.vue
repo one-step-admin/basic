@@ -146,13 +146,13 @@ function handleOpen(windowName: string) {
   <div id="search" :class="{ searching: isShow }" @click="isShow && eventBus.emit('global-search-toggle')">
     <div class="container">
       <div class="search-box" @click.stop>
-        <el-input ref="searchInputRef" v-model="searchInput" placeholder="搜索页面，支持标题模糊查询" clearable @keydown.esc="eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
+        <ElInput ref="searchInputRef" v-model="searchInput" placeholder="搜索页面，支持标题模糊查询" clearable @keydown.esc="eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
           <template #prefix>
-            <el-icon>
-              <svg-icon name="ep:search" />
-            </el-icon>
+            <ElIcon>
+              <SvgIcon name="ep:search" />
+            </ElIcon>
           </template>
-        </el-input>
+        </ElInput>
         <div class="tips">
           <div class="tip">
             <span>Alt</span>+<span>S</span>
@@ -160,22 +160,22 @@ function handleOpen(windowName: string) {
           </div>
           <div class="tip">
             <span>
-              <el-icon>
-                <svg-icon name="search-up" />
-              </el-icon>
+              <ElIcon>
+                <SvgIcon name="search-up" />
+              </ElIcon>
             </span>
             <span>
-              <el-icon>
-                <svg-icon name="search-down" />
-              </el-icon>
+              <ElIcon>
+                <SvgIcon name="search-down" />
+              </ElIcon>
             </span>
             切换搜索结果
           </div>
           <div class="tip">
             <span>
-              <el-icon>
-                <svg-icon name="search-enter" />
-              </el-icon>
+              <ElIcon>
+                <SvgIcon name="search-enter" />
+              </ElIcon>
             </span>
             打开窗口
           </div>
@@ -188,9 +188,9 @@ function handleOpen(windowName: string) {
       <div ref="searchResultRef" class="result">
         <div v-for="(item, index) in resultList" :key="item.windowName" :ref="setSearchResultItemRef" class="item" :class="{ actived: index === actived }" @click="item.windowName && handleOpen(item.windowName)" @mouseover="actived = index">
           <div class="icon">
-            <el-icon v-if="item.icon">
-              <svg-icon :name="item.icon" />
-            </el-icon>
+            <ElIcon v-if="item.icon">
+              <SvgIcon :name="item.icon" />
+            </ElIcon>
           </div>
           <div class="info">
             <div class="title">
@@ -199,9 +199,9 @@ function handleOpen(windowName: string) {
             <div class="breadcrumb">
               <span v-for="(bc, bcIndex) in item.breadcrumbNeste" :key="bcIndex">
                 {{ bc.title }}
-                <el-icon>
-                  <svg-icon name="ep:arrow-right" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:arrow-right" />
+                </ElIcon>
               </span>
             </div>
           </div>

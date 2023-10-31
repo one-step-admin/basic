@@ -1,7 +1,6 @@
 {
   "extends": [
     "stylelint-stylistic/config",
-    "stylelint-config-standard",
     "stylelint-config-standard-scss",
     "stylelint-config-standard-vue/scss"
   ],
@@ -21,7 +20,6 @@
     "property-no-unknown": null,
     "font-family-no-missing-generic-family-keyword": null,
     "selector-class-pattern": null,
-    "max-line-length": null,
     "function-no-unknown": [
       true,
       {

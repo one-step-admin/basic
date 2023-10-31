@@ -6,7 +6,7 @@ function open(url: string) {
 
 <template>
   <div class="empty-container">
-    <page-header title="欢迎使用 One-step-admin（基础版）" class="header">
+    <PageHeader title="欢迎使用 One-step-admin（基础版）" class="header">
       <template #content>
         <div>
           <div style="margin-bottom: 5px;">
@@ -15,30 +15,30 @@ function open(url: string) {
           <div>如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://fantastic-admin.gitee.io" target="_blank">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。</div>
         </div>
       </template>
-      <el-button-group style="margin-right: 10px;">
-        <el-button type="success" size="large" plain @click="open('https://one-step-admin.gitee.io')">
+      <ElButtonGroup style="margin-right: 10px;">
+        <ElButton type="success" size="large" plain @click="open('https://one-step-admin.gitee.io')">
           开发文档
-        </el-button>
-        <el-dropdown>
-          <el-button type="primary" size="large">
+        </ElButton>
+        <ElDropdown>
+          <ElButton type="primary" size="large">
             代码仓库
-            <el-icon class="el-icon--right">
-              <svg-icon name="ep:arrow-down" />
-            </el-icon>
-          </el-button>
+            <ElIcon class="el-icon--right">
+              <SvgIcon name="ep:arrow-down" />
+            </ElIcon>
+          </ElButton>
           <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item @click="open('https://gitee.com/one-step-admin/basic')">
+            <ElDropdownMenu>
+              <ElDropdownItem @click="open('https://gitee.com/one-step-admin/basic')">
                 Gitee
-              </el-dropdown-item>
-              <el-dropdown-item @click="open('https://github.com/one-step-admin/basic')">
+              </ElDropdownItem>
+              <ElDropdownItem @click="open('https://github.com/one-step-admin/basic')">
                 Github
-              </el-dropdown-item>
-            </el-dropdown-menu>
+              </ElDropdownItem>
+            </ElDropdownMenu>
           </template>
-        </el-dropdown>
-      </el-button-group>
-    </page-header>
+        </ElDropdown>
+      </ElButtonGroup>
+    </PageHeader>
   </div>
 </template>
 

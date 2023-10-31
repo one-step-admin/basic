@@ -42,14 +42,14 @@ function toggle() {
   <div class="search-container">
     <slot :fold="isFold" />
     <div v-if="showToggle" class="toggle">
-      <el-button text size="small" @click="toggle">
+      <ElButton text size="small" @click="toggle">
         <template #icon>
-          <el-icon>
-            <svg-icon :name="isFold ? 'ep:caret-bottom' : 'ep:caret-top' " />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon :name="isFold ? 'ep:caret-bottom' : 'ep:caret-top' " />
+          </ElIcon>
         </template>
         {{ isFold ? '展开' : '收起' }}
-      </el-button>
+      </ElButton>
     </div>
   </div>
 </template>

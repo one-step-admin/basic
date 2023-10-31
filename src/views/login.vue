@@ -159,183 +159,183 @@ function testAccount(account: string) {
         <div class="logo" />
         <img :src="banner" class="banner">
       </div>
-      <el-form v-show="formType === 'login'" ref="loginFormRef" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on">
+      <ElForm v-show="formType === 'login'" ref="loginFormRef" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on">
         <div class="title-container">
           <h3 class="title">
             欢迎来到 {{ title }} ! 👋🏻
           </h3>
         </div>
         <div>
-          <el-form-item prop="account">
-            <el-input v-model="loginForm.account" placeholder="用户名" type="text" tabindex="1" autocomplete="on">
+          <ElFormItem prop="account">
+            <ElInput v-model="loginForm.account" placeholder="用户名" type="text" tabindex="1" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:user" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:user" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="password">
-            <el-input ref="loginPasswordRef" v-model="loginForm.password" :type="passwordType" placeholder="密码" tabindex="2" autocomplete="on" @keyup.enter="handleLogin">
+            </ElInput>
+          </ElFormItem>
+          <ElFormItem prop="password">
+            <ElInput ref="loginPasswordRef" v-model="loginForm.password" :type="passwordType" placeholder="密码" tabindex="2" autocomplete="on" @keyup.enter="handleLogin">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:lock" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:lock" />
+                </ElIcon>
               </template>
               <template #suffix>
-                <el-icon @click="showPassword(loginPasswordRef)">
-                  <svg-icon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </el-icon>
+                <ElIcon @click="showPassword(loginPasswordRef)">
+                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
+            </ElInput>
+          </ElFormItem>
         </div>
         <div class="flex-bar">
-          <el-checkbox v-model="loginForm.remember">
+          <ElCheckbox v-model="loginForm.remember">
             记住我
-          </el-checkbox>
-          <el-link type="primary" :underline="false" @click="formType = 'reset'">
+          </ElCheckbox>
+          <ElLink type="primary" :underline="false" @click="formType = 'reset'">
             忘记密码了?
-          </el-link>
+          </ElLink>
         </div>
-        <el-button :loading="loading" type="primary" size="large" style="width: 100%;" @click.prevent="handleLogin">
+        <ElButton :loading="loading" type="primary" size="large" style="width: 100%;" @click.prevent="handleLogin">
           登录
-        </el-button>
+        </ElButton>
         <div class="sub-link">
           <span class="text">还没有帐号?</span>
-          <el-link type="primary" :underline="false" @click="formType = 'register'">
+          <ElLink type="primary" :underline="false" @click="formType = 'register'">
             创建新帐号
-          </el-link>
+          </ElLink>
         </div>
         <div style="margin-top: 20px; margin-bottom: -20px; text-align: center;">
-          <el-divider>演示账号一键登录</el-divider>
-          <el-button type="primary" size="small" plain @click="testAccount('admin')">
+          <ElDivider>演示账号一键登录</ElDivider>
+          <ElButton type="primary" size="small" plain @click="testAccount('admin')">
             admin
-          </el-button>
-          <el-button size="small" plain @click="testAccount('test')">
+          </ElButton>
+          <ElButton size="small" plain @click="testAccount('test')">
             test
-          </el-button>
+          </ElButton>
         </div>
-      </el-form>
-      <el-form v-show="formType === 'register'" ref="registerFormRef" :model="registerForm" :rules="registerRules" class="login-form" auto-complete="on">
+      </ElForm>
+      <ElForm v-show="formType === 'register'" ref="registerFormRef" :model="registerForm" :rules="registerRules" class="login-form" auto-complete="on">
         <div class="title-container">
           <h3 class="title">
             探索从这里开始! 🚀
           </h3>
         </div>
         <div>
-          <el-form-item prop="account">
-            <el-input v-model="registerForm.account" placeholder="用户名" tabindex="1" autocomplete="on">
+          <ElFormItem prop="account">
+            <ElInput v-model="registerForm.account" placeholder="用户名" tabindex="1" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:user" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:user" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="captcha">
-            <el-input v-model="registerForm.captcha" placeholder="验证码" tabindex="2" autocomplete="on">
+            </ElInput>
+          </ElFormItem>
+          <ElFormItem prop="captcha">
+            <ElInput v-model="registerForm.captcha" placeholder="验证码" tabindex="2" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:key" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:key" />
+                </ElIcon>
               </template>
               <template #append>
-                <el-button>发送验证码</el-button>
+                <ElButton>发送验证码</ElButton>
               </template>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="password">
-            <el-input ref="registerPasswordRef" v-model="registerForm.password" :type="passwordType" placeholder="密码" tabindex="3" autocomplete="on">
+            </ElInput>
+          </ElFormItem>
+          <ElFormItem prop="password">
+            <ElInput ref="registerPasswordRef" v-model="registerForm.password" :type="passwordType" placeholder="密码" tabindex="3" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:lock" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:lock" />
+                </ElIcon>
               </template>
               <template #suffix>
-                <el-icon @click="showPassword(registerPasswordRef)">
-                  <svg-icon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </el-icon>
+                <ElIcon @click="showPassword(registerPasswordRef)">
+                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="checkPassword">
-            <el-input ref="registerCheckPasswordRef" v-model="registerForm.checkPassword" :type="passwordType" placeholder="确认密码" tabindex="4" autocomplete="on">
+            </ElInput>
+          </ElFormItem>
+          <ElFormItem prop="checkPassword">
+            <ElInput ref="registerCheckPasswordRef" v-model="registerForm.checkPassword" :type="passwordType" placeholder="确认密码" tabindex="4" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:lock" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:lock" />
+                </ElIcon>
               </template>
               <template #suffix>
-                <el-icon @click="showPassword(registerCheckPasswordRef)">
-                  <svg-icon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </el-icon>
+                <ElIcon @click="showPassword(registerCheckPasswordRef)">
+                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
+            </ElInput>
+          </ElFormItem>
         </div>
-        <el-button :loading="loading" type="primary" size="large" style="width: 100%; margin-top: 20px;" @click.prevent="handleRegister">
+        <ElButton :loading="loading" type="primary" size="large" style="width: 100%; margin-top: 20px;" @click.prevent="handleRegister">
           注册
-        </el-button>
+        </ElButton>
         <div class="sub-link">
           <span class="text">已经有帐号?</span>
-          <el-link type="primary" :underline="false" @click="formType = 'login'">
+          <ElLink type="primary" :underline="false" @click="formType = 'login'">
             去登录
-          </el-link>
+          </ElLink>
         </div>
-      </el-form>
-      <el-form v-show="formType === 'reset'" ref="resetFormRef" :model="resetForm" :rules="resetRules" class="login-form" auto-complete="on">
+      </ElForm>
+      <ElForm v-show="formType === 'reset'" ref="resetFormRef" :model="resetForm" :rules="resetRules" class="login-form" auto-complete="on">
         <div class="title-container">
           <h3 class="title">
             忘记密码了? 🔒
           </h3>
         </div>
         <div>
-          <el-form-item prop="account">
-            <el-input v-model="resetForm.account" placeholder="用户名" type="text" tabindex="1" autocomplete="on">
+          <ElFormItem prop="account">
+            <ElInput v-model="resetForm.account" placeholder="用户名" type="text" tabindex="1" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:user" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:user" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="captcha">
-            <el-input v-model="resetForm.captcha" placeholder="验证码" type="text" tabindex="2" autocomplete="on">
+            </ElInput>
+          </ElFormItem>
+          <ElFormItem prop="captcha">
+            <ElInput v-model="resetForm.captcha" placeholder="验证码" type="text" tabindex="2" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:key" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:key" />
+                </ElIcon>
               </template>
               <template #append>
-                <el-button>发送验证码</el-button>
+                <ElButton>发送验证码</ElButton>
               </template>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="newPassword">
-            <el-input ref="resetNewPasswordRef" v-model="resetForm.newPassword" :type="passwordType" placeholder="新密码" tabindex="3" autocomplete="on">
+            </ElInput>
+          </ElFormItem>
+          <ElFormItem prop="newPassword">
+            <ElInput ref="resetNewPasswordRef" v-model="resetForm.newPassword" :type="passwordType" placeholder="新密码" tabindex="3" autocomplete="on">
               <template #prefix>
-                <el-icon>
-                  <svg-icon name="ep:lock" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:lock" />
+                </ElIcon>
               </template>
               <template #suffix>
-                <el-icon @click="showPassword(resetNewPasswordRef)">
-                  <svg-icon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </el-icon>
+                <ElIcon @click="showPassword(resetNewPasswordRef)">
+                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
+                </ElIcon>
               </template>
-            </el-input>
-          </el-form-item>
+            </ElInput>
+          </ElFormItem>
         </div>
-        <el-button :loading="loading" type="primary" size="large" style="width: 100%; margin-top: 20px;" @click.prevent="handleReset">
+        <ElButton :loading="loading" type="primary" size="large" style="width: 100%; margin-top: 20px;" @click.prevent="handleReset">
           确认
-        </el-button>
+        </ElButton>
         <div class="sub-link">
-          <el-link type="primary" :underline="false" @click="formType = 'login'">
+          <ElLink type="primary" :underline="false" @click="formType = 'login'">
             去登录
-          </el-link>
+          </ElLink>
         </div>
-      </el-form>
+      </ElForm>
     </div>
     <Copyright />
   </div>

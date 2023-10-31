@@ -14,26 +14,26 @@ onMounted(() => {
 
 <template>
   <div>
-    <el-drawer v-model="isShow" title="系统信息" direction="rtl" :size="360">
-      <el-descriptions direction="vertical" :column="1" border>
-        <el-descriptions-item label="版本号" align="center">
+    <ElDrawer v-model="isShow" title="系统信息" direction="rtl" :size="360">
+      <ElDescriptions direction="vertical" :column="1" border>
+        <ElDescriptionsItem label="版本号" align="center">
           {{ pkg.version }}
-        </el-descriptions-item>
-        <el-descriptions-item label="最后编译时间" align="center">
+        </ElDescriptionsItem>
+        <ElDescriptionsItem label="最后编译时间" align="center">
           {{ lastBuildTime }}
-        </el-descriptions-item>
-      </el-descriptions>
-      <el-descriptions title="生产环境依赖" :column="1" size="small" border>
-        <el-descriptions-item v-for="(val, key) in (pkg.dependencies as object)" :key="key" :label="key">
+        </ElDescriptionsItem>
+      </ElDescriptions>
+      <ElDescriptions title="生产环境依赖" :column="1" size="small" border>
+        <ElDescriptionsItem v-for="(val, key) in (pkg.dependencies as object)" :key="key" :label="key">
           {{ val }}
-        </el-descriptions-item>
-      </el-descriptions>
-      <el-descriptions title="开发环境依赖" :column="1" size="small" border>
-        <el-descriptions-item v-for="(val, key) in (pkg.devDependencies as object)" :key="key" :label="key">
+        </ElDescriptionsItem>
+      </ElDescriptions>
+      <ElDescriptions title="开发环境依赖" :column="1" size="small" border>
+        <ElDescriptionsItem v-for="(val, key) in (pkg.devDependencies as object)" :key="key" :label="key">
           {{ val }}
-        </el-descriptions-item>
-      </el-descriptions>
-    </el-drawer>
+        </ElDescriptionsItem>
+      </ElDescriptions>
+    </ElDrawer>
   </div>
 </template>
 
