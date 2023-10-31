@@ -190,8 +190,7 @@ function maskClick(windowName: string) {
   top: 0;
   bottom: 0;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto hidden;
   transition: 0.3s;
 
   &.preview-all {

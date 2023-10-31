@@ -43,8 +43,7 @@ function onSidebarScroll(e: Event) {
 
 <style lang="scss" scoped>
 .sub-sidebar-container {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   overscroll-behavior: contain;
   // firefox隐藏滚动条
   scrollbar-width: none;

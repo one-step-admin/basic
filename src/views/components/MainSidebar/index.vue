@@ -36,8 +36,7 @@ const menu = useMenu()
 
 <style lang="scss" scoped>
 .main-sidebar-container {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   overscroll-behavior: contain;
   // firefox隐藏滚动条
   scrollbar-width: none;
