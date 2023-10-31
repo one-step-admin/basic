@@ -15,13 +15,6 @@ export default ({ mode, command }) => {
       scssResources.push(`@use "src/assets/styles/resources/${dirname}" as *;`)
     }
   })
-  // css 精灵图相关
-  fs.readdirSync('src/assets/sprites').forEach((dirname) => {
-    if (fs.statSync(`src/assets/sprites/${dirname}`).isDirectory()) {
-      // css 精灵图生成的 scss 文件也需要放入全局 scss 资源
-      scssResources.push(`@use "src/assets/sprites/_${dirname}.scss" as *;`)
-    }
-  })
   return defineConfig({
     base: './',
     // 开发服务器选项 https://cn.vitejs.dev/config/#server-options
