@@ -1,69 +1,69 @@
 <template>
   <div>
-    <el-divider content-position="left">
+    <ElDivider content-position="left">
       基础用法
-    </el-divider>
-    <el-link href="https://element.eleme.io" target="_blank">
+    </ElDivider>
+    <ElLink href="https://element.eleme.io" target="_blank">
       默认链接
-    </el-link>
-    <el-link type="primary">
+    </ElLink>
+    <ElLink type="primary">
       主要链接
-    </el-link>
-    <el-link type="success">
+    </ElLink>
+    <ElLink type="success">
       成功链接
-    </el-link>
-    <el-link type="warning">
+    </ElLink>
+    <ElLink type="warning">
       警告链接
-    </el-link>
-    <el-link type="danger">
+    </ElLink>
+    <ElLink type="danger">
       危险链接
-    </el-link>
-    <el-link type="info">
+    </ElLink>
+    <ElLink type="info">
       信息链接
-    </el-link>
-    <el-divider content-position="left">
+    </ElLink>
+    <ElDivider content-position="left">
       禁用状态
-    </el-divider>
-    <el-link disabled>
+    </ElDivider>
+    <ElLink disabled>
       默认链接
-    </el-link>
-    <el-link type="primary" disabled>
+    </ElLink>
+    <ElLink type="primary" disabled>
       主要链接
-    </el-link>
-    <el-link type="success" disabled>
+    </ElLink>
+    <ElLink type="success" disabled>
       成功链接
-    </el-link>
-    <el-link type="warning" disabled>
+    </ElLink>
+    <ElLink type="warning" disabled>
       警告链接
-    </el-link>
-    <el-link type="danger" disabled>
+    </ElLink>
+    <ElLink type="danger" disabled>
       危险链接
-    </el-link>
-    <el-link type="info" disabled>
+    </ElLink>
+    <ElLink type="info" disabled>
       信息链接
-    </el-link>
-    <el-divider content-position="left">
+    </ElLink>
+    <ElDivider content-position="left">
       下划线
-    </el-divider>
-    <el-link :underline="false">
+    </ElDivider>
+    <ElLink :underline="false">
       无下划线
-    </el-link>
-    <el-link>有下划线</el-link>
-    <el-divider content-position="left">
+    </ElLink>
+    <ElLink>有下划线</ElLink>
+    <ElDivider content-position="left">
       图标
-    </el-divider>
-    <el-link>
-      <el-icon class="el-icon--left">
-        <svg-icon name="i-ep:edit" />
-      </el-icon>
+    </ElDivider>
+    <ElLink>
+      <ElIcon class="el-icon--left">
+        <SvgIcon name="i-ep:edit" />
+      </ElIcon>
       编辑
-    </el-link>
-    <el-link>
+    </ElLink>
+    <ElLink>
       查看
-      <el-icon class="el-icon--right">
-        <svg-icon name="i-ep:view" />
-      </el-icon>
-    </el-link>
+      <ElIcon class="el-icon--right">
+        <SvgIcon name="i-ep:view" />
+      </ElIcon>
+    </ElLink>
   </div>
 </template>
 

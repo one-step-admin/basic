@@ -124,13 +124,13 @@ function maskClick(windowName: string) {
       <div class="title">
         预览
       </div>
-      <el-tooltip content="可以通过快捷键 Alt + W 快速进入窗口预览界面" placement="left" :append-to-body="false">
-        <el-icon v-show="settingsStore.settings.window.enableHotkeys" class="help">
-          <svg-icon name="ep:question-filled" />
-        </el-icon>
-      </el-tooltip>
+      <ElTooltip content="可以通过快捷键 Alt + W 快速进入窗口预览界面" placement="left" :append-to-body="false">
+        <ElIcon v-show="settingsStore.settings.window.enableHotkeys" class="help">
+          <SvgIcon name="ep:question-filled" />
+        </ElIcon>
+      </ElTooltip>
     </div>
-    <transition-group v-show="windowStore.list.length > 0" name="window" tag="div" class="dashboard-container">
+    <TransitionGroup v-show="windowStore.list.length > 0" name="window" tag="div" class="dashboard-container">
       <div v-for="element in windowStore.list" :key="element.name" :ref="setWindowItemRef" class="window">
         <div
           class="window-container" :class="{
@@ -140,31 +140,31 @@ function maskClick(windowName: string) {
         >
           <div v-if="!element.noTitle" class="header" @dblclick="scrollToWindow(element.name)">
             <div class="titles">
-              <el-tooltip v-if="element.title" effect="dark" :content="element.breadcrumbNeste?.map(bc => bc.title).join(' / ')" placement="bottom-start" :show-after="500" :disabled="element.breadcrumbNeste?.map(b => b.title).length === 0">
+              <ElTooltip v-if="element.title" effect="dark" :content="element.breadcrumbNeste?.map(bc => bc.title).join(' / ')" placement="bottom-start" :show-after="500" :disabled="element.breadcrumbNeste?.map(b => b.title).length === 0">
                 <span class="title">
                   {{ element.title }}
                 </span>
-              </el-tooltip>
+              </ElTooltip>
             </div>
             <div class="btns" @dblclick.stop>
               <div class="btn" @click="appWindow.remove(element.name)">
-                <el-icon>
-                  <svg-icon name="ep:close-bold" />
-                </el-icon>
+                <ElIcon>
+                  <SvgIcon name="ep:close-bold" />
+                </ElIcon>
               </div>
             </div>
           </div>
           <div class="container">
-            <el-scrollbar>
+            <ElScrollbar>
               <Component :is="element.name" v-if="!element.reload" :is-maximize="element.isMaximize" :params="element.params" />
-            </el-scrollbar>
+            </ElScrollbar>
           </div>
           <div class="mask" @click="maskClick(element.name)">
             点击进入该窗口
           </div>
         </div>
       </div>
-    </transition-group>
+    </TransitionGroup>
     <Empty v-show="windowStore.list.length === 0" />
   </div>
 </template>

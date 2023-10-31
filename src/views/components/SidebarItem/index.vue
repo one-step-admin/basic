@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import SidebarItem from './index.vue'
-
 defineOptions({
   name: 'SidebarItem',
 })
@@ -29,36 +27,36 @@ function handleOpen(windowName: string) {
 
 <template>
   <div class="sidebar-item">
-    <el-sub-menu v-if="isRoot" :index="JSON.stringify(item)">
+    <ElSubMenu v-if="isRoot" :index="JSON.stringify(item)">
       <template #title>
         <div class="item">
-          <el-icon v-if="item.icon" class="title-icon">
-            <svg-icon :name="item.icon" />
-          </el-icon>
+          <ElIcon v-if="item.icon" class="title-icon">
+            <SvgIcon :name="item.icon" />
+          </ElIcon>
           <span class="title">{{ item.title }}</span>
         </div>
       </template>
       <template v-for="route in item.children" :key="route.path">
         <SidebarItem :item="route" />
       </template>
-    </el-sub-menu>
-    <el-menu-item v-else-if="!item.children" :title="item.title" :index="JSON.stringify(item)" @click="handleOpen(item.windowName!)">
-      <el-icon v-if="item.icon" class="title-icon">
-        <svg-icon :name="item.icon" />
-      </el-icon>
+    </ElSubMenu>
+    <ElMenuItem v-else-if="!item.children" :title="item.title" :index="JSON.stringify(item)" @click="handleOpen(item.windowName!)">
+      <ElIcon v-if="item.icon" class="title-icon">
+        <SvgIcon :name="item.icon" />
+      </ElIcon>
       <span class="title">{{ item.title }}</span>
-    </el-menu-item>
-    <el-sub-menu v-else :title="item.title" :index="JSON.stringify(item)">
+    </ElMenuItem>
+    <ElSubMenu v-else :title="item.title" :index="JSON.stringify(item)">
       <template #title>
-        <el-icon v-if="item.icon" class="title-icon">
-          <svg-icon :name="item.icon" />
-        </el-icon>
+        <ElIcon v-if="item.icon" class="title-icon">
+          <SvgIcon :name="item.icon" />
+        </ElIcon>
         <span class="title">{{ item.title }}</span>
       </template>
       <template v-for="route in item.children" :key="route.path">
         <SidebarItem :item="route" />
       </template>
-    </el-sub-menu>
+    </ElSubMenu>
   </div>
 </template>
 

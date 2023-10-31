@@ -45,27 +45,27 @@ function open(url: string) {
 <template>
   <div class="buy-it" :class="{ actived: isActived }">
     <div class="item" @click="open(`https://one-step-admin.gitee.io/buy.html`)">
-      <el-icon>
-        <svg-icon name="fixed-right-buy" />
-      </el-icon>
+      <ElIcon>
+        <SvgIcon name="fixed-right-buy" />
+      </ElIcon>
       <span class="title">购买<br>专业版</span>
     </div>
     <div class="item" @click="open(`https://gitee.com/one-step-admin/basic`)">
-      <el-icon>
-        <svg-icon name="fixed-right-code" />
-      </el-icon>
+      <ElIcon>
+        <SvgIcon name="fixed-right-code" />
+      </ElIcon>
       <span class="title">下载<br>基础版</span>
     </div>
     <div class="item" @click="open(`https://one-step-admin.gitee.io`)">
-      <el-icon>
-        <svg-icon name="fixed-right-doc" />
-      </el-icon>
+      <ElIcon>
+        <SvgIcon name="fixed-right-doc" />
+      </ElIcon>
       <span class="title">开发<br>文档</span>
     </div>
     <div class="item" @click="open(`https://one-step-admin.gitee.io/support.html`)">
-      <el-icon>
-        <svg-icon name="fixed-right-chat" />
-      </el-icon>
+      <ElIcon>
+        <SvgIcon name="fixed-right-chat" />
+      </ElIcon>
       <span class="title">技术<br>支持</span>
     </div>
   </div>

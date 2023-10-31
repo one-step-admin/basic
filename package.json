@@ -1,13 +1,14 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:example": "vue-tsc --noEmit && vite build --mode example",
+    "build:example": "vue-tsc && vite build --mode example",
     "serve:example": "http-server ./dist-example -o",
     "svgo": "svgo -f src/assets/icons",
     "new": "plop",
     "lint": "npm-run-all -s lint:tsc lint:eslint lint:stylelint",
-    "lint:tsc": "vue-tsc --noEmit",
-    "lint:eslint": "eslint --cache --fix --no-ignore --no-error-on-unmatched-pattern --ext .ts,.tsx,.vue src/",
+    "lint:tsc": "vue-tsc",
+    "lint:eslint": "eslint . --cache --fix",
     "lint:stylelint": "stylelint src/**/*.{css,scss,vue} --cache --fix --allow-empty-input",
     "postinstall": "simple-git-hooks && esno scripts/prepare.ts",
     "preinstall": "npx only-allow pnpm"
@@ -30,7 +31,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.6",
+    "@antfu/eslint-config": "1.0.0-beta.29",
     "@iconify-json/ep": "^1.1.12",
     "@iconify/vue": "^4.1.1",
     "@types/qs": "^6.9.9",
@@ -49,7 +50,6 @@
     "sass": "^1.69.5",
     "simple-git-hooks": "^2.9.0",
     "stylelint": "^15.11.0",
-    "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-scss": "^5.3.0",

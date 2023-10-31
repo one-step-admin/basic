@@ -13,9 +13,9 @@ const settingsStore = useSettingsStore()
   <div class="topbar-container" data-fixed-calc-width>
     <div class="left-box">
       <div v-if="(['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode) && settingsStore.settings.menu.enableSubMenuCollapseButton)" class="sidebar-collapse" :class="{ 'is-collapse': settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()">
-        <el-icon>
-          <svg-icon name="toolbar-collapse" />
-        </el-icon>
+        <ElIcon>
+          <SvgIcon name="toolbar-collapse" />
+        </ElIcon>
       </div>
     </div>
     <Tools />

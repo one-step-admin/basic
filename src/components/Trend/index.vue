@@ -33,9 +33,9 @@ const isUp = computed(() => {
     <span v-if="prefix" class="prefix">{{ prefix }}</span>
     <span class="text">{{ value }}</span>
     <span v-if="suffix" class="suffix">{{ suffix }}</span>
-    <el-icon>
-      <svg-icon name="i-ep:caret-top" />
-    </el-icon>
+    <ElIcon>
+      <SvgIcon name="i-ep:caret-top" />
+    </ElIcon>
   </div>
 </template>
 

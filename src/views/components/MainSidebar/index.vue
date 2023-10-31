@@ -14,7 +14,7 @@ const menu = useMenu()
 </script>
 
 <template>
-  <transition name="main-sidebar">
+  <Transition name="main-sidebar">
     <div v-if="['side'].includes(settingsStore.settings.menu.menuMode)" class="main-sidebar-container">
       <Logo :show-title="false" class="sidebar-logo" />
       <!-- 侧边栏模式（含主导航） -->
@@ -22,16 +22,16 @@ const menu = useMenu()
         <template v-for="(item, index) in menuStore.allMenus" :key="index">
           <div v-if="item.children && item.children.length !== 0" class="item-container" :class="{ active: index === menuStore.actived }">
             <div class="item" :title="item.title" @click="menu.switchTo(index)">
-              <el-icon v-if="item.icon">
-                <svg-icon :name="item.icon" />
-              </el-icon>
+              <ElIcon v-if="item.icon">
+                <SvgIcon :name="item.icon" />
+              </ElIcon>
               <span>{{ item.title }}</span>
             </div>
           </div>
         </template>
       </div>
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style lang="scss" scoped>

@@ -62,28 +62,28 @@ function onSubmit() {
 
 <template>
   <div>
-    <action-container>
-      <page-header title="修改密码" content="定期修改密码可以提高帐号安全性噢~" />
-      <el-row>
-        <el-col :md="24" :lg="12">
-          <el-form ref="formRef" :model="form" :rules="rules" label-width="120px">
-            <el-form-item label="原密码" prop="password">
-              <el-input v-model="form.password" type="password" placeholder="请输入原密码" />
-            </el-form-item>
-            <el-form-item label="新密码" prop="newpassword">
-              <el-input v-model="form.newpassword" type="password" placeholder="请输入原密码" />
-            </el-form-item>
-            <el-form-item label="确认新密码" prop="checkpassword">
-              <el-input v-model="form.checkpassword" type="password" placeholder="请输入原密码" />
-            </el-form-item>
-          </el-form>
-        </el-col>
-      </el-row>
+    <ActionContainer>
+      <PageHeader title="修改密码" content="定期修改密码可以提高帐号安全性噢~" />
+      <ElRow>
+        <ElCol :md="24" :lg="12">
+          <ElForm ref="formRef" :model="form" :rules="rules" label-width="120px">
+            <ElFormItem label="原密码" prop="password">
+              <ElInput v-model="form.password" type="password" placeholder="请输入原密码" />
+            </ElFormItem>
+            <ElFormItem label="新密码" prop="newpassword">
+              <ElInput v-model="form.newpassword" type="password" placeholder="请输入原密码" />
+            </ElFormItem>
+            <ElFormItem label="确认新密码" prop="checkpassword">
+              <ElInput v-model="form.checkpassword" type="password" placeholder="请输入原密码" />
+            </ElFormItem>
+          </ElForm>
+        </ElCol>
+      </ElRow>
       <template #action>
-        <el-button type="primary" size="small" @click="onSubmit">
+        <ElButton type="primary" size="small" @click="onSubmit">
           提交
-        </el-button>
+        </ElButton>
       </template>
-    </action-container>
+    </ActionContainer>
   </div>
 </template>

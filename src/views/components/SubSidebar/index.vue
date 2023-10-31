@@ -27,17 +27,17 @@ function onSidebarScroll(e: Event) {
       }"
     />
     <!-- 侧边栏模式（无主导航）或侧边栏精简模式 -->
-    <el-menu
+    <ElMenu
       :unique-opened="settingsStore.settings.menu.subMenuUniqueOpened" :collapse="settingsStore.settings.menu.subMenuCollapse" :collapse-transition="false" :class="{
         'is-collapse-without-logo': settingsStore.settings.menu.menuMode !== 'single' && settingsStore.settings.menu.subMenuCollapse,
       }"
     >
-      <transition-group name="sub-sidebar">
+      <TransitionGroup name="sub-sidebar">
         <template v-for="route in menuStore.sidebarMenus" :key="JSON.stringify(route)">
           <SidebarItem :item="route" />
         </template>
-      </transition-group>
-    </el-menu>
+      </TransitionGroup>
+    </ElMenu>
   </div>
 </template>
 

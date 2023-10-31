@@ -7,42 +7,42 @@ const textarea = ref('')
 
 <template>
   <div>
-    <el-divider content-position="left">
+    <ElDivider content-position="left">
       基础用法
-    </el-divider>
-    <el-input v-model="input" placeholder="请输入内容" />
-    <el-divider content-position="left">
+    </ElDivider>
+    <ElInput v-model="input" placeholder="请输入内容" />
+    <ElDivider content-position="left">
       禁用状态
-    </el-divider>
-    <el-input v-model="input" placeholder="请输入内容" :disabled="true" />
-    <el-divider content-position="left">
+    </ElDivider>
+    <ElInput v-model="input" placeholder="请输入内容" :disabled="true" />
+    <ElDivider content-position="left">
       可清空
-    </el-divider>
-    <el-input v-model="input" placeholder="请输入内容" clearable />
-    <el-divider content-position="left">
+    </ElDivider>
+    <ElInput v-model="input" placeholder="请输入内容" clearable />
+    <ElDivider content-position="left">
       密码框
-    </el-divider>
-    <el-input v-model="input" placeholder="请输入内容" show-password />
-    <el-divider content-position="left">
+    </ElDivider>
+    <ElInput v-model="input" placeholder="请输入内容" show-password />
+    <ElDivider content-position="left">
       带 icon 的输入框
-    </el-divider>
-    <el-input v-model="input1" placeholder="请选择日期">
+    </ElDivider>
+    <ElInput v-model="input1" placeholder="请选择日期">
       <template #suffix>
-        <el-icon class="el-input__icon">
-          <svg-icon name="i-ep:calendar" />
-        </el-icon>
+        <ElIcon class="el-input__icon">
+          <SvgIcon name="i-ep:calendar" />
+        </ElIcon>
       </template>
-    </el-input>
-    <el-input v-model="input2" placeholder="请输入内容">
+    </ElInput>
+    <ElInput v-model="input2" placeholder="请输入内容">
       <template #prefix>
-        <el-icon class="el-input__icon">
-          <svg-icon name="i-ep:search" />
-        </el-icon>
+        <ElIcon class="el-input__icon">
+          <SvgIcon name="i-ep:search" />
+        </ElIcon>
       </template>
-    </el-input>
-    <el-divider content-position="left">
+    </ElInput>
+    <ElDivider content-position="left">
       文本域
-    </el-divider>
-    <el-input v-model="textarea" type="textarea" :rows="2" placeholder="请输入内容" />
+    </ElDivider>
+    <ElInput v-model="textarea" type="textarea" :rows="2" placeholder="请输入内容" />
   </div>
 </template>

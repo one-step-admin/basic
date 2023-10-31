@@ -1,282 +1,282 @@
 <template>
   <div>
-    <el-divider content-position="left">
+    <ElDivider content-position="left">
       基础用法
-    </el-divider>
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">
+    </ElDivider>
+    <ElRow>
+      <ElButton>默认按钮</ElButton>
+      <ElButton type="primary">
         主要按钮
-      </el-button>
-      <el-button type="success">
+      </ElButton>
+      <ElButton type="success">
         成功按钮
-      </el-button>
-      <el-button type="info">
+      </ElButton>
+      <ElButton type="info">
         信息按钮
-      </el-button>
-      <el-button type="warning">
+      </ElButton>
+      <ElButton type="warning">
         警告按钮
-      </el-button>
-      <el-button type="danger">
+      </ElButton>
+      <ElButton type="danger">
         危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button plain>
+      </ElButton>
+    </ElRow>
+    <ElRow>
+      <ElButton plain>
         朴素按钮
-      </el-button>
-      <el-button type="primary" plain>
+      </ElButton>
+      <ElButton type="primary" plain>
         主要按钮
-      </el-button>
-      <el-button type="success" plain>
+      </ElButton>
+      <ElButton type="success" plain>
         成功按钮
-      </el-button>
-      <el-button type="info" plain>
+      </ElButton>
+      <ElButton type="info" plain>
         信息按钮
-      </el-button>
-      <el-button type="warning" plain>
+      </ElButton>
+      <ElButton type="warning" plain>
         警告按钮
-      </el-button>
-      <el-button type="danger" plain>
+      </ElButton>
+      <ElButton type="danger" plain>
         危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button round>
+      </ElButton>
+    </ElRow>
+    <ElRow>
+      <ElButton round>
         圆角按钮
-      </el-button>
-      <el-button type="primary" round>
+      </ElButton>
+      <ElButton type="primary" round>
         主要按钮
-      </el-button>
-      <el-button type="success" round>
+      </ElButton>
+      <ElButton type="success" round>
         成功按钮
-      </el-button>
-      <el-button type="info" round>
+      </ElButton>
+      <ElButton type="info" round>
         信息按钮
-      </el-button>
-      <el-button type="warning" round>
+      </ElButton>
+      <ElButton type="warning" round>
         警告按钮
-      </el-button>
-      <el-button type="danger" round>
+      </ElButton>
+      <ElButton type="danger" round>
         危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button circle>
+      </ElButton>
+    </ElRow>
+    <ElRow>
+      <ElButton circle>
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:search" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:search" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="primary" circle>
+      </ElButton>
+      <ElButton type="primary" circle>
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:edit" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:edit" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="success" circle>
+      </ElButton>
+      <ElButton type="success" circle>
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:check" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:check" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="info" circle>
+      </ElButton>
+      <ElButton type="info" circle>
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:message" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:message" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="warning" circle>
+      </ElButton>
+      <ElButton type="warning" circle>
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:star" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:star" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="danger" circle>
+      </ElButton>
+      <ElButton type="danger" circle>
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:delete" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:delete" />
+          </ElIcon>
         </template>
-      </el-button>
-    </el-row>
-    <el-divider content-position="left">
+      </ElButton>
+    </ElRow>
+    <ElDivider content-position="left">
       禁用状态
-    </el-divider>
-    <el-row>
-      <el-button disabled>
+    </ElDivider>
+    <ElRow>
+      <ElButton disabled>
         默认按钮
-      </el-button>
-      <el-button type="primary" disabled>
+      </ElButton>
+      <ElButton type="primary" disabled>
         主要按钮
-      </el-button>
-      <el-button type="success" disabled>
+      </ElButton>
+      <ElButton type="success" disabled>
         成功按钮
-      </el-button>
-      <el-button type="info" disabled>
+      </ElButton>
+      <ElButton type="info" disabled>
         信息按钮
-      </el-button>
-      <el-button type="warning" disabled>
+      </ElButton>
+      <ElButton type="warning" disabled>
         警告按钮
-      </el-button>
-      <el-button type="danger" disabled>
+      </ElButton>
+      <ElButton type="danger" disabled>
         危险按钮
-      </el-button>
-    </el-row>
-    <el-row>
-      <el-button plain disabled>
+      </ElButton>
+    </ElRow>
+    <ElRow>
+      <ElButton plain disabled>
         朴素按钮
-      </el-button>
-      <el-button type="primary" plain disabled>
+      </ElButton>
+      <ElButton type="primary" plain disabled>
         主要按钮
-      </el-button>
-      <el-button type="success" plain disabled>
+      </ElButton>
+      <ElButton type="success" plain disabled>
         成功按钮
-      </el-button>
-      <el-button type="info" plain disabled>
+      </ElButton>
+      <ElButton type="info" plain disabled>
         信息按钮
-      </el-button>
-      <el-button type="warning" plain disabled>
+      </ElButton>
+      <ElButton type="warning" plain disabled>
         警告按钮
-      </el-button>
-      <el-button type="danger" plain disabled>
+      </ElButton>
+      <ElButton type="danger" plain disabled>
         危险按钮
-      </el-button>
-    </el-row>
-    <el-divider content-position="left">
+      </ElButton>
+    </ElRow>
+    <ElDivider content-position="left">
       文字按钮
-    </el-divider>
-    <el-button text>
+    </ElDivider>
+    <ElButton text>
       文字按钮
-    </el-button>
-    <el-button type="primary" text>
+    </ElButton>
+    <ElButton type="primary" text>
       文字按钮
-    </el-button>
-    <el-button type="success" text>
+    </ElButton>
+    <ElButton type="success" text>
       文字按钮
-    </el-button>
-    <el-button type="info" text>
+    </ElButton>
+    <ElButton type="info" text>
       文字按钮
-    </el-button>
-    <el-button type="warning" text>
+    </ElButton>
+    <ElButton type="warning" text>
       文字按钮
-    </el-button>
-    <el-button type="danger" text>
+    </ElButton>
+    <ElButton type="danger" text>
       文字按钮
-    </el-button>
-    <el-divider content-position="left">
+    </ElButton>
+    <ElDivider content-position="left">
       图标按钮
-    </el-divider>
-    <el-button type="primary">
+    </ElDivider>
+    <ElButton type="primary">
       <template #icon>
-        <el-icon>
-          <svg-icon name="i-ep:edit" />
-        </el-icon>
+        <ElIcon>
+          <SvgIcon name="i-ep:edit" />
+        </ElIcon>
       </template>
-    </el-button>
-    <el-button type="primary">
+    </ElButton>
+    <ElButton type="primary">
       <template #icon>
-        <el-icon>
-          <svg-icon name="i-ep:share" />
-        </el-icon>
+        <ElIcon>
+          <SvgIcon name="i-ep:share" />
+        </ElIcon>
       </template>
-    </el-button>
-    <el-button type="primary">
+    </ElButton>
+    <ElButton type="primary">
       <template #icon>
-        <el-icon>
-          <svg-icon name="i-ep:delete" />
-        </el-icon>
+        <ElIcon>
+          <SvgIcon name="i-ep:delete" />
+        </ElIcon>
       </template>
-    </el-button>
-    <el-button type="primary">
+    </ElButton>
+    <ElButton type="primary">
       <template #icon>
-        <el-icon>
-          <svg-icon name="i-ep:search" />
-        </el-icon>
+        <ElIcon>
+          <SvgIcon name="i-ep:search" />
+        </ElIcon>
       </template>
       搜索
-    </el-button>
-    <el-button type="primary">
+    </ElButton>
+    <ElButton type="primary">
       上传
-      <el-icon class="el-icon--right">
-        <svg-icon name="i-ep:upload" />
-      </el-icon>
-    </el-button>
-    <el-divider content-position="left">
+      <ElIcon class="el-icon--right">
+        <SvgIcon name="i-ep:upload" />
+      </ElIcon>
+    </ElButton>
+    <ElDivider content-position="left">
       按钮组
-    </el-divider>
-    <el-button-group style="margin-right: 10px;">
-      <el-button type="primary">
-        <el-icon class="el-icon--left">
-          <svg-icon name="i-ep:arrow-left" />
-        </el-icon>
+    </ElDivider>
+    <ElButtonGroup style="margin-right: 10px;">
+      <ElButton type="primary">
+        <ElIcon class="el-icon--left">
+          <SvgIcon name="i-ep:arrow-left" />
+        </ElIcon>
         上一页
-      </el-button>
-      <el-button type="primary">
+      </ElButton>
+      <ElButton type="primary">
         下一页
-        <el-icon class="el-icon--right">
-          <svg-icon name="i-ep:arrow-right" />
-        </el-icon>
-      </el-button>
-    </el-button-group>
-    <el-button-group>
-      <el-button type="primary">
+        <ElIcon class="el-icon--right">
+          <SvgIcon name="i-ep:arrow-right" />
+        </ElIcon>
+      </ElButton>
+    </ElButtonGroup>
+    <ElButtonGroup>
+      <ElButton type="primary">
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:edit" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:edit" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="primary">
+      </ElButton>
+      <ElButton type="primary">
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:share" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:share" />
+          </ElIcon>
         </template>
-      </el-button>
-      <el-button type="primary">
+      </ElButton>
+      <ElButton type="primary">
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:delete" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:delete" />
+          </ElIcon>
         </template>
-      </el-button>
-    </el-button-group>
-    <el-divider content-position="left">
+      </ElButton>
+    </ElButtonGroup>
+    <ElDivider content-position="left">
       加载中
-    </el-divider>
-    <el-button type="primary" :loading="true">
+    </ElDivider>
+    <ElButton type="primary" :loading="true">
       加载中
-    </el-button>
-    <el-divider content-position="left">
+    </ElButton>
+    <ElDivider content-position="left">
       不同尺寸
-    </el-divider>
+    </ElDivider>
     <div style="margin-bottom: 10px;">
-      <el-button size="large">
+      <ElButton size="large">
         大号按钮
-      </el-button>
-      <el-button size="default">
+      </ElButton>
+      <ElButton size="default">
         默认按钮
-      </el-button>
-      <el-button size="small">
+      </ElButton>
+      <ElButton size="small">
         小号按钮
-      </el-button>
+      </ElButton>
     </div>
     <div>
-      <el-button size="large" round>
+      <ElButton size="large" round>
         大号按钮
-      </el-button>
-      <el-button size="default" round>
+      </ElButton>
+      <ElButton size="default" round>
         默认按钮
-      </el-button>
-      <el-button size="small" round>
+      </ElButton>
+      <ElButton size="small" round>
         小号按钮
-      </el-button>
+      </ElButton>
     </div>
   </div>
 </template>

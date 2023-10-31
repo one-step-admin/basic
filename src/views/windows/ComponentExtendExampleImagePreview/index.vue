@@ -1,15 +1,15 @@
 <template>
   <div>
-    <page-header title="图片预览" content="ImagePreview" />
-    <page-main>
+    <PageHeader title="图片预览" content="ImagePreview" />
+    <PageMain>
       <div>
-        <image-preview src="https://one-step-admin.gitee.io/logo.png" :width="200" />
+        <ImagePreview src="https://one-step-admin.gitee.io/logo.png" :width="200" />
       </div>
-    </page-main>
-    <page-main title="图片加载失败时">
+    </PageMain>
+    <PageMain title="图片加载失败时">
       <div>
-        <image-preview src="http://www.baidu.com" width="100px" height="100px" />
+        <ImagePreview src="http://www.baidu.com" width="100px" height="100px" />
       </div>
-    </page-main>
+    </PageMain>
   </div>
 </template>

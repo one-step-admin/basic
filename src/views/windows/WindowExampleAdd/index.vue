@@ -4,8 +4,8 @@ const appWindow = useWindow()
 
 <template>
   <div>
-    <el-button @click="appWindow.add({ title: '新窗口', name: 'WindowExampleNewWindow' })">
+    <ElButton @click="appWindow.add({ title: '新窗口', name: 'WindowExampleNewWindow' })">
       打开一个新窗口（该窗口非导航栏菜单）
-    </el-button>
+    </ElButton>
   </div>
 </template>

@@ -32,22 +32,22 @@ function open(url: string) {
 
 <template>
   <div>
-    <page-header title="基础组件" content="由 Element Plus 提供，本页仅展示部分组件，更多组件及使用说明请查看 Element Plus 官网">
-      <el-button @click="open('https://element-plus.org/#/zh-CN')">
+    <PageHeader title="基础组件" content="由 Element Plus 提供，本页仅展示部分组件，更多组件及使用说明请查看 Element Plus 官网">
+      <ElButton @click="open('https://element-plus.org/#/zh-CN')">
         <template #icon>
-          <el-icon>
-            <svg-icon name="i-ep:link" />
-          </el-icon>
+          <ElIcon>
+            <SvgIcon name="i-ep:link" />
+          </ElIcon>
         </template>
         Element Plus 官网
-      </el-button>
-    </page-header>
-    <page-main>
-      <el-tabs type="border-card">
-        <el-tab-pane v-for="(item, key) in components" :key="key" :label="key">
+      </ElButton>
+    </PageHeader>
+    <PageMain>
+      <ElTabs type="border-card">
+        <ElTabPane v-for="(item, key) in components" :key="key" :label="key">
           <component :is="item" />
-        </el-tab-pane>
-      </el-tabs>
-    </page-main>
+        </ElTabPane>
+      </ElTabs>
+    </PageMain>
   </div>
 </template>

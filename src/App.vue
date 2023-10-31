@@ -44,13 +44,13 @@ import.meta.env.VITE_APP_DEBUG_TOOL === 'vconsole' && new VConsole()
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn" :size="settingsStore.settings.app.elementSize">
+  <ElConfigProvider :locale="zhCn" :size="settingsStore.settings.app.elementSize">
     <RouterView
       :style="{
         '--g-main-sidebar-actual-width': mainSidebarActualWidth,
         '--g-sub-sidebar-actual-width': subSidebarActualWidth,
       }"
     />
-    <system-info />
-  </el-config-provider>
+    <SystemInfo />
+  </ElConfigProvider>
 </template>

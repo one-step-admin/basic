@@ -40,204 +40,204 @@ function handleCopy() {
 
 <template>
   <div>
-    <el-drawer v-model="isShow" title="应用配置" direction="rtl" :size="350" class="flex-container">
+    <ElDrawer v-model="isShow" title="应用配置" direction="rtl" :size="350" class="flex-container">
       <div class="container">
-        <el-alert title="应用配置可实时预览效果，但仅是临时生效，要想真正作用于项目，可以点击下方的“复制配置”按钮，将配置粘贴到 src/settings.custom.json 中即可，或者也可在 src/settings.js 中直接修改默认配置。同时建议在生产环境隐藏应用配置功能。" type="error" :closable="false" />
-        <el-divider>颜色主题</el-divider>
+        <ElAlert title="应用配置可实时预览效果，但仅是临时生效，要想真正作用于项目，可以点击下方的“复制配置”按钮，将配置粘贴到 src/settings.custom.json 中即可，或者也可在 src/settings.js 中直接修改默认配置。同时建议在生产环境隐藏应用配置功能。" type="error" :closable="false" />
+        <ElDivider>颜色主题</ElDivider>
         <div class="color-scheme">
           <div class="switch" :class="settingsStore.settings.app.colorScheme" @click="settingsStore.settings.app.colorScheme = settingsStore.settings.app.colorScheme === 'dark' ? 'light' : 'dark'">
-            <el-icon class="icon">
-              <svg-icon :name="settingsStore.settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
-            </el-icon>
+            <ElIcon class="icon">
+              <SvgIcon :name="settingsStore.settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
+            </ElIcon>
           </div>
         </div>
-        <el-divider>导航栏模式</el-divider>
+        <ElDivider>导航栏模式</ElDivider>
         <div class="menu-mode">
-          <el-tooltip content="侧边栏模式（含主导航）" placement="top" :show-after="500">
+          <ElTooltip content="侧边栏模式（含主导航）" placement="top" :show-after="500">
             <div class="mode mode-side" :class="{ active: settingsStore.settings.menu.menuMode === 'side' }" @click="settingsStore.settings.menu.menuMode = 'side'">
               <div class="mode-container" />
-              <el-icon>
-                <svg-icon name="ep:check" />
-              </el-icon>
+              <ElIcon>
+                <SvgIcon name="ep:check" />
+              </ElIcon>
             </div>
-          </el-tooltip>
-          <el-tooltip content="顶部模式" placement="top" :show-after="500">
+          </ElTooltip>
+          <ElTooltip content="顶部模式" placement="top" :show-after="500">
             <div class="mode mode-head" :class="{ active: settingsStore.settings.menu.menuMode === 'head' }" @click="settingsStore.settings.menu.menuMode = 'head'">
               <div class="mode-container" />
-              <el-icon>
-                <svg-icon name="ep:check" />
-              </el-icon>
+              <ElIcon>
+                <SvgIcon name="ep:check" />
+              </ElIcon>
             </div>
-          </el-tooltip>
-          <el-tooltip content="侧边栏模式（不含主导航）" placement="top" :show-after="500">
+          </ElTooltip>
+          <ElTooltip content="侧边栏模式（不含主导航）" placement="top" :show-after="500">
             <div class="mode mode-single" :class="{ active: settingsStore.settings.menu.menuMode === 'single' }" @click="settingsStore.settings.menu.menuMode = 'single'">
               <div class="mode-container" />
-              <el-icon>
-                <svg-icon name="ep:check" />
-              </el-icon>
+              <ElIcon>
+                <SvgIcon name="ep:check" />
+              </ElIcon>
             </div>
-          </el-tooltip>
+          </ElTooltip>
         </div>
-        <el-divider>导航栏</el-divider>
+        <ElDivider>导航栏</ElDivider>
         <div class="setting-item">
           <div class="label">
             主导航切换打开窗口
-            <el-tooltip content="开启该功能后，切换侧边栏时，将自动打开该侧边栏导航下第一个导航窗口" placement="top" :append-to-body="false">
-              <el-icon>
-                <svg-icon name="ep:question-filled" />
-              </el-icon>
-            </el-tooltip>
+            <ElTooltip content="开启该功能后，切换侧边栏时，将自动打开该侧边栏导航下第一个导航窗口" placement="top" :append-to-body="false">
+              <ElIcon>
+                <SvgIcon name="ep:question-filled" />
+              </ElIcon>
+            </ElTooltip>
           </div>
-          <el-switch v-model="settingsStore.settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
+          <ElSwitch v-model="settingsStore.settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
         </div>
         <div class="setting-item">
           <div class="label">
             次导航保持展开一个
-            <el-tooltip content="开启该功能后，侧边栏只保持一个子菜单的展开" placement="top" :append-to-body="false">
-              <el-icon>
-                <svg-icon name="ep:question-filled" />
-              </el-icon>
-            </el-tooltip>
+            <ElTooltip content="开启该功能后，侧边栏只保持一个子菜单的展开" placement="top" :append-to-body="false">
+              <ElIcon>
+                <SvgIcon name="ep:question-filled" />
+              </ElIcon>
+            </ElTooltip>
           </div>
-          <el-switch v-model="settingsStore.settings.menu.subMenuUniqueOpened" />
+          <ElSwitch v-model="settingsStore.settings.menu.subMenuUniqueOpened" />
         </div>
         <div class="setting-item">
           <div class="label">
             次导航是否折叠
           </div>
-          <el-switch v-model="settingsStore.settings.menu.subMenuCollapse" />
+          <ElSwitch v-model="settingsStore.settings.menu.subMenuCollapse" />
         </div>
         <div class="setting-item">
           <div class="label">
             显示次导航折叠按钮
           </div>
-          <el-switch v-model="settingsStore.settings.menu.enableSubMenuCollapseButton" />
+          <ElSwitch v-model="settingsStore.settings.menu.enableSubMenuCollapseButton" />
         </div>
         <div class="setting-item">
           <div class="label">
             是否启用快捷键
           </div>
-          <el-switch v-model="settingsStore.settings.menu.enableHotkeys" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
+          <ElSwitch v-model="settingsStore.settings.menu.enableHotkeys" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
         </div>
-        <el-divider>工具栏</el-divider>
+        <ElDivider>工具栏</ElDivider>
         <div class="setting-item">
           <div class="label">
             全屏
-            <el-tooltip content="该功能使用场景极少，用户习惯于使用 F11 键进入全屏效果" placement="top" :append-to-body="false">
-              <el-icon>
-                <svg-icon name="ep:question-filled" />
-              </el-icon>
-            </el-tooltip>
+            <ElTooltip content="该功能使用场景极少，用户习惯于使用 F11 键进入全屏效果" placement="top" :append-to-body="false">
+              <ElIcon>
+                <SvgIcon name="ep:question-filled" />
+              </ElIcon>
+            </ElTooltip>
           </div>
-          <el-switch v-model="settingsStore.settings.toolbar.enableFullscreen" />
+          <ElSwitch v-model="settingsStore.settings.toolbar.enableFullscreen" />
         </div>
         <div class="setting-item">
           <div class="label">
             颜色主题
-            <el-tooltip content="开启后可在明亮/暗黑模式中切换" placement="top">
-              <el-icon>
-                <svg-icon name="ep:question-filled" />
-              </el-icon>
-            </el-tooltip>
+            <ElTooltip content="开启后可在明亮/暗黑模式中切换" placement="top">
+              <ElIcon>
+                <SvgIcon name="ep:question-filled" />
+              </ElIcon>
+            </ElTooltip>
           </div>
-          <el-switch v-model="settingsStore.settings.toolbar.enableColorScheme" />
+          <ElSwitch v-model="settingsStore.settings.toolbar.enableColorScheme" />
         </div>
-        <el-divider>窗口</el-divider>
+        <ElDivider>窗口</ElDivider>
         <div class="setting-item">
           <div class="label">
             是否启用快捷键
           </div>
-          <el-switch v-model="settingsStore.settings.window.enableHotkeys" />
+          <ElSwitch v-model="settingsStore.settings.window.enableHotkeys" />
         </div>
-        <el-divider>导航搜索</el-divider>
+        <ElDivider>导航搜索</ElDivider>
         <div class="setting-item">
           <div class="label">
             是否启用
-            <el-tooltip content="对导航进行快捷搜索" placement="top">
-              <el-icon>
-                <svg-icon name="ep:question-filled" />
-              </el-icon>
-            </el-tooltip>
+            <ElTooltip content="对导航进行快捷搜索" placement="top">
+              <ElIcon>
+                <SvgIcon name="ep:question-filled" />
+              </ElIcon>
+            </ElTooltip>
           </div>
-          <el-switch v-model="settingsStore.settings.navSearch.enable" />
+          <ElSwitch v-model="settingsStore.settings.navSearch.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             是否启用快捷键
           </div>
-          <el-switch v-model="settingsStore.settings.navSearch.enableHotkeys" :disabled="!settingsStore.settings.navSearch.enable" />
+          <ElSwitch v-model="settingsStore.settings.navSearch.enableHotkeys" :disabled="!settingsStore.settings.navSearch.enable" />
         </div>
-        <el-divider>底部版权</el-divider>
+        <ElDivider>底部版权</ElDivider>
         <div class="setting-item">
           <div class="label">
             是否启用
           </div>
-          <el-switch v-model="settingsStore.settings.copyright.enable" />
+          <ElSwitch v-model="settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             日期
           </div>
-          <el-input v-model="settingsStore.settings.copyright.dates" size="small" :disabled="!settingsStore.settings.copyright.enable" />
+          <ElInput v-model="settingsStore.settings.copyright.dates" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             公司
           </div>
-          <el-input v-model="settingsStore.settings.copyright.company" size="small" :disabled="!settingsStore.settings.copyright.enable" />
+          <ElInput v-model="settingsStore.settings.copyright.company" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             网址
           </div>
-          <el-input v-model="settingsStore.settings.copyright.website" size="small" :disabled="!settingsStore.settings.copyright.enable" />
+          <ElInput v-model="settingsStore.settings.copyright.website" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
         <div class="setting-item">
           <div class="label">
             备案
           </div>
-          <el-input v-model="settingsStore.settings.copyright.beian" size="small" :disabled="!settingsStore.settings.copyright.enable" />
+          <ElInput v-model="settingsStore.settings.copyright.beian" size="small" :disabled="!settingsStore.settings.copyright.enable" />
         </div>
-        <el-divider>其它</el-divider>
+        <ElDivider>其它</ElDivider>
         <div class="setting-item">
           <div class="label">
             组件尺寸
-            <el-tooltip content="全局设置 Element Plus 组件的默认尺寸大小" placement="top" :append-to-body="false">
-              <el-icon>
-                <svg-icon name="ep:question-filled" />
-              </el-icon>
-            </el-tooltip>
+            <ElTooltip content="全局设置 Element Plus 组件的默认尺寸大小" placement="top" :append-to-body="false">
+              <ElIcon>
+                <SvgIcon name="ep:question-filled" />
+              </ElIcon>
+            </ElTooltip>
           </div>
-          <el-radio-group v-model="settingsStore.settings.app.elementSize" size="small">
-            <el-radio-button label="large">
+          <ElRadioGroup v-model="settingsStore.settings.app.elementSize" size="small">
+            <ElRadioButton label="large">
               较大
-            </el-radio-button>
-            <el-radio-button label="default">
+            </ElRadioButton>
+            <ElRadioButton label="default">
               默认
-            </el-radio-button>
-            <el-radio-button label="small">
+            </ElRadioButton>
+            <ElRadioButton label="small">
               稍小
-            </el-radio-button>
-          </el-radio-group>
+            </ElRadioButton>
+          </ElRadioGroup>
         </div>
         <div class="setting-item">
           <div class="label">
             是否启用权限
           </div>
-          <el-switch v-model="settingsStore.settings.app.enablePermission" />
+          <ElSwitch v-model="settingsStore.settings.app.enablePermission" />
         </div>
       </div>
       <div v-if="isSupported" class="action-buttons">
-        <el-button type="primary" @click="handleCopy">
+        <ElButton type="primary" @click="handleCopy">
           <template #icon>
-            <el-icon>
-              <svg-icon name="ep:document-copy" />
-            </el-icon>
+            <ElIcon>
+              <SvgIcon name="ep:document-copy" />
+            </ElIcon>
           </template>
           复制配置
-        </el-button>
+        </ElButton>
       </div>
-    </el-drawer>
+    </ElDrawer>
   </div>
 </template>
 
