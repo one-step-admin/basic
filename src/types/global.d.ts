@@ -20,11 +20,6 @@ declare namespace Settings {
      */
     enablePermission?: boolean
     /**
-     * 是否将 iconify 图标集中的 Element Plus 图标下载到本地，以便在离线环境下使用
-     * @默认值 `false`
-     */
-    iconifyOfflineUse?: boolean
-    /**
      * 是否开启应用配置，强烈建议在生产环境中关闭
      * @默认值 `false`
      */
