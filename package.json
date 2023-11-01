@@ -6,11 +6,12 @@
     "serve:example": "http-server ./dist-example -o",
     "svgo": "svgo -f src/assets/icons",
     "new": "plop",
+    "generate:icons": "esno ./scripts/generate.icons.ts",
     "lint": "npm-run-all -s lint:tsc lint:eslint lint:stylelint",
     "lint:tsc": "vue-tsc",
     "lint:eslint": "eslint . --cache --fix",
     "lint:stylelint": "stylelint src/**/*.{css,scss,vue} --cache --fix --allow-empty-input",
-    "postinstall": "simple-git-hooks && esno scripts/prepare.ts",
+    "postinstall": "simple-git-hooks",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "1.0.0-beta.29",
-    "@iconify-json/ep": "^1.1.12",
+    "@iconify/json": "^2.2.136",
     "@iconify/vue": "^4.1.1",
     "@types/qs": "^6.9.9",
     "@vitejs/plugin-vue": "^4.4.0",
@@ -56,6 +57,7 @@
     "stylelint-stylistic": "^0.4.3",
     "svgo": "^3.0.2",
     "typescript": "^5.2.2",
+    "unocss": "^0.57.1",
     "unplugin-auto-import": "^0.16.7",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.5.0",

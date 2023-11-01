@@ -5,6 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import createRestart from './restart'
 import createAutoImport from './auto-import'
 import createComponents from './components'
+import createUnocss from './unocss'
 import createSvgIcon from './svg-icon'
 import createMock from './mock'
 import createCompression from './compression'
@@ -18,6 +19,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
   !isBuild && vitePlugins.push(createRestart())
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
+  vitePlugins.push(createUnocss())
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createMock(viteEnv, isBuild))
   isBuild && vitePlugins.push(...createCompression(viteEnv))

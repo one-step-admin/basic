@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { icons } from '@iconify-json/ep'
+import { icons } from '@/iconify'
+
+const icon = icons.filter(item => item.prefix === 'ep')[0]
 </script>
 
 <template>
   <div>
     <div class="demo">
-      <ElIcon><SvgIcon name="ep:edit" /></ElIcon>
-      <ElIcon><SvgIcon name="ep:share" /></ElIcon>
-      <ElIcon><SvgIcon name="ep:delete" /></ElIcon>
+      <ElIcon><SvgIcon name="i-ep:edit" /></ElIcon>
+      <ElIcon><SvgIcon name="i-ep:share" /></ElIcon>
+      <ElIcon><SvgIcon name="i-ep:delete" /></ElIcon>
       <ElButton type="primary">
         <template #icon>
           <ElIcon>
-            <SvgIcon name="ep:search" />
+            <SvgIcon name="i-ep:search" />
           </ElIcon>
         </template>
         搜索
@@ -20,10 +22,10 @@ import { icons } from '@iconify-json/ep'
     <ElDivider content-position="left">
       图标集合
     </ElDivider>
-    <div v-for="(item, index) in icons.icons" :key="index" class="list-icon">
-      <ElTooltip class="item" effect="dark" :content="`ep:${index}`" placement="top">
+    <div v-for="(item, index) in icon.icons" :key="index" class="list-icon">
+      <ElTooltip class="item" effect="dark" :content="`ep:${item}`" placement="top">
         <ElIcon>
-          <SvgIcon :name="`ep:${index}`" />
+          <SvgIcon :name="`ep:${item}`" />
         </ElIcon>
       </ElTooltip>
     </div>
