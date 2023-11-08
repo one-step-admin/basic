@@ -42,21 +42,11 @@ function userCommand(command: 'setting' | 'hotkeys' | 'logout') {
       break
   }
 }
-
-function pro() {
-  window.open('https://one-step-admin.gitee.io/pro-example', 'top')
-}
 </script>
 
 <template>
   <div class="tools">
     <div class="buttons">
-      <span class="item item-pro" @click="pro">
-        <ElIcon>
-          <SvgIcon name="pro" />
-        </ElIcon>
-        <span class="title">查看专业版</span>
-      </span>
       <span v-if="windowStore.list.length > 1" class="item">
         <ElIcon @click="previewAllWindows">
           <SvgIcon name="toolbar-preview-windows" />
@@ -134,43 +124,6 @@ function pro() {
       .el-badge {
         display: flex;
         align-items: center;
-      }
-    }
-
-    .item-pro {
-      display: inline-block;
-      width: auto;
-      padding: 0 10px;
-      transform-origin: right center;
-      animation: pro-text 3s ease-out infinite;
-
-      @keyframes pro-text {
-        0%,
-        20% {
-          transform: scale(1);
-        }
-
-        50%,
-        70% {
-          transform: scale(1.2);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .el-icon {
-        vertical-align: middle;
-      }
-
-      .title {
-        padding-left: 5px;
-        font-weight: bold;
-        font-size: 14px;
-        background-image: linear-gradient(to right, #ffa237, #fc455d);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
     }
   }

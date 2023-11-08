@@ -112,24 +112,16 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
       <div class="mask">
         <div class="actions">
           <span title="预览" @click="preview(index)">
-            <ElIcon>
-              <SvgIcon name="ep:zoom-in" />
-            </ElIcon>
+            <SvgIcon name="ep:zoom-in" class="icon" />
           </span>
           <span title="移除" @click="remove(index)">
-            <ElIcon>
-              <SvgIcon name="ep:delete" />
-            </ElIcon>
+            <SvgIcon name="ep:delete" class="icon" />
           </span>
           <span v-show="url.length > 1" title="左移" :class="{ disabled: index === 0 }" @click="move(index, 'left')">
-            <ElIcon>
-              <SvgIcon name="ep:back" />
-            </ElIcon>
+            <SvgIcon name="ep:back" class="icon" />
           </span>
           <span v-show="url.length > 1" title="右移" :class="{ disabled: index === url.length - 1 }" @click="move(index, 'right')">
-            <ElIcon>
-              <SvgIcon name="ep:right" />
-            </ElIcon>
+            <SvgIcon name="ep:right" class="icon" />
           </span>
         </div>
       </div>
@@ -148,9 +140,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
       class="images-upload"
     >
       <div class="image-slot" :style="`width:${width}px;height:${height}px;`">
-        <ElIcon>
-          <SvgIcon name="ep:plus" />
-        </ElIcon>
+        <SvgIcon name="ep:plus" class="icon" />
       </div>
       <div v-show="uploadData.progress.percent" class="progress" :style="`width:${width}px;height:${height}px;`">
         <ElImage :src="uploadData.progress.preview" :style="`width:${width}px;height:${height}px;`" fit="fill" />
@@ -162,7 +152,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
         <ElAlert :title="`上传图片支持 ${ext.join(' / ')} 格式，单张图片大小不超过 ${size}MB，建议图片尺寸为 ${width}*${height}，且图片数量不超过 ${max} 张`" type="info" show-icon :closable="false" />
       </div>
     </div>
-    <ElImageViewer v-if="uploadData.imageViewerVisible" :url-list="url as string[]" :initial-index="uploadData.dialogImageIndex" @close="previewClose" />
+    <ElImageViewer v-if="uploadData.imageViewerVisible" :url-list="url as string[]" :initial-index="uploadData.dialogImageIndex" teleported @close="previewClose" />
   </div>
 </template>
 
@@ -218,7 +208,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
           transform: scale(1.5);
         }
 
-        .el-icon {
+        .icon {
           font-size: 24px;
         }
       }
@@ -253,7 +243,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
       color: var(--el-text-color-placeholder);
       background-color: transparent;
 
-      i {
+      .icon {
         font-size: 30px;
       }
     }

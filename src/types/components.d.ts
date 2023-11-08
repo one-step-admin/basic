@@ -10,7 +10,6 @@ declare module 'vue' {
     ActionContainer: typeof import('./../components/ActionContainer/index.vue')['default']
     Auth: typeof import('./../components/Auth/index.vue')['default']
     AuthAll: typeof import('./../components/AuthAll/index.vue')['default']
-    ComponentBasicExampleAlert: typeof import('./../components/ComponentBasicExampleAlert/index.vue')['default']
     Copyright: typeof import('./../components/Copyright/index.vue')['default']
     FileUpload: typeof import('./../components/FileUpload/index.vue')['default']
     ImagePreview: typeof import('./../components/ImagePreview/index.vue')['default']
