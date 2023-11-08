@@ -12,29 +12,15 @@ setTimeout(() => {
 
 onMounted(() => {
   ElNotification({
-    type: 'success',
-    title: '温馨提示',
+    type: 'info',
+    title: '「 专业版限时优惠 」',
     dangerouslyUseHTMLString: true,
     message: `
-      <p>当前访问的是<b>基础版</b></p>
-      <p>你可以点<a href="https://one-step-admin.gitee.io/pro-example" target="_blank"><b>这里</b></a>访问专业版</p>
+      <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.gitee.io/buy.html" target="_blank">查看详情</a>！</p>
     `,
     position: 'bottom-right',
-    duration: 5000,
+    duration: 0,
   })
-
-  setTimeout(() => {
-    ElNotification({
-      type: 'info',
-      title: '「 专业版限时优惠 」',
-      dangerouslyUseHTMLString: true,
-      message: `
-        <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.gitee.io/buy.html" target="_blank">查看详情</a>！</p>
-      `,
-      position: 'bottom-right',
-      duration: 0,
-    })
-  }, 0)
 })
 
 function open(url: string) {

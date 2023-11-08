@@ -154,7 +154,7 @@ function maskClick(windowName: string) {
               </div>
             </div>
           </div>
-          <div class="container">
+          <div class="flex-1 of-auto overscroll-contain">
             <ElScrollbar>
               <Component :is="element.name" v-if="!element.reload" :is-maximize="element.isMaximize" :params="element.params" />
             </ElScrollbar>
@@ -359,18 +359,6 @@ function maskClick(windowName: string) {
             &:not(.disabled):hover {
               background-color: var(--el-fill-color);
             }
-          }
-        }
-      }
-
-      .container {
-        flex: 1;
-        overflow: auto;
-        overscroll-behavior: contain;
-
-        > .el-scrollbar {
-          > :deep(.el-scrollbar__wrap) {
-            padding: var(--g-window-container-padding);
           }
         }
       }

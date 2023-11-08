@@ -25,12 +25,10 @@ const realHeight = computed(() => {
 </script>
 
 <template>
-  <ElImage :src="src" fit="cover" :style="`width:${realWidth};height:${realHeight};`" :preview-src-list="[src]">
+  <ElImage :src="src" fit="cover" :style="`width:${realWidth};height:${realHeight};`" :preview-src-list="[src]" preview-teleported>
     <template #error>
       <div class="image-slot">
-        <ElIcon>
-          <SvgIcon name="image-load-fail" />
-        </ElIcon>
+        <SvgIcon name="image-load-fail" />
       </div>
     </template>
   </ElImage>

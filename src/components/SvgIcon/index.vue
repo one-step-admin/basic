@@ -1,27 +1,23 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import { isOfflineUse } from '@/iconify/index.json'
 
 defineOptions({
   name: 'SvgIcon',
 })
 
-const props = withDefaults(
-  defineProps<{
-    name: string
-    runtime?: boolean
-    flip?: 'horizontal' | 'vertical' | 'both' | ''
-    rotate?: number
-  }>(),
-  {
-    runtime: false,
-    flip: '',
-    rotate: 0,
-  },
-)
+const props = defineProps<{
+  name: string
+  async?: boolean
+  flip?: 'horizontal' | 'vertical' | 'both'
+  rotate?: number
+  color?: string
+  size?: string | number
+}>()
 
 const outputType = computed(() => {
   if (props.name.indexOf('i-') === 0) {
-    return props.runtime ? 'svg' : 'css'
+    return (props.async || isOfflineUse) ? 'svg' : 'css'
   }
   else if (props.name.includes(':')) {
     return 'svg'
@@ -34,7 +30,7 @@ const outputType = computed(() => {
 const outputName = computed(() => {
   if (props.name.indexOf('i-') === 0) {
     let conversionName = props.name
-    if (props.runtime) {
+    if (props.async || isOfflineUse) {
       conversionName = conversionName.replace('i-', '')
     }
     return conversionName
@@ -44,33 +40,39 @@ const outputName = computed(() => {
   }
 })
 
-const transformStyle = computed(() => {
-  const style = []
-  if (props.flip !== '') {
+const style = computed(() => {
+  const transform = []
+  if (props.flip) {
     switch (props.flip) {
       case 'horizontal':
-        style.push('rotateY(180deg)')
+        transform.push('rotateY(180deg)')
         break
       case 'vertical':
-        style.push('rotateX(180deg)')
+        transform.push('rotateX(180deg)')
         break
       case 'both':
-        style.push('rotateX(180deg)')
-        style.push('rotateY(180deg)')
+        transform.push('rotateX(180deg)')
+        transform.push('rotateY(180deg)')
         break
     }
   }
-  if (props.rotate !== 0) {
-    style.push(`rotate(${props.rotate % 360}deg)`)
+  if (props.rotate) {
+    transform.push(`rotate(${props.rotate % 360}deg)`)
   }
-  return `transform: ${style.join(' ')};`
+  return {
+    ...(props.color && { color: props.color }),
+    ...(props.size && { fontSize: typeof props.size === 'number' ? `${props.size}px` : props.size }),
+    ...(transform.length && { transform: transform.join(' ') }),
+  }
 })
 </script>
 
 <template>
-  <i v-if="outputType === 'css'" :class="outputName" :style="transformStyle" />
-  <Icon v-else-if="outputType === 'svg'" :icon="outputName" :style="transformStyle" />
-  <svg v-else :style="transformStyle" aria-hidden="true">
-    <use :xlink:href="`#icon-${outputName}`" />
-  </svg>
+  <i class="h-[1em] w-[1em] leading-[1em] flex-inline justify-center items-center relative fill-current" :style="style">
+    <i v-if="outputType === 'css'" :class="outputName" />
+    <Icon v-else-if="outputType === 'svg'" :icon="outputName" />
+    <svg v-else h-1em w-1em aria-hidden="true">
+      <use :xlink:href="`#icon-${outputName}`" />
+    </svg>
+  </i>
 </template>

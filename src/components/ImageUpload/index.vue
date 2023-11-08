@@ -104,9 +104,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
       <ElImage v-if="url === ''" :src="url === '' ? placeholder : url" :style="`width:${width}px;height:${height}px;`" fit="fill">
         <template #error>
           <div class="image-slot" :style="`width:${width}px;height:${height}px;`">
-            <ElIcon>
-              <SvgIcon name="ep:plus" />
-            </ElIcon>
+            <SvgIcon name="ep:plus" class="icon" />
           </div>
         </template>
       </ElImage>
@@ -115,14 +113,10 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
         <div class="mask">
           <div class="actions">
             <span title="预览" @click.stop="preview">
-              <ElIcon>
-                <SvgIcon name="ep:zoom-in" />
-              </ElIcon>
+              <SvgIcon name="ep:zoom-in" class="icon" />
             </span>
             <span title="移除" @click.stop="remove">
-              <ElIcon>
-                <SvgIcon name="ep:delete" />
-              </ElIcon>
+              <SvgIcon name="ep:delete" class="icon" />
             </span>
           </div>
         </div>
@@ -137,7 +131,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
         <ElAlert :title="`上传图片支持 ${ext.join(' / ')} 格式，且图片大小不超过 ${size}MB，建议图片尺寸为 ${width}*${height}`" type="info" show-icon :closable="false" />
       </div>
     </div>
-    <ElImageViewer v-if="uploadData.imageViewerVisible" :url-list="[url]" @close="previewClose" />
+    <ElImageViewer v-if="uploadData.imageViewerVisible" :url-list="[url]" teleported @close="previewClose" />
   </div>
 </template>
 
@@ -185,7 +179,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
           transform: scale(1.5);
         }
 
-        .el-icon {
+        .icon {
           font-size: 24px;
         }
       }
@@ -220,7 +214,7 @@ const onSuccess: UploadProps['onSuccess'] = (res) => {
       color: var(--el-text-color-placeholder);
       background-color: transparent;
 
-      i {
+      .icon {
         font-size: 30px;
       }
     }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ElMessage } from 'element-plus'
 import type { UploadProps, UploadUserFile } from 'element-plus'
+import { ElMessage } from 'element-plus'
 
 defineOptions({
   name: 'FileUpload',
@@ -68,14 +68,12 @@ const onSuccess: UploadProps['onSuccess'] = (res, file, fileList) => {
     :before-upload="beforeUpload"
     :on-exceed="onExceed"
     :on-success="onSuccess"
-    :file-list="files as UploadUserFile[]"
+    :file-list="files"
     :limit="max"
     drag
   >
     <div class="slot">
-      <ElIcon class="el-icon--upload">
-        <SvgIcon name="ep:upload-filled" />
-      </ElIcon>
+      <SvgIcon name="ep:upload-filled" class="el-icon--upload" />
       <div class="el-upload__text">
         将文件拖到此处，或<em>点击上传</em>
       </div>

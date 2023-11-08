@@ -129,21 +129,26 @@ const dataList = ref([
 <style lang="scss" scoped>
 .absolute-container {
   position: absolute;
-  width: calc(100% - var(--g-window-container-padding) * 2);
-  height: calc(100% - var(--g-window-container-padding) * 2);
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 
+  // 让 page-main 的高度自适应
   .page-main {
     flex: 1;
     overflow: auto;
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
 
-    .el-button {
-      margin-top: 20px;
+    :deep(.main-container) {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
     }
   }
+}
+
+.page-header {
+  margin-bottom: 0;
 }
 </style>
