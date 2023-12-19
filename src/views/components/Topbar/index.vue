@@ -12,7 +12,7 @@ const settingsStore = useSettingsStore()
 <template>
   <div class="topbar-container" data-fixed-calc-width>
     <div class="left-box">
-      <div v-if="(['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode) && settingsStore.settings.menu.enableSubMenuCollapseButton)" class="flex-center px-2 py-1 cursor-pointer transition-transform" :class="{ '-rotate-z-180': settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()">
+      <div v-if="(['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode) && settingsStore.settings.menu.enableSubMenuCollapseButton)" class="flex-center cursor-pointer px-2 py-1 transition-transform" :class="{ '-rotate-z-180': settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()">
         <SvgIcon name="toolbar-collapse" class="icon" />
       </div>
     </div>

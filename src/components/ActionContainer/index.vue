@@ -1,11 +1,11 @@
 <template>
-  <div class="action-container absolute top-0 left-0 w-full h-full flex flex-col">
+  <div class="action-container absolute left-0 top-0 h-full w-full flex flex-col">
     <div class="flex-1 of-hidden">
       <ElScrollbar>
         <slot />
       </ElScrollbar>
     </div>
-    <div v-if="$slots.action" class="flex-center z-1 p-4 border-t-(~ solid stone-2) dark:border-t-stone-8 bg-[var(--g-app-bg)] transition-background-color-300">
+    <div v-if="$slots.action" class="z-1 flex-center border-t border-t-(stone-2 solid) bg-[var(--g-app-bg)] p-4 transition-background-color-300 dark:border-t-stone-8">
       <slot name="action" />
     </div>
   </div>

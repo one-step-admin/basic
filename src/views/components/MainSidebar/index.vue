@@ -32,7 +32,7 @@ const { switchTo } = useMenu()
             >
               <div class="w-full inline-flex flex-1 flex-col items-center justify-center gap-1">
                 <SvgIcon v-if="item?.icon" :name="item?.icon" :size="20" class="menu-item-container-icon transition-transform group-hover:scale-120" async />
-                <span class="flex-1 text-sm w-full text-center truncate transition-width transition-height transition-opacity">
+                <span class="w-full flex-1 truncate text-center text-sm transition-height transition-opacity transition-width">
                   {{ typeof item?.title === 'function' ? item?.title() : item?.title }}
                 </span>
               </div>
