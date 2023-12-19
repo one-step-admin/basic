@@ -26,13 +26,13 @@ function unCollaspe() {
 
 <template>
   <div
-    class="page-main flex flex-col relative bg-[var(--g-app-bg)] transition-background-color" :class="{
+    class="page-main relative flex flex-col bg-[var(--g-app-bg)] transition-background-color" :class="{
       'of-hidden': isCollaspe,
     }" :style="{
       height: isCollaspe ? height : '',
     }"
   >
-    <div v-if="titleSlot || title" class="title-container px-5 py-4 bg-[var(--g-main-bg)] transition-background-color">
+    <div v-if="titleSlot || title" class="title-container bg-[var(--g-main-bg)] px-5 py-4 transition-background-color">
       <slot name="title">
         {{ title }}
       </slot>
@@ -40,8 +40,8 @@ function unCollaspe() {
     <div class="main-container p-5">
       <slot />
     </div>
-    <div v-if="isCollaspe" class="collaspe absolute bottom-0 w-full pt-10 pb-2 text-center cursor-pointer bg-gradient-to-b from-transparent to-[var(--g-app-bg)]" @click="unCollaspe">
-      <SvgIcon name="ep:arrow-down" class="text-xl op-30 hover:op-100 transition-opacity" />
+    <div v-if="isCollaspe" class="collaspe absolute bottom-0 w-full cursor-pointer from-transparent to-[var(--g-app-bg)] bg-gradient-to-b pb-2 pt-10 text-center" @click="unCollaspe">
+      <SvgIcon name="ep:arrow-down" class="text-xl op-30 transition-opacity hover:op-100" />
     </div>
   </div>
 </template>

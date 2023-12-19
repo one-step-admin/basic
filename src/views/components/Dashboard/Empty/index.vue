@@ -73,7 +73,7 @@ function open(url: string) {
             这是一款<b class="text-emphasis">干啥都快人一步</b>的中后台框架，它拥有<b>全新的交互方式</b>，只为<b>提升操作效率</b>而生。
           </div>
           <div class="op-70">
-            如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://fantastic-admin.gitee.io" target="_blank" class="no-underline border-b-(~ dashed blue) text-blue">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。
+            如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://fantastic-admin.gitee.io" target="_blank" class="border-b border-b-(blue dashed) text-blue no-underline">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。
           </div>
         </div>
       </template>
@@ -96,10 +96,10 @@ function open(url: string) {
         </HButton>
       </HDropdownMenu>
     </PageHeader>
-    <PageMain class="text-white rounded-lg" style="background: linear-gradient(50deg, rgb(14 76 253), rgb(106 142 255));">
-      全新版本 V4.0 正式发布，支持替换 UI 组件库，点击查看<span class="cursor-pointer text-yellow font-bold px-1 hover:op-70" @click="open('https://one-step-admin.gitee.io/guide/v4.html')">V4.0 更新介绍</span>。
+    <PageMain class="rounded-lg text-white" style="background: linear-gradient(50deg, rgb(14 76 253), rgb(106 142 255));">
+      全新版本 V4.0 正式发布，支持替换 UI 组件库，点击查看<span class="cursor-pointer px-1 text-yellow font-bold hover:op-70" @click="open('https://one-step-admin.gitee.io/guide/v4.html')">V4.0 更新介绍</span>。
     </PageMain>
-    <div class="w-full flex flex-col xl:flex-row gap-[20px] px-[20px]">
+    <div class="w-full flex flex-col gap-[20px] px-[20px] xl:flex-row">
       <PageMain class="ecology">
         <template #title>
           <div class="title-info">

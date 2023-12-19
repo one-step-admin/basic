@@ -135,7 +135,7 @@ function maskClick(windowName: string) {
             </OverlayScrollbarsComponent>
           </div>
           <div class="mask" @click="maskClick(element.name)">
-            <div class="flex-1 flex-center w-full text-5xl text-shadow cursor-pointer c-stone-3 dark:c-stone-7 hover:c-stone-5 transition">
+            <div class="w-full flex-center flex-1 cursor-pointer text-5xl c-stone-3 text-shadow transition dark:c-stone-7 hover:c-stone-5">
               点击进入
             </div>
           </div>
