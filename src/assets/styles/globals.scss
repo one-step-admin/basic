@@ -1,23 +1,53 @@
-@use "./theme.scss";
-@use "./element-plus/override.scss";
-
 // 页面布局 CSS 变量
 :root {
   // 头部高度
-  --g-header-height: 80px;
+  --g-header-height: 60px;
   // 侧边栏宽度
-  --g-main-sidebar-width: 70px;
+  --g-main-sidebar-width: 80px;
   --g-sub-sidebar-width: 220px;
+  --g-sub-sidebar-collapse-width: 64px;
   // 侧边栏Logo高度
   --g-sidebar-logo-height: 50px;
   // 顶栏高度
   --g-topbar-height: 50px;
   // 窗口宽度
-  --g-window-width: 800px;
+  --g-window-width: 1000px;
   // 窗口高度（仅在窗口预览时使用）
   --g-window-height: 800px;
   // 窗口预览缩放系数
   --g-window-perview-scale: 0.5;
+}
+
+// 明暗模式 CSS 变量
+/* stylelint-disable-next-line no-duplicate-selectors */
+:root {
+  &::view-transition-old(root),
+  &::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  &::view-transition-old(root) {
+    z-index: 1;
+  }
+
+  &::view-transition-new(root) {
+    z-index: 9999;
+  }
+
+  --g-box-shadow-color: rgb(0 0 0 / 12%);
+
+  &.dark {
+    &::view-transition-old(root) {
+      z-index: 9999;
+    }
+
+    &::view-transition-new(root) {
+      z-index: 1;
+    }
+
+    --g-box-shadow-color: rgb(0 0 0 / 72%);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -48,7 +78,6 @@ body {
 body {
   margin: 0;
   background-color: var(--g-app-bg);
-  transition: background-color 0.3s;
   box-sizing: border-box;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   -webkit-tap-highlight-color: transparent;
@@ -74,4 +103,38 @@ body {
 // textarea 字体跟随系统
 textarea {
   font-family: inherit;
+}
+
+/* Overrides Floating Vue */
+.v-popper--theme-dropdown,
+.v-popper--theme-tooltip {
+  --at-apply: inline-flex;
+}
+
+.v-popper--theme-dropdown .v-popper__inner,
+.v-popper--theme-tooltip .v-popper__inner {
+  --at-apply: bg-white dark:bg-stone-8 text-dark dark:text-white rounded shadow ring-1 ring-gray-200 dark:ring-gray-800 border border-solid border-stone/20 text-xs font-normal;
+
+  box-shadow: 0 6px 30px rgb(0 0 0 / 10%);
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-inner,
+.v-popper--theme-dropdown .v-popper__arrow-inner {
+  visibility: visible;
+
+  --at-apply: border-white dark:border-stone-8;
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-outer,
+.v-popper--theme-dropdown .v-popper__arrow-outer {
+  --at-apply: border-stone/20;
+}
+
+.v-popper--theme-tooltip.v-popper--shown,
+.v-popper--theme-tooltip.v-popper--shown * {
+  transition: none !important;
+}
+
+[data-overlayscrollbars-contents] {
+  overscroll-behavior: contain;
 }

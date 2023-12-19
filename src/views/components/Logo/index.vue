@@ -21,42 +21,8 @@ const logo = ref(imgLogo)
 </script>
 
 <template>
-  <div class="title" :title="title">
-    <img v-if="showLogo" :src="logo" class="logo">
-    <span v-if="showTitle">{{ title }}</span>
+  <div class="flex-center gap-2 w-inherit h-[var(--g-sidebar-logo-height)] px-3 text-inherit" :title="title">
+    <img v-if="showLogo" :src="logo" class="logo w-[30px] h-[30px] object-contain">
+    <span v-if="showTitle" class="block font-bold truncate">{{ title }}</span>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.title {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  width: inherit;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--g-sidebar-logo-height);
-  text-align: center;
-  overflow: hidden;
-  text-decoration: none;
-
-  .logo {
-    width: 30px;
-    height: 30px;
-
-    & + span {
-      margin-left: 10px;
-    }
-  }
-
-  span {
-    display: block;
-    font-weight: bold;
-    color: #fff;
-
-    @include text-overflow;
-  }
-}
-</style>

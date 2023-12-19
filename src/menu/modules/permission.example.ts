@@ -1,6 +1,6 @@
 const menus: Menu.recordRaw = {
   title: '权限验证',
-  icon: 'sidebar-permission',
+  icon: 'ri:shield-keyhole-line',
   windowName: 'PermissionExample',
 }
 

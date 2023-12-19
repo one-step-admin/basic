@@ -31,27 +31,19 @@ function open(url: string) {
 <template>
   <div class="buy-it" :class="{ actived: isActived }">
     <div class="item" @click="open(`https://one-step-admin.gitee.io/buy.html`)">
-      <ElIcon>
-        <SvgIcon name="fixed-right-buy" />
-      </ElIcon>
+      <SvgIcon name="i-ri:money-cny-box-line" />
       <span class="title">购买<br>专业版</span>
     </div>
     <div class="item" @click="open(`https://gitee.com/one-step-admin/basic`)">
-      <ElIcon>
-        <SvgIcon name="fixed-right-code" />
-      </ElIcon>
+      <SvgIcon name="i-ri:code-s-slash-line" />
       <span class="title">下载<br>基础版</span>
     </div>
     <div class="item" @click="open(`https://one-step-admin.gitee.io`)">
-      <ElIcon>
-        <SvgIcon name="fixed-right-doc" />
-      </ElIcon>
+      <SvgIcon name="i-ri:book-read-line" />
       <span class="title">开发<br>文档</span>
     </div>
     <div class="item" @click="open(`https://one-step-admin.gitee.io/support.html`)">
-      <ElIcon>
-        <SvgIcon name="fixed-right-chat" />
-      </ElIcon>
+      <SvgIcon name="i-ri:message-2-line" />
       <span class="title">技术<br>支持</span>
     </div>
   </div>
@@ -100,19 +92,23 @@ function open(url: string) {
     }
 
     &:nth-child(1) {
-      background-color: #ff4200;
+      --at-apply: bg-blue;
     }
 
     &:nth-child(2) {
-      background-color: #409eff;
+      --at-apply: bg-pink;
     }
 
     &:nth-child(3) {
-      background-color: #0fcc1a;
+      --at-apply: bg-orange;
     }
 
     &:nth-child(4) {
-      background-color: #343b42;
+      --at-apply: bg-green;
+    }
+
+    &:nth-child(5) {
+      --at-apply: bg-red;
     }
 
     i {

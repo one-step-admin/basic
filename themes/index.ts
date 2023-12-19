@@ -6,8 +6,8 @@ export const lightTheme = {
   '--ui-primary': hex2rgba('#0f0f0f')!.join(' '),
   '--ui-text': hex2rgba('#fcfcfc')!.join(' '),
   // 主体
-  '--g-bg': '#f2f2f2',
-  '--g-container-bg': '#fff',
+  '--g-app-bg': '#fff',
+  '--g-main-bg': '#f2f2f2',
   '--g-border-color': '#f2f2f2',
   // 头部
   '--g-header-bg': '#fff',
@@ -33,6 +33,8 @@ export const lightTheme = {
   '--g-sub-sidebar-menu-hover-color': '#0f0f0f',
   '--g-sub-sidebar-menu-active-bg': '#0f0f0f',
   '--g-sub-sidebar-menu-active-color': '#fff',
+  // 工具栏
+  '--g-toolbar-bg': '#fff',
 }
 
 export const darkTheme = {
@@ -41,8 +43,8 @@ export const darkTheme = {
   '--ui-primary': hex2rgba('#e5e5e5')!.join(' '),
   '--ui-text': hex2rgba('#0f0f0f')!.join(' '),
   // 主体
-  '--g-bg': '#0a0a0a',
-  '--g-container-bg': '#141414',
+  '--g-app-bg': '#141414',
+  '--g-main-bg': '#0a0a0a',
   '--g-border-color': '#15191e',
   // 头部
   '--g-header-bg': '#141414',
@@ -68,4 +70,6 @@ export const darkTheme = {
   '--g-sub-sidebar-menu-hover-color': '#e5e5e5',
   '--g-sub-sidebar-menu-active-bg': '#e5e5e5',
   '--g-sub-sidebar-menu-active-color': '#0a0a0a',
+  // 工具栏
+  '--g-toolbar-bg': '#141414',
 }

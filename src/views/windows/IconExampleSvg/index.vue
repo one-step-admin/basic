@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const flip = ref<'horizontal' | 'vertical' | 'both' | ''>('')
+const flip = ref<'horizontal' | 'vertical' | 'both'>()
 const rotate = ref(0)
 </script>
 

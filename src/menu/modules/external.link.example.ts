@@ -1,6 +1,6 @@
 const menus: Menu.recordRaw = {
   title: '外链',
-  icon: 'sidebar-external-link',
+  icon: 'ri:external-link-fill',
   children: [
     {
       title: 'Gitee 仓库',

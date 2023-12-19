@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <div>
+  <PageMain>
     Params: {{ params }}
-  </div>
+  </PageMain>
 </template>

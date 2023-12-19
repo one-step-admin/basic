@@ -2,13 +2,18 @@ import '@/utils/baidu'
 
 import '@/utils/system.copyright'
 
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import 'element-plus/theme-chalk/dark/css-vars.css'
+import FloatingVue from 'floating-vue'
+import 'floating-vue/dist/style.css'
+
+import Message from 'vue-m-message'
+import 'vue-m-message/dist/style.css'
+
+import 'overlayscrollbars/overlayscrollbars.css'
 
 import App from './App.vue'
 import pinia from './store'
 import router from './router'
+import ui from './ui-provider'
 import registerWindowComponent from '@/views/windows/registerWindowComponent'
 
 // 自定义指令
@@ -27,9 +32,13 @@ import 'virtual:uno.css'
 import '@/assets/styles/globals.scss'
 
 const app = createApp(App)
-app.use(ElementPlus)
+app.use(FloatingVue, {
+  distance: 12,
+})
+app.use(Message)
 app.use(pinia)
 app.use(router)
+app.use(ui)
 registerWindowComponent(app)
 directive(app)
 if (icons.isOfflineUse) {

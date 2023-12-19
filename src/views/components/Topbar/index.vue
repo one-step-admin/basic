@@ -12,10 +12,8 @@ const settingsStore = useSettingsStore()
 <template>
   <div class="topbar-container" data-fixed-calc-width>
     <div class="left-box">
-      <div v-if="(['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode) && settingsStore.settings.menu.enableSubMenuCollapseButton)" class="sidebar-collapse" :class="{ 'is-collapse': settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()">
-        <ElIcon>
-          <SvgIcon name="toolbar-collapse" />
-        </ElIcon>
+      <div v-if="(['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode) && settingsStore.settings.menu.enableSubMenuCollapseButton)" class="flex-center px-2 py-1 cursor-pointer transition-transform" :class="{ '-rotate-z-180': settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()">
+        <SvgIcon name="toolbar-collapse" class="icon" />
       </div>
     </div>
     <Tools />
@@ -32,35 +30,15 @@ const settingsStore = useSettingsStore()
   justify-content: space-between;
   height: var(--g-topbar-height);
   background-color: var(--g-toolbar-bg);
-  transition: 0.3s, box-shadow 0.2s;
-  box-shadow: 0 0 1px 0 var(--g-box-shadow-color);
+  transition: width 0.3s, top 0.3s, transform 0.3s, background-color 0.3s;
+  box-shadow: 0 1px 0 0 var(--g-border-color);
 
   .left-box {
     display: flex;
     align-items: center;
+    padding-left: 10px;
     padding-right: 50px;
     overflow: hidden;
-
-    .sidebar-collapse {
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      height: 50px;
-      cursor: pointer;
-
-      .el-icon {
-        color: var(--el-text-color-primary);
-        transition: var(--el-transition-color), var(--el-transition-md-fade);
-      }
-
-      &:hover .el-icon {
-        color: var(--el-color-primary);
-      }
-
-      &.is-collapse .el-icon {
-        transform: rotateZ(-180deg);
-      }
-    }
   }
 }
 </style>

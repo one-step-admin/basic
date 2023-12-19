@@ -24,15 +24,6 @@ export default [
                     windowName: 'WindowExampleRemove',
                   },
                   {
-                    title: '窗口最大化',
-                    windowName: 'WindowExampleMaximize',
-                  },
-                  {
-                    title: '无标题窗口',
-                    windowName: 'WindowExampleNoTitle',
-                    noTitle: true,
-                  },
-                  {
                     title: '带参窗口',
                     windowName: 'WindowExampleParams',
                   },

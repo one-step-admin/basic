@@ -10,7 +10,7 @@ defineOptions({
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
-const menu = useMenu()
+const { switchTo } = useMenu()
 </script>
 
 <template>
@@ -18,14 +18,24 @@ const menu = useMenu()
     <div v-if="['side'].includes(settingsStore.settings.menu.menuMode)" class="main-sidebar-container">
       <Logo :show-title="false" class="sidebar-logo" />
       <!-- 侧边栏模式（含主导航） -->
-      <div v-if="settingsStore.settings.menu.menuMode === 'side'" class="nav">
+      <div class="menu flex flex-col of-hidden transition-all">
         <template v-for="(item, index) in menuStore.allMenus" :key="index">
-          <div v-if="item.children && item.children.length !== 0" class="item-container" :class="{ active: index === menuStore.actived }">
-            <div class="item" :title="item.title" @click="menu.switchTo(index)">
-              <ElIcon v-if="item.icon">
-                <SvgIcon :name="item.icon" />
-              </ElIcon>
-              <span>{{ item.title }}</span>
+          <div
+            class="menu-item relative transition-all" :class="{
+              active: index === menuStore.actived,
+            }"
+          >
+            <div
+              v-if="item.children && item.children.length !== 0" class="group menu-item-container h-full w-full flex cursor-pointer items-center justify-between gap-1 py-4 text-[var(--g-main-sidebar-menu-color)] transition-all hover:(bg-[var(--g-main-sidebar-menu-hover-bg)] text-[var(--g-main-sidebar-menu-hover-color)]) px-2!" :class="{
+                'text-[var(--g-main-sidebar-menu-active-color)]! bg-[var(--g-main-sidebar-menu-active-bg)]!': index === menuStore.actived,
+              }" :title="typeof item?.title === 'function' ? item?.title() : item?.title" @click="switchTo(index)"
+            >
+              <div class="w-full inline-flex flex-1 flex-col items-center justify-center gap-1">
+                <SvgIcon v-if="item?.icon" :name="item?.icon" :size="20" class="menu-item-container-icon transition-transform group-hover:scale-120" async />
+                <span class="flex-1 text-sm w-full text-center truncate transition-width transition-height transition-opacity">
+                  {{ typeof item?.title === 'function' ? item?.title() : item?.title }}
+                </span>
+              </div>
             </div>
           </div>
         </template>
@@ -36,74 +46,63 @@ const menu = useMenu()
 
 <style lang="scss" scoped>
 .main-sidebar-container {
-  overflow: hidden auto;
-  overscroll-behavior: contain;
-  // firefox隐藏滚动条
-  scrollbar-width: none;
-  // chrome隐藏滚动条
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 1;
   width: var(--g-main-sidebar-width);
   color: var(--g-main-sidebar-menu-color);
   background-color: var(--g-main-sidebar-bg);
-  transition: background-color 0.3s, var(--el-transition-color);
+  box-shadow: 1px 0 0 0 var(--g-border-color);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 
   .sidebar-logo {
     background-color: var(--g-main-sidebar-bg);
     transition: background-color 0.3s;
   }
 
-  .nav {
-    width: inherit;
-    padding-top: var(--g-sidebar-logo-height);
+  .menu {
+    flex: 1;
+    width: initial;
+    overflow: hidden auto;
+    overscroll-behavior: contain;
 
-    .item-container {
-      position: relative;
-      display: flex;
-      transition: var(--el-transition-all);
+    // firefox隐藏滚动条
+    scrollbar-width: none;
 
-      .item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        height: 60px;
-        padding: 0 5px;
-        cursor: pointer;
+    // chrome隐藏滚动条
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    :deep(.menu-item) {
+      .menu-item-container {
+        padding-block: 8px;
         color: var(--g-main-sidebar-menu-color);
-        background-color: var(--g-main-sidebar-bg);
-        transition: var(--el-transition-all), background-color 0.3s, var(--el-transition-color);
 
         &:hover {
           color: var(--g-main-sidebar-menu-hover-color);
           background-color: var(--g-main-sidebar-menu-hover-bg);
         }
 
-        .el-icon {
-          font-size: 24px;
-        }
-
-        span {
-          font-size: 14px;
-          text-align: center;
-          word-break: break-all;
-
-          @include text-overflow(1, false);
+        .menu-item-container-icon {
+          font-size: 24px !important;
         }
       }
 
-      &.active .item {
-        color: var(--g-main-sidebar-menu-active-color);
-        background-color: var(--g-main-sidebar-menu-active-bg);
+      &:hover .menu-item-container {
+        color: var(--g-main-sidebar-menu-hover-color);
+        background-color: var(--g-main-sidebar-menu-hover-bg);
+      }
+
+      &.active .menu-item-container {
+        color: var(--g-main-sidebar-menu-active-color) !important;
+        background-color: var(--g-main-sidebar-menu-active-bg) !important;
       }
     }
   }
 }
+
 // 主侧边栏动画
 .main-sidebar-enter-active,
 .main-sidebar-leave-active {

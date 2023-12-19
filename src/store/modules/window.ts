@@ -13,11 +13,8 @@ export const useWindowStore = defineStore(
         preData = {
           name: data,
           title: menuStore.flatMenu[data].title,
-          i18n: menuStore.flatMenu[data].i18n,
-          noTitle: menuStore.flatMenu[data].noTitle,
           params: menuStore.flatMenu[data].params,
           breadcrumbNeste: menuStore.flatMenu[data].breadcrumbNeste,
-          isMaximize: false,
           reload: false,
         }
       }
@@ -25,11 +22,8 @@ export const useWindowStore = defineStore(
         preData = {
           name: data.name,
           title: data.title,
-          i18n: data.i18n,
-          noTitle: data.noTitle,
           params: data.params,
           breadcrumbNeste: [],
-          isMaximize: false,
           reload: false,
         }
       }

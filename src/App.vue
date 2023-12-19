@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import eruda from 'eruda'
 import VConsole from 'vconsole'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import hotkeys from 'hotkeys-js'
 import eventBus from './utils/eventBus'
-
+import Provider from './ui-provider/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 
 const settingsStore = useSettingsStore()
@@ -44,7 +43,7 @@ import.meta.env.VITE_APP_DEBUG_TOOL === 'vconsole' && new VConsole()
 </script>
 
 <template>
-  <ElConfigProvider :locale="zhCn">
+  <Provider>
     <RouterView
       :style="{
         '--g-main-sidebar-actual-width': mainSidebarActualWidth,
@@ -52,5 +51,5 @@ import.meta.env.VITE_APP_DEBUG_TOOL === 'vconsole' && new VConsole()
       }"
     />
     <SystemInfo />
-  </ElConfigProvider>
+  </Provider>
 </template>

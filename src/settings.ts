@@ -1,7 +1,9 @@
+import { defaultsDeep } from 'lodash-es'
+import settingsDefault from '@/settings.default'
+
 const globalSettings: Settings.all = {
   app: {
     enablePermission: true,
-    enableAppSetting: true,
   },
   menu: {
     enableSubMenuCollapseButton: true,
@@ -19,4 +21,4 @@ const globalSettings: Settings.all = {
   },
 }
 
-export default globalSettings
+export default defaultsDeep(globalSettings, settingsDefault) as RecursiveRequired<Settings.all>

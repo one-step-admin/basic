@@ -20,7 +20,6 @@ const useMenuStore = defineStore(
         const tmpBreadcrumb = cloneDeep(breadcrumb)
         tmpBreadcrumb.push({
           title: tmpMenu.title,
-          i18n: tmpMenu.i18n,
         })
         if (!tmpMenu.icon) {
           tmpMenu.icon = icon
