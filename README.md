@@ -8,24 +8,31 @@
 
 <p align="center">
   <a href="https://one-step-admin.gitee.io" target="_blank">官网</a>
-  ( <a href="https://one-step-admin.github.io" target="_blank">备用</a> )
-  <span>&nbsp;|&nbsp;</span>
-  演示
-  ( <a href="https://one-step-admin.gitee.io/basic-example" target="_blank">基础版</a>
-  <a href="https://one-step-admin.gitee.io/pro-example" target="_blank">专业版</a> )
+  <sup><a href="https://one-step-admin.github.io" target="_blank">备用地址</a></sup>
   <span>&nbsp;|&nbsp;</span>
   <a href="https://one-step-admin.gitee.io/support.html" target="_blank">技术支持</a>
   <span>&nbsp;|&nbsp;</span>
-  <a href="https://one-step-admin.gitee.io/buy.html" target="_blank">购买</a>
+  演示
+  <sup><a href="https://one-step-admin.gitee.io/basic-example" target="_blank">基础版</a> <a href="https://one-step-admin.gitee.io/pro-example" target="_blank">专业版</a></sup>
+  <span>&nbsp;|&nbsp;</span>
+  购买
+  <sup><a href="https://one-step-admin.gitee.io/buy.html" target="_blank">专业版</a></sup>
 <p>
+
+<p align="center">
+  <a href="###"><img src="https://img.shields.io/github/license/one-step-admin/basic?label=%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE&style=flat-square" /></a>
+  <a href="https://github.com/one-step-admin/basic/releases" target="_blank"><img src="https://img.shields.io/github/v/release/one-step-admin/basic?label=%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC&style=flat-square" /></a>
+</p>
 
 ## 特点
 
+- 可自由替换 UI 组件库，默认使用 Element Plus
 - 高效的交互方式，让使用人员可以跨模块的多线操作
-- 提供主题配置文件，轻松实现个性化定制
-- 精心设计的动效，让每一处的动画都干净利落
+- 丰富的布局与主题
+- 提供系统配置文件，轻松实现个性化定制
 - 根据配置自动生成导航栏
 - 支持全方位权限验证
+- 轻松实现国际化多语言适配
 
 ## 分支说明
 
@@ -56,6 +63,12 @@
 [![star](https://img.shields.io/github/stars/one-step-admin/basic?style=social)](https://github.com/one-step-admin/basic)
 
 [![star](https://gitee.com/one-step-admin/basic/badge/star.svg?theme=dark)](https://gitee.com/one-step-admin/basic)
+
+<details>
+<summary>Github Stars 曲线</summary>
+
+[![Stargazers over time](https://starchart.cc/one-step-admin/basic.svg)](https://starchart.cc/one-step-admin/basic)
+</details>
 
 ## 生态
 
