@@ -1,13 +1,11 @@
 <script setup lang="ts">
-defineProps({
-  params: {
-    type: Object,
-  },
-})
+defineProps<{
+  params: object
+}>()
 </script>
 
 <template>
-  <div>
+  <PageMain>
     Params: {{ params }}
-  </div>
+  </PageMain>
 </template>

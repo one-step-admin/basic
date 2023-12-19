@@ -27,6 +27,8 @@ onMounted(() => {
 onUnmounted(() => {
   hotkeys.unbind('alt+`')
 })
+
+const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
 </script>
 
 <template>
@@ -50,10 +52,10 @@ onUnmounted(() => {
     </div>
     <Search />
     <HotkeysIntro />
-    <div v-if="settingsStore.settings.app.enableAppSetting">
-      <ElIcon class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
-        <SvgIcon name="ep:setting" />
-      </ElIcon>
+    <div v-if="enableAppSetting">
+      <div class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
+        <SvgIcon name="uiw:setting-o" class="icon" />
+      </div>
       <AppSetting />
     </div>
   </div>
@@ -83,8 +85,9 @@ onUnmounted(() => {
     top: 0;
     bottom: 0;
     display: flex;
-    transition: transform 0.3s;
     width: calc(var(--g-main-sidebar-actual-width) + var(--g-sub-sidebar-actual-width));
+    box-shadow: -1px 0 0 0 var(--g-border-color), 1px 0 0 0 var(--g-border-color);
+    transition: width 0.3s, transform 0.3s, box-shadow 0.3s, top 0.3s;
   }
 
   .main-sidebar-container:not(.main-sidebar-leave-active) + .sub-sidebar-container {
@@ -151,20 +154,23 @@ header:not(.header-leave-active) + .wrapper {
 }
 
 .app-setting {
+  --at-apply: text-white dark:text-dark bg-ui-primary;
+
   position: fixed;
   z-index: 10;
   right: 0;
   top: calc(50% + 250px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   font-size: 24px;
-  color: #fff;
-  background-color: var(--el-color-primary);
   cursor: pointer;
 
-  svg {
+  .icon {
     animation: rotate 5s linear infinite;
   }
 

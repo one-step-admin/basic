@@ -19,11 +19,6 @@ declare namespace Settings {
      * @默认值 `false`
      */
     enablePermission?: boolean
-    /**
-     * 是否开启应用配置，强烈建议在生产环境中关闭
-     * @默认值 `false`
-     */
-    enableAppSetting?: boolean
   }
   interface menu {
     /**
@@ -142,12 +137,9 @@ declare namespace Settings {
 declare namespace Menu {
   /** 原始 */
   interface recordRaw {
-    title: string
-    i18n?: string
-    noTitle?: boolean
+    title?: string | Function
     icon?: string
     auth?: string | string[]
-    badge?: boolean | string | number | Function
     params?: object
     windowName?: string
     breadcrumbNeste?: Menu.breadcrumb[]
@@ -155,25 +147,20 @@ declare namespace Menu {
   }
   /** 主导航 */
   interface recordMainRaw {
-    title?: string
-    i18n?: string
+    title?: string | Function
     icon?: string
     auth?: string | string[]
     children: recordRaw[]
   }
   interface breadcrumb {
-    title: string | Function
-    i18n?: string
+    title?: string | Function
   }
 }
 
 interface window {
   name: string
-  title: string
-  i18n?: string
-  noTitle?: boolean
+  title?: string | Function
   params?: object
   breadcrumbNeste?: any[]
-  isMaximize?: boolean
   reload?: boolean
 }

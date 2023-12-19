@@ -11,7 +11,6 @@ const routes = [
     component: () => import('@/views/login.vue'),
     meta: {
       title: '登录',
-      i18n: 'route.login',
     },
   },
   {

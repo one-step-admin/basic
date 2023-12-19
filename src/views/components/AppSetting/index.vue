@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
-import { ElMessage } from 'element-plus'
+import Message from 'vue-m-message'
+import settingsDefault from '@/settings.default'
 import eventBus from '@/utils/eventBus'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
@@ -13,6 +14,15 @@ const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
 const isShow = ref(false)
+
+const isDark = computed({
+  get() {
+    return settingsStore.settings.app.colorScheme === 'dark'
+  },
+  set(value) {
+    settingsStore.settings.app.colorScheme = value ? 'dark' : 'light'
+  },
+})
 
 watch(() => settingsStore.settings.menu.menuMode, (value) => {
   if (value === 'single') {
@@ -29,434 +39,306 @@ const { copy, copied, isSupported } = useClipboard()
 
 watch(copied, (val) => {
   if (val) {
-    ElMessage.success('复制成功，请粘贴到 src/settings.ts 文件中！')
+    Message.success('复制成功，请粘贴到 src/settings.ts 文件中！', {
+      zIndex: 2000,
+    })
   }
 })
 
+interface AnyObject {
+  [key: string]: any
+}
+// 比较两个对象，并提取出不同的部分
+function getObjectDiff(originalObj: AnyObject, diffObj: AnyObject): AnyObject {
+  if (typeof originalObj !== 'object' || typeof diffObj !== 'object') {
+    return diffObj
+  }
+  const diff: AnyObject = {}
+  for (const key in diffObj) {
+    const originalValue = originalObj[key]
+    const diffValue = diffObj[key]
+    if (originalValue !== diffValue) {
+      if (typeof originalValue === 'object' && typeof diffValue === 'object') {
+        const nestedDiff = getObjectDiff(originalValue, diffValue)
+        if (Object.keys(nestedDiff).length > 0) {
+          diff[key] = nestedDiff
+        }
+      }
+      else {
+        diff[key] = diffValue
+      }
+    }
+  }
+  return diff
+}
+
 function handleCopy() {
-  copy(JSON.stringify(settingsStore.settings, null, 2))
+  copy(JSON.stringify(getObjectDiff(settingsDefault, settingsStore.settings), null, 2))
 }
 </script>
 
 <template>
-  <div>
-    <ElDrawer v-model="isShow" title="应用配置" direction="rtl" :size="350" class="flex-container">
-      <div class="container">
-        <ElAlert title="应用配置可实时预览效果，但仅是临时生效，要想真正作用于项目，可以点击下方的“复制配置”按钮，将配置粘贴到 src/settings.custom.json 中即可，或者也可在 src/settings.js 中直接修改默认配置。同时建议在生产环境隐藏应用配置功能。" type="error" :closable="false" />
-        <ElDivider>颜色主题</ElDivider>
-        <div class="color-scheme">
-          <div class="switch" :class="settingsStore.settings.app.colorScheme" @click="settingsStore.settings.app.colorScheme = settingsStore.settings.app.colorScheme === 'dark' ? 'light' : 'dark'">
-            <ElIcon class="icon">
-              <SvgIcon :name="settingsStore.settings.app.colorScheme === 'light' ? 'ep:sunny' : 'ep:moon'" />
-            </ElIcon>
-          </div>
+  <HSlideover v-model="isShow" title="应用配置">
+    <div class="px-4 py-2 rounded-2 text-sm/6 c-rose bg-rose/20 ">
+      <p class="my-1">
+        应用配置可实时预览效果，但只是临时生效，要想真正应用于项目，可以点击下方的「复制配置」按钮，并将配置粘贴到 src/settings.ts 文件中。
+      </p>
+      <p class="my-1">
+        注意：在生产环境中应关闭该模块。
+      </p>
+    </div>
+    <div class="divider">
+      颜色主题风格
+    </div>
+    <div class="flex justify-center items-center pb-4">
+      <HToggle v-model="isDark" on-icon="ri:sun-line" off-icon="ri:moon-line" />
+    </div>
+    <div class="divider">
+      导航栏模式
+    </div>
+    <div class="menu-mode">
+      <HTooltip text="侧边栏模式 (含主导航)" placement="bottom" :delay="500">
+        <div class="mode mode-side" :class="{ active: settingsStore.settings.menu.menuMode === 'side' }" @click="settingsStore.settings.menu.menuMode = 'side'">
+          <div class="mode-container" />
         </div>
-        <ElDivider>导航栏模式</ElDivider>
-        <div class="menu-mode">
-          <ElTooltip content="侧边栏模式（含主导航）" placement="top" :show-after="500">
-            <div class="mode mode-side" :class="{ active: settingsStore.settings.menu.menuMode === 'side' }" @click="settingsStore.settings.menu.menuMode = 'side'">
-              <div class="mode-container" />
-              <ElIcon>
-                <SvgIcon name="ep:check" />
-              </ElIcon>
-            </div>
-          </ElTooltip>
-          <ElTooltip content="顶部模式" placement="top" :show-after="500">
-            <div class="mode mode-head" :class="{ active: settingsStore.settings.menu.menuMode === 'head' }" @click="settingsStore.settings.menu.menuMode = 'head'">
-              <div class="mode-container" />
-              <ElIcon>
-                <SvgIcon name="ep:check" />
-              </ElIcon>
-            </div>
-          </ElTooltip>
-          <ElTooltip content="侧边栏模式（不含主导航）" placement="top" :show-after="500">
-            <div class="mode mode-single" :class="{ active: settingsStore.settings.menu.menuMode === 'single' }" @click="settingsStore.settings.menu.menuMode = 'single'">
-              <div class="mode-container" />
-              <ElIcon>
-                <SvgIcon name="ep:check" />
-              </ElIcon>
-            </div>
-          </ElTooltip>
+      </HTooltip>
+      <HTooltip text="顶部模式" placement="bottom" :delay="500">
+        <div class="mode mode-head" :class="{ active: settingsStore.settings.menu.menuMode === 'head' }" @click="settingsStore.settings.menu.menuMode = 'head'">
+          <div class="mode-container" />
         </div>
-        <ElDivider>导航栏</ElDivider>
-        <div class="setting-item">
-          <div class="label">
-            主导航切换打开窗口
-            <ElTooltip content="开启该功能后，切换侧边栏时，将自动打开该侧边栏导航下第一个导航窗口" placement="top" :append-to-body="false">
-              <ElIcon>
-                <SvgIcon name="ep:question-filled" />
-              </ElIcon>
-            </ElTooltip>
-          </div>
-          <ElSwitch v-model="settingsStore.settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
+      </HTooltip>
+      <HTooltip text="侧边栏模式 (不含主导航)" placement="bottom" :delay="500">
+        <div class="mode mode-single" :class="{ active: settingsStore.settings.menu.menuMode === 'single' }" @click="settingsStore.settings.menu.menuMode = 'single'">
+          <div class="mode-container" />
         </div>
-        <div class="setting-item">
-          <div class="label">
-            次导航保持展开一个
-            <ElTooltip content="开启该功能后，侧边栏只保持一个子菜单的展开" placement="top" :append-to-body="false">
-              <ElIcon>
-                <SvgIcon name="ep:question-filled" />
-              </ElIcon>
-            </ElTooltip>
-          </div>
-          <ElSwitch v-model="settingsStore.settings.menu.subMenuUniqueOpened" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            次导航是否折叠
-          </div>
-          <ElSwitch v-model="settingsStore.settings.menu.subMenuCollapse" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            显示次导航折叠按钮
-          </div>
-          <ElSwitch v-model="settingsStore.settings.menu.enableSubMenuCollapseButton" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            是否启用快捷键
-          </div>
-          <ElSwitch v-model="settingsStore.settings.menu.enableHotkeys" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
-        </div>
-        <ElDivider>工具栏</ElDivider>
-        <div class="setting-item">
-          <div class="label">
-            全屏
-            <ElTooltip content="该功能使用场景极少，用户习惯于使用 F11 键进入全屏效果" placement="top" :append-to-body="false">
-              <ElIcon>
-                <SvgIcon name="ep:question-filled" />
-              </ElIcon>
-            </ElTooltip>
-          </div>
-          <ElSwitch v-model="settingsStore.settings.toolbar.enableFullscreen" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            颜色主题
-            <ElTooltip content="开启后可在明亮/暗黑模式中切换" placement="top">
-              <ElIcon>
-                <SvgIcon name="ep:question-filled" />
-              </ElIcon>
-            </ElTooltip>
-          </div>
-          <ElSwitch v-model="settingsStore.settings.toolbar.enableColorScheme" />
-        </div>
-        <ElDivider>窗口</ElDivider>
-        <div class="setting-item">
-          <div class="label">
-            是否启用快捷键
-          </div>
-          <ElSwitch v-model="settingsStore.settings.window.enableHotkeys" />
-        </div>
-        <ElDivider>导航搜索</ElDivider>
-        <div class="setting-item">
-          <div class="label">
-            是否启用
-            <ElTooltip content="对导航进行快捷搜索" placement="top">
-              <ElIcon>
-                <SvgIcon name="ep:question-filled" />
-              </ElIcon>
-            </ElTooltip>
-          </div>
-          <ElSwitch v-model="settingsStore.settings.navSearch.enable" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            是否启用快捷键
-          </div>
-          <ElSwitch v-model="settingsStore.settings.navSearch.enableHotkeys" :disabled="!settingsStore.settings.navSearch.enable" />
-        </div>
-        <ElDivider>底部版权</ElDivider>
-        <div class="setting-item">
-          <div class="label">
-            是否启用
-          </div>
-          <ElSwitch v-model="settingsStore.settings.copyright.enable" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            日期
-          </div>
-          <ElInput v-model="settingsStore.settings.copyright.dates" size="small" :disabled="!settingsStore.settings.copyright.enable" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            公司
-          </div>
-          <ElInput v-model="settingsStore.settings.copyright.company" size="small" :disabled="!settingsStore.settings.copyright.enable" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            网址
-          </div>
-          <ElInput v-model="settingsStore.settings.copyright.website" size="small" :disabled="!settingsStore.settings.copyright.enable" />
-        </div>
-        <div class="setting-item">
-          <div class="label">
-            备案
-          </div>
-          <ElInput v-model="settingsStore.settings.copyright.beian" size="small" :disabled="!settingsStore.settings.copyright.enable" />
-        </div>
-        <ElDivider>其它</ElDivider>
-        <div class="setting-item">
-          <div class="label">
-            是否启用权限
-          </div>
-          <ElSwitch v-model="settingsStore.settings.app.enablePermission" />
-        </div>
+      </HTooltip>
+    </div>
+    <div class="divider">
+      导航栏
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        主导航切换打开窗口
+        <HTooltip text="开启该功能后，切换主导航时，将自动打开该侧边栏导航下第一个导航窗口">
+          <SvgIcon name="ri:question-line" />
+        </HTooltip>
       </div>
-      <div v-if="isSupported" class="action-buttons">
-        <ElButton type="primary" @click="handleCopy">
-          <template #icon>
-            <ElIcon>
-              <SvgIcon name="ep:document-copy" />
-            </ElIcon>
-          </template>
-          复制配置
-        </ElButton>
+      <HToggle v-model="settingsStore.settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        次导航保持展开一个
+        <HTooltip text="开启该功能后，次导航只保持单个菜单的展开">
+          <SvgIcon name="ri:question-line" />
+        </HTooltip>
       </div>
-    </ElDrawer>
-  </div>
+      <HToggle v-model="settingsStore.settings.menu.subMenuUniqueOpened" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        次导航是否折叠
+      </div>
+      <HToggle v-model="settingsStore.settings.menu.subMenuCollapse" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        显示次导航折叠按钮
+      </div>
+      <HToggle v-model="settingsStore.settings.menu.enableSubMenuCollapseButton" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        是否启用快捷键
+      </div>
+      <HToggle v-model="settingsStore.settings.menu.enableHotkeys" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
+    </div>
+    <div class="divider">
+      工具栏
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        全屏
+      </div>
+      <HToggle v-model="settingsStore.settings.toolbar.enableFullscreen" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        颜色主题
+        <HTooltip text="开启后可在明亮/暗黑模式中切换">
+          <SvgIcon name="ri:question-line" />
+        </HTooltip>
+      </div>
+      <HToggle v-model="settingsStore.settings.toolbar.enableColorScheme" />
+    </div>
+    <div class="divider">
+      窗口
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        是否启用快捷键
+      </div>
+      <HToggle v-model="settingsStore.settings.window.enableHotkeys" />
+    </div>
+    <div class="divider">
+      导航搜索
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        是否启用
+        <HTooltip text="对导航进行快捷搜索">
+          <SvgIcon name="ri:question-line" />
+        </HTooltip>
+      </div>
+      <HToggle v-model="settingsStore.settings.navSearch.enable" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        是否启用快捷键
+      </div>
+      <HToggle v-model="settingsStore.settings.navSearch.enableHotkeys" :disabled="!settingsStore.settings.navSearch.enable" />
+    </div>
+    <div class="divider">
+      底部版权
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        是否启用
+      </div>
+      <HToggle v-model="settingsStore.settings.copyright.enable" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        日期
+      </div>
+      <HInput v-model="settingsStore.settings.copyright.dates" :disabled="!settingsStore.settings.copyright.enable" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        公司
+      </div>
+      <HInput v-model="settingsStore.settings.copyright.company" :disabled="!settingsStore.settings.copyright.enable" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        网址
+      </div>
+      <HInput v-model="settingsStore.settings.copyright.website" :disabled="!settingsStore.settings.copyright.enable" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        备案
+      </div>
+      <HInput v-model="settingsStore.settings.copyright.beian" :disabled="!settingsStore.settings.copyright.enable" />
+    </div>
+    <div class="divider">
+      其它
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        是否启用权限
+      </div>
+      <HToggle v-model="settingsStore.settings.app.enablePermission" />
+    </div>
+    <template v-if="isSupported" #footer>
+      <HButton block @click="handleCopy">
+        <SvgIcon name="ep:document-copy" />
+        复制配置
+      </HButton>
+    </template>
+  </HSlideover>
 </template>
 
 <style lang="scss" scoped>
-:deep(.el-drawer__body) {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  padding: 0;
-}
+.divider {
+  --at-apply: flex items-center justify-between gap-4 my-4 whitespace-nowrap text-sm font-500;
 
-:deep(.el-drawer__header) {
-  margin-bottom: initial;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--el-border-color);
-  transition: var(--el-transition-border);
-}
-
-.flex-container {
-  .container {
-    padding: 15px;
-    overflow: auto;
-    flex: 1;
-  }
-
-  .action-buttons {
-    padding: 15px;
-    text-align: center;
-    border-top: 1px solid var(--el-border-color);
-    transition: var(--el-transition-border);
-
-    .el-button {
-      width: 100%;
-    }
-  }
-}
-
-:deep(.el-divider) {
-  margin: 36px 0 24px;
-  transition: var(--el-transition-border);
-
-  .el-divider__text {
-    transition: background-color 0.3s, var(--el-transition-color);
+  &::before,
+  &::after {
+    --at-apply: content-empty w-full h-1px bg-stone-2 dark:bg-stone-6;
   }
 }
 
 .menu-mode {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 10px;
+  --at-apply: flex items-center justify-center gap-4 pb-4;
 
   .mode {
-    position: relative;
-    width: 80px;
-    height: 55px;
-    margin: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: var(--g-app-bg);
-    box-shadow: 0 0 5px 1px var(--el-border-color-lighter);
-    transition: 0.2s;
-
-    &:hover {
-      box-shadow: 0 0 5px 1px var(--el-border-color-darker);
-    }
+    --at-apply: relative w-16 h-12 rounded-2 ring-1 ring-stone-2 dark:ring-stone-7 cursor-pointer transition;
 
     &.active {
-      box-shadow: 0 0 0 2px var(--el-color-primary);
+      --at-apply: ring-ui-primary ring-2;
     }
 
     &::before,
     &::after,
     .mode-container {
-      pointer-events: none;
-      position: absolute;
-      border-radius: 3px;
+      --at-apply: absolute pointer-events-none;
     }
 
-    .mode-container::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: var(--g-sub-sidebar-menu-active-bg);
-      opacity: 0.2;
+    &::before {
+      --at-apply: content-empty bg-ui-primary;
+    }
+
+    &::after {
+      --at-apply: content-empty bg-ui-primary/60;
+    }
+
+    .mode-container {
+      --at-apply: bg-ui-primary/20 border-width-1.5 border-dashed border-ui-primary;
+
+      &::before {
+        --at-apply: content-empty absolute w-full h-full;
+      }
     }
 
     &-side {
       &::before {
-        content: "";
-        top: 5px;
-        left: 5px;
-        bottom: 5px;
-        width: 10px;
-        background-color: var(--g-sub-sidebar-menu-active-bg);
+        --at-apply: top-2 bottom-2 left-2 w-2 rounded-tl-1 rounded-bl-1;
       }
 
       &::after {
-        content: "";
-        top: 5px;
-        left: 20px;
-        bottom: 5px;
-        width: 15px;
-        background-color: var(--g-sub-sidebar-menu-active-bg);
-        opacity: 0.5;
+        --at-apply: top-2 bottom-2 left-4.5 w-3;
       }
 
       .mode-container {
-        inset: 5px 5px 5px 40px;
-        border: 1px dashed var(--g-sub-sidebar-menu-active-bg);
+        --at-apply: inset-t-2 inset-r-2 inset-b-2 inset-l-8 rounded-tr-1 rounded-br-1;
       }
     }
 
     &-head {
       &::before {
-        content: "";
-        top: 5px;
-        left: 5px;
-        right: 5px;
-        height: 10px;
-        background-color: var(--g-sub-sidebar-menu-active-bg);
+        --at-apply: top-2 left-2 right-2 h-2 rounded-tl-1 rounded-tr-1;
       }
 
       &::after {
-        content: "";
-        top: 20px;
-        left: 5px;
-        bottom: 5px;
-        width: 15px;
-        background-color: var(--g-sub-sidebar-menu-active-bg);
-        opacity: 0.5;
+        --at-apply: top-4.5 left-2 bottom-2 w-3 rounded-bl-1;
       }
 
       .mode-container {
-        inset: 20px 5px 5px 25px;
-        border: 1px dashed var(--g-sub-sidebar-menu-active-bg);
+        --at-apply: inset-t-4.5 inset-r-2 inset-b-2 inset-l-5.5 rounded-br-1;
       }
     }
 
     &-single {
-      &::before {
-        content: "";
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        bottom: 5px;
-        width: 15px;
-        background-color: var(--g-sub-sidebar-menu-active-bg);
-        opacity: 0.5;
+      &::after {
+        --at-apply: top-2 left-2 bottom-2 w-3 rounded-tl-1 rounded-bl-1;
       }
 
       .mode-container {
-        inset: 5px 5px 5px 25px;
-        border: 1px dashed var(--g-sub-sidebar-menu-active-bg);
+        --at-apply: inset-t-2 inset-r-2 inset-b-2 inset-l-5.5 rounded-tr-1 rounded-br-1;
       }
-    }
-
-    .el-icon {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      display: none;
-    }
-
-    &.active .el-icon {
-      display: block;
-      color: var(--el-color-primary);
-    }
-  }
-}
-
-.color-scheme {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 10px;
-
-  $width: 50px;
-
-  .switch {
-    width: $width;
-    height: 30px;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: var(--el-fill-color-darker);
-    transition: background-color 0.3s;
-
-    &.dark {
-      .icon {
-        transform: translateX(calc($width - 30px));
-      }
-    }
-
-    .icon {
-      margin: 3px;
-      padding: 5px;
-      font-size: 24px;
-      border-radius: 50%;
-      background-color: var(--el-fill-color-lighter);
-      transition: transform 0.3s, background-color 0.3s;
     }
   }
 }
 
 .setting-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 5px 0;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: all 0.3s;
-
-  &:hover {
-    background: var(--el-fill-color);
-  }
+  --at-apply: flex items-center justify-between gap-4 px-4 py-2 rounded-2 transition hover:bg-stone-1 dark:hover:bg-stone-9;
 
   .label {
-    font-size: 14px;
-    color: var(--el-text-color-regular);
-    display: flex;
-    align-items: center;
+    --at-apply: flex items-center flex-shrink-0 gap-2 text-sm;
 
-    .el-icon {
-      margin-left: 4px;
-      font-size: 17px;
-      color: var(--el-color-warning);
-      cursor: help;
+    i {
+      --at-apply: text-xl text-orange cursor-help;
     }
-  }
-
-  .el-switch {
-    height: auto;
-  }
-
-  .el-input {
-    width: 150px;
   }
 }
 </style>

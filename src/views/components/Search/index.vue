@@ -1,17 +1,40 @@
 <script setup lang="ts">
+import { Dialog, DialogDescription, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import type { OverlayScrollbarsComponentRef } from 'overlayscrollbars-vue'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
 import hotkeys from 'hotkeys-js'
+import Breadcrumb from '../Breadcrumb/index.vue'
+import BreadcrumbItem from '../Breadcrumb/item.vue'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
-import useWindowStore from '@/store/modules/window'
 import eventBus from '@/utils/eventBus'
 
 defineOptions({
   name: 'Search',
 })
 
+const overlayTransitionClass = ref({
+  enter: 'ease-in-out duration-500',
+  enterFrom: 'opacity-0',
+  enterTo: 'opacity-100',
+  leave: 'ease-in-out duration-500',
+  leaveFrom: 'opacity-100',
+  leaveTo: 'opacity-0',
+})
+
+const transitionClass = computed(() => {
+  return {
+    enter: 'ease-out duration-300',
+    enterFrom: 'opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95',
+    enterTo: 'opacity-100 translate-y-0 sm:scale-100',
+    leave: 'ease-in duration-200',
+    leaveFrom: 'opacity-100 translate-y-0 sm:scale-100',
+    leaveTo: 'opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95',
+  }
+})
+
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
-const windowStore = useWindowStore()
 const appWindow = useWindow()
 
 const isShow = ref(false)
@@ -19,9 +42,8 @@ const searchInput = ref('')
 const actived = ref(-1)
 
 const searchInputRef = ref()
-const searchResultRef = ref()
-const searchResultItemRef = ref<any>([])
-const setSearchResultItemRef = (el: any) => searchResultItemRef.value.push(el)
+const searchResultRef = ref<OverlayScrollbarsComponentRef>()
+const searchResultItemRef = ref<HTMLElement[]>([])
 onBeforeUpdate(() => {
   searchResultItemRef.value = []
 })
@@ -30,10 +52,31 @@ const resultList = computed(() => {
   let result = []
   result = Object.values(menuStore.flatMenu).filter((item) => {
     let flag = false
-    if (item.title.includes(searchInput.value)) {
-      flag = true
+    if (item.title) {
+      if (typeof item.title === 'function') {
+        if (item.title().includes(searchInput.value)) {
+          flag = true
+        }
+      }
+      else {
+        if (item.title.includes(searchInput.value)) {
+          flag = true
+        }
+      }
     }
-    if (item.breadcrumbNeste?.some(b => (typeof b.title === 'function' ? b.title() : b.title).includes(searchInput.value))) {
+    if (item.breadcrumbNeste?.some((b) => {
+      if (typeof b.title === 'function') {
+        if (b.title().includes(searchInput.value)) {
+          return true
+        }
+      }
+      else {
+        if (b.title?.includes(searchInput.value)) {
+          return true
+        }
+      }
+      return false
+    })) {
       flag = true
     }
     return flag
@@ -43,25 +86,17 @@ const resultList = computed(() => {
 
 watch(() => isShow.value, (val) => {
   if (val) {
-    document.body.classList.add('overflow-hidden')
-    searchResultRef.value && (searchResultRef.value.scrollTop = 0)
+    searchInput.value = ''
+    actived.value = -1
     // 当搜索显示的时候绑定上、下、回车快捷键，隐藏的时候再解绑。另外当 input 处于 focus 状态时，采用 vue 来绑定键盘事件
     hotkeys('up', keyUp)
     hotkeys('down', keyDown)
     hotkeys('enter', keyEnter)
-    setTimeout(() => {
-      searchInputRef.value.focus()
-    }, 500)
   }
   else {
-    document.body.classList.remove('overflow-hidden')
     hotkeys.unbind('up', keyUp)
     hotkeys.unbind('down', keyDown)
     hotkeys.unbind('enter', keyEnter)
-    setTimeout(() => {
-      searchInput.value = ''
-      actived.value = -1
-    }, 500)
   }
 })
 watch(() => resultList.value, () => {
@@ -74,13 +109,13 @@ onMounted(() => {
     isShow.value = !isShow.value
   })
   hotkeys('alt+s', (e) => {
-    if (settingsStore.settings.navSearch.enable && settingsStore.settings.navSearch.enableHotkeys && windowStore.list.every(item => !item.isMaximize)) {
+    if (settingsStore.settings.navSearch.enable && settingsStore.settings.navSearch.enableHotkeys) {
       e.preventDefault()
       isShow.value = true
     }
   })
   hotkeys('esc', (e) => {
-    if (settingsStore.settings.navSearch.enable) {
+    if (settingsStore.settings.navSearch.enable && settingsStore.settings.navSearch.enableHotkeys) {
       e.preventDefault()
       eventBus.emit('global-search-toggle')
     }
@@ -112,13 +147,14 @@ function keyEnter() {
 }
 function handleScroll() {
   if (searchResultRef.value) {
+    const contentDom = searchResultRef.value.osInstance()!.elements().content
     let scrollTo = 0
     if (actived.value !== -1) {
-      scrollTo = searchResultRef.value.scrollTop
+      scrollTo = contentDom.scrollTop
       const activedOffsetTop = searchResultItemRef.value[actived.value].offsetTop
       const activedClientHeight = searchResultItemRef.value[actived.value].clientHeight
-      const searchScrollTop = searchResultRef.value.scrollTop
-      const searchClientHeight = searchResultRef.value.clientHeight
+      const searchScrollTop = contentDom.scrollTop
+      const searchClientHeight = contentDom.clientHeight
       if (activedOffsetTop + activedClientHeight > searchScrollTop + searchClientHeight) {
         scrollTo = activedOffsetTop + activedClientHeight - searchClientHeight
       }
@@ -126,7 +162,7 @@ function handleScroll() {
         scrollTo = activedOffsetTop
       }
     }
-    searchResultRef.value.scrollTo({
+    contentDom.scrollTo({
       top: scrollTo,
     })
   }
@@ -139,239 +175,80 @@ function handleOpen(windowName: string) {
   else {
     appWindow.add(windowName)
   }
+  isShow.value = false
 }
 </script>
 
 <template>
-  <div id="search" :class="{ searching: isShow }" @click="isShow && eventBus.emit('global-search-toggle')">
-    <div class="container">
-      <div class="search-box" @click.stop>
-        <ElInput ref="searchInputRef" v-model="searchInput" placeholder="搜索页面，支持标题模糊查询" clearable @keydown.esc="eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
-          <template #prefix>
-            <ElIcon>
-              <SvgIcon name="ep:search" />
-            </ElIcon>
-          </template>
-        </ElInput>
-        <div class="tips">
-          <div class="tip">
-            <span>Alt</span>+<span>S</span>
-            唤醒搜索面板
-          </div>
-          <div class="tip">
-            <span>
-              <ElIcon>
-                <SvgIcon name="search-up" />
-              </ElIcon>
-            </span>
-            <span>
-              <ElIcon>
-                <SvgIcon name="search-down" />
-              </ElIcon>
-            </span>
-            切换搜索结果
-          </div>
-          <div class="tip">
-            <span>
-              <ElIcon>
-                <SvgIcon name="search-enter" />
-              </ElIcon>
-            </span>
-            打开窗口
-          </div>
-          <div class="tip">
-            <span>ESC</span>
-            退出
-          </div>
+  <TransitionRoot as="template" :show="isShow">
+    <Dialog :initial-focus="searchInputRef" class="fixed inset-0 flex z-2000" @close="isShow && eventBus.emit('global-search-toggle')">
+      <TransitionChild as="template" v-bind="overlayTransitionClass">
+        <div class="fixed inset-0 transition-opacity bg-stone-200/75 dark:bg-stone-8/75 backdrop-blur-sm" />
+      </TransitionChild>
+      <div class="fixed inset-0">
+        <div class="flex h-full items-end sm:items-center justify-center text-center p-4 sm:p-0">
+          <TransitionChild as="template" v-bind="transitionClass">
+            <DialogPanel class="relative text-left w-full sm:max-w-2xl h-full max-h-4/5 flex flex-col">
+              <div class="flex flex-col bg-white dark:bg-stone-8 rounded-xl shadow-xl overflow-y-auto">
+                <div class="flex items-center px-4 py-3" border-b="~ solid stone-2 dark:stone-7">
+                  <SvgIcon name="ep:search" :size="18" class="text-stone-5" />
+                  <input ref="searchInputRef" v-model="searchInput" placeholder="搜索页面，支持标题、URL模糊查询" class="w-full focus:outline-none border-0 rounded-md placeholder-stone-4 dark:placeholder-stone-5 text-base px-3 bg-transparent text-dark dark:text-white" @keydown.esc="eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
+                </div>
+                <DialogDescription class="relative m-0 of-y-hidden">
+                  <OverlayScrollbarsComponent ref="searchResultRef" :options="{ scrollbars: { autoHide: 'leave', autoHideDelay: 300 } }" defer class="h-full">
+                    <template v-if="resultList.length > 0">
+                      <a v-for="(item, index) in resultList" ref="searchResultItemRef" :key="item.windowName" class="flex items-center cursor-pointer" :class="{ 'bg-stone-2/40 dark:bg-stone-7/40': index === actived }" :data-index="index" @click="item.windowName && handleOpen(item.windowName)" @mouseover="actived = index">
+                        <SvgIcon v-if="item.icon" :name="item.icon" :size="20" class="basis-16 transition" :class="{ 'scale-120 text-ui-primary': index === actived }" />
+                        <div class="flex-1 flex flex-col gap-1 px-4 py-3 truncate" border-l="~ solid stone-2 dark:stone-7">
+                          <div class="text-base font-bold truncate">{{ item.title }}</div>
+                          <Breadcrumb v-if="item.breadcrumbNeste?.length" class="truncate">
+                            <BreadcrumbItem v-for="(bc, bcIndex) in item.breadcrumbNeste" :key="bcIndex" class="text-xs">
+                              {{ bc.title }}
+                            </BreadcrumbItem>
+                          </Breadcrumb>
+                        </div>
+                      </a>
+                    </template>
+                    <template v-else>
+                      <div flex="center col" py-6 text-stone-5>
+                        <SvgIcon name="tabler:mood-empty" :size="40" />
+                        <p text-base m-2>
+                          没有找到你想要的
+                        </p>
+                      </div>
+                    </template>
+                  </OverlayScrollbarsComponent>
+                </DialogDescription>
+                <div class="flex justify-between px-4 py-3" border-t="~ solid stone-2 dark:stone-7">
+                  <div class="flex gap-8">
+                    <div class="inline-flex items-center gap-1 text-xs">
+                      <HKbd>
+                        <SvgIcon name="ion:md-return-left" :size="14" />
+                      </HKbd>
+                      <span>访问</span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 text-xs">
+                      <HKbd>
+                        <SvgIcon name="ant-design:caret-up-filled" :size="14" />
+                      </HKbd>
+                      <HKbd>
+                        <SvgIcon name="ant-design:caret-down-filled" :size="14" />
+                      </HKbd>
+                      <span>切换</span>
+                    </div>
+                  </div>
+                  <div v-if="settingsStore.settings.navSearch.enableHotkeys" class="inline-flex items-center gap-1 text-xs">
+                    <HKbd>
+                      ESC
+                    </HKbd>
+                    <span>退出</span>
+                  </div>
+                </div>
+              </div>
+            </DialogPanel>
+          </TransitionChild>
         </div>
       </div>
-      <div ref="searchResultRef" class="result">
-        <div v-for="(item, index) in resultList" :key="item.windowName" :ref="setSearchResultItemRef" class="item" :class="{ actived: index === actived }" @click="item.windowName && handleOpen(item.windowName)" @mouseover="actived = index">
-          <div class="icon">
-            <ElIcon v-if="item.icon">
-              <SvgIcon :name="item.icon" />
-            </ElIcon>
-          </div>
-          <div class="info">
-            <div class="title">
-              {{ item.title }}
-            </div>
-            <div class="breadcrumb">
-              <span v-for="(bc, bcIndex) in item.breadcrumbNeste" :key="bcIndex">
-                {{ bc.title }}
-                <ElIcon>
-                  <SvgIcon name="ep:arrow-right" />
-                </ElIcon>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </Dialog>
+  </TransitionRoot>
 </template>
-
-<style lang="scss" scoped>
-#search {
-  position: fixed;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--el-overlay-color-lighter);
-  backdrop-filter: blur(10px);
-  transition: all 0.2s;
-  transform: translateZ(0);
-  opacity: 0;
-  visibility: hidden;
-
-  &.searching {
-    opacity: 1;
-    visibility: visible;
-
-    .container {
-      transform: initial;
-      filter: initial;
-    }
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-    height: 100%;
-    margin: 0 auto;
-    transition: all 0.2s;
-    transform: scale(1.1);
-    filter: blur(10px);
-
-    .search-box {
-      margin: 50px 20px 40px;
-
-      :deep(.el-input__inner) {
-        height: 52px;
-        line-height: 52px;
-      }
-
-      .tips {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-top: 20px;
-        line-height: 24px;
-        font-size: 14px;
-        color: #fff;
-
-        span {
-          margin: 0 5px;
-          padding: 3px 8px 5px;
-          border-radius: 5px;
-          font-size: 12px;
-          font-weight: bold;
-          color: var(--el-text-color-primary);
-          background-color: var(--el-fill-color);
-          box-shadow: inset 0 -2px var(--el-fill-color-lighter), inset 0 0 1px 1px var(--el-fill-color-darker);
-
-          .el-icon {
-            vertical-align: -0.1em;
-          }
-        }
-      }
-    }
-
-    .result {
-      position: relative;
-      margin: 0 20px;
-      max-height: calc(100% - 250px);
-      border-radius: 5px;
-      overflow: auto;
-      background-color: var(--el-bg-color);
-      box-shadow: 0 0 0 1px var(--el-border-color-darker);
-
-      .item {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.1s;
-
-        &.actived {
-          background-color: var(--el-bg-color-page);
-
-          .icon {
-            color: var(--el-color-primary);
-            transform: scale(1.2);
-          }
-
-          .info {
-            border-left-color: var(--el-border-color);
-
-            .title {
-              color: var(--el-text-color-primary);
-            }
-
-            .breadcrumb {
-              color: var(--el-text-color-regular);
-            }
-          }
-        }
-
-        .icon {
-          flex: 0 0 66px;
-          text-align: center;
-          color: var(--el-color-info);
-          font-size: 20px;
-          transition: all 0.1s;
-        }
-
-        .info {
-          flex: 1;
-          height: 70px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          border-left: 1px solid var(--el-border-color-lighter);
-          padding: 5px 10px 7px;
-          transition: all 0.1s;
-
-          @include text-overflow(1, true);
-
-          .title {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--el-text-color-regular);
-
-            @include text-overflow(1, true);
-
-            .el-icon {
-              font-size: 14px;
-            }
-          }
-
-          .breadcrumb {
-            display: flex;
-            align-items: center;
-            color: var(--el-text-color-secondary);
-            font-size: 12px;
-            transition: all 0.1s;
-
-            span {
-              display: flex;
-              align-items: center;
-
-              .el-icon {
-                margin: 0 5px;
-              }
-
-              &:last-child .el-icon {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-</style>

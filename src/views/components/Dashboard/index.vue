@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import hotkeys from 'hotkeys-js'
-import { ElMessageBox } from 'element-plus'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
 import Empty from './Empty/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 import useWindowStore from '@/store/modules/window'
@@ -32,28 +32,11 @@ watch(() => windowStore.list, (val) => {
   deep: true,
 })
 
+const showWindowScrollTip = ref(false)
 function windowScrollTip() {
   if (windowsRef.value.scrollWidth > windowsRef.value.clientWidth && localStorage.getItem('windowScrollTip') === null) {
-    ElMessageBox.confirm(`
-      <div style="text-align: left;">
-        当前窗口数量已超过浏览器展示区域，你可以通过拖动窗口下方的滚动条进行定位，除此之外，我们推荐使用以下两种更高效的方式进行窗口定位：
-        <ol>
-          <li>在窗口展示区域内，按住 Shift 键，滑动鼠标滚轮</li>
-          <li>使用 Alt + W 快捷键进入预览界面</li>
-        </ol>
-      </div>
-    `, '温馨提示', {
-      dangerouslyUseHTMLString: true,
-      confirmButtonText: '知道了',
-      showCancelButton: false,
-      showClose: false,
-      closeOnClickModal: false,
-      closeOnPressEscape: false,
-      type: 'info',
-      center: true,
-    }).then(() => {
-      localStorage.setItem('windowScrollTip', '')
-    })
+    showWindowScrollTip.value = true
+    localStorage.setItem('windowScrollTip', '')
   }
 }
 
@@ -67,7 +50,7 @@ watch(() => settingsStore.previewAllWindows, (val) => {
 
 onMounted(() => {
   hotkeys('alt+w', (e) => {
-    if (settingsStore.settings.window.enableHotkeys && windowStore.list.length > 1 && windowStore.list.every(item => !item.isMaximize)) {
+    if (settingsStore.settings.window.enableHotkeys && windowStore.list.length > 1) {
       e.preventDefault()
       if (settingsStore.previewAllWindows) {
         exitPreviewAllWindows()
@@ -124,49 +107,52 @@ function maskClick(windowName: string) {
       <div class="title">
         预览
       </div>
-      <ElTooltip content="可以通过快捷键 Alt + W 快速进入窗口预览界面" placement="left" :append-to-body="false">
-        <ElIcon v-show="settingsStore.settings.window.enableHotkeys" class="help">
-          <SvgIcon name="ep:question-filled" />
-        </ElIcon>
-      </ElTooltip>
     </div>
     <TransitionGroup v-show="windowStore.list.length > 0" name="window" tag="div" class="dashboard-container">
       <div v-for="element in windowStore.list" :key="element.name" :ref="setWindowItemRef" class="window">
         <div
           class="window-container" :class="{
-            maximize: element.isMaximize,
             preview: settingsStore.previewAllWindows,
           }"
         >
-          <div v-if="!element.noTitle" class="header" @dblclick="scrollToWindow(element.name)">
+          <div class="header" @dblclick="scrollToWindow(element.name)">
             <div class="titles">
-              <ElTooltip v-if="element.title" effect="dark" :content="element.breadcrumbNeste?.map(bc => bc.title).join(' / ')" placement="bottom-start" :show-after="500" :disabled="element.breadcrumbNeste?.map(b => b.title).length === 0">
+              <HTooltip v-if="element.title" :text="element.breadcrumbNeste?.map(bc => bc.title).join(' / ')" placement="bottom-start" :delay="500">
                 <span class="title">
                   {{ element.title }}
                 </span>
-              </ElTooltip>
+              </HTooltip>
             </div>
             <div class="btns" @dblclick.stop>
               <div class="btn" @click="appWindow.remove(element.name)">
-                <ElIcon>
-                  <SvgIcon name="ep:close-bold" />
-                </ElIcon>
+                <SvgIcon name="i-ep:close-bold" />
               </div>
             </div>
           </div>
-          <div class="container">
-            <ElScrollbar>
-              <Component :is="element.name" v-if="!element.reload" :is-maximize="element.isMaximize" :params="element.params" />
-            </ElScrollbar>
+          <div class="flex-1 of-auto overscroll-contain">
+            <OverlayScrollbarsComponent :options="{ scrollbars: { autoHide: 'leave', autoHideDelay: 300 } }" defer class="h-full">
+              <Component :is="element.name" v-if="!element.reload" :params="element.params" />
+            </OverlayScrollbarsComponent>
           </div>
           <div class="mask" @click="maskClick(element.name)">
-            点击进入该窗口
+            <div class="flex-1 flex-center w-full text-5xl text-shadow cursor-pointer c-stone-3 dark:c-stone-7 hover:c-stone-5 transition">
+              点击进入
+            </div>
           </div>
         </div>
       </div>
     </TransitionGroup>
     <Empty v-show="windowStore.list.length === 0" />
   </div>
+  <HDialog v-model="showWindowScrollTip" title="温馨提示">
+    <div class="text-sm">
+      当前窗口数量已超过浏览器展示区域，你可以通过拖动窗口下方的滚动条进行定位，除此之外，我们推荐使用以下三种更高效的方式进行窗口定位：
+      <ol>
+        <li>在窗口展示区域内，按住 Shift 键，滑动鼠标滚轮</li>
+        <li>使用 Alt + W 快捷键进入预览界面</li>
+      </ol>
+    </div>
+  </HDialog>
 </template>
 
 <style lang="scss">
@@ -186,33 +172,17 @@ function maskClick(windowName: string) {
 
 <style lang="scss" scoped>
 .dashboard {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  overflow: auto hidden;
-  transition: 0.3s;
+  --at-apply: absolute top-0 bottom-0 w-full of-x-auto of-y-hidden transition;
 
   &.preview-all {
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    overflow-y: auto;
-    background-color: var(--el-overlay-color-lighter);
-    backdrop-filter: blur(10px);
+    --at-apply: fixed z-2000 top-0 bottom-0 left-0 right-0 of-y-auto bg-stone-200/75 dark:bg-stone-8/75 backdrop-blur-sm;
 
     .preview-all-mode {
       display: block;
     }
 
     .dashboard-container {
-      flex-wrap: wrap;
-      justify-content: center;
-      bottom: auto;
-      height: max-content;
-      padding-bottom: 80px;
+      --at-apply: flex-wrap justify-center bottom-a h-max pb-15;
 
       &:not(.mode-drag) {
         align-items: center;
@@ -246,11 +216,9 @@ function maskClick(windowName: string) {
     display: none;
     padding: 20px 0;
     text-align: center;
-    position: relative;
 
     .title {
       font-size: 24px;
-      color: #fff;
     }
 
     .help {
@@ -289,20 +257,6 @@ function maskClick(windowName: string) {
 
       &:hover {
         box-shadow: 0 0 5px 0 var(--g-box-shadow-color);
-      }
-
-      &.maximize {
-        position: fixed;
-        z-index: 2000;
-        margin: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-
-        .header {
-          display: none;
-        }
       }
 
       &.preview {
@@ -363,21 +317,11 @@ function maskClick(windowName: string) {
         }
       }
 
-      .container {
-        flex: 1;
-        overflow: auto;
-        overscroll-behavior: contain;
-
-        > .el-scrollbar {
-          > :deep(.el-scrollbar__wrap) {
-            padding: var(--g-window-container-padding);
-          }
-        }
-      }
-
       .mask {
-        opacity: 0;
+        --at-apply: bg-stone-1/75 dark:bg-stone-9/75;
+
         display: none;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         position: absolute;
@@ -387,18 +331,7 @@ function maskClick(windowName: string) {
         left: 0;
         width: calc(100% - 32px);
         height: calc(100% - 32px);
-        background-color: var(--el-mask-color-extra-light);
-        font-size: 48px;
-        color: rgb(0 0 0 / 0%);
-        text-shadow: 0 0 0 rgb(0 0 0 / 0%);
-        cursor: pointer;
         transition: var(--el-transition-fade-linear), var(--el-transition-color), text-shadow 0.3s;
-
-        &:hover {
-          opacity: 1;
-          color: var(--el-color-primary);
-          text-shadow: 0 0 5px rgb(0 0 0 / 50%);
-        }
       }
     }
 

@@ -11,7 +11,16 @@ defineOptions({
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
-const menu = useMenu()
+const { switchTo } = useMenu()
+
+const menuRef = ref()
+
+// 顶部模式鼠标滚动
+function handlerMouserScroll(event: WheelEvent) {
+  menuRef.value.scrollBy({
+    left: (event.deltaY || event.detail) > 0 ? 50 : -50,
+  })
+}
 </script>
 
 <template>
@@ -19,19 +28,31 @@ const menu = useMenu()
     <header v-if="['head'].includes(settingsStore.settings.menu.menuMode)">
       <div class="header-container">
         <div class="main">
-          <Logo />
-          <!-- 顶部模式 -->
-          <div v-if="settingsStore.settings.menu.menuMode === 'head'" class="nav">
-            <template v-for="(item, index) in menuStore.allMenus" :key="index">
-              <div v-if="item.children && item.children.length !== 0" class="item-container" :class="{ active: index === menuStore.actived }">
-                <div class="item" @click="menu.switchTo(index)">
-                  <ElIcon v-if="item.icon">
-                    <SvgIcon :name="item.icon" />
-                  </ElIcon>
-                  <span v-if="item.title">{{ item.title }}</span>
+          <Logo class="title" />
+          <div ref="menuRef" class="menu-container" @wheel.prevent="handlerMouserScroll">
+            <!-- 顶部模式 -->
+            <div class="menu flex of-hidden transition-all">
+              <template v-for="(item, index) in menuStore.allMenus" :key="index">
+                <div
+                  class="menu-item relative transition-all" :class="{
+                    active: index === menuStore.actived,
+                  }"
+                >
+                  <div
+                    v-if="item.children && item.children.length !== 0" class="group menu-item-container h-full w-full flex cursor-pointer items-center justify-between gap-1 px-3 text-[var(--g-header-menu-color)] transition-all hover:(bg-[var(--g-header-menu-hover-bg)] text-[var(--g-header-menu-hover-color)])" :class="{
+                      'text-[var(--g-header-menu-active-color)]! bg-[var(--g-header-menu-active-bg)]!': index === menuStore.actived,
+                    }" :title="typeof item?.title === 'function' ? item?.title() : item?.title" @click="switchTo(index)"
+                  >
+                    <div class="inline-flex flex-1 items-center justify-center gap-1">
+                      <SvgIcon v-if="item?.icon" :name="item?.icon" :size="20" class="menu-item-container-icon transition-transform group-hover:scale-120" async />
+                      <span class="w-full flex-1 truncate text-sm transition-height transition-opacity transition-width">
+                        {{ typeof item?.title === 'function' ? item?.title() : item?.title }}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </template>
+              </template>
+            </div>
           </div>
         </div>
         <Tools />
@@ -43,17 +64,20 @@ const menu = useMenu()
 <style lang="scss" scoped>
 header {
   position: fixed;
-  z-index: 1000;
+  z-index: 2000;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
   align-items: center;
+  margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
   height: var(--g-header-height);
   color: var(--g-header-color);
   background-color: var(--g-header-bg);
-  transition: background-color 0.3s, var(--el-transition-color);
+  box-shadow: -1px 0 0 0 var(--g-border-color), 1px 0 0 0 var(--g-border-color), 0 1px 0 0 var(--g-border-color);
+  transition: background-color 0.3s;
 
   .header-container {
     width: 100%;
@@ -66,6 +90,7 @@ header {
     .main {
       flex: 1;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       height: 100%;
     }
@@ -79,61 +104,51 @@ header {
     background-color: inherit;
 
     .logo {
-      width: 50px;
-      height: 50px;
+      width: initial;
+      height: 40px;
     }
 
     span {
-      font-size: 24px;
+      font-size: 20px;
       letter-spacing: 1px;
       color: var(--g-header-color);
     }
   }
 
-  .nav {
-    display: flex;
+  .menu-container {
+    flex: 1;
+    margin: 0 30px;
+    padding: 0 20px;
     height: 100%;
-    margin-left: 50px;
+    overflow-x: auto;
+    mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent);
 
-    .item-container {
-      position: relative;
-      display: flex;
-      width: initial;
-      transition: var(--el-transition-all);
+    // firefox隐藏滚动条
+    scrollbar-width: none;
 
-      .item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 5px;
-        width: 80px;
-        cursor: pointer;
+    // chrome隐藏滚动条
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .menu {
+    display: inline-flex;
+    height: 100%;
+
+    :deep(.menu-item) {
+      .menu-item-container {
         color: var(--g-header-menu-color);
-        background-color: var(--g-header-bg);
-        transition: background-color 0.3s, var(--el-transition-color);
 
         &:hover {
           color: var(--g-header-menu-hover-color);
           background-color: var(--g-header-menu-hover-bg);
         }
-
-        .el-icon {
-          font-size: 24px;
-          vertical-align: middle;
-        }
-
-        span {
-          text-align: center;
-          word-break: break-all;
-
-          @include text-overflow(1, false);
-        }
       }
 
-      &.active .item {
-        color: var(--g-header-menu-active-color);
-        background-color: var(--g-header-menu-active-bg);
+      &.active .menu-item-container {
+        color: var(--g-header-menu-active-color) !important;
+        background-color: var(--g-header-menu-active-bg) !important;
       }
     }
   }
@@ -141,7 +156,7 @@ header {
   :deep(.tools) {
     padding: 0;
 
-    .buttons .item .el-icon {
+    .buttons .item .icon {
       color: var(--g-header-color);
     }
 
@@ -151,6 +166,7 @@ header {
     }
   }
 }
+
 // 头部动画
 .header-enter-active,
 .header-leave-active {

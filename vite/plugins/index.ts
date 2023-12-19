@@ -2,7 +2,6 @@ import type { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
-import createRestart from './restart'
 import createAutoImport from './auto-import'
 import createComponents from './components'
 import createUnocss from './unocss'
@@ -16,7 +15,6 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
     vue(),
     vueJsx(),
   ]
-  !isBuild && vitePlugins.push(createRestart())
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
   vitePlugins.push(createUnocss())

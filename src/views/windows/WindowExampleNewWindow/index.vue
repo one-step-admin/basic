@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <PageMain>
     这是一个新窗口
-  </div>
+  </PageMain>
 </template>

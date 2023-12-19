@@ -3,7 +3,6 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
   app: {
     colorScheme: 'light',
     enablePermission: false,
-    enableAppSetting: false,
   },
   menu: {
     baseOn: 'frontend',

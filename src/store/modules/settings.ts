@@ -1,18 +1,16 @@
 import { defaultsDeep } from 'lodash-es'
-import settingsCustom from '@/settings'
-import settingsDefault from '@/settings.default'
+import settingsDefault from '@/settings'
 
 export const useSettingsStore = defineStore(
   // 唯一ID
   'settings',
   () => {
-    const mergeSettings: RecursiveRequired<Settings.all> = defaultsDeep(settingsCustom, settingsDefault)
-    const settings = ref(mergeSettings)
-    watch(() => settings.value.app.colorScheme, (val) => {
-      if (val === '') {
-        val = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    const settings = ref(settingsDefault)
+    watch(() => settings.value.app.colorScheme, (colorScheme) => {
+      if (colorScheme === '') {
+        colorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       }
-      switch (val) {
+      switch (colorScheme) {
         case 'dark':
           document.documentElement.classList.add('dark')
           break
@@ -28,6 +26,21 @@ export const useSettingsStore = defineStore(
     }, {
       immediate: true,
     })
+
+    // 操作系统
+    const os = ref<'mac' | 'windows' | 'linux' | 'other'>('other')
+    const agent = navigator.userAgent.toLowerCase()
+    switch (true) {
+      case agent.includes('mac os'):
+        os.value = 'mac'
+        break
+      case agent.includes('windows'):
+        os.value = 'windows'
+        break
+      case agent.includes('linux'):
+        os.value = 'linux'
+        break
+    }
 
     const title = ref('')
     const previewAllWindows = ref(false)
@@ -47,6 +60,7 @@ export const useSettingsStore = defineStore(
 
     return {
       settings,
+      os,
       title,
       previewAllWindows,
       toggleSidebarCollapse,
