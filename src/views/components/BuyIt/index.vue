@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ElNotification } from 'element-plus'
+import eventBus from '@/utils/eventBus'
 
 defineOptions({
   name: 'BuyIt',
@@ -10,7 +11,13 @@ setTimeout(() => {
   isActived.value = false
 }, 5000)
 
+const UIdialog = ref(false)
+function switchUI() {
+  UIdialog.value = true
+}
+
 onMounted(() => {
+  eventBus.on('global-ui-component-switch', () => switchUI())
   ElNotification({
     type: 'info',
     title: '「 专业版限时优惠 」',
@@ -30,6 +37,40 @@ function open(url: string) {
 
 <template>
   <div class="buy-it" :class="{ actived: isActived }">
+    <div class="item" @click="switchUI">
+      <SvgIcon name="icon-park-twotone:components" />
+      <span class="title">切换<br>组件库</span>
+      <HDialog v-model="UIdialog" title="切换组件库" overlay>
+        <div class="rounded-2 bg-green/20 px-4 py-2 text-sm/6 c-green-6">
+          <p class="my-1">
+            为了视觉风格统一，同时也能服务于更多开发者，本框架从 v4.0.0 版本开始，与 Element Plus 组件库进行了解耦，意味着可以轻松将 Element Plus 组件库替换成其他 UI 组件库，并且不会影响框架原本的功能。
+          </p>
+          <p class="my-1">
+            演示站挑选了以下 6 款组件库作为示例，你可以点击访问并预览。
+          </p>
+        </div>
+        <div class="mt-4 flex flex-wrap justify-center gap-4">
+          <HButton @click="open('https://one-step-admin.github.io/antd-example/')">
+            访问 Ant Design Vue 演示站
+          </HButton>
+          <HButton @click="open('https://one-step-admin.github.io/arco-example/')">
+            访问 Arco Design Vue 演示站
+          </HButton>
+          <HButton @click="open('https://one-step-admin.github.io/naive-example/')">
+            访问 Naive UI 演示站
+          </HButton>
+          <HButton @click="open('https://one-step-admin.github.io/tdesign-example/')">
+            访问 TDesign 演示站
+          </HButton>
+          <HButton @click="open('https://one-step-admin.github.io/vexip-example/')">
+            访问 Vexip UI 演示站
+          </HButton>
+          <HButton @click="open('https://one-step-admin.github.io/idux-example/')">
+            访问 iDux 演示站
+          </HButton>
+        </div>
+      </HDialog>
+    </div>
     <div class="item" @click="open(`https://one-step-admin.gitee.io/buy.html`)">
       <SvgIcon name="i-ri:money-cny-box-line" />
       <span class="title">购买<br>专业版</span>

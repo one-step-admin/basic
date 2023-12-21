@@ -10,6 +10,7 @@ import Select from './components/select.vue'
 import Switch from './components/switch.vue'
 import Slider from './components/slider.vue'
 import Rate from './components/rate.vue'
+import eventBus from '@/utils/eventBus'
 
 const components = {
   图标: Icon,
@@ -32,7 +33,15 @@ function open(url: string) {
 
 <template>
   <div>
-    <PageHeader title="基础组件" content="由 Element Plus 提供，本页仅展示部分组件，更多组件及使用说明请查看 Element Plus 官网">
+    <PageHeader title="基础组件">
+      <template #content>
+        <p>框架内置 Element Plus 组件库，本页仅展示部分组件，更多组件及使用说明请查看 Element Plus 官网</p>
+        <p class="mb-0">
+          <ElLink type="primary" @click="eventBus.emit('global-ui-component-switch')">
+            不想使用 Element Plus ？
+          </ElLink>
+        </p>
+      </template>
       <ElButton @click="open('https://element-plus.org/#/zh-CN')">
         <template #icon>
           <ElIcon>
