@@ -246,18 +246,14 @@ function maskClick(windowName: string) {
     }
 
     .window-container {
+      --at-apply: shadow hover:shadow-lg transition;
+
       flex: 1;
       display: flex;
       flex-direction: column;
       width: calc(100% - 32px);
       margin: 16px;
       background-color: var(--g-app-bg);
-      box-shadow: 0 0 1px 0 var(--g-box-shadow-color);
-      transition: background-color 0.3s, var(--el-transition-box-shadow);
-
-      &:hover {
-        box-shadow: 0 0 5px 0 var(--g-box-shadow-color);
-      }
 
       &.preview {
         .mask {
@@ -271,18 +267,17 @@ function maskClick(windowName: string) {
         justify-content: space-between;
         padding: 10px;
         height: 40px;
-        border-bottom: 1px solid var(--el-border-color-lighter);
-        transition: var(--el-transition-border);
+        border-bottom: 1px solid var(--g-border-color);
 
         .titles {
           display: flex;
           align-items: center;
 
           .title {
+            --at-apply: c-dark dark:c-light;
+
             font-weight: bold;
             font-size: 14px;
-            color: var(--el-text-color-primary);
-            transition: var(--el-transition-color);
           }
 
           .title + .btns {
@@ -294,25 +289,15 @@ function maskClick(windowName: string) {
           display: flex;
 
           .btn {
+            --at-apply: c-dark dark:c-light bg-stone-1 hover:bg-stone-2 dark:bg-stone-9 dark:hover:bg-stone-8 transition;
+
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 5px;
             font-size: 16px;
             border-radius: 3px;
-            color: var(--el-text-color-regular);
-            background-color: var(--el-fill-color-light);
-            transition: background-color 0.3s, var(--el-transition-color);
             cursor: pointer;
-
-            &.disabled {
-              background-color: var(--el-fill-color-darker);
-              cursor: not-allowed;
-            }
-
-            &:not(.disabled):hover {
-              background-color: var(--el-fill-color);
-            }
           }
         }
       }
@@ -331,7 +316,6 @@ function maskClick(windowName: string) {
         left: 0;
         width: calc(100% - 32px);
         height: calc(100% - 32px);
-        transition: var(--el-transition-fade-linear), var(--el-transition-color), text-shadow 0.3s;
       }
     }
 
