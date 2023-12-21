@@ -11,7 +11,6 @@ declare module 'vue' {
     Auth: typeof import('./../components/Auth/index.vue')['default']
     AuthAll: typeof import('./../components/AuthAll/index.vue')['default']
     ComponentBasicExampleAlert: typeof import('./../components/ComponentBasicExampleAlert/index.vue')['default']
-    Copyright: typeof import('./../components/Copyright/index.vue')['default']
     FileUpload: typeof import('./../components/FileUpload/index.vue')['default']
     HBadge: typeof import('./../views/ui-kit/HBadge.vue')['default']
     HButton: typeof import('./../views/ui-kit/HButton.vue')['default']

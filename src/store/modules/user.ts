@@ -30,7 +30,7 @@ export const useUserStore = defineStore(
       localStorage.setItem('account', res.data.account)
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('failure_time', res.data.failure_time)
-      localStorage.set('avatar', res.data.avatar)
+      localStorage.setItem('avatar', res.data.avatar)
       account.value = res.data.account
       token.value = res.data.token
       failure_time.value = res.data.failure_time
