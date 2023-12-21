@@ -10,7 +10,6 @@ declare module 'vue' {
     ActionContainer: typeof import('./../components/ActionContainer/index.vue')['default']
     Auth: typeof import('./../components/Auth/index.vue')['default']
     AuthAll: typeof import('./../components/AuthAll/index.vue')['default']
-    Copyright: typeof import('./../components/Copyright/index.vue')['default']
     FileUpload: typeof import('./../components/FileUpload/index.vue')['default']
     HBadge: typeof import('./../views/ui-kit/HBadge.vue')['default']
     HButton: typeof import('./../views/ui-kit/HButton.vue')['default']

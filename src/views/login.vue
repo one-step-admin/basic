@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import Copyright from '@/views/components/Copyright/index.vue'
 import useUserStore from '@/store/modules/user'
 
 defineOptions({
