@@ -49,16 +49,15 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
           <Copyright v-if="settingsStore.settings.copyright.enable" />
         </div>
       </div>
-      <ElBacktop :right="20" :bottom="20" title="回到顶部" />
     </div>
     <Search />
     <HotkeysIntro />
-    <div v-if="enableAppSetting">
+    <template v-if="enableAppSetting">
       <div class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
         <SvgIcon name="uiw:setting-o" class="icon" />
       </div>
       <AppSetting />
-    </div>
+    </template>
     <BuyIt />
   </div>
 </template>
