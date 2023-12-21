@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@headlessui/vue':
     specifier: ^1.7.16
@@ -65,13 +69,16 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config':
     specifier: 2.4.6
-    version: 2.4.6(@unocss/eslint-plugin@0.58.0)(eslint@8.56.0)(typescript@5.3.3)
+    version: 2.4.6(@unocss/eslint-plugin@0.58.0)(@vue/compiler-sfc@3.3.12)(eslint@8.56.0)(typescript@5.3.3)
   '@iconify/json':
     specifier: ^2.2.158
     version: 2.2.158
   '@iconify/vue':
     specifier: ^4.1.1
     version: 4.1.1(vue@3.3.12)
+  '@types/lodash-es':
+    specifier: ^4.17.12
+    version: 4.17.12
   '@types/qs':
     specifier: ^6.9.10
     version: 6.9.10
@@ -86,7 +93,7 @@ devDependencies:
     version: 3.1.0(vite@5.0.10)(vue@3.3.12)
   autoprefixer:
     specifier: ^10.4.16
-    version: 10.4.16
+    version: 10.4.16(postcss@8.4.32)
   bumpp:
     specifier: ^9.2.1
     version: 9.2.1
@@ -131,7 +138,7 @@ devDependencies:
     version: 15.11.0(typescript@5.3.3)
   stylelint-config-standard-scss:
     specifier: ^11.1.0
-    version: 11.1.0(stylelint@15.11.0)
+    version: 11.1.0(postcss@8.4.32)(stylelint@15.11.0)
   stylelint-config-standard-vue:
     specifier: ^1.0.0
     version: 1.0.0(postcss-html@1.5.0)(stylelint@15.11.0)
@@ -149,7 +156,7 @@ devDependencies:
     version: 5.3.3
   unocss:
     specifier: ^0.58.0
-    version: 0.58.0(vite@5.0.10)
+    version: 0.58.0(postcss@8.4.32)(vite@5.0.10)
   unplugin-auto-import:
     specifier: ^0.17.2
     version: 0.17.2(@vueuse/core@10.7.0)
@@ -190,7 +197,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.20
     dev: true
 
-  /@antfu/eslint-config@2.4.6(@unocss/eslint-plugin@0.58.0)(eslint@8.56.0)(typescript@5.3.3):
+  /@antfu/eslint-config@2.4.6(@unocss/eslint-plugin@0.58.0)(@vue/compiler-sfc@3.3.12)(eslint@8.56.0)(typescript@5.3.3):
     resolution: {integrity: sha512-dwRlY//llv3xnzLdSJzjEQQ/uS9p5rdNh7m4k2sqUlo4PsJ9EXBTWnZl6BPJZIGoVZGpDiGBpyO8hG/5I7yLrQ==}
     hasBin: true
     peerDependencies:
@@ -239,7 +246,7 @@ packages:
       eslint-plugin-vitest: 0.3.18(@typescript-eslint/eslint-plugin@6.14.0)(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-vue: 9.19.2(eslint@8.56.0)
       eslint-plugin-yml: 1.11.0(eslint@8.56.0)
-      eslint-processor-vue-blocks: 0.1.1(eslint@8.56.0)
+      eslint-processor-vue-blocks: 0.1.1(@vue/compiler-sfc@3.3.12)(eslint@8.56.0)
       globals: 13.24.0
       jsonc-eslint-parser: 2.4.0
       local-pkg: 0.5.0
@@ -1579,15 +1586,13 @@ packages:
       '@types/node': 20.8.10
     dev: true
 
-  /@types/lodash-es@4.17.10:
-    resolution: {integrity: sha512-YJP+w/2khSBwbUSFdGsSqmDvmnN3cCKoPOL7Zjle6s30ZtemkkqhjVfFqGwPN7ASil5VyjE2GtyU/yqYY6mC0A==}
+  /@types/lodash-es@4.17.12:
+    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
     dependencies:
       '@types/lodash': 4.14.200
-    dev: false
 
   /@types/lodash@4.14.200:
     resolution: {integrity: sha512-YI/M/4HRImtNf3pJgbF+W6FrXovqj+T+/HpENLTooK9PnkacBsDpeP3IpHab40CClUfhNmdM2WTNP2sa2dni5Q==}
-    dev: false
 
   /@types/mdast@3.0.15:
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -1867,9 +1872,11 @@ packages:
       sirv: 2.0.3
     dev: true
 
-  /@unocss/postcss@0.58.0:
+  /@unocss/postcss@0.58.0(postcss@8.4.32):
     resolution: {integrity: sha512-2hAwLbfUFqysi8FN1cn3xkHy5GhLMlYy6W4NrAZ2ws7F2MKpsCT2xCj7dT5cI2tW8ulD2YoVbKH15dBhNsMNUA==}
     engines: {node: '>=14'}
+    peerDependencies:
+      postcss: ^8.4.21
     dependencies:
       '@unocss/config': 0.58.0
       '@unocss/core': 0.58.0
@@ -2473,7 +2480,7 @@ packages:
     hasBin: true
     dev: true
 
-  /autoprefixer@10.4.16:
+  /autoprefixer@10.4.16(postcss@8.4.32):
     resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -2485,6 +2492,7 @@ packages:
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
+      postcss: 8.4.32
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -3508,14 +3516,14 @@ packages:
       '@floating-ui/dom': 1.5.3
       '@popperjs/core': /@sxzz/popperjs-es@2.11.7
       '@types/lodash': 4.14.200
-      '@types/lodash-es': 4.17.10
+      '@types/lodash-es': 4.17.12
       '@vueuse/core': 9.13.0(vue@3.3.12)
       async-validator: 4.2.5
       dayjs: 1.11.10
       escape-html: 1.0.3
       lodash: 4.17.21
       lodash-es: 4.17.21
-      lodash-unified: 1.0.3(@types/lodash-es@4.17.10)(lodash-es@4.17.21)(lodash@4.17.21)
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
       memoize-one: 6.0.0
       normalize-wheel-es: 1.2.0
       vue: 3.3.12(typescript@5.3.3)
@@ -4236,12 +4244,13 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-processor-vue-blocks@0.1.1(eslint@8.56.0):
+  /eslint-processor-vue-blocks@0.1.1(@vue/compiler-sfc@3.3.12)(eslint@8.56.0):
     resolution: {integrity: sha512-9+dU5lU881log570oBwpelaJmOfOzSniben7IWEDRYQPPWwlvaV7NhOtsTuUWDqpYT+dtKKWPsgz4OkOi+aZnA==}
     peerDependencies:
       '@vue/compiler-sfc': ^3.3.0
       eslint: ^8.50.0
     dependencies:
+      '@vue/compiler-sfc': 3.3.12
       eslint: 8.56.0
     dev: true
 
@@ -5987,14 +5996,14 @@ packages:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
-  /lodash-unified@1.0.3(@types/lodash-es@4.17.10)(lodash-es@4.17.21)(lodash@4.17.21):
+  /lodash-unified@1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21):
     resolution: {integrity: sha512-WK9qSozxXOD7ZJQlpSqOT+om2ZfcT4yO+03FuzAHD0wF6S0l0090LRPDx3vhTTLZ8cFKpBn+IOcVXK6qOcIlfQ==}
     peerDependencies:
       '@types/lodash-es': '*'
       lodash: '*'
       lodash-es: '*'
     dependencies:
-      '@types/lodash-es': 4.17.10
+      '@types/lodash-es': 4.17.12
       lodash: 4.17.21
       lodash-es: 4.17.21
     dev: false
@@ -7040,11 +7049,13 @@ packages:
       postcss: 8.4.31
     dev: true
 
-  /postcss-scss@4.0.9:
+  /postcss-scss@4.0.9(postcss@8.4.32):
     resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.4.29
+    dependencies:
+      postcss: 8.4.32
     dev: true
 
   /postcss-selector-parser@6.0.13:
@@ -7920,7 +7931,7 @@ packages:
       stylelint: 15.11.0(typescript@5.3.3)
     dev: true
 
-  /stylelint-config-recommended-scss@13.1.0(stylelint@15.11.0):
+  /stylelint-config-recommended-scss@13.1.0(postcss@8.4.32)(stylelint@15.11.0):
     resolution: {integrity: sha512-8L5nDfd+YH6AOoBGKmhH8pLWF1dpfY816JtGMePcBqqSsLU+Ysawx44fQSlMOJ2xTfI9yTGpup5JU77c17w1Ww==}
     peerDependencies:
       postcss: ^8.3.3
@@ -7929,7 +7940,8 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss-scss: 4.0.9
+      postcss: 8.4.32
+      postcss-scss: 4.0.9(postcss@8.4.32)
       stylelint: 15.11.0(typescript@5.3.3)
       stylelint-config-recommended: 13.0.0(stylelint@15.11.0)
       stylelint-scss: 5.3.2(stylelint@15.11.0)
@@ -7958,7 +7970,7 @@ packages:
       stylelint: 15.11.0(typescript@5.3.3)
     dev: true
 
-  /stylelint-config-standard-scss@11.1.0(stylelint@15.11.0):
+  /stylelint-config-standard-scss@11.1.0(postcss@8.4.32)(stylelint@15.11.0):
     resolution: {integrity: sha512-5gnBgeNTgRVdchMwiFQPuBOtj9QefYtfXiddrOMJA2pI22zxt6ddI2s+e5Oh7/6QYl7QLJujGnaUR5YyGq72ow==}
     peerDependencies:
       postcss: ^8.3.3
@@ -7967,8 +7979,9 @@ packages:
       postcss:
         optional: true
     dependencies:
+      postcss: 8.4.32
       stylelint: 15.11.0(typescript@5.3.3)
-      stylelint-config-recommended-scss: 13.1.0(stylelint@15.11.0)
+      stylelint-config-recommended-scss: 13.1.0(postcss@8.4.32)(stylelint@15.11.0)
       stylelint-config-standard: 34.0.0(stylelint@15.11.0)
     dev: true
 
@@ -8437,7 +8450,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unocss@0.58.0(vite@5.0.10):
+  /unocss@0.58.0(postcss@8.4.32)(vite@5.0.10):
     resolution: {integrity: sha512-MSPRHxBqWN+1AHGV+J5uUy4//e6ZBK6O+ISzD0qrXcCD/GNtxk1+lYjOK2ltkUiKX539+/KF91vNxzhhwEf+xA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -8453,7 +8466,7 @@ packages:
       '@unocss/cli': 0.58.0
       '@unocss/core': 0.58.0
       '@unocss/extractor-arbitrary-variants': 0.58.0
-      '@unocss/postcss': 0.58.0
+      '@unocss/postcss': 0.58.0(postcss@8.4.32)
       '@unocss/preset-attributify': 0.58.0
       '@unocss/preset-icons': 0.58.0
       '@unocss/preset-mini': 0.58.0
@@ -8471,6 +8484,7 @@ packages:
       '@unocss/vite': 0.58.0(vite@5.0.10)
       vite: 5.0.10(sass@1.69.5)
     transitivePeerDependencies:
+      - postcss
       - rollup
       - supports-color
     dev: true
@@ -8985,7 +8999,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
