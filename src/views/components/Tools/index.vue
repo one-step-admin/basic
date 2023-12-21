@@ -13,7 +13,6 @@ const settingsStore = useSettingsStore()
 const userStore = useUserStore()
 const windowStore = useWindowStore()
 const { isFullscreen, toggle } = useFullscreen()
-const appWindow = useWindow()
 
 function toggleColorScheme(event: MouseEvent) {
   const { startViewTransition } = useViewTransition(() => {
@@ -77,9 +76,6 @@ watch(() => userStore.avatar, () => {
     </div>
     <HDropdownMenu
       :items="[
-        [
-          { label: '个人设置', handle: () => appWindow.add({ title: '个人设置', name: 'PersonalSetting' }) },
-        ],
         [
           { label: '快捷键介绍', handle: () => eventBus.emit('global-hotkeys-intro-toggle') },
         ],
