@@ -4,8 +4,8 @@ const appWindow = useWindow()
 
 <template>
   <PageMain>
-    <ElButton @click="appWindow.remove('WindowExampleRemove')">
+    <HButton @click="appWindow.remove('WindowExampleRemove')">
       关闭当前窗口
-    </ElButton>
+    </HButton>
   </PageMain>
 </template>
