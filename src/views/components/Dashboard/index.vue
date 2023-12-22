@@ -191,9 +191,9 @@ function maskClick(windowName: string) {
           height: var(--g-window-height);
           margin-right: calc(var(--g-window-width) * (var(--g-window-perview-scale) - 1));
           margin-bottom: calc(var(--g-window-height) * (var(--g-window-perview-scale) - 1));
-          transform-origin: top left;
-          transform: scale(var(--g-window-perview-scale));
           user-select: none;
+          transform: scale(var(--g-window-perview-scale));
+          transform-origin: top left;
         }
       }
 
@@ -222,9 +222,9 @@ function maskClick(windowName: string) {
     }
 
     .help {
-      color: #ccc;
       right: 20px;
       font-size: 18px;
+      color: #ccc;
 
       @include position-center(y);
     }
@@ -236,8 +236,8 @@ function maskClick(windowName: string) {
   }
 
   .window {
-    flex: none;
     display: flex;
+    flex: none;
     width: var(--g-window-width);
     margin-right: -16px;
 
@@ -248,8 +248,8 @@ function maskClick(windowName: string) {
     .window-container {
       --at-apply: shadow hover:shadow-lg transition;
 
-      flex: 1;
       display: flex;
+      flex: 1;
       flex-direction: column;
       width: calc(100% - 32px);
       margin: 16px;
@@ -265,8 +265,8 @@ function maskClick(windowName: string) {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px;
         height: 40px;
+        padding: 10px;
         border-bottom: 1px solid var(--g-border-color);
 
         .titles {
@@ -276,8 +276,8 @@ function maskClick(windowName: string) {
           .title {
             --at-apply: c-dark dark:c-light;
 
-            font-weight: bold;
             font-size: 14px;
+            font-weight: bold;
           }
 
           .title + .btns {
@@ -296,8 +296,8 @@ function maskClick(windowName: string) {
             justify-content: center;
             padding: 5px;
             font-size: 16px;
-            border-radius: 3px;
             cursor: pointer;
+            border-radius: 3px;
           }
         }
       }
@@ -305,17 +305,17 @@ function maskClick(windowName: string) {
       .mask {
         --at-apply: bg-stone-1/75 dark:bg-stone-9/75;
 
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1000;
         display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        position: absolute;
-        z-index: 1000;
-        margin: 16px;
-        top: 0;
-        left: 0;
         width: calc(100% - 32px);
         height: calc(100% - 32px);
+        margin: 16px;
       }
     }
 
