@@ -124,8 +124,8 @@ function editPassword() {
     }
 
     .el-tabs__item {
-      text-align: left;
       padding-right: 100px;
+      text-align: left;
     }
   }
 

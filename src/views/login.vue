@@ -357,22 +357,22 @@ function testAccount(account: string) {
 }
 
 #login-box {
-  display: flex;
-  justify-content: space-between;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
   background-color: var(--g-app-bg);
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: var(--el-box-shadow);
+  transform: translateX(-50%) translateY(-50%);
 
   .login-banner {
     position: relative;
     width: 450px;
-    background-color: var(--g-main-bg);
     overflow: hidden;
+    background-color: var(--g-main-bg);
 
     .banner {
       width: 100%;
@@ -394,8 +394,8 @@ function testAccount(account: string) {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 500px;
     width: 500px;
+    min-height: 500px;
     padding: 50px;
     overflow: hidden;
 
@@ -403,10 +403,10 @@ function testAccount(account: string) {
       position: relative;
 
       .title {
-        font-size: 1.3em;
-        color: var(--el-text-color-primary);
         margin: 0 auto 30px;
+        font-size: 1.3em;
         font-weight: bold;
+        color: var(--el-text-color-primary);
       }
     }
   }
@@ -415,9 +415,9 @@ function testAccount(account: string) {
     margin-bottom: 24px;
 
     :deep(.el-input) {
+      width: 100%;
       height: 48px;
       line-height: inherit;
-      width: 100%;
 
       input {
         height: 48px;

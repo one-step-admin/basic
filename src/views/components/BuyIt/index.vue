@@ -93,14 +93,14 @@ function open(url: string) {
 <style lang="scss" scoped>
 .buy-it {
   position: fixed;
-  z-index: 10;
-  right: -58px;
   top: 50%;
-  transform: translateY(-50%);
-  width: 70px;
+  right: -58px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
+  width: 70px;
   transition: right 0.3s;
+  transform: translateY(-50%);
 
   &.actived,
   &:hover {
@@ -112,12 +112,12 @@ function open(url: string) {
     flex-direction: column;
     justify-content: center;
     height: 70px;
-    text-align: center;
     color: #fff;
-    border-bottom: 1px solid #fff;
-    transition: 0.3s;
-    opacity: 0.7;
+    text-align: center;
     cursor: pointer;
+    border-bottom: 1px solid #fff;
+    opacity: 0.7;
+    transition: 0.3s;
 
     &:hover {
       opacity: 1;
@@ -128,8 +128,8 @@ function open(url: string) {
     }
 
     &:last-child {
-      border-bottom-left-radius: 5px;
       border-bottom: 0;
+      border-bottom-left-radius: 5px;
     }
 
     &:nth-child(1) {
