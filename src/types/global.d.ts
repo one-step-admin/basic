@@ -62,22 +62,27 @@ declare namespace Settings {
   }
   interface toolbar {
     /**
-     * 是否开启全屏
-     * @默认值 `false`
+     * 是否开启窗口预览
+     * @默认值 `true`
      */
-    enableFullscreen?: boolean
-    /**
-     * 是否开启颜色主题
-     * @默认值 `false`
-     */
-    enableColorScheme?: boolean
-  }
-  interface navSearch {
+    previewWindows?: boolean
     /**
      * 是否开启导航搜索
      * @默认值 `true`
      */
-    enable?: boolean
+    navSearch?: boolean
+    /**
+     * 是否开启全屏
+     * @默认值 `false`
+     */
+    fullscreen?: boolean
+    /**
+     * 是否开启颜色主题
+     * @默认值 `false`
+     */
+    colorScheme?: boolean
+  }
+  interface navSearch {
     /**
      * 是否开启导航搜索快捷键
      * @默认值 `true`
