@@ -1,4 +1,6 @@
-export default [
+import { defineFakeRoute } from 'vite-plugin-fake-server/client'
+
+export default defineFakeRoute([
   {
     url: '/mock/app/menu/list',
     method: 'get',
@@ -35,4 +37,4 @@ export default [
       }
     },
   },
-]
+])
