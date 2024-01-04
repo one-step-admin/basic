@@ -16,6 +16,10 @@ import eventBus from '@/utils/eventBus'
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
+const enableToolbar = computed(() => {
+  return !(settingsStore.settings.menu.menuMode === 'head' && !settingsStore.settings.toolbar.previewWindows)
+})
+
 onMounted(() => {
   hotkeys('alt+`', (e) => {
     if (settingsStore.settings.menu.enableHotkeys) {
@@ -41,7 +45,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
           <SubSidebar />
         </div>
         <div class="main-container">
-          <Topbar v-if="!(settingsStore.settings.menu.menuMode === 'head' && !settingsStore.settings.menu.enableSubMenuCollapseButton)" />
+          <Topbar v-if="enableToolbar" />
           <div class="main">
             <Dashboard />
           </div>
@@ -145,10 +149,6 @@ header:not(.header-leave-active) + .wrapper {
   .main-container {
     .topbar-container {
       top: var(--g-header-height);
-
-      :deep(.tools) {
-        display: none;
-      }
     }
   }
 }
