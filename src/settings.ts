@@ -10,8 +10,8 @@ const globalSettings: Settings.all = {
     enableHotkeys: true,
   },
   toolbar: {
-    enableFullscreen: true,
-    enableColorScheme: true,
+    fullscreen: true,
+    colorScheme: true,
   },
   copyright: {
     enable: true,

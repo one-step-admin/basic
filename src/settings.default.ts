@@ -14,11 +14,12 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
     enableHotkeys: false,
   },
   toolbar: {
-    enableFullscreen: false,
-    enableColorScheme: false,
+    previewWindows: true,
+    navSearch: true,
+    fullscreen: false,
+    colorScheme: false,
   },
   navSearch: {
-    enable: true,
     enableHotkeys: true,
   },
   window: {
