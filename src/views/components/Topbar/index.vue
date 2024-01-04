@@ -1,21 +1,14 @@
 <script setup lang="ts">
 import Tools from '../Tools/index.vue'
-import useSettingsStore from '@/store/modules/settings'
 
 defineOptions({
   name: 'Topbar',
 })
-
-const settingsStore = useSettingsStore()
 </script>
 
 <template>
   <div class="topbar-container" data-fixed-calc-width>
-    <div class="left-box">
-      <div v-if="(['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode) && settingsStore.settings.menu.enableSubMenuCollapseButton)" class="flex-center cursor-pointer px-2 py-1 transition-transform" :class="{ '-rotate-z-180': settingsStore.settings.menu.subMenuCollapse }" @click="settingsStore.toggleSidebarCollapse()">
-        <SvgIcon name="toolbar-collapse" class="icon" />
-      </div>
-    </div>
+    <div class="left-box" />
     <Tools />
   </div>
 </template>
