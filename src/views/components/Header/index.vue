@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Logo from '../Logo/index.vue'
-import Tools from '../Tools/index.vue'
+import ToolbarRightSide from '../Topbar/rightSide.vue'
 import useSettingsStore from '@/store/modules/settings'
 import useMenuStore from '@/store/modules/menu'
 
@@ -55,7 +55,7 @@ function handlerMouserScroll(event: WheelEvent) {
             </div>
           </div>
         </div>
-        <Tools />
+        <ToolbarRightSide />
       </div>
     </header>
   </Transition>
@@ -150,19 +150,6 @@ header {
         color: var(--g-header-menu-active-color) !important;
         background-color: var(--g-header-menu-active-bg) !important;
       }
-    }
-  }
-
-  :deep(.tools) {
-    padding: 0;
-
-    .buttons .item .icon {
-      color: var(--g-header-color);
-    }
-
-    .user-container {
-      font-size: 16px;
-      color: var(--g-header-color);
     }
   }
 }
