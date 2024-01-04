@@ -122,9 +122,10 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
   }
 
   .copyright {
+    position: relative;
     background-color: var(--g-app-bg);
-    box-shadow: 0 0 1px 0 var(--g-box-shadow-color);
-    transition: background-color 0.3s, var(--el-transition-box-shadow);
+    box-shadow: 0 -1px 0 0 var(--g-border-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
   }
 }
 
