@@ -23,7 +23,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
   vitePlugins.push(createUnocss())
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createMock(viteEnv, isBuild))
-  isBuild && vitePlugins.push(...createCompression(viteEnv))
+  vitePlugins.push(...createCompression(viteEnv, isBuild))
   vitePlugins.push(createConsole())
   vitePlugins.push(createBanner())
   return vitePlugins
