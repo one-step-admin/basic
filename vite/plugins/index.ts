@@ -9,6 +9,7 @@ import createUnocss from './unocss'
 import createSvgIcon from './svg-icon'
 import createMock from './mock'
 import createCompression from './compression'
+import createArchiver from './archiver'
 import createConsole from './console'
 import createBanner from './banner'
 
@@ -24,6 +25,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(createMock(viteEnv, isBuild))
   vitePlugins.push(...createCompression(viteEnv, isBuild))
+  vitePlugins.push(createArchiver(viteEnv))
   vitePlugins.push(createConsole())
   vitePlugins.push(createBanner())
   return vitePlugins
