@@ -10,6 +10,6 @@ const { isFullscreen, toggle } = useFullscreen()
 
 <template>
   <span class="flex-center cursor-pointer px-2 py-1" @click="toggle">
-    <SvgIcon :name="isFullscreen ? 'ri:fullscreen-exit-line' : 'ri:fullscreen-line'" />
+    <SvgIcon :name="isFullscreen ? 'i-ri:fullscreen-exit-line' : 'i-ri:fullscreen-line'" />
   </span>
 </template>

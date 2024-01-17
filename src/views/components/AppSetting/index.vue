@@ -120,7 +120,7 @@ function handleCopy() {
       <div class="label">
         主导航切换打开窗口
         <HTooltip text="开启该功能后，切换主导航时，将自动打开该侧边栏导航下第一个导航窗口">
-          <SvgIcon name="ri:question-line" />
+          <SvgIcon name="i-ri:question-line" />
         </HTooltip>
       </div>
       <HToggle v-model="settingsStore.settings.menu.switchMainMenuAndOpenWindow" :disabled="['single'].includes(settingsStore.settings.menu.menuMode)" />
@@ -129,7 +129,7 @@ function handleCopy() {
       <div class="label">
         次导航保持展开一个
         <HTooltip text="开启该功能后，次导航只保持单个菜单的展开">
-          <SvgIcon name="ri:question-line" />
+          <SvgIcon name="i-ri:question-line" />
         </HTooltip>
       </div>
       <HToggle v-model="settingsStore.settings.menu.subMenuUniqueOpened" />
@@ -165,7 +165,7 @@ function handleCopy() {
       <div class="label">
         导航搜索
         <HTooltip text="对导航进行快捷搜索">
-          <SvgIcon name="ri:question-line" />
+          <SvgIcon name="i-ri:question-line" />
         </HTooltip>
       </div>
       <HToggle v-model="settingsStore.settings.toolbar.navSearch" />
@@ -180,7 +180,7 @@ function handleCopy() {
       <div class="label">
         颜色主题
         <HTooltip text="开启后可在明亮/暗黑模式中切换">
-          <SvgIcon name="ri:question-line" />
+          <SvgIcon name="i-ri:question-line" />
         </HTooltip>
       </div>
       <HToggle v-model="settingsStore.settings.toolbar.colorScheme" />
@@ -247,7 +247,7 @@ function handleCopy() {
     </div>
     <template v-if="isSupported" #footer>
       <HButton block @click="handleCopy">
-        <SvgIcon name="ep:document-copy" />
+        <SvgIcon name="i-ep:document-copy" />
         复制配置
       </HButton>
     </template>

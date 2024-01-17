@@ -1,6 +1,6 @@
 const menus: Menu.recordRaw = {
   title: '窗口功能',
-  icon: 'ri:window-2-line',
+  icon: 'i-ri:window-2-line',
   children: [
     {
       title: '打开新窗口',
