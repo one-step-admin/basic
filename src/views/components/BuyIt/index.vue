@@ -38,7 +38,7 @@ function open(url: string) {
 <template>
   <div class="buy-it" :class="{ actived: isActived }">
     <div class="item" @click="switchUI">
-      <SvgIcon name="icon-park-twotone:components" />
+      <SvgIcon name="i-icon-park-twotone:components" />
       <span class="title">切换<br>组件库</span>
       <HDialog v-model="UIdialog" title="切换组件库" overlay>
         <div class="rounded-2 bg-green/20 px-4 py-2 text-sm/6 c-green-6">

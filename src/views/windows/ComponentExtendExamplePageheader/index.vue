@@ -8,9 +8,7 @@
       </template>
       <ElButton round>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="ep:arrow-left" />
-          </ElIcon>
+          <SvgIcon name="i-ep:arrow-left" />
         </template>
         返回
       </ElButton>

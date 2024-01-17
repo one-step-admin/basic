@@ -1,6 +1,6 @@
 const menus: Menu.recordRaw = {
   title: 'Mock',
-  icon: 'ri:database-2-line',
+  icon: 'i-ri:database-2-line',
   windowName: 'MockExample',
 }
 

@@ -28,16 +28,12 @@ const textarea = ref('')
     </ElDivider>
     <ElInput v-model="input1" placeholder="请选择日期">
       <template #suffix>
-        <ElIcon class="el-input__icon">
-          <SvgIcon name="i-ep:calendar" />
-        </ElIcon>
+        <SvgIcon name="i-ep:calendar" class="el-input__icon" />
       </template>
     </ElInput>
     <ElInput v-model="input2" placeholder="请输入内容">
       <template #prefix>
-        <ElIcon class="el-input__icon">
-          <SvgIcon name="i-ep:search" />
-        </ElIcon>
+        <SvgIcon name="i-ep:search" class="el-input__icon" />
       </template>
     </ElInput>
     <ElDivider content-position="left">

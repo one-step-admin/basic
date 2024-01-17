@@ -64,44 +64,32 @@
     <ElRow>
       <ElButton circle>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:search" />
-          </ElIcon>
+          <SvgIcon name="i-ep:search" />
         </template>
       </ElButton>
       <ElButton type="primary" circle>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:edit" />
-          </ElIcon>
+          <SvgIcon name="i-ep:edit" />
         </template>
       </ElButton>
       <ElButton type="success" circle>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:check" />
-          </ElIcon>
+          <SvgIcon name="i-ep:check" />
         </template>
       </ElButton>
       <ElButton type="info" circle>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:message" />
-          </ElIcon>
+          <SvgIcon name="i-ep:message" />
         </template>
       </ElButton>
       <ElButton type="warning" circle>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:star" />
-          </ElIcon>
+          <SvgIcon name="i-ep:star" />
         </template>
       </ElButton>
       <ElButton type="danger" circle>
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:delete" />
-          </ElIcon>
+          <SvgIcon name="i-ep:delete" />
         </template>
       </ElButton>
     </ElRow>
@@ -174,76 +162,56 @@
     </ElDivider>
     <ElButton type="primary">
       <template #icon>
-        <ElIcon>
-          <SvgIcon name="i-ep:edit" />
-        </ElIcon>
+        <SvgIcon name="i-ep:edit" />
       </template>
     </ElButton>
     <ElButton type="primary">
       <template #icon>
-        <ElIcon>
-          <SvgIcon name="i-ep:share" />
-        </ElIcon>
+        <SvgIcon name="i-ep:share" />
       </template>
     </ElButton>
     <ElButton type="primary">
       <template #icon>
-        <ElIcon>
-          <SvgIcon name="i-ep:delete" />
-        </ElIcon>
+        <SvgIcon name="i-ep:delete" />
       </template>
     </ElButton>
     <ElButton type="primary">
       <template #icon>
-        <ElIcon>
-          <SvgIcon name="i-ep:search" />
-        </ElIcon>
+        <SvgIcon name="i-ep:search" />
       </template>
       搜索
     </ElButton>
     <ElButton type="primary">
       上传
-      <ElIcon class="el-icon--right">
-        <SvgIcon name="i-ep:upload" />
-      </ElIcon>
+      <SvgIcon name="i-ep:upload" class="el-icon--right" />
     </ElButton>
     <ElDivider content-position="left">
       按钮组
     </ElDivider>
     <ElButtonGroup style="margin-right: 10px;">
       <ElButton type="primary">
-        <ElIcon class="el-icon--left">
-          <SvgIcon name="i-ep:arrow-left" />
-        </ElIcon>
+        <SvgIcon name="i-ep:arrow-left" class="el-icon--left" />
         上一页
       </ElButton>
       <ElButton type="primary">
         下一页
-        <ElIcon class="el-icon--right">
-          <SvgIcon name="i-ep:arrow-right" />
-        </ElIcon>
+        <SvgIcon name="i-ep:arrow-right" class="el-icon--right" />
       </ElButton>
     </ElButtonGroup>
     <ElButtonGroup>
       <ElButton type="primary">
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:edit" />
-          </ElIcon>
+          <SvgIcon name="i-ep:edit" />
         </template>
       </ElButton>
       <ElButton type="primary">
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:share" />
-          </ElIcon>
+          <SvgIcon name="i-ep:share" />
         </template>
       </ElButton>
       <ElButton type="primary">
         <template #icon>
-          <ElIcon>
-            <SvgIcon name="i-ep:delete" />
-          </ElIcon>
+          <SvgIcon name="i-ep:delete" />
         </template>
       </ElButton>
     </ElButtonGroup>

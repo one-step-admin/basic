@@ -11,7 +11,7 @@ const dialog = ref({
 })
 
 const code = computed(() => {
-  return `<svg-icon name="${dialog.value.iconName}"></svg-icon>`
+  return `<SvgIcon name="i-${dialog.value.iconName}" />`
 })
 
 watch(copied, (val) => {
@@ -34,10 +34,8 @@ function showInfo(iconName: string) {
     <PageMain v-for="(icon, key) in icons" :key="key" :title="icon.info.name">
       <ElRow :gutter="20">
         <ElCol v-for="(item, index) in icon.info.samples" :key="index" :xs="6" :sm="8" :md="3" :lg="2">
-          <ElCard shadow="hover" @click="showInfo(`${icon.prefix}:${item}`)">
-            <ElIcon>
-              <SvgIcon :name="`${icon.prefix}:${item}`" />
-            </ElIcon>
+          <ElCard shadow="hover" @click="showInfo(`i-${icon.prefix}:${item}`)">
+            <SvgIcon :name="`${icon.prefix}:${item}`" />
           </ElCard>
         </ElCol>
       </ElRow>
@@ -46,9 +44,7 @@ function showInfo(iconName: string) {
       <ElRow type="flex">
         <ElCol style="max-width: 100px;">
           <div class="icon-box">
-            <ElIcon>
-              <SvgIcon :name="dialog.iconName" />
-            </ElIcon>
+            <SvgIcon :name="dialog.iconName" />
           </div>
         </ElCol>
         <ElCol style="flex: 1;">
@@ -72,9 +68,7 @@ function showInfo(iconName: string) {
         </ElDivider>
         <ElButton>
           <template #icon>
-            <ElIcon>
-              <SvgIcon :name="dialog.iconName" />
-            </ElIcon>
+            <SvgIcon :name="dialog.iconName" />
           </template>
           Icon 按钮
         </ElButton>

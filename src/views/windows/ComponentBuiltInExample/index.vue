@@ -14,13 +14,13 @@ const toggle = ref(false)
     <div class="flex flex-col flex-wrap gap-4 px-4 lg:flex-row">
       <PageMain title="Badge">
         <HBadge :value="true">
-          <SvgIcon name="ri:notification-3-line" />
+          <SvgIcon name="i-ri:notification-3-line" />
         </HBadge>
         <HBadge :value="99">
-          <SvgIcon name="ri:notification-3-line" />
+          <SvgIcon name="i-ri:notification-3-line" />
         </HBadge>
         <HBadge value="噢">
-          <SvgIcon name="ri:notification-3-line" />
+          <SvgIcon name="i-ri:notification-3-line" />
         </HBadge>
       </PageMain>
       <PageMain title="Button">
@@ -58,7 +58,7 @@ const toggle = ref(false)
         <HDropdown>
           <div>
             下拉面板
-            <SvgIcon name="ep:caret-bottom" />
+            <SvgIcon name="i-ep:caret-bottom" />
           </div>
           <template #dropdown>
             <div class="h-30 w-60 flex items-center justify-center">
@@ -82,7 +82,7 @@ const toggle = ref(false)
         >
           <div>
             下拉菜单
-            <SvgIcon name="ep:caret-bottom" />
+            <SvgIcon name="i-ep:caret-bottom" />
           </div>
         </HDropdownMenu>
       </PageMain>
@@ -126,7 +126,7 @@ const toggle = ref(false)
       </PageMain>
       <PageMain title="Tooltip">
         <HTooltip text="注意噢！">
-          <SvgIcon name="ri:question-line" />
+          <SvgIcon name="i-ri:question-line" />
         </HTooltip>
       </PageMain>
     </div>

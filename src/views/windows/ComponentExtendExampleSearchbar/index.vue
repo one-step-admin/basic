@@ -74,7 +74,7 @@ function onToggle(fold: boolean) {
             <ElFormItem>
               <ElButton type="primary">
                 <template #icon>
-                  <SvgIcon name="ep:search" />
+                  <SvgIcon name="i-ep:search" />
                 </template>
                 筛选
               </ElButton>
@@ -141,7 +141,7 @@ function onToggle(fold: boolean) {
             <ElFormItem>
               <ElButton type="primary">
                 <template #icon>
-                  <SvgIcon name="ep:search" />
+                  <SvgIcon name="i-ep:search" />
                 </template>
                 筛选
               </ElButton>
@@ -208,7 +208,7 @@ function onToggle(fold: boolean) {
             <ElFormItem>
               <ElButton type="primary">
                 <template #icon>
-                  <SvgIcon name="ep:search" />
+                  <SvgIcon name="i-ep:search" />
                 </template>
                 筛选
               </ElButton>
@@ -275,7 +275,7 @@ function onToggle(fold: boolean) {
             <ElFormItem>
               <ElButton type="primary">
                 <template #icon>
-                  <SvgIcon name="ep:search" />
+                  <SvgIcon name="i-ep:search" />
                 </template>
                 筛选
               </ElButton>
@@ -326,13 +326,13 @@ function onToggle(fold: boolean) {
             <ElFormItem>
               <ElButton type="primary">
                 <template #icon>
-                  <SvgIcon name="ep:search" />
+                  <SvgIcon name="i-ep:search" />
                 </template>
                 筛选
               </ElButton>
               <ElButton link @click="toggle">
                 <template #icon>
-                  <SvgIcon :name="fold ? 'ep:caret-bottom' : 'ep:caret-top' " />
+                  <SvgIcon :name="fold ? 'i-ep:caret-bottom' : 'i-ep:caret-top' " />
                 </template>
                 {{ fold ? '展开' : '收起' }}
               </ElButton>
@@ -391,13 +391,13 @@ function onToggle(fold: boolean) {
                 <ElFormItem label-width="0" class="action-box">
                   <ElButton type="primary">
                     <template #icon>
-                      <SvgIcon name="ep:search" />
+                      <SvgIcon name="i-ep:search" />
                     </template>
                     筛选
                   </ElButton>
                   <ElButton link @click="toggle">
                     <template #icon>
-                      <SvgIcon :name="fold ? 'ep:caret-bottom' : 'ep:caret-top' " />
+                      <SvgIcon :name="fold ? 'i-ep:caret-bottom' : 'i-ep:caret-top' " />
                     </template>
                     {{ fold ? '展开' : '收起' }}
                   </ElButton>

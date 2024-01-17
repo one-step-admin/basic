@@ -1,10 +1,10 @@
 const menus: Menu.recordRaw = {
   title: '组件',
-  icon: 'bx:bxs-component',
+  icon: 'i-bx:bxs-component',
   children: [
     {
       title: '基础组件',
-      icon: 'ep:element-plus',
+      icon: 'i-ep:element-plus',
       windowName: 'ComponentBasicExample',
     },
     {

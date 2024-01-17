@@ -9,7 +9,7 @@ import EcologyExample from './modules/ecology.example'
 const menu = [
   {
     title: '演示',
-    icon: 'uim:box',
+    icon: 'i-uim:box',
     children: [
       WindowExample,
       ComponentExample,
@@ -21,7 +21,7 @@ const menu = [
   },
   {
     title: '生态',
-    icon: 'icon-park-outline:circular-connection',
+    icon: 'i-icon-park-outline:circular-connection',
     children: [
       ...EcologyExample,
     ],

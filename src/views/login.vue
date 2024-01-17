@@ -20,12 +20,10 @@ const title = import.meta.env.VITE_APP_TITLE
 // 表单类型，login 登录，register 注册，reset 重置密码
 const formType = ref('login')
 const loading = ref(false)
-const passwordType = ref('password')
 const redirect = ref(route.query.redirect?.toString() ?? '/')
 
 // 登录
 const loginFormRef = ref<FormInstance>()
-const loginPasswordRef = ref<HTMLElement>()
 const loginForm = ref({
   account: localStorage.login_account || '',
   password: '',
@@ -62,8 +60,6 @@ function handleLogin() {
 
 // 注册
 const registerFormRef = ref<FormInstance>()
-const registerPasswordRef = ref<HTMLElement>()
-const registerCheckPasswordRef = ref<HTMLElement>()
 const registerForm = ref({
   account: '',
   captcha: '',
@@ -109,7 +105,6 @@ function handleRegister() {
 
 // 重置密码
 const resetFormRef = ref<FormInstance>()
-const resetNewPasswordRef = ref<HTMLElement>()
 const resetForm = ref({
   account: localStorage.login_account,
   captcha: '',
@@ -139,13 +134,6 @@ function handleReset() {
   })
 }
 
-function showPassword(passwordEl: HTMLElement | undefined) {
-  passwordType.value = passwordType.value === 'password' ? '' : 'password'
-  nextTick(() => {
-    passwordEl?.focus()
-  })
-}
-
 function testAccount(account: string) {
   loginForm.value.account = account
   loginForm.value.password = '123456'
@@ -161,7 +149,7 @@ function testAccount(account: string) {
         <img :src="logo" class="logo">
         <img :src="banner" class="banner">
       </div>
-      <ElForm v-show="formType === 'login'" ref="loginFormRef" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on">
+      <ElForm v-show="formType === 'login'" ref="loginFormRef" :model="loginForm" :rules="loginRules" class="login-form">
         <div class="title-container">
           <h3 class="title">
             欢迎来到 {{ title }} ! 👋🏻
@@ -169,25 +157,16 @@ function testAccount(account: string) {
         </div>
         <div>
           <ElFormItem prop="account">
-            <ElInput v-model="loginForm.account" placeholder="用户名" type="text" tabindex="1" autocomplete="on">
+            <ElInput v-model="loginForm.account" placeholder="用户名" type="text" tabindex="1">
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:user" />
-                </ElIcon>
+                <SvgIcon name="i-ep:user" />
               </template>
             </ElInput>
           </ElFormItem>
           <ElFormItem prop="password">
-            <ElInput ref="loginPasswordRef" v-model="loginForm.password" :type="passwordType" placeholder="密码" tabindex="2" autocomplete="on" @keyup.enter="handleLogin">
+            <ElInput v-model="loginForm.password" type="password" placeholder="密码" tabindex="2" show-password @keyup.enter="handleLogin">
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:lock" />
-                </ElIcon>
-              </template>
-              <template #suffix>
-                <ElIcon @click="showPassword(loginPasswordRef)">
-                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </ElIcon>
+                <SvgIcon name="i-ep:lock" />
               </template>
             </ElInput>
           </ElFormItem>
@@ -227,20 +206,16 @@ function testAccount(account: string) {
         </div>
         <div>
           <ElFormItem prop="account">
-            <ElInput v-model="registerForm.account" placeholder="用户名" tabindex="1" autocomplete="on">
+            <ElInput v-model="registerForm.account" placeholder="用户名" tabindex="1">
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:user" />
-                </ElIcon>
+                <SvgIcon name="i-ep:user" />
               </template>
             </ElInput>
           </ElFormItem>
           <ElFormItem prop="captcha">
-            <ElInput v-model="registerForm.captcha" placeholder="验证码" tabindex="2" autocomplete="on">
+            <ElInput v-model="registerForm.captcha" placeholder="验证码" tabindex="2">
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:key" />
-                </ElIcon>
+                <SvgIcon name="i-ep:key" />
               </template>
               <template #append>
                 <ElButton>发送验证码</ElButton>
@@ -248,30 +223,16 @@ function testAccount(account: string) {
             </ElInput>
           </ElFormItem>
           <ElFormItem prop="password">
-            <ElInput ref="registerPasswordRef" v-model="registerForm.password" :type="passwordType" placeholder="密码" tabindex="3" autocomplete="on">
+            <ElInput v-model="registerForm.password" type="password" placeholder="密码" tabindex="3" show-password>
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:lock" />
-                </ElIcon>
-              </template>
-              <template #suffix>
-                <ElIcon @click="showPassword(registerPasswordRef)">
-                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </ElIcon>
+                <SvgIcon name="i-ep:lock" />
               </template>
             </ElInput>
           </ElFormItem>
           <ElFormItem prop="checkPassword">
-            <ElInput ref="registerCheckPasswordRef" v-model="registerForm.checkPassword" :type="passwordType" placeholder="确认密码" tabindex="4" autocomplete="on">
+            <ElInput v-model="registerForm.checkPassword" type="password" placeholder="确认密码" tabindex="4" show-password>
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:lock" />
-                </ElIcon>
-              </template>
-              <template #suffix>
-                <ElIcon @click="showPassword(registerCheckPasswordRef)">
-                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </ElIcon>
+                <SvgIcon name="i-ep:lock" />
               </template>
             </ElInput>
           </ElFormItem>
@@ -294,20 +255,16 @@ function testAccount(account: string) {
         </div>
         <div>
           <ElFormItem prop="account">
-            <ElInput v-model="resetForm.account" placeholder="用户名" type="text" tabindex="1" autocomplete="on">
+            <ElInput v-model="resetForm.account" placeholder="用户名" type="text" tabindex="1">
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:user" />
-                </ElIcon>
+                <SvgIcon name="i-ep:user" />
               </template>
             </ElInput>
           </ElFormItem>
           <ElFormItem prop="captcha">
-            <ElInput v-model="resetForm.captcha" placeholder="验证码" type="text" tabindex="2" autocomplete="on">
+            <ElInput v-model="resetForm.captcha" placeholder="验证码" type="text" tabindex="2">
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:key" />
-                </ElIcon>
+                <SvgIcon name="i-ep:key" />
               </template>
               <template #append>
                 <ElButton>发送验证码</ElButton>
@@ -315,16 +272,9 @@ function testAccount(account: string) {
             </ElInput>
           </ElFormItem>
           <ElFormItem prop="newPassword">
-            <ElInput ref="resetNewPasswordRef" v-model="resetForm.newPassword" :type="passwordType" placeholder="新密码" tabindex="3" autocomplete="on">
+            <ElInput v-model="resetForm.newPassword" type="password" placeholder="新密码" tabindex="3" show-password>
               <template #prefix>
-                <ElIcon>
-                  <SvgIcon name="ep:lock" />
-                </ElIcon>
-              </template>
-              <template #suffix>
-                <ElIcon @click="showPassword(resetNewPasswordRef)">
-                  <SvgIcon :name="passwordType === 'password' ? 'ep:hide' : 'ep:view'" />
-                </ElIcon>
+                <SvgIcon name="i-ep:lock" />
               </template>
             </ElInput>
           </ElFormItem>
