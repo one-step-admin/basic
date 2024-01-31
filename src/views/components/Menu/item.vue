@@ -51,7 +51,7 @@ defineExpose({
       active: isItemActive,
     }"
   >
-    <HTooltip :enable="rootMenu.isMenuPopup && level === 0 && !subMenu" :text="typeof item?.title === 'function' ? item?.title() : item?.title" placement="right" class="w-full">
+    <HTooltip :enable="rootMenu.isMenuPopup && level === 0 && !subMenu" :text="typeof item?.title === 'function' ? item?.title() : item?.title" placement="right" class="h-full w-full">
       <div
         class="group menu-item-container h-full w-full flex cursor-pointer items-center justify-between gap-1 px-5 py-4 text-[var(--g-sub-sidebar-menu-color)] transition-all hover:(bg-[var(--g-sub-sidebar-menu-hover-bg)] text-[var(--g-sub-sidebar-menu-hover-color)])" :class="{
           'text-[var(--g-sub-sidebar-menu-active-color)]! bg-[var(--g-sub-sidebar-menu-active-bg)]!': isItemActive,
