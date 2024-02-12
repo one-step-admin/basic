@@ -7,19 +7,15 @@ export const useUserStore = defineStore(
   // 唯一ID
   'user',
   () => {
-    const account = ref(localStorage.getItem('account') ?? '')
-    const token = ref(localStorage.getItem('token') ?? '')
-    const failure_time = ref(localStorage.getItem('failure_time') ?? '')
-    const avatar = ref(localStorage.getItem('avatar') ?? '')
+    const account = ref(sessionStorage.getItem('account') ?? '')
+    const token = ref(sessionStorage.getItem('token') ?? '')
+    const avatar = ref(sessionStorage.getItem('avatar') ?? '')
     const permissions = ref<string[]>([])
     const isLogin = computed(() => {
-      let retn = false
       if (token.value) {
-        if (new Date().getTime() < Number.parseInt(failure_time.value) * 1000) {
-          retn = true
-        }
+        return true
       }
-      return retn
+      return false
     })
 
     async function login(data: {
@@ -27,25 +23,21 @@ export const useUserStore = defineStore(
       password: string
     }) {
       const res = await apiUser.login(data)
-      localStorage.setItem('account', res.data.account)
-      localStorage.setItem('token', res.data.token)
-      localStorage.setItem('failure_time', res.data.failure_time)
-      localStorage.setItem('avatar', res.data.avatar)
+      sessionStorage.setItem('account', res.data.account)
+      sessionStorage.setItem('token', res.data.token)
+      sessionStorage.setItem('avatar', res.data.avatar)
       account.value = res.data.account
       token.value = res.data.token
-      failure_time.value = res.data.failure_time
       avatar.value = res.data.avatar
     }
     async function logout() {
       const menuStore = useMenuStore()
       const windowStore = useWindowStore()
-      localStorage.removeItem('account')
-      localStorage.removeItem('token')
-      localStorage.removeItem('failure_time')
-      localStorage.removeItem('avatar')
+      sessionStorage.removeItem('account')
+      sessionStorage.removeItem('token')
+      sessionStorage.removeItem('avatar')
       account.value = ''
       token.value = ''
-      failure_time.value = ''
       avatar.value = ''
       menuStore.setActived(0)
       menuStore.removeMenus()
