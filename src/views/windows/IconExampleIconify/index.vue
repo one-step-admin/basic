@@ -34,7 +34,7 @@ function showInfo(iconName: string) {
     <PageMain v-for="(icon, key) in icons" :key="key" :title="icon.info.name">
       <ElRow :gutter="20">
         <ElCol v-for="(item, index) in icon.info.samples" :key="index" :xs="6" :sm="8" :md="3" :lg="2">
-          <ElCard shadow="hover" @click="showInfo(`i-${icon.prefix}:${item}`)">
+          <ElCard shadow="hover" @click="showInfo(`${icon.prefix}:${item}`)">
             <SvgIcon :name="`${icon.prefix}:${item}`" />
           </ElCard>
         </ElCol>
