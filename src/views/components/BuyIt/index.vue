@@ -18,16 +18,16 @@ function switchUI() {
 
 onMounted(() => {
   eventBus.on('global-ui-component-switch', () => switchUI())
-  ElNotification({
-    type: 'info',
-    title: '「 专业版限时优惠 」',
-    dangerouslyUseHTMLString: true,
-    message: `
-      <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.github.io/buy.html" target="_blank">查看详情</a>！</p>
-    `,
-    position: 'bottom-right',
-    duration: 0,
-  })
+  // ElNotification({
+  //   type: 'info',
+  //   title: '「 专业版限时优惠 」',
+  //   dangerouslyUseHTMLString: true,
+  //   message: `
+  //     <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.github.io/buy.html" target="_blank">查看详情</a>！</p>
+  //   `,
+  //   position: 'bottom-right',
+  //   duration: 0,
+  // })
 })
 
 function open(url: string) {
