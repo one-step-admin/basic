@@ -23,7 +23,7 @@ onMounted(() => {
     title: '「 专业版限时优惠 」',
     dangerouslyUseHTMLString: true,
     message: `
-      <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.gitee.io/buy.html" target="_blank">查看详情</a>！</p>
+      <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.github.io/buy.html" target="_blank">查看详情</a>！</p>
     `,
     position: 'bottom-right',
     duration: 0,
@@ -71,19 +71,19 @@ function open(url: string) {
         </div>
       </HDialog>
     </div>
-    <div class="item" @click="open(`https://one-step-admin.gitee.io/buy.html`)">
+    <div class="item" @click="open(`https://one-step-admin.github.io/buy.html`)">
       <SvgIcon name="i-ri:money-cny-box-line" />
       <span class="title">购买<br>专业版</span>
     </div>
-    <div class="item" @click="open(`https://gitee.com/one-step-admin/basic`)">
+    <div class="item" @click="open(`https://github.com/one-step-admin/basic`)">
       <SvgIcon name="i-ri:code-s-slash-line" />
       <span class="title">下载<br>基础版</span>
     </div>
-    <div class="item" @click="open(`https://one-step-admin.gitee.io`)">
+    <div class="item" @click="open(`https://one-step-admin.github.io`)">
       <SvgIcon name="i-ri:book-read-line" />
       <span class="title">开发<br>文档</span>
     </div>
-    <div class="item" @click="open(`https://one-step-admin.gitee.io/support.html`)">
+    <div class="item" @click="open(`https://one-step-admin.github.io/support.html`)">
       <SvgIcon name="i-ri:message-2-line" />
       <span class="title">技术<br>支持</span>
     </div>

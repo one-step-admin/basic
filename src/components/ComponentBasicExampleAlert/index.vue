@@ -2,7 +2,7 @@
   <div class="alert">
     <ElAlert show-icon type="info" :closable="false" close-text="前往 Element Plus 官网">
       <template #title>
-        基础组件来自 Element Plus ，更多组件及使用技巧请查看 <ElLink type="primary" href="https://element-plus.gitee.io/zh-CN/" target="_blank">
+        基础组件来自 Element Plus ，更多组件及使用技巧请查看 <ElLink type="primary" href="https://element-plus.org/zh-CN/" target="_blank">
           Element Plus 官网
         </ElLink>
       </template>

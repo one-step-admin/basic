@@ -17,7 +17,7 @@ const globalSettings: Settings.all = {
     enable: true,
     dates: '2021-present',
     company: 'One-step-admin',
-    website: 'https://one-step-admin.gitee.io',
+    website: 'https://one-step-admin.github.io',
   },
 }
 

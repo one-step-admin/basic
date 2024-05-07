@@ -3,7 +3,7 @@
     <PageHeader title="图片预览" content="ImagePreview" />
     <PageMain>
       <div>
-        <ImagePreview src="https://one-step-admin.gitee.io/logo.png" :width="200" />
+        <ImagePreview src="https://one-step-admin.github.io/logo.png" :width="200" />
       </div>
     </PageMain>
     <PageMain title="图片加载失败时">
