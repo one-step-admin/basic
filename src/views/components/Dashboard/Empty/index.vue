@@ -1,4 +1,11 @@
 <script setup lang="ts">
+const versionType = ref('basic')
+function handelVersionTypeChange(val?: string | number) {
+  if (val === 'pro') {
+    location.href = location.href.replace('basic-example', 'pro-example')
+  }
+}
+
 const fantasticStartkitInfo = ref({
   feature: [
     '支持 TypeScript',
@@ -51,6 +58,13 @@ function open(url: string) {
       <template #title>
         <div class="flex items-center gap-4">
           欢迎使用 One-step-admin
+          <HTabList
+            v-model="versionType"
+            :options="[
+              { label: '基础版', value: 'basic' },
+              { label: '专业版', value: 'pro' },
+            ]" @change="handelVersionTypeChange"
+          />
         </div>
       </template>
       <template #content>
@@ -226,7 +240,7 @@ function open(url: string) {
       }
 
       span {
-        --at-apply: text-stone-7 dark:text-stone-3 font-bold;
+        --at-apply: text-stone-7 dark-text-stone-3 font-bold;
       }
     }
   }

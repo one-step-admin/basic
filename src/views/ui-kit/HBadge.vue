@@ -32,7 +32,7 @@ const transitionClass = ref({
     <Transition v-bind="transitionClass">
       <span
         v-if="show"
-        class="absolute left-[50%] top-0 z-20 whitespace-nowrap rounded-full bg-ui-primary px-1.5 text-xs text-ui-text ring-1 ring-light -translate-y-[50%] dark:ring-dark"
+        class="absolute left-[50%] top-0 z-20 whitespace-nowrap rounded-full bg-ui-primary px-1.5 text-xs text-ui-text ring-1 ring-light -translate-y-[50%] dark-ring-dark"
         :class="{ '-indent-9999 w-1.5 h-1.5 px-0! left-[100%]! -translate-x-[50%] before:(content-empty block bg-ui-primary w-full h-full rounded-full absolute left-0 top-0 animate-ping)': value === true }"
       >
         {{ value }}

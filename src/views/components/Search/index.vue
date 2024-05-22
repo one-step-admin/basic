@@ -169,7 +169,7 @@ function handleScroll() {
 }
 
 function handleOpen(windowName: string) {
-  if (/^(https?:|mailto:|tel:)/.test(windowName)) {
+  if (/^(?:https?:|mailto:|tel:)/.test(windowName)) {
     window.open(windowName)
   }
   else {
@@ -183,23 +183,23 @@ function handleOpen(windowName: string) {
   <TransitionRoot as="template" :show="isShow">
     <Dialog :initial-focus="searchInputRef" class="fixed inset-0 z-2000 flex" @close="isShow && eventBus.emit('global-search-toggle')">
       <TransitionChild as="template" v-bind="overlayTransitionClass">
-        <div class="fixed inset-0 bg-stone-200/75 backdrop-blur-sm transition-opacity dark:bg-stone-8/75" />
+        <div class="fixed inset-0 bg-stone-200/75 backdrop-blur-sm transition-opacity dark-bg-stone-8/75" />
       </TransitionChild>
       <div class="fixed inset-0">
         <div class="h-full flex items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <TransitionChild as="template" v-bind="transitionClass">
             <DialogPanel class="relative h-full max-h-4/5 w-full flex flex-col text-left sm:max-w-2xl">
-              <div class="flex flex-col overflow-y-auto rounded-xl bg-white shadow-xl dark:bg-stone-8">
-                <div class="flex items-center px-4 py-3" border-b="~ solid stone-2 dark:stone-7">
+              <div class="flex flex-col overflow-y-auto rounded-xl bg-white shadow-xl dark-bg-stone-8">
+                <div class="flex items-center px-4 py-3" border-b="~ solid stone-2 dark-stone-7">
                   <SvgIcon name="i-ep:search" :size="18" class="text-stone-5" />
-                  <input ref="searchInputRef" v-model="searchInput" placeholder="搜索页面，支持标题、URL模糊查询" class="w-full border-0 rounded-md bg-transparent px-3 text-base text-dark dark:text-white focus:outline-none placeholder-stone-4 dark:placeholder-stone-5" @keydown.esc="eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
+                  <input ref="searchInputRef" v-model="searchInput" placeholder="搜索页面，支持标题、URL模糊查询" class="w-full border-0 rounded-md bg-transparent px-3 text-base text-dark dark-text-white focus-outline-none placeholder-stone-4 dark-placeholder-stone-5" @keydown.esc="eventBus.emit('global-search-toggle')" @keydown.up.prevent="keyUp" @keydown.down.prevent="keyDown" @keydown.enter.prevent="keyEnter">
                 </div>
                 <DialogDescription class="relative m-0 of-y-hidden">
                   <OverlayScrollbarsComponent ref="searchResultRef" :options="{ scrollbars: { autoHide: 'leave', autoHideDelay: 300 } }" defer class="h-full">
                     <template v-if="resultList.length > 0">
-                      <a v-for="(item, index) in resultList" ref="searchResultItemRef" :key="item.windowName" class="flex cursor-pointer items-center" :class="{ 'bg-stone-2/40 dark:bg-stone-7/40': index === actived }" :data-index="index" @click="item.windowName && handleOpen(item.windowName)" @mouseover="actived = index">
+                      <a v-for="(item, index) in resultList" ref="searchResultItemRef" :key="item.windowName" class="flex cursor-pointer items-center" :class="{ 'bg-stone-2/40 dark-bg-stone-7/40': index === actived }" :data-index="index" @click="item.windowName && handleOpen(item.windowName)" @mouseover="actived = index">
                         <SvgIcon v-if="item.icon" :name="item.icon" :size="20" class="basis-16 transition" :class="{ 'scale-120 text-ui-primary': index === actived }" />
-                        <div class="flex flex-1 flex-col gap-1 truncate px-4 py-3" border-l="~ solid stone-2 dark:stone-7">
+                        <div class="flex flex-1 flex-col gap-1 truncate px-4 py-3" border-l="~ solid stone-2 dark-stone-7">
                           <div class="truncate text-base font-bold">{{ item.title }}</div>
                           <Breadcrumb v-if="item.breadcrumbNeste?.length" class="truncate">
                             <BreadcrumbItem v-for="(bc, bcIndex) in item.breadcrumbNeste" :key="bcIndex" class="text-xs">
@@ -219,7 +219,7 @@ function handleOpen(windowName: string) {
                     </template>
                   </OverlayScrollbarsComponent>
                 </DialogDescription>
-                <div class="flex justify-between px-4 py-3" border-t="~ solid stone-2 dark:stone-7">
+                <div class="flex justify-between px-4 py-3" border-t="~ solid stone-2 dark-stone-7">
                   <div class="flex gap-8">
                     <div class="inline-flex items-center gap-1 text-xs">
                       <HKbd>

@@ -93,7 +93,7 @@ const handleMenuItemClick: MenuInjection['handleMenuItemClick'] = (index, window
   }
   setSubMenusActive(index)
   if (windowName) {
-    if (/^(https?:|mailto:|tel:)/.test(windowName)) {
+    if (/^(?:https?:|mailto:|tel:)/.test(windowName)) {
       window.open(windowName)
     }
     else {

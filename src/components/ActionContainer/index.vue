@@ -9,7 +9,7 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
         <slot />
       </OverlayScrollbarsComponent>
     </div>
-    <div v-if="$slots.action" class="z-1 flex-center border-t border-t-(stone-2 solid) bg-[var(--g-app-bg)] p-4 transition-background-color-300 dark:border-t-stone-8">
+    <div v-if="$slots.action" class="z-1 flex-center border-t border-t-(stone-2 solid) bg-[var(--g-app-bg)] p-4 transition-background-color-300 dark-border-t-stone-8">
       <slot name="action" />
     </div>
   </div>
