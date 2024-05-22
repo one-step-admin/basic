@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElNotification } from 'element-plus'
 import eventBus from '@/utils/eventBus'
 
 defineOptions({

@@ -12,7 +12,7 @@ export default function useMenu() {
     if (settingsStore.settings.menu.switchMainMenuAndOpenWindow) {
       const windowName = getDeepestWindow(menuStore.sidebarMenus[0]).windowName
       if (windowName) {
-        if (/^(https?:|mailto:|tel:)/.test(windowName)) {
+        if (/^(?:https?:|mailto:|tel:)/.test(windowName)) {
           window.open(windowName)
         }
         else {

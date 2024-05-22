@@ -12,14 +12,14 @@ const slots = useSlots()
 </script>
 
 <template>
-  <div class="page-header mb-5 flex flex-wrap items-center justify-between gap-5 border-b border-b-(stone-2 solid) bg-[var(--g-app-bg)] px-5 py-4 transition-background-color-300 dark:border-b-stone-8">
+  <div class="page-header mb-5 flex flex-wrap items-center justify-between gap-5 border-b border-b-(stone-2 solid) bg-[var(--g-app-bg)] px-5 py-4 transition-background-color-300 dark-border-b-stone-8">
     <div class="main flex-[1_1_70%]">
       <div class="text-2xl">
         <slot name="title">
           {{ title }}
         </slot>
       </div>
-      <div class="mt-2 text-sm text-stone-5 empty:hidden">
+      <div class="mt-2 text-sm text-stone-5 empty-hidden">
         <slot name="content">
           {{ content }}
         </slot>

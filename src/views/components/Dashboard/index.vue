@@ -135,7 +135,7 @@ function maskClick(windowName: string) {
             </OverlayScrollbarsComponent>
           </div>
           <div class="mask" @click="maskClick(element.name)">
-            <div class="w-full flex-center flex-1 cursor-pointer text-5xl c-stone-3 text-shadow transition dark:c-stone-7 hover:c-stone-5">
+            <div class="w-full flex-center flex-1 cursor-pointer text-5xl c-stone-3 text-shadow transition dark-c-stone-7 hover-c-stone-5">
               点击进入
             </div>
           </div>
@@ -175,7 +175,7 @@ function maskClick(windowName: string) {
   --at-apply: absolute top-0 bottom-0 w-full of-x-auto of-y-hidden transition;
 
   &.preview-all {
-    --at-apply: fixed z-2000 top-0 bottom-0 left-0 right-0 of-y-auto bg-stone-200/75 dark:bg-stone-8/75 backdrop-blur-sm;
+    --at-apply: fixed z-2000 top-0 bottom-0 left-0 right-0 of-y-auto bg-stone-200/75 dark-bg-stone-8/75 backdrop-blur-sm;
 
     .preview-all-mode {
       display: block;
@@ -246,7 +246,7 @@ function maskClick(windowName: string) {
     }
 
     .window-container {
-      --at-apply: shadow hover:shadow-lg transition;
+      --at-apply: shadow hover-shadow-lg transition;
 
       display: flex;
       flex: 1;
@@ -274,7 +274,7 @@ function maskClick(windowName: string) {
           align-items: center;
 
           .title {
-            --at-apply: c-dark dark:c-light;
+            --at-apply: c-dark dark-c-light;
 
             font-size: 14px;
             font-weight: bold;
@@ -289,7 +289,7 @@ function maskClick(windowName: string) {
           display: flex;
 
           .btn {
-            --at-apply: c-dark dark:c-light bg-stone-1 hover:bg-stone-2 dark:bg-stone-9 dark:hover:bg-stone-8 transition;
+            --at-apply: c-dark dark-c-light bg-stone-1 hover-bg-stone-2 dark-bg-stone-9 dark-hover-bg-stone-8 transition;
 
             display: flex;
             align-items: center;
@@ -303,7 +303,7 @@ function maskClick(windowName: string) {
       }
 
       .mask {
-        --at-apply: bg-stone-1/75 dark:bg-stone-9/75;
+        --at-apply: bg-stone-1/75 dark-bg-stone-9/75;
 
         position: absolute;
         top: 0;
