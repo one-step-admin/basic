@@ -7,15 +7,9 @@
 <p align="center">一款<b>干啥都快人一步</b>的 Vue 中后台管理系统框架</p>
 
 <p align="center">
-  <a href="https://one-step-admin.github.io" target="_blank">官网</a>
+  <a href="https://one-step-admin.github.io" target="_blank">官网(Github)</a>
   <span>&nbsp;|&nbsp;</span>
-  <a href="https://one-step-admin.github.io/support.html" target="_blank">技术支持</a>
-  <span>&nbsp;|&nbsp;</span>
-  演示
-  <sup><a href="https://one-step-admin.github.io/basic-example" target="_blank">基础版</a> <a href="https://one-step-admin.github.io/pro-example" target="_blank">专业版</a></sup>
-  <span>&nbsp;|&nbsp;</span>
-  购买
-  <sup><a href="https://one-step-admin.github.io/buy.html" target="_blank">专业版</a></sup>
+  <a href="https://one-step-admin.pages.dev" target="_blank">官网(Cloudflare)</a>
 <p>
 
 <p align="center">
