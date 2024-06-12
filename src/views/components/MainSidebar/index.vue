@@ -18,7 +18,7 @@ const { switchTo } = useMenu()
     <div v-if="['side'].includes(settingsStore.settings.menu.menuMode)" class="main-sidebar-container">
       <Logo :show-title="false" class="sidebar-logo" />
       <!-- 侧边栏模式（含主导航） -->
-      <div class="menu flex flex-col of-hidden transition-all">
+      <div class="menu w-full flex flex-col of-hidden transition-all">
         <template v-for="(item, index) in menuStore.allMenus" :key="index">
           <div
             class="menu-item relative transition-all" :class="{
