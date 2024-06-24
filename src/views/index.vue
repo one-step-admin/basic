@@ -18,7 +18,7 @@ const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
 const enableToolbar = computed(() => {
-  return !(settingsStore.settings.menu.menuMode === 'head' && !settingsStore.settings.toolbar.previewWindows)
+  return !(settingsStore.settings.menu.mode === 'head' && !settingsStore.settings.toolbar.previewWindows)
 })
 
 onMounted(() => {

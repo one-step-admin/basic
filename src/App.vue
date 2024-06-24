@@ -11,7 +11,7 @@ const settingsStore = useSettingsStore()
 // 侧边栏主导航当前实际宽度
 const mainSidebarActualWidth = computed(() => {
   let actualWidth = Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue('--g-main-sidebar-width'))
-  if (['head', 'single'].includes(settingsStore.settings.menu.menuMode)) {
+  if (['head', 'single'].includes(settingsStore.settings.menu.mode)) {
     actualWidth = 0
   }
   return `${actualWidth}px`

@@ -38,7 +38,7 @@ export const useSettingsStore = defineStore(
       }
     }
 
-    watch(() => settings.value.menu.menuMode, (val) => {
+    watch(() => settings.value.menu.mode, (val) => {
       document.body.setAttribute('data-menu-mode', val)
     }, {
       immediate: true,

@@ -33,7 +33,7 @@ declare namespace Settings {
      * @可选值 `'head'` 顶部模式
      * @可选值 `'single'` 侧边栏模式（无主导航）
      */
-    menuMode?: 'side' | 'head' | 'single'
+    mode?: 'side' | 'head' | 'single'
     /**
      * 切换主导航同时打开窗口
      * @默认值 `false`

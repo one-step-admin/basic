@@ -6,7 +6,7 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
   },
   menu: {
     baseOn: 'frontend',
-    menuMode: 'side',
+    mode: 'side',
     switchMainMenuAndOpenWindow: false,
     subMenuUniqueOpened: true,
     subMenuCollapse: false,
