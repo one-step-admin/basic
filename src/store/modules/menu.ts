@@ -73,7 +73,7 @@ const useMenuStore = defineStore(
     const allMenus = computed(() => {
       let returnMenus: Menu.recordMainRaw[]
       const settingsStore = useSettingsStore()
-      if (settingsStore.settings.menu.menuMode === 'single') {
+      if (settingsStore.settings.menu.mode === 'single') {
         returnMenus = [{ children: [] }]
         menus.value.forEach((item) => {
           returnMenus[0].children.push(...item.children)

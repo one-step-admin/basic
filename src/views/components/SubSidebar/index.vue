@@ -40,13 +40,13 @@ onMounted(() => {
 
 <template>
   <div
-    v-if="['side', 'head', 'single'].includes(settingsStore.settings.menu.menuMode)" class="sub-sidebar-container" :class="{
+    v-if="['side', 'head', 'single'].includes(settingsStore.settings.menu.mode)" class="sub-sidebar-container" :class="{
       'is-collapse': settingsStore.settings.menu.subMenuCollapse,
     }"
   >
     <Logo
-      :show-logo="settingsStore.settings.menu.menuMode === 'single'" class="sidebar-logo" :class="{
-        'sidebar-logo-bg': settingsStore.settings.menu.menuMode === 'single',
+      :show-logo="settingsStore.settings.menu.mode === 'single'" class="sidebar-logo" :class="{
+        'sidebar-logo-bg': settingsStore.settings.menu.mode === 'single',
       }"
     />
     <div
