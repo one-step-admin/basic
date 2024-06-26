@@ -23,6 +23,9 @@ importers:
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
+      disable-devtool:
+        specifier: ^0.3.7
+        version: 0.3.7
       element-plus:
         specifier: ^2.7.4
         version: 2.7.4(vue@3.4.27(typescript@5.4.5))
@@ -2221,6 +2224,9 @@ packages:
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
+
+  disable-devtool@0.3.7:
+    resolution: {integrity: sha512-xF5uyEpBhDuy7b4Bb88GQG4IB+2CwuQfkJK9vB/ym+85NQp/f7Wc6hnT40Jy2SkKvEf1xAKpvJUJU3LykTXxKg==}
 
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -7338,6 +7344,8 @@ snapshots:
   dir-glob@3.0.1:
     dependencies:
       path-type: 4.0.0
+
+  disable-devtool@0.3.7: {}
 
   doctrine@3.0.0:
     dependencies:
