@@ -244,6 +244,21 @@ function handleCopy() {
       </div>
       <HToggle v-model="settingsStore.settings.app.enablePermission" />
     </div>
+    <div class="setting-item">
+      <div class="label">
+        哀悼模式
+        <HTooltip text="该功能开启时，整站会变为灰色">
+          <SvgIcon name="i-ri:question-line" />
+        </HTooltip>
+      </div>
+      <HToggle v-model="settingsStore.settings.app.enableMournMode" />
+    </div>
+    <div class="setting-item">
+      <div class="label">
+        色弱模式
+      </div>
+      <HToggle v-model="settingsStore.settings.app.enableColorAmblyopiaMode" />
+    </div>
     <template v-if="isSupported" #footer>
       <HButton block @click="handleCopy">
         <SvgIcon name="i-ep:document-copy" />
