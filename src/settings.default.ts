@@ -2,6 +2,8 @@
 const globalSettingsDefault: RecursiveRequired<Settings.all> = {
   app: {
     colorScheme: 'light',
+    enableMournMode: false,
+    enableColorAmblyopiaMode: false,
     enablePermission: false,
   },
   menu: {
