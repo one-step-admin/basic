@@ -1,5 +1,3 @@
-import { createInjectionKey } from '@/utils/injectionKeys'
-
 export interface MenuItem {
   index: string
   indexPath: string[]
@@ -30,7 +28,7 @@ export interface MenuInjection {
   handleSubMenuClick: (index: string, indexPath: string[]) => void
 }
 
-export const rootMenuInjectionKey = createInjectionKey<MenuInjection>('rootMenu')
+export const rootMenuInjectionKey = Symbol('rootMenu') as InjectionKey<MenuInjection>
 
 export interface SubMenuProps {
   uniqueKey: string[]
