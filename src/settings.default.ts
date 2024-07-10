@@ -25,6 +25,7 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
     enableHotkeys: true,
   },
   window: {
+    defaultWidth: 1000,
     enableHotkeys: true,
   },
   copyright: {

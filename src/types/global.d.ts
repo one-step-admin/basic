@@ -101,6 +101,11 @@ declare namespace Settings {
   }
   interface window {
     /**
+     * 窗口默认宽度，设置为数字时单位为 px
+     * @默认值 `1000`
+     */
+    defaultWidth?: string | number
+    /**
      * 是否开启窗口快捷键
      * @默认值 `true`
      */
