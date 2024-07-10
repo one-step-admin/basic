@@ -109,7 +109,7 @@ function maskClick(windowName: string) {
       </div>
     </div>
     <TransitionGroup v-show="windowStore.list.length > 0" name="window" tag="div" class="dashboard-container">
-      <div v-for="element in windowStore.list" :key="element.name" :ref="setWindowItemRef" class="window">
+      <div v-for="element in windowStore.list" :key="element.name" :ref="setWindowItemRef" class="window" :style="`--g-window-width: ${typeof settingsStore.settings.window.defaultWidth === 'string' ? settingsStore.settings.window.defaultWidth : `${settingsStore.settings.window.defaultWidth}px`};`">
         <div
           class="window-container" :class="{
             preview: settingsStore.previewAllWindows,
