@@ -39,7 +39,7 @@ const rules = ref<FormRules>({
 })
 
 function onSubmit() {
-  formRef.value && formRef.value.validate((valid) => {
+  formRef.value?.validate((valid) => {
     if (valid) {
       userStore.editPassword(form.value).then(() => {
         ElMessage({

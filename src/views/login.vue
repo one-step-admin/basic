@@ -42,7 +42,7 @@ const loginRules = ref<FormRules>({
   ],
 })
 function handleLogin() {
-  loginFormRef.value && loginFormRef.value.validate((valid) => {
+  loginFormRef.value?.validate((valid) => {
     if (valid) {
       loading.value = true
       userStore.login(loginForm.value).then(() => {
@@ -99,7 +99,7 @@ function handleRegister() {
     message: '注册模块仅提供界面演示，无实际功能，需开发者自行扩展',
     type: 'warning',
   })
-  registerFormRef.value && registerFormRef.value.validate((valid) => {
+  registerFormRef.value?.validate((valid) => {
     if (valid) {
       // 这里编写业务代码
     }
@@ -130,7 +130,7 @@ function handleReset() {
     message: '重置密码仅提供界面演示，无实际功能，需开发者自行扩展',
     type: 'info',
   })
-  resetFormRef.value && resetFormRef.value.validate((valid) => {
+  resetFormRef.value?.validate((valid) => {
     if (valid) {
       // 这里编写业务代码
     }
