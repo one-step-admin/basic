@@ -59,7 +59,11 @@ onMounted(() => {
         <TransitionGroup name="sub-sidebar">
           <template v-for="(mainItem, mainIndex) in menuStore.allMenus" :key="mainIndex">
             <div v-show="mainIndex === menuStore.actived">
-              <Menu :menu="mainItem.children" value="" :accordion="settingsStore.settings.menu.subMenuUniqueOpened" :collapse="settingsStore.settings.menu.subMenuCollapse" class="menu" />
+              <Menu
+                :menu="mainItem.children" value="" :accordion="settingsStore.settings.menu.subMenuUniqueOpened" :collapse="settingsStore.settings.menu.subMenuCollapse" class="menu" :class="{
+                  '-mt-2': !['head', 'single'].includes(settingsStore.settings.menu.mode),
+                }"
+              />
             </div>
           </template>
         </TransitionGroup>

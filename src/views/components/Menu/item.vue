@@ -52,12 +52,14 @@ defineExpose({
 <template>
   <div
     ref="itemRef" class="menu-item relative transition-all" :class="{
-      active: isItemActive,
+      'active': isItemActive,
+      'py-1 px-2': (rootMenu.isMenuPopup && rootMenu.props.mode === 'vertical') || (rootMenu.isMenuPopup && level !== 0 && rootMenu.props.mode === 'horizontal') || !rootMenu.isMenuPopup,
+      'px-1 py-2': rootMenu.isMenuPopup && level === 0 && rootMenu.props.mode === 'horizontal',
     }"
   >
     <HTooltip :enable="rootMenu.isMenuPopup && level === 0 && !subMenu" :text="typeof item?.title === 'function' ? item?.title() : item?.title" placement="right" class="h-full w-full">
       <div
-        class="group menu-item-container h-full w-full flex cursor-pointer items-center justify-between gap-1 px-5 py-4 text-[var(--g-sub-sidebar-menu-color)] transition-all hover-(bg-[var(--g-sub-sidebar-menu-hover-bg)] text-[var(--g-sub-sidebar-menu-hover-color)])" :class="{
+        class="group menu-item-container h-full w-full flex cursor-pointer items-center justify-between gap-1 px-4 py-3 text-[var(--g-sub-sidebar-menu-color)] transition-all hover-(bg-[var(--g-sub-sidebar-menu-hover-bg)] text-[var(--g-sub-sidebar-menu-hover-color)])" :class="{
           'text-[var(--g-sub-sidebar-menu-active-color)]! bg-[var(--g-sub-sidebar-menu-active-bg)]!': isItemActive,
           'px-3!': rootMenu.isMenuPopup && level === 0,
         }" :title="typeof item?.title === 'function' ? item?.title() : item?.title"
@@ -70,7 +72,7 @@ defineExpose({
             'w-[50px]': rootMenu.isMenuPopup && level === 0 && rootMenu.props.showCollapseName && rootMenu.props.mode === 'horizontal',
           }" :style="indentStyle"
         >
-          <SvgIcon v-if="icon" :name="icon" :size="20" class="menu-item-container-icon transition-transform group-hover-scale-120" async />
+          <SvgIcon v-if="icon" :name="icon" :size="18" class="menu-item-container-icon transition-transform group-hover-scale-120" />
           <span
             v-if="!(rootMenu.isMenuPopup && level === 0 && !rootMenu.props.showCollapseName)" class="w-0 flex-1 truncate text-sm transition-height transition-opacity transition-width"
             :class="{
