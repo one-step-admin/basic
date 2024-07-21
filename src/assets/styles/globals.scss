@@ -19,6 +19,8 @@
 // 明暗模式 CSS 变量
 /* stylelint-disable-next-line no-duplicate-selectors */
 :root {
+  --g-box-shadow-color: rgb(0 0 0 / 12%);
+
   &::view-transition-old(root),
   &::view-transition-new(root) {
     mix-blend-mode: normal;
@@ -33,9 +35,9 @@
     z-index: 9999;
   }
 
-  --g-box-shadow-color: rgb(0 0 0 / 12%);
-
   &.dark {
+    --g-box-shadow-color: rgb(0 0 0 / 72%);
+
     &::view-transition-old(root) {
       z-index: 9999;
     }
@@ -43,8 +45,6 @@
     &::view-transition-new(root) {
       z-index: 1;
     }
-
-    --g-box-shadow-color: rgb(0 0 0 / 72%);
   }
 }
 
