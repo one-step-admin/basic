@@ -157,7 +157,7 @@ declare namespace Settings {
 declare namespace Menu {
   /** 原始 */
   interface recordRaw {
-    title?: string | Function
+    title?: string | (() => string)
     icon?: string
     auth?: string | string[]
     params?: object
@@ -167,19 +167,19 @@ declare namespace Menu {
   }
   /** 主导航 */
   interface recordMainRaw {
-    title?: string | Function
+    title?: string | (() => string)
     icon?: string
     auth?: string | string[]
     children: recordRaw[]
   }
   interface breadcrumb {
-    title?: string | Function
+    title?: string | (() => string)
   }
 }
 
 interface window {
   name: string
-  title?: string | Function
+  title?: string | (() => string)
   params?: object
   breadcrumbNeste?: any[]
   reload?: boolean
