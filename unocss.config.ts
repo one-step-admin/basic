@@ -22,15 +22,30 @@ export default defineConfig<Theme>({
     },
   },
   shortcuts: [
-    {
-      'flex-center': 'flex justify-center items-center',
-      'flex-col-center': 'flex flex-col justify-center items-center',
-    },
+    [/^flex-?(col)?-(start|end|center|baseline|stretch)-?(start|end|center|between|around|evenly|left|right)?$/, ([, col, items, justify]) => {
+      const cls = ['flex']
+      if (col === 'col') {
+        cls.push('flex-col')
+      }
+      if (items === 'center' && !justify) {
+        cls.push('items-center')
+        cls.push('justify-center')
+      }
+      else {
+        cls.push(`items-${items}`)
+        if (justify) {
+          cls.push(`justify-${justify}`)
+        }
+      }
+      return cls.join(' ')
+    }],
+    [/^square-\[?(.*?)\]?$/, ([, size]) => `w-${size} h-${size}`],
+    [/^circle-\[?(.*?)\]?$/, ([, size]) => `square-${size} rounded-full`],
   ],
   preflights: [
     {
       getCSS: () => {
-        const returnCss: any = []
+        const returnCss: string[] = []
         // 明亮主题
         const lightCss = entriesToCss(Object.entries(lightTheme))
         const lightRoots = toArray([`*,::before,::after`, `::backdrop`])
