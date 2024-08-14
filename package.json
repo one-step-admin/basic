@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.22",
+    "@vueuse/components": "^10.11.1",
     "@vueuse/core": "^10.11.0",
     "@vueuse/integrations": "^10.11.0",
     "axios": "^1.7.3",

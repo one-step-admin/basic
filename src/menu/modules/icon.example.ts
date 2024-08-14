@@ -3,12 +3,16 @@ const menus: Menu.recordRaw = {
   icon: 'i-ri:remixicon-line',
   children: [
     {
+      title: 'Iconify',
+      windowName: 'iconExampleIconify',
+    },
+    {
       title: 'SVG Icon',
       windowName: 'IconExampleSvg',
     },
     {
-      title: 'Iconify',
-      windowName: 'iconExampleIconify',
+      title: 'Image Icon',
+      windowName: 'IconExampleImage',
     },
   ],
 }
