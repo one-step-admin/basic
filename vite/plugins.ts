@@ -104,7 +104,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
 /**
  * 由 One-step-admin 提供技术支持
  * Powered by One-step-admin
- * https://one-step-admin.github.io
+ * https://one-step-admin.hurui.me
  */
     `),
 
@@ -158,7 +158,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
         // eslint-disable-next-line no-console
         console.log(
           boxen(
-            `${bold(green(`由 ${bgGreen('One-step-admin')} 驱动`))}\n\n${underline('https://one-step-admin.github.io')}\n\n当前使用：${cyan('基础版')}`,
+            `${bold(green(`由 ${bgGreen('One-step-admin')} 驱动`))}\n\n${underline('https://one-step-admin.hurui.me')}\n\n当前使用：${cyan('基础版')}`,
             {
               padding: 1,
               margin: 1,

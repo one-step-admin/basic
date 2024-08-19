@@ -22,7 +22,7 @@ onMounted(() => {
   //   title: '「 专业版限时优惠 」',
   //   dangerouslyUseHTMLString: true,
   //   message: `
-  //     <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.github.io/buy.html" target="_blank">查看详情</a>！</p>
+  //     <p>原价 999.00 元，现价 <b style="font-size: 18px; color: #ff4400;">799.00</b> 元，更有超值优惠合集，立减 <b style="color: #ff4400;">799.00</b> 元，点击<a href="https://one-step-admin.hurui.me/buy.html" target="_blank">查看详情</a>！</p>
   //   `,
   //   position: 'bottom-right',
   //   duration: 0,
@@ -49,28 +49,28 @@ function open(url: string) {
           </p>
         </div>
         <div class="mt-4 flex flex-wrap justify-center gap-4">
-          <HButton @click="open('https://one-step-admin.github.io/antd-example/')">
+          <HButton @click="open('https://one-step-admin.hurui.me/antd-example/')">
             访问 Ant Design Vue 演示站
           </HButton>
-          <HButton @click="open('https://one-step-admin.github.io/arco-example/')">
+          <HButton @click="open('https://one-step-admin.hurui.me/arco-example/')">
             访问 Arco Design Vue 演示站
           </HButton>
-          <HButton @click="open('https://one-step-admin.github.io/naive-example/')">
+          <HButton @click="open('https://one-step-admin.hurui.me/naive-example/')">
             访问 Naive UI 演示站
           </HButton>
-          <HButton @click="open('https://one-step-admin.github.io/tdesign-example/')">
+          <HButton @click="open('https://one-step-admin.hurui.me/tdesign-example/')">
             访问 TDesign 演示站
           </HButton>
-          <HButton @click="open('https://one-step-admin.github.io/vexip-example/')">
+          <HButton @click="open('https://one-step-admin.hurui.me/vexip-example/')">
             访问 Vexip UI 演示站
           </HButton>
-          <HButton @click="open('https://one-step-admin.github.io/idux-example/')">
+          <HButton @click="open('https://one-step-admin.hurui.me/idux-example/')">
             访问 iDux 演示站
           </HButton>
         </div>
       </HDialog>
     </div>
-    <div class="item" @click="open(`https://one-step-admin.github.io/buy.html`)">
+    <div class="item" @click="open(`https://one-step-admin.hurui.me/buy.html`)">
       <SvgIcon name="i-ri:money-cny-box-line" />
       <span class="title">购买<br>专业版</span>
     </div>
@@ -78,11 +78,11 @@ function open(url: string) {
       <SvgIcon name="i-ri:code-s-slash-line" />
       <span class="title">下载<br>基础版</span>
     </div>
-    <div class="item" @click="open(`https://one-step-admin.github.io`)">
+    <div class="item" @click="open(`https://one-step-admin.hurui.me`)">
       <SvgIcon name="i-ri:book-read-line" />
       <span class="title">开发<br>文档</span>
     </div>
-    <div class="item" @click="open(`https://one-step-admin.github.io/support.html`)">
+    <div class="item" @click="open(`https://one-step-admin.hurui.me/support.html`)">
       <SvgIcon name="i-ri:message-2-line" />
       <span class="title">技术<br>支持</span>
     </div>

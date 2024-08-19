@@ -25,12 +25,12 @@ const fantasticAdminInfo = ref({
   imageVisible: false,
   index: 0,
   data: [
-    'https://fantastic-admin.github.io/preview1.png',
-    'https://fantastic-admin.github.io/preview2.png',
-    'https://fantastic-admin.github.io/preview3.png',
-    'https://fantastic-admin.github.io/preview4.png',
-    'https://fantastic-admin.github.io/preview5.png',
-    'https://fantastic-admin.github.io/preview6.png',
+    'https://fantastic-admin.hurui.me/preview1.png',
+    'https://fantastic-admin.hurui.me/preview2.png',
+    'https://fantastic-admin.hurui.me/preview3.png',
+    'https://fantastic-admin.hurui.me/preview4.png',
+    'https://fantastic-admin.hurui.me/preview5.png',
+    'https://fantastic-admin.hurui.me/preview6.png',
   ],
 })
 
@@ -38,12 +38,12 @@ const oneStepAdminInfo = ref({
   imageVisible: false,
   index: 0,
   data: [
-    'https://one-step-admin.github.io/preview1.png',
-    'https://one-step-admin.github.io/preview2.png',
-    'https://one-step-admin.github.io/preview3.png',
-    'https://one-step-admin.github.io/preview4.png',
-    'https://one-step-admin.github.io/preview5.png',
-    'https://one-step-admin.github.io/preview6.png',
+    'https://one-step-admin.hurui.me/preview1.png',
+    'https://one-step-admin.hurui.me/preview2.png',
+    'https://one-step-admin.hurui.me/preview3.png',
+    'https://one-step-admin.hurui.me/preview4.png',
+    'https://one-step-admin.hurui.me/preview5.png',
+    'https://one-step-admin.hurui.me/preview6.png',
   ],
 })
 
@@ -73,11 +73,11 @@ function open(url: string) {
             这是一款<b class="text-emphasis">干啥都快人一步</b>的中后台框架，它拥有<b>全新的交互方式</b>，只为<b>提升操作效率</b>而生。
           </div>
           <div class="op-70">
-            如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://fantastic-admin.github.io" target="_blank" class="border-b border-b-(blue dashed) text-blue no-underline">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。
+            如果你只是需要一款通用的中后台框架，可以了解下 <a href="https://fantastic-admin.hurui.me" target="_blank" class="border-b border-b-(blue dashed) text-blue no-underline">Fantastic-admin</a> ，它同样是一款非常优秀且开箱即用的中后台框架。
           </div>
         </div>
       </template>
-      <HButton outline @click="open('https://one-step-admin.github.io')">
+      <HButton outline @click="open('https://one-step-admin.hurui.me')">
         <SvgIcon name="i-ri:file-text-line" />
         开发文档
       </HButton>
@@ -123,7 +123,7 @@ function open(url: string) {
       <PageMain class="ecology">
         <template #title>
           <div class="title-info">
-            <img src="https://fantastic-admin.github.io/logo.png">
+            <img src="https://fantastic-admin.hurui.me/logo.png">
             <div>
               <h1 class="c-[#e60000]">
                 Fantastic-admin
@@ -132,7 +132,7 @@ function open(url: string) {
             </div>
           </div>
           <div class="ml-auto">
-            <HButton @click="open('https://fantastic-admin.github.io')">
+            <HButton @click="open('https://fantastic-admin.hurui.me')">
               访问官网
             </HButton>
           </div>
@@ -147,7 +147,7 @@ function open(url: string) {
       <PageMain class="ecology">
         <template #title>
           <div class="title-info">
-            <img src="https://one-step-admin.github.io/logo.png">
+            <img src="https://one-step-admin.hurui.me/logo.png">
             <div>
               <h1 class="c-[#67c23a]">
                 One-step-admin
@@ -156,7 +156,7 @@ function open(url: string) {
             </div>
           </div>
           <div class="ml-auto">
-            <HButton @click="open('https://one-step-admin.github.io')">
+            <HButton @click="open('https://one-step-admin.hurui.me')">
               访问官网
             </HButton>
           </div>
