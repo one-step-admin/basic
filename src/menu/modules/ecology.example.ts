@@ -6,8 +6,8 @@ const menus: Menu.recordRaw[] = [
   },
   {
     title: 'Fantastic-admin 开箱即用的中后台框架',
-    windowName: 'https://fantastic-admin.github.io',
-    icon: 'https://fantastic-admin.github.io/logo.png',
+    windowName: 'https://fantastic-admin.hurui.me',
+    icon: 'https://fantastic-admin.hurui.me/logo.png',
   },
 ]
 

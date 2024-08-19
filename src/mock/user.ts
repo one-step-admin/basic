@@ -12,7 +12,7 @@ export default defineFakeRoute([
         data: Mock.mock({
           account: body.account,
           token: `${body.account}_@string`,
-          avatar: 'https://one-step-admin.github.io/logo.png',
+          avatar: 'https://one-step-admin.hurui.me/logo.png',
         }),
       }
     },

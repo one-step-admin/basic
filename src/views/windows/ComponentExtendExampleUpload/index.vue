@@ -10,7 +10,7 @@ const images = ref([
 const files = ref([
   {
     name: 'One-step-admin.png',
-    url: 'https://one-step-admin.github.io/logo.png',
+    url: 'https://one-step-admin.hurui.me/logo.png',
   },
 ])
 
