@@ -89,7 +89,7 @@ function open(url: string) {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .buy-it {
   position: fixed;
   top: 50%;
@@ -132,23 +132,23 @@ function open(url: string) {
     }
 
     &:nth-child(1) {
-      --at-apply: bg-blue;
+      --uno: bg-blue;
     }
 
     &:nth-child(2) {
-      --at-apply: bg-pink;
+      --uno: bg-pink;
     }
 
     &:nth-child(3) {
-      --at-apply: bg-orange;
+      --uno: bg-orange;
     }
 
     &:nth-child(4) {
-      --at-apply: bg-green;
+      --uno: bg-green;
     }
 
     &:nth-child(5) {
-      --at-apply: bg-red;
+      --uno: bg-red;
     }
 
     i {

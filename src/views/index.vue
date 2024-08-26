@@ -66,7 +66,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .layout {
   height: 100%;
 }
@@ -156,7 +156,7 @@ header:not(.header-leave-active) + .wrapper {
 }
 
 .app-setting {
-  --at-apply: text-white dark-text-dark bg-ui-primary;
+  --uno: text-white dark-text-dark bg-ui-primary;
 
   position: fixed;
   top: calc(50% + 250px);
@@ -187,7 +187,7 @@ header:not(.header-leave-active) + .wrapper {
   }
 }
 
-// 主内容区动画
+/* 主内容区动画 */
 .main-enter-active {
   transition: 0.2s;
 }

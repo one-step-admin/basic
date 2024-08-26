@@ -155,34 +155,56 @@ function maskClick(windowName: string) {
   </HDialog>
 </template>
 
-<style lang="scss">
+<style>
 .contextmenu-custom {
+  --uno: fixed ring-1 ring-stone-2 dark-ring-stone-7 shadow-2xl;
+
+  background-color: var(--g-app-bg);
+
   .mx-context-menu-items .mx-context-menu-item {
-    .text {
-      display: flex;
-      align-items: center;
+    --uno: transition-background-color;
+
+    &:not(.disabled):hover {
+      --uno: cursor-pointer bg-stone-1 dark-bg-stone-9;
     }
 
-    &.disabled .text .icon {
-      color: #9f9f9f;
+    span {
+      color: initial;
+    }
+
+    .icon {
+      color: initial;
+    }
+
+    &.disabled span,
+    &.disabled .icon {
+      opacity: 0.25;
+    }
+  }
+
+  .mx-context-menu-item-sperator {
+    background-color: var(--g-app-bg);
+
+    &::after {
+      --uno: bg-stone-2 dark-bg-stone-7;
     }
   }
 }
 </style>
 
-<style lang="scss" scoped>
+<style scoped>
 .dashboard {
-  --at-apply: absolute top-0 bottom-0 w-full of-x-auto of-y-hidden transition;
+  --uno: absolute top-0 bottom-0 w-full of-x-auto of-y-hidden transition;
 
   &.preview-all {
-    --at-apply: fixed z-2000 top-0 bottom-0 left-0 right-0 of-y-auto bg-stone-200/75 dark-bg-stone-8/75 backdrop-blur-sm;
+    --uno: fixed z-2000 top-0 bottom-0 left-0 right-0 of-y-auto bg-stone-200/75 dark-bg-stone-8/75 backdrop-blur-sm;
 
     .preview-all-mode {
       display: block;
     }
 
     .dashboard-container {
-      --at-apply: flex-wrap justify-center bottom-a h-max pb-15;
+      --uno: flex-wrap justify-center bottom-a h-max pb-15;
 
       &:not(.mode-drag) {
         align-items: center;
@@ -222,11 +244,12 @@ function maskClick(windowName: string) {
     }
 
     .help {
+      position: absolute;
+      top: 50%;
       right: 20px;
       font-size: 18px;
       color: #ccc;
-
-      @include position-center(y);
+      transform: translateY(-50%);
     }
   }
 
@@ -246,7 +269,7 @@ function maskClick(windowName: string) {
     }
 
     .window-container {
-      --at-apply: shadow hover-shadow-lg transition;
+      --uno: shadow hover-shadow-lg transition;
 
       display: flex;
       flex: 1;
@@ -274,7 +297,7 @@ function maskClick(windowName: string) {
           align-items: center;
 
           .title {
-            --at-apply: c-dark dark-c-light;
+            --uno: c-dark dark-c-light;
 
             font-size: 14px;
             font-weight: bold;
@@ -289,7 +312,7 @@ function maskClick(windowName: string) {
           display: flex;
 
           .btn {
-            --at-apply: c-dark dark-c-light bg-stone-1 hover-bg-stone-2 dark-bg-stone-9 dark-hover-bg-stone-8 transition;
+            --uno: c-dark dark-c-light bg-stone-1 hover-bg-stone-2 dark-bg-stone-9 dark-hover-bg-stone-8 transition;
 
             display: flex;
             align-items: center;
@@ -303,7 +326,7 @@ function maskClick(windowName: string) {
       }
 
       .mask {
-        --at-apply: bg-stone-1/75 dark-bg-stone-9/75;
+        --uno: bg-stone-1/75 dark-bg-stone-9/75;
 
         position: absolute;
         top: 0;

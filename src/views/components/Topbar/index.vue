@@ -21,7 +21,7 @@ const settingsStore = useSettingsStore()
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .topbar-container {
   height: var(--g-topbar-height);
   background-color: var(--g-toolbar-bg);

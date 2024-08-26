@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .alert {
   padding: 10px;
   background-color: var(--g-app-bg);

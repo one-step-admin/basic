@@ -126,7 +126,7 @@ const dataList = ref([
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .absolute-container {
   position: absolute;
   display: flex;
@@ -134,7 +134,7 @@ const dataList = ref([
   width: 100%;
   height: 100%;
 
-  // 让 page-main 的高度自适应
+  /* 让 page-main 的高度自适应 */
   .page-main {
     flex: 1;
     overflow: auto;

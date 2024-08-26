@@ -64,7 +64,3 @@ function submitForm() {
     </PageMain>
   </div>
 </template>
-
-<style lang="scss" scoped>
-// scss
-</style>
