@@ -12,6 +12,7 @@ defineOptions({
 
 const settingsStore = useSettingsStore()
 const userStore = useUserStore()
+const appWindow = useWindow()
 
 const avatarError = ref(false)
 watch(() => userStore.avatar, () => {
@@ -28,6 +29,9 @@ watch(() => userStore.avatar, () => {
     <ColorScheme v-if="settingsStore.settings.toolbar.colorScheme" />
     <HDropdownMenu
       :items="[
+        [
+          { label: '个人设置', handle: () => appWindow.add({ title: '个人设置', name: 'PersonalSetting' }) },
+        ],
         [
           { label: '快捷键介绍', handle: () => eventBus.emit('global-hotkeys-intro-toggle') },
         ],

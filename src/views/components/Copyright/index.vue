@@ -22,17 +22,17 @@ const settingsStore = useSettingsStore()
   </footer>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .copyright {
-  --at-apply: flex items-center justify-center flex-wrap py-3 px-4 text-sm text-stone-5;
+  --uno: flex items-center justify-center flex-wrap py-3 px-4 text-sm text-stone-5;
 
   span,
   a {
-    --at-apply: px-1;
+    --uno: px-1;
   }
 
   a {
-    --at-apply: text-center no-underline text-stone-5 hover-text-dark dark-hover-text-light transition;
+    --uno: text-center no-underline text-stone-5 hover-text-dark dark-hover-text-light transition;
   }
 }
 </style>

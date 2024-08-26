@@ -77,7 +77,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .sub-sidebar-container {
   position: absolute;
   top: 0;
@@ -120,10 +120,10 @@ onMounted(() => {
     overflow: hidden auto;
     overscroll-behavior: contain;
 
-    // firefox隐藏滚动条
+    /* firefox隐藏滚动条 */
     scrollbar-width: none;
 
-    // chrome隐藏滚动条
+    /* chrome隐藏滚动条 */
     &::-webkit-scrollbar {
       display: none;
     }
@@ -146,7 +146,7 @@ onMounted(() => {
   }
 }
 
-// 次侧边栏动画
+/* 次侧边栏动画 */
 .sub-sidebar-enter-active {
   transition: opacity 0.3s, transform 0.3s;
 }
