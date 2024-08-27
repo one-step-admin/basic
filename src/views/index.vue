@@ -17,6 +17,24 @@ import eventBus from '@/utils/eventBus'
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
 
+// 侧边栏主导航当前实际宽度
+const mainSidebarActualWidth = computed(() => {
+  let actualWidth = Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue('--g-main-sidebar-width'))
+  if (['head', 'single'].includes(settingsStore.settings.menu.mode)) {
+    actualWidth = 0
+  }
+  return `${actualWidth}px`
+})
+
+// 侧边栏次导航当前实际宽度
+const subSidebarActualWidth = computed(() => {
+  let actualWidth = Number.parseInt(getComputedStyle(document.documentElement).getPropertyValue('--g-sub-sidebar-width'))
+  if (settingsStore.settings.menu.subMenuCollapse) {
+    actualWidth = 64
+  }
+  return `${actualWidth}px`
+})
+
 const enableToolbar = computed(() => {
   return !(settingsStore.settings.menu.mode === 'head' && !settingsStore.settings.toolbar.previewWindows)
 })
@@ -37,7 +55,12 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING === 'true'
 </script>
 
 <template>
-  <div class="layout">
+  <div
+    class="layout" :style="{
+      '--g-main-sidebar-actual-width': mainSidebarActualWidth,
+      '--g-sub-sidebar-actual-width': subSidebarActualWidth,
+    }"
+  >
     <div id="app-main">
       <Header />
       <div class="wrapper">
