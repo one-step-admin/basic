@@ -17,7 +17,7 @@ const { switchTo } = useMenu()
   <Transition name="main-sidebar">
     <div v-if="['side'].includes(settingsStore.settings.menu.mode)" class="main-sidebar-container">
       <Logo :show-title="false" class="sidebar-logo" />
-      <div class="menu">
+      <div class="menu scrollbar-none">
         <!-- 侧边栏模式（含主导航） -->
         <div class="w-full flex flex-col of-hidden py-1 transition-all -mt-2">
           <template v-for="(item, index) in menuStore.allMenus" :key="index">
@@ -68,14 +68,6 @@ const { switchTo } = useMenu()
     width: initial;
     overflow: hidden auto;
     overscroll-behavior: contain;
-
-    /* firefox隐藏滚动条 */
-    scrollbar-width: none;
-
-    /* chrome隐藏滚动条 */
-    &::-webkit-scrollbar {
-      display: none;
-    }
 
     :deep(.menu-item) {
       .menu-item-container {
