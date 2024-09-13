@@ -12,6 +12,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { vitePluginFakeServer } from 'vite-plugin-fake-server'
 import { compression } from 'vite-plugin-compression2'
 import archiver from 'archiver'
+import AppLoading from 'vite-plugin-vue-app-loading'
 import TurboConsole from 'unplugin-turbo-console/vite'
 import banner from 'vite-plugin-banner'
 import boxen from 'boxen'
@@ -96,34 +97,7 @@ export default function createVitePlugins(viteEnv, isBuild = false) {
       }
     })(),
 
-    {
-      name: 'vite-plugin-loading',
-      enforce: 'pre',
-      transformIndexHtml: {
-        handler: async html => html.replace(/<\/body>/, `${
-          `<div data-app-loading>${await fs.readFileSync(path.resolve(process.cwd(), 'loading.html'), 'utf8')}</div>`
-        }</body>`),
-        order: 'pre',
-      },
-      transform: (code, id) => {
-        if (/src\/main.ts$/.test(id)) {
-          code = code.concat(`
-            const loadingEl = document.querySelector('[data-app-loading]')
-            if (loadingEl) {
-              loadingEl.style['pointer-events'] = 'none'
-              loadingEl.style.visibility = 'hidden'
-              loadingEl.style.opacity = 0
-              loadingEl.style.transition = 'all 0.5s ease-out'
-              loadingEl.addEventListener('transitionend', () => loadingEl.remove(), { once: true })
-            }
-          `)
-          return {
-            code,
-            map: null,
-          }
-        }
-      },
-    },
+    AppLoading('loading.html'),
 
     // https://github.com/unplugin/unplugin-turbo-console
     TurboConsole(),
