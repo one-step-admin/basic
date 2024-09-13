@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { loadingFadeOut } from 'virtual:app-loading'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
 import useMenuStore from '@/store/modules/menu'
@@ -87,6 +88,10 @@ router.beforeEach((to, from, next) => {
       next()
     }
   }
+})
+
+router.isReady().then(() => {
+  loadingFadeOut()
 })
 
 export default router

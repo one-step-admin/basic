@@ -22,6 +22,7 @@
     "resolveJsonModule": true,
     "types": [
       "vite/client",
+      "vite-plugin-vue-app-loading/client",
       "element-plus/global"
     ],
     "allowImportingTsExtensions": true,
