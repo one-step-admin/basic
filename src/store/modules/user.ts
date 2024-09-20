@@ -1,7 +1,7 @@
+import apiUser from '@/api/modules/user'
+import router from '@/router'
 import useMenuStore from './menu'
 import useWindowStore from './window'
-import router from '@/router'
-import apiUser from '@/api/modules/user'
 
 export const useUserStore = defineStore(
   // 唯一ID

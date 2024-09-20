@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import hotkeys from 'hotkeys-js'
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
-import Empty from './Empty/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 import useWindowStore from '@/store/modules/window'
 import eventBus from '@/utils/eventBus'
+import hotkeys from 'hotkeys-js'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
+import Empty from './Empty/index.vue'
 
 defineOptions({
   name: 'Dashboard',

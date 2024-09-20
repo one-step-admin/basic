@@ -1,8 +1,8 @@
+import apiApp from '@/api/modules/app'
+import menu from '@/menu'
 import { cloneDeep } from 'lodash-es'
 import useSettingsStore from './settings'
 import useUserStore from './user'
-import apiApp from '@/api/modules/app'
-import menu from '@/menu'
 
 const useMenuStore = defineStore(
   // 唯一ID

@@ -1,5 +1,5 @@
-import { defaultsDeep } from 'lodash-es'
 import settingsDefault from '@/settings'
+import { defaultsDeep } from 'lodash-es'
 
 export const useSettingsStore = defineStore(
   // 唯一ID

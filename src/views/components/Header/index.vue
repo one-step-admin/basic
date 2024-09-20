@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import useMenuStore from '@/store/modules/menu'
+import useSettingsStore from '@/store/modules/settings'
 import Logo from '../Logo/index.vue'
 import ToolbarRightSide from '../Topbar/rightSide.vue'
-import useSettingsStore from '@/store/modules/settings'
-import useMenuStore from '@/store/modules/menu'
 
 defineOptions({
   name: 'LayoutHeader',

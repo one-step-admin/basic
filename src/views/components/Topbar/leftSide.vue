@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PreviewWindows from './PreviewWindows/index.vue'
 import useSettingsStore from '@/store/modules/settings'
+import PreviewWindows from './PreviewWindows/index.vue'
 
 defineOptions({
   name: 'ToolbarLeftSide',

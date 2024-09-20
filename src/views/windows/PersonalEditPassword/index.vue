@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormInstance, FormRules } from 'element-plus'
-import { ElMessage } from 'element-plus'
 import useUserStore from '@/store/modules/user'
+import { ElMessage } from 'element-plus'
 
 const route = useRoute()
 const router = useRouter()
