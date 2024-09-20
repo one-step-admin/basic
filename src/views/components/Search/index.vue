@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { Dialog, DialogDescription, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import type { OverlayScrollbarsComponentRef } from 'overlayscrollbars-vue'
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
+import useMenuStore from '@/store/modules/menu'
+import useSettingsStore from '@/store/modules/settings'
+import eventBus from '@/utils/eventBus'
+import { Dialog, DialogDescription, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import hotkeys from 'hotkeys-js'
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
 import Breadcrumb from '../Breadcrumb/index.vue'
 import BreadcrumbItem from '../Breadcrumb/item.vue'
-import useSettingsStore from '@/store/modules/settings'
-import useMenuStore from '@/store/modules/menu'
-import eventBus from '@/utils/eventBus'
 
 defineOptions({
   name: 'Search',

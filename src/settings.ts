@@ -1,5 +1,5 @@
-import { defaultsDeep } from 'lodash-es'
 import settingsDefault from '@/settings.default'
+import { defaultsDeep } from 'lodash-es'
 
 const globalSettings: Settings.all = {
   // 请在此处编写或粘贴配置代码

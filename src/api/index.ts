@@ -1,9 +1,9 @@
-import axios from 'axios'
+import router from '@/router/index'
 
+import useUserStore from '@/store/modules/user'
+import axios from 'axios'
 // import qs from 'qs'
 import Message from 'vue-m-message'
-import router from '@/router/index'
-import useUserStore from '@/store/modules/user'
 
 function toLogin() {
   router.push({

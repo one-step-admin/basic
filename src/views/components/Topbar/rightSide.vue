@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import NavSearch from './NavSearch/index.vue'
-import Fullscreen from './Fullscreen/index.vue'
-import ColorScheme from './ColorScheme/index.vue'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
 import eventBus from '@/utils/eventBus'
+import ColorScheme from './ColorScheme/index.vue'
+import Fullscreen from './Fullscreen/index.vue'
+import NavSearch from './NavSearch/index.vue'
 
 defineOptions({
   name: 'ToolbarRightSide',

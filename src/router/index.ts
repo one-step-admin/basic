@@ -1,8 +1,8 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import { loadingFadeOut } from 'virtual:app-loading'
+import useMenuStore from '@/store/modules/menu'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
-import useMenuStore from '@/store/modules/menu'
+import { loadingFadeOut } from 'virtual:app-loading'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 // 路由数据
 const routes = [

@@ -1,17 +1,17 @@
 <script setup lang="ts">
+import useMenuStore from '@/store/modules/menu'
+import useSettingsStore from '@/store/modules/settings'
+import eventBus from '@/utils/eventBus'
 import hotkeys from 'hotkeys-js'
+import AppSetting from './components/AppSetting/index.vue'
+import Copyright from './components/Copyright/index.vue'
+import Dashboard from './components/Dashboard/index.vue'
 import Header from './components/Header/index.vue'
+import HotkeysIntro from './components/HotkeysIntro/index.vue'
 import MainSidebar from './components/MainSidebar/index.vue'
+import Search from './components/Search/index.vue'
 import SubSidebar from './components/SubSidebar/index.vue'
 import Topbar from './components/Topbar/index.vue'
-import Dashboard from './components/Dashboard/index.vue'
-import Search from './components/Search/index.vue'
-import AppSetting from './components/AppSetting/index.vue'
-import HotkeysIntro from './components/HotkeysIntro/index.vue'
-import Copyright from './components/Copyright/index.vue'
-import useSettingsStore from '@/store/modules/settings'
-import useMenuStore from '@/store/modules/menu'
-import eventBus from '@/utils/eventBus'
 
 const settingsStore = useSettingsStore()
 const menuStore = useMenuStore()
