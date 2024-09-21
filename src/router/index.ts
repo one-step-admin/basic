@@ -38,7 +38,7 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const settingsStore = useSettingsStore()
   const userStore = useUserStore()
   const menuStore = useMenuStore()
