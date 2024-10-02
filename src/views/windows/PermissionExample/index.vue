@@ -1,26 +1,19 @@
 <script setup lang="ts">
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
-import { ElLoading, ElMessage } from 'element-plus'
+import { ElMessage } from 'element-plus'
 
 const { auth, authAll } = useAuth()
 const settingsStore = useSettingsStore()
 const userStore = useUserStore()
 
-function accountChange(val: any) {
-  ElLoading.service({
-    lock: true,
-    text: '帐号切换中',
-    background: 'rgba(0, 0, 0, 0.7)',
-  })
-  userStore.login({
+// 模拟账号切换
+async function accountChange(val: any) {
+  await userStore.login({
     account: val,
     password: '',
-  }).then(() => {
-    setTimeout(() => {
-      location.reload()
-    }, 1000)
   })
+  await userStore.getPermissions()
 }
 function permissionCheck(permissions: string | string[]) {
   if (auth(permissions)) {
@@ -54,41 +47,6 @@ function permissionCheck2(permissions: string[]) {
         </ElRadioGroup>
         <h3>帐号权限</h3>
         <div>{{ userStore.permissions }}</div>
-        <h3>鉴权组件（请对照代码查看）</h3>
-        <div>
-          <Auth value="permission.browse" style="margin-bottom: 10px;">
-            <ElTag>你有 permission.browse 权限</ElTag>
-            <template #no-auth>
-              <ElTag type="danger">
-                你没有 permission.browse 权限
-              </ElTag>
-            </template>
-          </Auth>
-          <Auth value="permission.create" style="margin-bottom: 10px;">
-            <ElTag>你有 permission.create 权限</ElTag>
-            <template #no-auth>
-              <ElTag type="danger">
-                你没有 permission.create 权限
-              </ElTag>
-            </template>
-          </Auth>
-          <Auth :value="['permission.browse', 'permission.create']" style="margin-bottom: 10px;">
-            <ElTag>你有 permission.browse 或 permission.create 权限</ElTag>
-            <template #no-auth>
-              <ElTag type="danger">
-                你没有 permission.browse 或 permission.create 权限
-              </ElTag>
-            </template>
-          </Auth>
-          <AuthAll :value="['permission.browse', 'permission.create']">
-            <ElTag>你有 permission.browse 和 permission.create 权限</ElTag>
-            <template #no-auth>
-              <ElTag type="danger">
-                你没有 permission.browse 和 permission.create 权限
-              </ElTag>
-            </template>
-          </AuthAll>
-        </div>
         <h3>鉴权指令（请对照代码查看）</h3>
         <div>
           <div v-auth="'permission.browse'">
@@ -100,9 +58,44 @@ function permissionCheck2(permissions: string[]) {
           <div v-auth="['permission.browse', 'permission.create']">
             如果你有 permission.browse 或 permission.create 权限则能看到这句话
           </div>
-          <div v-auth-all="['permission.browse', 'permission.create']">
+          <div v-auth.all="['permission.browse', 'permission.create']">
             如果你有 permission.browse 和 permission.create 权限则能看到这句话
           </div>
+        </div>
+        <h3>鉴权组件（请对照代码查看）</h3>
+        <div class="flex-col-start gap-2">
+          <Auth value="permission.browse">
+            <ElTag>你有 permission.browse 权限</ElTag>
+            <template #no-auth>
+              <ElTag type="danger">
+                你没有 permission.browse 权限
+              </ElTag>
+            </template>
+          </Auth>
+          <Auth value="permission.create">
+            <ElTag>你有 permission.create 权限</ElTag>
+            <template #no-auth>
+              <ElTag type="danger">
+                你没有 permission.create 权限
+              </ElTag>
+            </template>
+          </Auth>
+          <Auth :value="['permission.browse', 'permission.create']">
+            <ElTag>你有 permission.browse 或 permission.create 权限</ElTag>
+            <template #no-auth>
+              <ElTag type="danger">
+                你没有 permission.browse 或 permission.create 权限
+              </ElTag>
+            </template>
+          </Auth>
+          <Auth :value="['permission.browse', 'permission.create']" all>
+            <ElTag>你有 permission.browse 和 permission.create 权限</ElTag>
+            <template #no-auth>
+              <ElTag type="danger">
+                你没有 permission.browse 和 permission.create 权限
+              </ElTag>
+            </template>
+          </Auth>
         </div>
         <h3>鉴权函数（请对照代码查看）</h3>
         <div>
