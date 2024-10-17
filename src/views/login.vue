@@ -12,7 +12,6 @@ const redirect = ref(route.query.redirect?.toString() ?? '/')
 const account = ref<string>()
 // 表单类型
 const formType = ref<'login' | 'register' | 'resetPassword'>('login')
-const formRef = ref()
 </script>
 
 <template>
@@ -26,7 +25,6 @@ const formRef = ref()
       <Transition name="fade" mode="out-in">
         <LoginForm
           v-if="formType === 'login'"
-          ref="formRef"
           :account
           @on-login="router.push(redirect)"
           @on-register="(account) => { formType = 'register'; account = account }"
@@ -34,14 +32,12 @@ const formRef = ref()
         />
         <RegisterForm
           v-else-if="formType === 'register'"
-          ref="formRef"
           :account
           @on-register="(account) => { formType = 'login'; account = account }"
           @on-login="formType = 'login'"
         />
         <ResetPasswordForm
           v-else-if="formType === 'resetPassword'"
-          ref="formRef"
           :account
           @on-reset-password="(account) => { formType = 'login'; account = account }"
           @on-login="formType = 'login'"

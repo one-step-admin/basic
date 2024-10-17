@@ -41,8 +41,8 @@ const isShow = ref(false)
 const searchInput = ref('')
 const actived = ref(-1)
 
-const searchInputRef = ref()
-const searchResultRef = ref<OverlayScrollbarsComponentRef>()
+const searchInputRef = useTemplateRef('searchInputRef')
+const searchResultRef = useTemplateRef<OverlayScrollbarsComponentRef>('searchResultRef')
 const searchResultItemRef = ref<HTMLElement[]>([])
 onBeforeUpdate(() => {
   searchResultItemRef.value = []
