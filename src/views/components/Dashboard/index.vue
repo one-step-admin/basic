@@ -15,8 +15,8 @@ const windowStore = useWindowStore()
 
 const appWindow = useWindow()
 
-const windowsRef = ref()
-const windowItemRef = ref<any>([])
+const windowsRef = useTemplateRef('windowsRef')
+const windowItemRef = ref<HTMLElement[]>([])
 const setWindowItemRef = (el: any) => windowItemRef.value.push(el)
 onBeforeUpdate(() => {
   windowItemRef.value = []
@@ -34,7 +34,7 @@ watch(() => windowStore.list, (val) => {
 
 const showWindowScrollTip = ref(false)
 function windowScrollTip() {
-  if (windowsRef.value.scrollWidth > windowsRef.value.clientWidth && localStorage.getItem('windowScrollTip') === null) {
+  if (((windowsRef.value?.scrollWidth ?? 0) > (windowsRef.value?.clientWidth ?? 0)) && localStorage.getItem('windowScrollTip') === null) {
     showWindowScrollTip.value = true
     localStorage.setItem('windowScrollTip', '')
   }
@@ -44,7 +44,7 @@ function windowScrollTip() {
 const originalScrollLeft = ref(0)
 watch(() => settingsStore.previewAllWindows, (val) => {
   if (val) {
-    originalScrollLeft.value = windowsRef.value.scrollLeft
+    originalScrollLeft.value = windowsRef.value?.scrollLeft ?? 0
   }
 })
 
@@ -66,14 +66,14 @@ onMounted(() => {
 
 function scrollToOriginal(scrollLeft: number) {
   nextTick(() => {
-    windowsRef.value.scroll(scrollLeft, 0)
+    windowsRef.value?.scroll(scrollLeft, 0)
   })
 }
 function scrollToWindow(windowName: string | unknown) {
   nextTick(() => {
     const index = windowStore.list.findIndex(item => item.name === windowName)
     const offsetLeft = windowItemRef.value[index].offsetLeft
-    windowsRef.value.scrollTo({
+    windowsRef.value?.scrollTo({
       left: offsetLeft,
       behavior: 'smooth',
     })
